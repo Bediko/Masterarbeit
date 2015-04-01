@@ -143,7 +143,25 @@ Ein effizienter Weg ein kompliziertes Modell zu lernen, besteht darin, eine Meng
 	\center
 	\includesvg[width=150pt]{Netzwerk}
 	\caption{Hyprid Netzwerk. Ebenen $H_3$ und $H_2$ haben ungerichtete Verbindungen und beilden einen assoziativen Speicher. Die anderen Ebenen sind von oben nach unten gerichtete Verbindungen die dem Zustand des Speichers auf ein Bild abbilden können. Die gerichteten Verbindugnen von unten nach oben stellen eine faktoriesierte Darstellung der binären Aktivitäten der Ebene darunter dar. Am Anfang des Trainings werden die Verbindungen pro Ebene als gleich angesehen.}
+	\label{Netz}
 \end{figure}
+
+In Abbildung \ref{Netz} ist ein "'generative model"'  mit mehreren Ebenen abgebildet. Die oberen beiden Ebenenen kommunizieren über ungerichtete Kanten und simulieren damit unendlich viele weitere Ebenen mit verbundenen Gewichten. Es gibt keine Verbindungen zwischen den Knoten einer Ebene und der Einfachheit halber wird angenommen, dass alle Ebenen gleich viele Knoten haben. Man kann gute Parameter für $W_0$ finden, indem man annimmt, dass die Gewichte zwischen den höheren Layern verwendet werden um den "'Explained Away"'-Effekt für $W_0$ auszulöschen \cite{learning}. Dies ist genau so als wären alle Gewichte miteinander verbunden. Dies führt dazu, dass das lernen von $W_0$ lediglich das trainieren einer RBM darstellt und mithilfe der Contrastive Divergence eine gute approximination gefunden wird. Sobald $W_0$ gelernt ist, kann man $W^T_0$ als Eingabe für den ersten versteckten Layer benutzen.
+
+Falls die RBM ein perfektes Modell für die Eingabedaten gefunden hat, sind die Gewichte der höheren Ebenen für die generierten Daten bereits perfekt. Generell ist dies jedoch nicht der Fall und das Modell kann durch einen einfachen greedy Algorithmus verbessert werden:
+
+\begin{enumerate}
+\item Lerne $W_0$ unter der Annahme dass alle Gewichtsmatrizzen verbunden sind.
+\item Entbinde $W_0$ und friere diese ein. Benutze $W_0^T$ um die Verteilung der einzelnen Variablen im ersten versteckten Layer zu approximieren.
+\item Lerne eine RBM mithilfe der "'Daten"' die durch $W_0^T$ generiert wurden für den nächsten Layer.
+\end{enumerate}
+
+Wenn dieser Algorithmus die Gewichte in den höheren Layern ändert, wird das Modell immer verbessert. Gleichzeitig bedeutet dies auch, dass jedes Modell durch hinzufügen von neuen Layern verbessert werden kann, wenn man jeden Layer sorgfältig genug trainiert. Wenn alle Layer die gleiche Anzahl von Knoten haben, bietet dies den Vorteil, dass die höheren Ebenen bereits mit den gelernten Gewichten initialisiert werden können bevor diese entbunden werden, der Algorithmus funktioniert aber auch mit unterschiedlich großen Layern. \cite{learning}
+
+\subsection{Backpropagation}
+Nach dem lernen des Netzes mit dem Greedy Algorithmus sind die Gewichte in den unteren Layern nicht optimal und das ganze Netz wird noch einmal feiner eingestellt. 
+
+Hierzu nochmal \cite{backprop} anschauen für die richtigen Parameter-
 
 \begin{thebibliography}{9}
 \bibliographystyle{unsrt}
@@ -169,6 +187,12 @@ Proceedings of the 13th International Conference on Artificial Intelligence and 
 Geoffrey Hinton, Yee-Whye Teh,
 \emph{A Fast Learning Algorithm for Deep Belief Nets},
 Neural Computation 18 Seiten 1527-1554,
+2006
+
+\bibitem{backprop}
+G. E. Hinton, R. R. Salakhutdinov,
+\emph{Reducing the dimensionality of data with neural networks},
+Science Vol. 313. no. 5786n Seite 504 - 507,
 2006
 
 \end{thebibliography}
