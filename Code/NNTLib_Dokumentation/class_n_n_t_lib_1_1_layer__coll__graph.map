@@ -1,0 +1,3 @@
+<map id="NNTLib::Layer" name="NNTLib::Layer">
+<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_neuron.html" title="{NNTLib::Neuron\n|+ WeightCount\l+ Output\l+ Weights\l+ LastDeltaWeights\l+ DeltaWeights\l+ Bias\l|+ Neuron()\l+ ~Neuron()\l+ Neuron()\l+ operator=()\l+ Init()\l}" alt="" coords="31,5,169,215"/>
+</map>

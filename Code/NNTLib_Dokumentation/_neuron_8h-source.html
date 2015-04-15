@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: Neuron.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>Neuron.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef Neuron_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define Neuron_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00005"></a>00005 <span class="comment">/*</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">*/</span>
+<a name="l00008"></a><a class="code" href="class_neuron.html">00008</a> <span class="keyword">class </span><a class="code" href="class_neuron.html">Neuron</a>
+<a name="l00009"></a>00009 {
+<a name="l00010"></a>00010 <span class="keyword">private</span>:
+<a name="l00011"></a>00011         <span class="keywordtype">void</span> copy(<span class="keyword">const</span> <a class="code" href="class_neuron.html">Neuron</a> &amp;that);
+<a name="l00012"></a>00012         <span class="keywordtype">void</span> init();
+<a name="l00013"></a>00013         <span class="keywordtype">void</span> freeMem();
+<a name="l00014"></a>00014 <span class="keyword">public</span>:
+<a name="l00015"></a><a class="code" href="class_neuron.html#c39c6a1275faa220c1dad8637c78b8ee">00015</a>         <span class="keywordtype">int</span> <a class="code" href="class_neuron.html#c39c6a1275faa220c1dad8637c78b8ee">InputCountWithBias</a>;
+<a name="l00016"></a><a class="code" href="class_neuron.html#29c2c02a361c9d7028472e5d92cd4a54">00016</a>     <span class="keywordtype">double</span> <a class="code" href="class_neuron.html#29c2c02a361c9d7028472e5d92cd4a54">Output</a>;
+<a name="l00017"></a><a class="code" href="class_neuron.html#8831731b52fdc6cb7f162f9767d66e4d">00017</a>     <span class="keywordtype">double</span> *<a class="code" href="class_neuron.html#8831731b52fdc6cb7f162f9767d66e4d">Weights</a>;
+<a name="l00018"></a><a class="code" href="class_neuron.html#a4b1e68a202cbb6e927caa848f83ab49">00018</a>     <span class="keywordtype">double</span> *<a class="code" href="class_neuron.html#a4b1e68a202cbb6e927caa848f83ab49">LastDeltaWeights</a>;
+<a name="l00019"></a><a class="code" href="class_neuron.html#6b4cb6ab049e62a2ed019c9f64e3834b">00019</a>         <span class="keywordtype">double</span> *<a class="code" href="class_neuron.html#6b4cb6ab049e62a2ed019c9f64e3834b">DeltaWeights</a>;
+<a name="l00020"></a>00020         <span class="comment">//bias einzelnt halten (für evtl. erweiterung von backpropagation mit bias anpassung siehe Lecun Paper)</span>
+<a name="l00021"></a><a class="code" href="class_neuron.html#4ad6b9e6418fd2d739906bd47e887ae3">00021</a>     <span class="keywordtype">double</span> <a class="code" href="class_neuron.html#4ad6b9e6418fd2d739906bd47e887ae3">Bias</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         <a class="code" href="class_neuron.html#736491acf98fed4a94c9084647c60dc8">Neuron</a>();
+<a name="l00024"></a>00024         <span class="comment">//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three</span>
+<a name="l00025"></a>00025         <a class="code" href="class_neuron.html#3145d3f9e37184d9fcd0e7292887542b">~Neuron</a>();
+<a name="l00026"></a>00026         <a class="code" href="class_neuron.html#736491acf98fed4a94c9084647c60dc8">Neuron</a>(<span class="keyword">const</span> <a class="code" href="class_neuron.html">Neuron</a> &amp;that);
+<a name="l00027"></a>00027         <a class="code" href="class_neuron.html">Neuron</a>&amp; <a class="code" href="class_neuron.html#61853223e4596bf1463959e489893dd7">operator= </a>(<span class="keyword">const</span> <a class="code" href="class_neuron.html">Neuron</a> &amp;that);
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#6fe715c125516b1aca8a01d6eae0e713">Init</a>(<span class="keywordtype">int</span> inputVectorCount);
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 };
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:28 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

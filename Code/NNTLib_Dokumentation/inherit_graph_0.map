@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_config_base.html" title="ConfigBase" alt="" coords="5,56,93,83"/>
+<area shape="rect" id="node2" href="$class_backpropagation_config.html" title="BackpropagationConfig" alt="" coords="143,5,298,32"/>
+<area shape="rect" id="node3" href="$class_genetic_algorithm_config.html" title="GeneticAlgorithmConfig" alt="" coords="141,56,300,83"/>
+<area shape="rect" id="node4" href="$class_neural_network_config.html" title="NeuralNetworkConfig" alt="" coords="149,107,292,133"/>
+</map>

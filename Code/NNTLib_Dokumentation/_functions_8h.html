@@ -1,0 +1,480 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.h-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>Functions.h-Dateireferenz</h1><code>#include &lt;math.h&gt;</code><br>
+
+<p>
+Include-Abhängigkeitsdiagramm für Functions.h:<p><center><img src="_functions_8h__incl.png" border="0" usemap="#E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.h_map" alt=""></center>
+
+<p>
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><center><img src="_functions_8h__dep__incl.png" border="0" usemap="#E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.hdep_map" alt=""></center>
+<map name="E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.hdep_map">
+<area href="_layer_8h-source.html" shape="rect" coords="732,5,1341,32" alt="">
+<area href="_neural_network_config_8h-source.html" shape="rect" coords="688,56,1385,83" alt="">
+<area href="_backpropagation_8h-source.html" shape="rect" coords="699,107,1374,133" alt="">
+<area href="_function_8cpp-source.html" shape="rect" coords="716,157,1357,184" alt="">
+</map>
+
+<p>
+<a href="_functions_8h-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Makrodefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#71a3aa95aa2a2ce2598aaed7369ecf79">FUNCTIONS_H</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#6767dd93afd172b82ec73fc4e0334dac">SIGMOID</a>(x)&nbsp;&nbsp;&nbsp;(1./(1.+exp(-x)))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#d1a1364507b95c51c1fd0e4c1cf47c49">SIGMOID_DERIVATION</a>(y)&nbsp;&nbsp;&nbsp;(y * (1. - y))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#22cceb9bd69b9830814a9789c2a6083b">TANH</a>(x)&nbsp;&nbsp;&nbsp;tanh(x)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#5d872ab898685d6b49e51e102af7c3e5">TANH_DERIVATION</a>(y)&nbsp;&nbsp;&nbsp;(1. - (y*y))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#0fe31f8fabb35fe62b1569b82ef21367">LECUN_TANH</a>(x)&nbsp;&nbsp;&nbsp;(1.7159*tanh(0.66666667*x))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#23747ff0543bd3ed31f7314657bf1d68">LECUN_TANH_DERIVATION</a>(y)&nbsp;&nbsp;&nbsp;(0.66666667/1.7159*(1.7159+(y))*(1.7159-(y)))</td></tr>
+
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#fac982d908e054efba3abdb0e7c60bdc">ActivationFunction</a> (<a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a> funcEnum, double y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#60a581831df9c3e19628c4ebb552519c">ActivationFunctionDerivate</a> (<a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a> funcEnum, double y)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#32a843da6ea40ab3b17a3421ccdf671b">Linear</a> = 0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#b299f45b5de2a8f7c45192590290742b">SIGMOID</a> = 1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_functions_8h.html#143c8c6f51b9bb893ce71e38702e3cc1">TANH</a> = 2</td></tr>
+
+</table>
+<hr><h2>Makro-Dokumentation</h2>
+<a class="anchor" name="71a3aa95aa2a2ce2598aaed7369ecf79"></a><!-- doxytag: member="Functions.h::FUNCTIONS_H" ref="71a3aa95aa2a2ce2598aaed7369ecf79" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define FUNCTIONS_H          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00002">2</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="0fe31f8fabb35fe62b1569b82ef21367"></a><!-- doxytag: member="Functions.h::LECUN_TANH" ref="0fe31f8fabb35fe62b1569b82ef21367" args="(x)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define LECUN_TANH          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">x&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(1.7159*tanh(0.66666667*x))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00014">14</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00003">ActivationFunction()</a> und <a class="el" href="_function_8cpp-source.html#l00021">ActivationFunctionDerivate()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="23747ff0543bd3ed31f7314657bf1d68"></a><!-- doxytag: member="Functions.h::LECUN_TANH_DERIVATION" ref="23747ff0543bd3ed31f7314657bf1d68" args="(y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define LECUN_TANH_DERIVATION          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">y&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(0.66666667/1.7159*(1.7159+(y))*(1.7159-(y)))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00015">15</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00021">ActivationFunctionDerivate()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="6767dd93afd172b82ec73fc4e0334dac"></a><!-- doxytag: member="Functions.h::SIGMOID" ref="6767dd93afd172b82ec73fc4e0334dac" args="(x)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define <a class="el" href="_functions_8h.html#b299f45b5de2a8f7c45192590290742b">SIGMOID</a>          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">x&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(1./(1.+exp(-x)))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00008">8</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00003">ActivationFunction()</a>, <a class="el" href="main_8cpp-source.html#l00156">MNIST()</a>, <a class="el" href="main_8cpp-source.html#l00105">XOR()</a> und <a class="el" href="main_8cpp-source.html#l00025">XORGENETIC()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d1a1364507b95c51c1fd0e4c1cf47c49"></a><!-- doxytag: member="Functions.h::SIGMOID_DERIVATION" ref="d1a1364507b95c51c1fd0e4c1cf47c49" args="(y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define SIGMOID_DERIVATION          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">y&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(y * (1. - y))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00009">9</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00021">ActivationFunctionDerivate()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="22cceb9bd69b9830814a9789c2a6083b"></a><!-- doxytag: member="Functions.h::TANH" ref="22cceb9bd69b9830814a9789c2a6083b" args="(x)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define <a class="el" href="_functions_8h.html#143c8c6f51b9bb893ce71e38702e3cc1">TANH</a>          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">x&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;tanh(x)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00011">11</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00003">ActivationFunction()</a> und <a class="el" href="_function_8cpp-source.html#l00021">ActivationFunctionDerivate()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="5d872ab898685d6b49e51e102af7c3e5"></a><!-- doxytag: member="Functions.h::TANH_DERIVATION" ref="5d872ab898685d6b49e51e102af7c3e5" args="(y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define TANH_DERIVATION          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">y&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(1. - (y*y))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00012">12</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.
+<p>
+Wird benutzt von <a class="el" href="_function_8cpp-source.html#l00021">ActivationFunctionDerivate()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="fac982d908e054efba3abdb0e7c60bdc"></a><!-- doxytag: member="Functions.h::ActivationFunction" ref="fac982d908e054efba3abdb0e7c60bdc" args="(FunctionEnum funcEnum, double y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double ActivationFunction           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>funcEnum</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>double&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_function_8cpp-source.html#l00003">3</a> der Datei <a class="el" href="_function_8cpp-source.html">Function.cpp</a>.
+<p>
+Benutzt <a class="el" href="_functions_8h-source.html#l00014">LECUN_TANH</a>, <a class="el" href="_functions_8h-source.html#l00008">SIGMOID</a> und <a class="el" href="_functions_8h-source.html#l00011">TANH</a>.
+<p>
+Wird benutzt von <a class="el" href="_neural_network_8cpp-source.html#l00251">NeuralNetwork::Propagate()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="60a581831df9c3e19628c4ebb552519c"></a><!-- doxytag: member="Functions.h::ActivationFunctionDerivate" ref="60a581831df9c3e19628c4ebb552519c" args="(FunctionEnum funcEnum, double y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double ActivationFunctionDerivate           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>funcEnum</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>double&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_function_8cpp-source.html#l00021">21</a> der Datei <a class="el" href="_function_8cpp-source.html">Function.cpp</a>.
+<p>
+Benutzt <a class="el" href="_functions_8h-source.html#l00014">LECUN_TANH</a>, <a class="el" href="_functions_8h-source.html#l00015">LECUN_TANH_DERIVATION</a>, <a class="el" href="_functions_8h-source.html#l00009">SIGMOID_DERIVATION</a>, <a class="el" href="_functions_8h-source.html#l00011">TANH</a> und <a class="el" href="_functions_8h-source.html#l00012">TANH_DERIVATION</a>.
+<p>
+Wird benutzt von <a class="el" href="_backpropagation_8cpp-source.html#l00025">Backpropagation::Train()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Variablen-Dokumentation</h2>
+<a class="anchor" name="5cad0705f871b5ad66a329fb984be12d"></a><!-- doxytag: member="Functions.h::FunctionEnum" ref="5cad0705f871b5ad66a329fb984be12d" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">enum class <a class="el" href="_functions_8h.html#5cad0705f871b5ad66a329fb984be12d">FunctionEnum</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00006">6</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="32a843da6ea40ab3b17a3421ccdf671b"></a><!-- doxytag: member="Functions.h::Linear" ref="32a843da6ea40ab3b17a3421ccdf671b" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="_functions_8h.html#32a843da6ea40ab3b17a3421ccdf671b">Linear</a> = 0          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00006">6</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="b299f45b5de2a8f7c45192590290742b"></a><!-- doxytag: member="Functions.h::SIGMOID" ref="b299f45b5de2a8f7c45192590290742b" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="_functions_8h.html#b299f45b5de2a8f7c45192590290742b">SIGMOID</a> = 1          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00006">6</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="143c8c6f51b9bb893ce71e38702e3cc1"></a><!-- doxytag: member="Functions.h::TANH" ref="143c8c6f51b9bb893ce71e38702e3cc1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="_functions_8h.html#143c8c6f51b9bb893ce71e38702e3cc1">TANH</a> = 2          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="_functions_8h-source.html#l00006">6</a> der Datei <a class="el" href="_functions_8h-source.html">Functions.h</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Aug 10 18:01:14 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,8 @@
+#Linear=0,SIGMOID=1,TANH=2,LECUN_TANH=3
+FunctionType=1
+#NONE=0,UNIFORM=1,LECUN=2,UNIFORM5=3,NORMAL5=4,DEBUGONE=5
+WeightInitType=3
+#LayerCount muss vor LayerNeuronCount definiert sein
+LayerCount=3
+#Anzahl der Neuronen pro Layer : {Input},{Hidden_0},...,{Hidden_N},{Output}
+LayerNeuronCount=784,300,10

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: Layer.cpp Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>Layer.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "Layer.h"</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 <span class="keywordtype">void</span> Layer::init()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005         <a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>=0;
+<a name="l00006"></a>00006         <a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">InputVectorWithBiasCount</a>=0;
+<a name="l00007"></a>00007         <a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">NeuronCount</a>=0;
+<a name="l00008"></a>00008         <a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a> = NULL;
+<a name="l00009"></a>00009         <a class="code" href="class_layer.html#520efaff1a72c027956083ff9656d725">InputVector</a>= NULL;
+<a name="l00010"></a>00010         <a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a>= NULL;
+<a name="l00011"></a>00011 }
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keywordtype">void</span> Layer::freeMem()
+<a name="l00014"></a>00014 {
+<a name="l00015"></a>00015         <span class="keywordflow">if</span>(<a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a>)
+<a name="l00016"></a>00016         {
+<a name="l00017"></a>00017                 <span class="keyword">delete</span> [] <a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a>;
+<a name="l00018"></a>00018                 <a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a> = NULL;
+<a name="l00019"></a>00019         }
+<a name="l00020"></a>00020         <span class="keywordflow">if</span>(<a class="code" href="class_layer.html#520efaff1a72c027956083ff9656d725">InputVector</a>)
+<a name="l00021"></a>00021         {
+<a name="l00022"></a>00022                 <span class="keyword">delete</span> [] InputVector;
+<a name="l00023"></a>00023                 InputVector = NULL;
+<a name="l00024"></a>00024         }
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="keywordflow">if</span>(<a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a>)
+<a name="l00027"></a>00027         {
+<a name="l00028"></a>00028                 <span class="keyword">delete</span> [] <a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a>;
+<a name="l00029"></a>00029                 <a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a> = NULL;
+<a name="l00030"></a>00030         }
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keywordtype">void</span> Layer::copy(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that)
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035         this-&gt;<a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a> = that.InputVectorCount;
+<a name="l00036"></a>00036         this-&gt;<a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">InputVectorWithBiasCount</a> = that.InputVectorWithBiasCount;
+<a name="l00037"></a>00037         this-&gt;<a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">NeuronCount</a> = that.NeuronCount;
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         this-&gt;<a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a> = <span class="keyword">new</span> <a class="code" href="class_neuron.html">Neuron</a>[this-&gt;<a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">NeuronCount</a>];
+<a name="l00040"></a>00040         this-&gt;InputVector = <span class="keyword">new</span> <span class="keywordtype">double</span>[this-&gt;<a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>];
+<a name="l00041"></a>00041         this-&gt;<a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>[this-&gt;<a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>];
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;this-&gt;<a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">NeuronCount</a>;j++)
+<a name="l00044"></a>00044                 this-&gt;Neurons[j] = that.Neurons[j];
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         memcpy(this-&gt;InputVector, that.InputVector, <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>) * <a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>);
+<a name="l00047"></a>00047         memcpy(this-&gt;SumDeltaErrWeights, that.SumDeltaErrWeights, <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>) * InputVectorCount);
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="class_layer.html#4ce9291d5e933f115641169ce32ff316">00050</a> <a class="code" href="class_layer.html#4ce9291d5e933f115641169ce32ff316">Layer::Layer</a>()
+<a name="l00051"></a>00051 {
+<a name="l00052"></a>00052         init();
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="class_layer.html#1674b2199df2a354de22b5a5efc3fab5">00055</a> <a class="code" href="class_layer.html#1674b2199df2a354de22b5a5efc3fab5">Layer::~Layer</a>()
+<a name="l00056"></a>00056 {
+<a name="l00057"></a>00057         freeMem();
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="class_layer.html#9d98a94e456fd0f7fbfdc30a35370715">00060</a> <a class="code" href="class_layer.html#4ce9291d5e933f115641169ce32ff316">Layer::Layer</a>(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that)
+<a name="l00061"></a>00061 {
+<a name="l00062"></a>00062         init();
+<a name="l00063"></a>00063         copy(that);
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="class_layer.html#b2fe437d1d7d75a2cd2e518c1119663a">00066</a> <a class="code" href="class_layer.html">Layer</a>&amp; <a class="code" href="class_layer.html#b2fe437d1d7d75a2cd2e518c1119663a">Layer::operator= </a>(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that)
+<a name="l00067"></a>00067 {
+<a name="l00068"></a>00068         <span class="keywordflow">if</span> (&amp;that != <span class="keyword">this</span>) {
+<a name="l00069"></a>00069                 freeMem();
+<a name="l00070"></a>00070                 init();
+<a name="l00071"></a>00071                 copy(that);
+<a name="l00072"></a>00072         }
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="class_layer.html#ab013e483c2b2d0c3e8c0626cdaa19fb">00076</a> <span class="keywordtype">void</span> <a class="code" href="class_layer.html#ab013e483c2b2d0c3e8c0626cdaa19fb">Layer::Init</a>(<span class="keywordtype">int</span> inputsize, <span class="keywordtype">int</span> neuronCount)
+<a name="l00077"></a>00077 {
+<a name="l00078"></a>00078         NeuronCount=neuronCount;
+<a name="l00079"></a>00079         <a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>=inputsize;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         <a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a>=<span class="keyword">new</span> <a class="code" href="class_neuron.html">Neuron</a>[NeuronCount];
+<a name="l00082"></a>00082         InputVector=<span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>]();
+<a name="l00083"></a>00083         <a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>[inputsize]();
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         <a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">InputVectorWithBiasCount</a>= <a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>+1;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;NeuronCount;++i)
+<a name="l00088"></a>00088         {
+<a name="l00089"></a>00089                 <a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a>[i].<a class="code" href="class_layer.html#ab013e483c2b2d0c3e8c0626cdaa19fb">Init</a>(<a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">InputVectorWithBiasCount</a>);
+<a name="l00090"></a>00090         }
+<a name="l00091"></a>00091 }
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:28 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

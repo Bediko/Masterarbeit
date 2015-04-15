@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: NeuralNetwork.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>NeuralNetwork.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef NeuralNetwork_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define NeuralNetwork_H</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#include &lt;random&gt;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 <span class="preprocessor">#include "Layer.h"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "DataContainer.h"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "NeuralNetworkMeasure.h"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "NeuralNetworkConfig.h"</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="class_neural_network.html">00015</a> <span class="keyword">class </span><a class="code" href="class_neural_network.html">NeuralNetwork</a>
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017 <span class="keyword">private</span>:
+<a name="l00018"></a>00018         <span class="keywordtype">void</span> copy(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a> &amp;that);
+<a name="l00019"></a>00019         <span class="comment">//std::default_random_engine generator;</span>
+<a name="l00020"></a>00020         std::mt19937 generator;
+<a name="l00021"></a>00021         <span class="keywordtype">void</span> init();
+<a name="l00022"></a>00022         <span class="keywordtype">void</span> freeMem();
+<a name="l00023"></a>00023 <span class="keyword">public</span>:
+<a name="l00024"></a><a class="code" href="class_neural_network.html#7336a29c2bf28b28f785675641df2d44">00024</a>         <span class="keywordtype">int</span> <a class="code" href="class_neural_network.html#7336a29c2bf28b28f785675641df2d44">LayersCount</a>;
+<a name="l00025"></a><a class="code" href="class_neural_network.html#5597b68c1d11a9438bb2f0d54623ce75">00025</a>         <span class="keywordtype">double</span> <a class="code" href="class_neural_network.html#5597b68c1d11a9438bb2f0d54623ce75">MeanSquareError</a>;
+<a name="l00026"></a><a class="code" href="class_neural_network.html#6794bd316fb2e23b65c8963a90f862f1">00026</a>     <span class="keywordtype">int</span> <a class="code" href="class_neural_network.html#6794bd316fb2e23b65c8963a90f862f1">MSEIterationResultsLenght</a>;
+<a name="l00027"></a>00027         <span class="comment">//Anzahl Nueronen im Gesamten Netz</span>
+<a name="l00028"></a><a class="code" href="class_neural_network.html#701b4278a6339ff5272c0f3d156b3c1a">00028</a>         WeightInitEnum <a class="code" href="class_neural_network.html#701b4278a6339ff5272c0f3d156b3c1a">WeightInitType</a>;
+<a name="l00029"></a><a class="code" href="class_neural_network.html#929f1f7a270c41cfd9e987b88e048aaf">00029</a>         FunctionEnum <a class="code" href="class_neural_network.html#929f1f7a270c41cfd9e987b88e048aaf">FunctionType</a>;
+<a name="l00030"></a><a class="code" href="class_neural_network.html#69cb6e7826b023afcc10cee3eb8de59b">00030</a>         <span class="keywordtype">int</span> <a class="code" href="class_neural_network.html#69cb6e7826b023afcc10cee3eb8de59b">TotalNeuronCount</a>;
+<a name="l00031"></a><a class="code" href="class_neural_network.html#87bfda183c4f851a101e97bbb1bbace7">00031</a>         <a class="code" href="class_layer.html">Layer</a> *<a class="code" href="class_neural_network.html#87bfda183c4f851a101e97bbb1bbace7">Layers</a>;
+<a name="l00032"></a><a class="code" href="class_neural_network.html#d46955b9058f371ba9af1e94e7039bad">00032</a>         <a class="code" href="struct_neural_network_measure.html">NeuralNetworkMeasure</a> *<a class="code" href="class_neural_network.html#d46955b9058f371ba9af1e94e7039bad">MSEIterationResults</a>;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034         
+<a name="l00035"></a>00035         <a class="code" href="class_neural_network.html#e772dc6579873c5a767fcdb06456ada3">NeuralNetwork</a>();
+<a name="l00036"></a>00036         <span class="comment">//NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);</span>
+<a name="l00037"></a>00037         <span class="comment">//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three</span>
+<a name="l00038"></a>00038         <a class="code" href="class_neural_network.html#832aa778fa2601197b2ef09234e5fab9">~NeuralNetwork</a>();
+<a name="l00039"></a>00039         <a class="code" href="class_neural_network.html#e772dc6579873c5a767fcdb06456ada3">NeuralNetwork</a>(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a> &amp;that);
+<a name="l00040"></a>00040         <a class="code" href="class_neural_network.html">NeuralNetwork</a>&amp; <a class="code" href="class_neural_network.html#04496b88a14167046d81c47b9ffd525f">operator= </a>(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a> &amp;that);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27">Init</a>(<a class="code" href="class_neural_network_config.html">NeuralNetworkConfig</a> config);
+<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27">Init</a>(<span class="keywordtype">int</span> *layers,<span class="keywordtype">int</span> layercount,WeightInitEnum initType,FunctionEnum functionType);
+<a name="l00045"></a>00045         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#25fd0ec0e96825cc905ad2a2dca8318d">Propagate</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> *input);
+<a name="l00046"></a>00046         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#d5441d16d66ac9475ada23c55a2e2fad">PrintWeights</a>();
+<a name="l00047"></a>00047         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#c75eee662f5b88cd95fecea3fad6d05d">InitWeights</a>(WeightInitEnum initType);
+<a name="l00048"></a>00048         <span class="keywordtype">double</span> <a class="code" href="class_neural_network.html#00f6088d9ec536106b0f705ba81ae920">GenerateRandomWeight</a>(<span class="keywordtype">int</span> inputVectorCountWithBias);<span class="comment">//nicht schön aber läuft erstmal</span>
+<a name="l00049"></a>00049         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#624ea66ab24e47d32681e0f0c649a00a">SaveWeights</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file);
+<a name="l00050"></a>00050         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#1e20367d386263c316aae99fb98e09de">LoadWeights</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a8311779f94613c19840f44701091dea">CalculateMSE</a>(<a class="code" href="struct_data_container.html">DataContainer</a>* data);
+<a name="l00053"></a>00053         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#b5dd3bdac57e2dc23be7bed4c533e497">SaveMSEResult</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#61ca70b29b211b7f968da60f5cea0a16">CopyNeuralNetworkMeasure</a>(<a class="code" href="struct_neural_network_measure.html">NeuralNetworkMeasure</a>* arr,<span class="keywordtype">int</span> lenght);
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="class_neural_network.html#8c4943deb617d19e04118557ce6e8447">00057</a>         <span class="keywordtype">bool</span> <a class="code" href="class_neural_network.html#8c4943deb617d19e04118557ce6e8447">operator &lt; </a>(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a>&amp; net)<span class="keyword"> const</span>
+<a name="l00058"></a>00058 <span class="keyword">    </span>{
+<a name="l00059"></a>00059                 <span class="keywordflow">return</span> (this-&gt;MeanSquareError &lt; net.<a class="code" href="class_neural_network.html#5597b68c1d11a9438bb2f0d54623ce75">MeanSquareError</a>);
+<a name="l00060"></a>00060     }
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:28 2014 f�r NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

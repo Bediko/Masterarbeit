@@ -1,0 +1,15 @@
+ErrorThreshold=0
+MaxLoopCount=700
+#NONE=0,UNBIASED_MUTATA_WEIGHTS=1, BIAS_ED_MUTATE_WEIGHTS=2,MUTATE_NODES=3
+MutateType=2
+#NONE=0,CROSSOVER_WEIGHTS=1, CROSSOVER_NODES=2,CROSSOVER_ONEPOINT=3,CROSSOVER_TWOPOINT=4
+CrossType=2
+PopulationSize=20
+#FITTNESSBASED=0,INDEXBASED=1
+RouletteType=0
+#Bei EltismCount == PopulationSize wird Steady-State verwendet
+EltismCount=20
+MutationProbability=0.05
+CrossoverProbability=0.8
+#wird nur bei MutateType=3 verwendet
+MutateNodeCount=2

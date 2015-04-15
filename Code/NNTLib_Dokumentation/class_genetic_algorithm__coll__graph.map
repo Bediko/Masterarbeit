@@ -1,0 +1,7 @@
+<map id="GeneticAlgorithm" name="GeneticAlgorithm">
+<area shape="rect" id="node2" href="$class_trainer_base.html" title="{TrainerBase\n|+ MeasureResultLenght\l|+ SaveResult()\l+ TrainerBase()\l+ ~TrainerBase()\l# initMeasureResult()\l}" alt="" coords="5,615,165,737"/>
+<area shape="rect" id="node3" href="$struct_training_measure.html" title="{TrainingMeasure\n|+ MeanSquareError\l+ ExecuteTime\l|+ TrainingMeasure()\l+ ~TrainingMeasure()\l}" alt="" coords="13,321,158,428"/>
+<area shape="rect" id="node4" href="$class_neural_network.html" title="{NeuralNetwork\n|+ LayersCount\l+ MeanSquareError\l+ WeightInitType\l+ FunctionType\l+ TotalNeuronCount\l|+ NeuralNetwork()\l+ ~NeuralNetwork()\l+ NeuralNetwork()\l+ operator=()\l+ operator\&lt;()\l+ InitWeights()\l+ GenerateRandomWeight()\l+ SaveWeights()\l+ LoadWeights()\l+ Propagate()\l+ CalculateMSE()\l}" alt="" coords="189,535,373,817"/>
+<area shape="rect" id="node5" href="$class_layer.html" title="{Layer\n|+ InputValuesCount\l+ InputValuesCountWithBias\l+ NeuronCount\l+ InputValues\l+ SumDeltaErrWeights\l|+ Init()\l+ Layer()\l+ ~Layer()\l+ Layer()\l+ operator=()\l}" alt="" coords="187,277,376,472"/>
+<area shape="rect" id="node6" href="$class_neuron.html" title="{Neuron\n|+ WeightCount\l+ Output\l+ Weights\l+ LastDeltaWeights\l+ DeltaWeights\l+ Bias\l|+ Neuron()\l+ ~Neuron()\l+ Neuron()\l+ operator=()\l+ Init()\l}" alt="" coords="213,5,350,215"/>
+</map>

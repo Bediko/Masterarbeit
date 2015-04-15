@@ -1,0 +1,6 @@
+<map id="NNTLib::NeuralNetwork::NeuralNetwork" name="NNTLib::NeuralNetwork::NeuralNetwork">
+<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_layer.html#acb8971ed21ec40118ba384750a0f5af8" title="Initializes the specified inputsize. " alt="" coords="223,5,352,32"/>
+<area shape="rect" id="node4" href="$class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a" title="Initializes the weights. " alt="" coords="209,57,365,98"/>
+<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_neuron.html#ada7e263030d3d9bb9ebf15a965e3ce8b" title="Initializes the specified input vector count. " alt="" coords="430,5,569,32"/>
+<area shape="rect" id="node5" href="$class_n_n_t_lib_1_1_neural_network.html#aee9c78b90d25b0ebb1b3cb3cf732e4fc" title="Generates the random weight. " alt="" coords="413,57,585,98"/>
+</map>

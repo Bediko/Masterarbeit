@@ -1,0 +1,4 @@
+<map id="NeuralNetwork::Propagate" name="NeuralNetwork::Propagate">
+<area shape="rect" id="node2" href="$class_neural_network.html#a1cf2930c8abff3ff560ace327b1c8582" title="Calculates the mse. " alt="" coords="227,5,424,32"/>
+<area shape="rect" id="node3" href="$class_genetic_algorithm.html#a8544cca250b8554e0498eae3cf77e99e" title="GeneticAlgorithm::Train" alt="" coords="472,5,631,32"/>
+</map>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: DataContainer.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>DataContainer.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef DataContainer_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define DataContainer_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;sstream&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00007"></a>00007 <span class="comment">//using namespace std;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a><a class="code" href="struct_data_container.html">00009</a> <span class="keyword">struct </span><a class="code" href="struct_data_container.html">DataContainer</a>
+<a name="l00010"></a>00010 {
+<a name="l00011"></a><a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">00011</a>     <span class="keywordtype">int</span> <a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>;
+<a name="l00012"></a><a class="code" href="struct_data_container.html#a601ddf828157316e1c446aa496e0567">00012</a>     <span class="keywordtype">int</span> <a class="code" href="struct_data_container.html#a601ddf828157316e1c446aa496e0567">InputCount</a>;
+<a name="l00013"></a><a class="code" href="struct_data_container.html#a88cbac64d4618dcd9b653fedc89ab96">00013</a>     <span class="keywordtype">int</span> <a class="code" href="struct_data_container.html#a88cbac64d4618dcd9b653fedc89ab96">OutputCount</a>;
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">00015</a>     <span class="keywordtype">double</span> **<a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>;
+<a name="l00016"></a><a class="code" href="struct_data_container.html#e52a283505cf5b64b4c50c462609fa24">00016</a>     <span class="keywordtype">double</span> **<a class="code" href="struct_data_container.html#e52a283505cf5b64b4c50c462609fa24">DataDesiredOutput</a>;
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020     <a class="code" href="struct_data_container.html#9b5cd066cb782c811b61c175225f44f6">DataContainer</a>();
+<a name="l00021"></a>00021         <span class="keywordtype">void</span> <a class="code" href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872">LoadFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file);
+<a name="l00022"></a>00022     <a class="code" href="struct_data_container.html#6852a848923a627586b35791771bb1b3">~DataContainer</a>();
+<a name="l00023"></a>00023  <span class="comment">/*   void CreateFromFile(const char* file);</span>
+<a name="l00024"></a>00024 <span class="comment">        void DataContainer::Create(double **datainput,double **desiredDataOutput,int datacount,int InputVectorCount,int outputCount);*/</span>
+<a name="l00025"></a>00025 };
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:27 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

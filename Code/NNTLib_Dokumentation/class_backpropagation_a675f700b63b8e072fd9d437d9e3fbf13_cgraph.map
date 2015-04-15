@@ -1,0 +1,4 @@
+<map id="Backpropagation::Train" name="Backpropagation::Train">
+<area shape="rect" id="node2" href="$class_neural_network.html#a2def5db9ffeb973795ef1e08a80764a9" title="Propagates the specified input. " alt="" coords="212,5,385,32"/>
+<area shape="rect" id="node3" href="$class_neural_network.html#a34795b095b4b7cbb80fd487019d1dff8" title="Copies the neural network measure. " alt="" coords="208,57,389,98"/>
+</map>

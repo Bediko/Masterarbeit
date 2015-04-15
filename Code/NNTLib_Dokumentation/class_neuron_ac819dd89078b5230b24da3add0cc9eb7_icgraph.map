@@ -1,0 +1,4 @@
+<map id="Neuron::Init" name="Neuron::Init">
+<area shape="rect" id="node2" href="$class_layer.html#a6948ad3536b56ae70b0d2c2681e945cb" title="Initializes the specified inputsize. " alt="" coords="141,5,220,32"/>
+<area shape="rect" id="node3" href="$class_neural_network.html#ac71a5d06e8128b83d6c096e783c9bd11" title="Initializes the specified hidden layers. " alt="" coords="268,5,399,32"/>
+</map>

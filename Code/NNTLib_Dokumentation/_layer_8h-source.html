@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: Layer.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>Layer.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef Layer_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define Layer_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "Functions.h"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "Neuron.h"</span>
+<a name="l00005"></a>00005 <span class="comment">//#include &lt;math.h&gt;</span>
+<a name="l00006"></a>00006 <span class="comment">//#include &lt;assert.h&gt;</span>
+<a name="l00007"></a><a class="code" href="class_layer.html">00007</a> <span class="keyword">class </span><a class="code" href="class_layer.html">Layer</a>
+<a name="l00008"></a>00008 {
+<a name="l00009"></a>00009 <span class="keyword">private</span>:
+<a name="l00010"></a>00010         <span class="keywordtype">void</span> copy(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that);
+<a name="l00011"></a>00011         <span class="keywordtype">void</span> init();
+<a name="l00012"></a>00012         <span class="keywordtype">void</span> freeMem();
+<a name="l00013"></a>00013 <span class="keyword">public</span>:
+<a name="l00014"></a><a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">00014</a>         <span class="keywordtype">int</span> <a class="code" href="class_layer.html#74697d5bce4cac5ae28f7d2aa266d9d8">InputVectorCount</a>;
+<a name="l00015"></a><a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">00015</a>         <span class="keywordtype">int</span> <a class="code" href="class_layer.html#ae28202a40a3bed663735e17b7588197">InputVectorWithBiasCount</a>;
+<a name="l00016"></a><a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">00016</a>         <span class="keywordtype">int</span> <a class="code" href="class_layer.html#76724f448cc52e6ca7bd4f46099fdcc3">NeuronCount</a>;
+<a name="l00017"></a><a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">00017</a>         <a class="code" href="class_neuron.html">Neuron</a> *<a class="code" href="class_layer.html#2d092d92942366158bc7e1fa013a74dc">Neurons</a>;
+<a name="l00018"></a><a class="code" href="class_layer.html#520efaff1a72c027956083ff9656d725">00018</a>         <span class="keywordtype">double</span> *<a class="code" href="class_layer.html#520efaff1a72c027956083ff9656d725">InputVector</a>;
+<a name="l00019"></a><a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">00019</a>         <span class="keywordtype">double</span> *<a class="code" href="class_layer.html#31c459a9478b4716269826458168ec74">SumDeltaErrWeights</a>;
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021         <span class="comment">/*im moment nur full connected feedforward netze, einfache möglichkeit Verbindungen zu definieren wäre ein array mit </span>
+<a name="l00022"></a>00022 <span class="comment">        den Index Paaren welche Neuronen mit Neuronen des nächsten Layers verbunden wären z.b {0,0},{0,1} wenn </span>
+<a name="l00023"></a>00023 <span class="comment">        Neuron (L_i) 0 mit Neuron (L_i+1) 0,1 des nächsten Layers verbunden ist*/</span>
+<a name="l00024"></a>00024         <span class="comment">//int ** Connection;//im moment nicht gewünscht also zwischen Layer alles iterieren</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="class_layer.html#ab013e483c2b2d0c3e8c0626cdaa19fb">Init</a>(<span class="keywordtype">int</span> inputsize, <span class="keywordtype">int</span> neuronCount);
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028         <a class="code" href="class_layer.html#4ce9291d5e933f115641169ce32ff316">Layer</a>();
+<a name="l00029"></a>00029         <span class="comment">//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three</span>
+<a name="l00030"></a>00030         <a class="code" href="class_layer.html#1674b2199df2a354de22b5a5efc3fab5">~Layer</a>();
+<a name="l00031"></a>00031         <a class="code" href="class_layer.html#4ce9291d5e933f115641169ce32ff316">Layer</a>(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that);
+<a name="l00032"></a>00032         <a class="code" href="class_layer.html">Layer</a>&amp; <a class="code" href="class_layer.html#b2fe437d1d7d75a2cd2e518c1119663a">operator= </a>(<span class="keyword">const</span> <a class="code" href="class_layer.html">Layer</a> &amp;that);
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 };
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:28 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,388 @@
+# depslib dependency file v1.0
+1407693808 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp
+	<iostream>
+	<sstream>
+	<string>
+	<fstream>
+	"NeuralNetwork.h"
+	"Backpropagation.h"
+	"GeneticAlgorithm.h"
+	"DataContainer.h"
+	"TimeMeasure.h"
+	"NeuralNetworkConfig.h"
+
+1407680608 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.h
+	<random>
+	"Layer.h"
+	"DataContainer.h"
+	"NeuralNetworkMeasure.h"
+	"NeuralNetworkConfig.h"
+
+1407566629 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.h
+	"Functions.h"
+	"Neuron.h"
+
+1407655688 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.h
+	<math.h>
+
+1407503832 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.h
+	<string.h>
+
+1407670621 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.h
+	<iostream>
+	<sstream>
+	<fstream>
+
+1407575316 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkMeasure.h
+
+1407672451 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"Functions.h"
+	"ConfigBase.h"
+
+1407671098 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.h
+	<iostream>
+	<sstream>
+	<fstream>
+
+1407681161 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.h
+	"DataContainer.h"
+	"NeuralNetwork.h"
+	"Functions.h"
+	"BackpropagationConfig.h"
+
+1407603100 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1407685243 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.h
+	"NeuralNetwork.h"
+	"TimeMeasure.h"
+	"DataContainer.h"
+	"GeneticAlgorithmConfig.h"
+
+1407575667 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/TimeMeasure.h
+	<Windows.h>
+	<sys/time.h>
+	<ctime>
+
+1407672407 /home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1407693838 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.cpp
+	"Backpropagation.h"
+	"TimeMeasure.h"
+
+1407602411 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.cpp
+	"BackpropagationConfig.h"
+
+1407602363 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.cpp
+	"ConfigBase.h"
+
+1407676996 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.cpp
+	"DataContainer.h"
+
+1407655465 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Function.cpp
+	"Functions.h"
+
+1407685251 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.cpp
+	"GeneticAlgorithm.h"
+
+1407602194 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.cpp
+	"GeneticAlgorithmConfig.h"
+
+1407579460 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.cpp
+	"Layer.h"
+
+1407682432 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.cpp
+	"NeuralNetwork.h"
+
+1407672185 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.cpp
+	"NeuralNetworkConfig.h"
+
+1407579435 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.cpp
+	"Neuron.h"
+
+1407677273 source:/home/dummy/NeuralNetworkTrainer/NeuralNetworkTrainer/TimeMeasure.cpp
+	"TimeMeasure.h"
+
+1407863852 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.cpp
+	"Backpropagation.h"
+	"Helper.h"
+
+1407850580 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.h
+	"DataContainer.h"
+	"NeuralNetwork.h"
+	"Functions.h"
+	"BackpropagationConfig.h"
+
+1407875788 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.h
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdexcept>
+
+1407853818 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.h
+	<random>
+	"Layer.h"
+	"DataContainer.h"
+	"NeuralNetworkMeasure.h"
+	"NeuralNetworkConfig.h"
+
+1407786592 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.h
+	"Functions.h"
+	"Neuron.h"
+
+1407864947 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.h
+	<math.h>
+
+1407795145 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.h
+	<string.h>
+
+1407575316 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkMeasure.h
+
+1407853956 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"Functions.h"
+	"ConfigBase.h"
+
+1407875774 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.h
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdexcept>
+
+1407853872 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1407875720 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Helper.h
+	<string>
+	<algorithm>
+	<Windows.h>
+	<sys/time.h>
+	<ctime>
+
+1407863442 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.cpp
+	"BackpropagationConfig.h"
+
+1407875740 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.cpp
+	"ConfigBase.h"
+
+1407875749 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.cpp
+	"DataContainer.h"
+
+1407796949 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Function.cpp
+	"Functions.h"
+
+1407875683 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.cpp
+	"GeneticAlgorithm.h"
+
+1407875676 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.h
+	"NeuralNetwork.h"
+	"Helper.h"
+	"DataContainer.h"
+	"GeneticAlgorithmConfig.h"
+	<stdexcept>
+
+1407790663 /media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1407796949 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.cpp
+	"GeneticAlgorithmConfig.h"
+
+1407796949 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Helper.cpp
+	"Helper.h"
+
+1407796821 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.cpp
+	"Layer.h"
+
+1407876828 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp
+	<iostream>
+	<sstream>
+	<string>
+	<fstream>
+	<algorithm>
+	"NeuralNetwork.h"
+	"Backpropagation.h"
+	"GeneticAlgorithm.h"
+	"DataContainer.h"
+	"Helper.h"
+	"NeuralNetworkConfig.h"
+
+1407875728 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.cpp
+	"NeuralNetwork.h"
+
+1407854285 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.cpp
+	"NeuralNetworkConfig.h"
+
+1407796949 source:/media/dummy/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.cpp
+	"Neuron.h"
+
+1410085782 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.cpp
+	"Backpropagation.h"
+
+1410085785 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Backpropagation.h
+	"TrainerBase.h"
+
+1409905842 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.h
+	<sstream>
+	<fstream>
+	<stdexcept>
+
+1410086029 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.h
+	<random>
+	"Layer.h"
+	"DataContainer.h"
+
+1409251278 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.h
+	"Neuron.h"
+
+1410103737 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Functions.h
+	<cmath>
+	"Enums.h"
+
+1409251278 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.h
+	"Functions.h"
+
+1407575316 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkMeasure.h
+
+1409905970 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1409905931 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.h
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdexcept>
+	"Enums.h"
+
+1409384556 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1409384492 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Helper.h
+	<string>
+	<algorithm>
+	<iostream>
+	<sstream>
+	<fstream>
+	<vector>
+	"NeuralNetwork.h"
+	"Backpropagation.h"
+	"GeneticAlgorithm.h"
+	"DataContainer.h"
+
+1409477275 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/BackpropagationConfig.cpp
+	"BackpropagationConfig.h"
+
+1409384556 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/ConfigBase.cpp
+	"ConfigBase.h"
+
+1409477275 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/DataContainer.cpp
+	"DataContainer.h"
+
+1410103737 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Function.cpp
+	"Functions.h"
+
+1410115949 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.cpp
+	"GeneticAlgorithm.h"
+
+1410115916 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithm.h
+	"TrainerBase.h"
+
+1409905923 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.h
+	<iostream>
+	<sstream>
+	<fstream>
+	"ConfigBase.h"
+
+1409905733 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/GeneticAlgorithmConfig.cpp
+	"GeneticAlgorithmConfig.h"
+
+1409902064 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Helper.cpp
+	"Helper.h"
+
+1409251328 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Layer.cpp
+	"Layer.h"
+
+1410005911 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetwork.cpp
+	"NeuralNetwork.h"
+
+1409903216 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/NeuralNetworkConfig.cpp
+	"NeuralNetworkConfig.h"
+
+1409477275 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Neuron.cpp
+	"Neuron.h"
+
+1410272275 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp
+	"main.h"
+
+1407955258 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/src/Enum.cpp
+	"Enum.h"
+
+1407955743 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/include/Enum.h
+
+1410103734 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Enums.h
+	<string>
+	<sstream>
+	<vector>
+
+1410115899 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Enums.cpp
+	"Enums.h"
+
+1409905852 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/TrainerBase.h
+	"NeuralNetwork.h"
+	"TrainingMeasure.h"
+
+1408407002 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Common.h
+	<string>
+	<algorithm>
+	<iostream>
+	<sstream>
+	<fstream>
+	<vector>
+	<Windows.h>
+	<sys/time.h>
+	<ctime>
+
+1409384795 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/TrainingMeasure.h
+	<Windows.h>
+	<sys/time.h>
+	<ctime>
+
+1409849989 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/TrainerBase.cpp
+	"TrainerBase.h"
+
+1408776775 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/Common.cpp
+	"Common.h"
+
+1409477275 source:/media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/TrainingMeasure.cpp
+	"TrainingMeasure.h"
+
+1410093964 /media/Data/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.h
+	<cmath>
+	"Helper.h"
+	"NeuralNetworkConfig.h"
+	"GeneticAlgorithmConfig.h"
+	"BackpropagationConfig.h"
+

@@ -1,0 +1,5 @@
+<map id="NeuralNetwork::GenerateRandomWeight" name="NeuralNetwork::GenerateRandomWeight">
+<area shape="rect" id="node2" href="$class_genetic_algorithm.html#afb60c62c1881fca1007d917a30d849f1" title="GeneticAlgorithm::Train" alt="" coords="278,5,437,32"/>
+<area shape="rect" id="node3" href="$class_neural_network.html#aea4c2e53a625e8219ac2090238459793" title="Initializes the weights. " alt="" coords="268,56,447,83"/>
+<area shape="rect" id="node4" href="$class_neural_network.html#ac71a5d06e8128b83d6c096e783c9bd11" title="Initializes the specified hidden layers. " alt="" coords="495,56,625,83"/>
+</map>

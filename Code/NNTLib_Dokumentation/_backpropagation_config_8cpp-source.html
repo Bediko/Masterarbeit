@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: BackpropagationConfig.cpp Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>BackpropagationConfig.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "BackpropagationConfig.h"</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_backpropagation_config.html#bbb2206d4832e1f0c21ee236e70c3fd8">00003</a> <a class="code" href="class_backpropagation_config.html#bbb2206d4832e1f0c21ee236e70c3fd8">BackpropagationConfig::BackpropagationConfig</a>():ErrorThreshold(0),MaxLoopCount(0),BatchSize(0),Alpha(0),Momentum(0)
+<a name="l00004"></a>00004 {}
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="class_backpropagation_config.html#fcba96165fbb335c26f30514b2b5877b">00006</a> <span class="keywordtype">void</span> <a class="code" href="class_backpropagation_config.html#fcba96165fbb335c26f30514b2b5877b">BackpropagationConfig::HandleNameValue</a>(std::string name,std::string value)
+<a name="l00007"></a>00007 {
+<a name="l00008"></a>00008                 <span class="keywordflow">if</span>(name == <span class="stringliteral">"MaxLoopCount"</span>)
+<a name="l00009"></a>00009                 {
+<a name="l00010"></a>00010                         <a class="code" href="class_backpropagation_config.html#0099bc3485a0dd068896f9e0aaa198b0">MaxLoopCount</a>= atoi(value.c_str());
+<a name="l00011"></a>00011                 }
+<a name="l00012"></a>00012                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(name == <span class="stringliteral">"ErrorThreshold"</span>)
+<a name="l00013"></a>00013                 {
+<a name="l00014"></a>00014                         <a class="code" href="class_backpropagation_config.html#96121cb56d34d7e88003f432c3163a31">ErrorThreshold</a> = atof(value.c_str());
+<a name="l00015"></a>00015                 }
+<a name="l00016"></a>00016                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(name == <span class="stringliteral">"BatchSize"</span>)
+<a name="l00017"></a>00017                 {
+<a name="l00018"></a>00018                         <a class="code" href="class_backpropagation_config.html#506889eecd215a6701e67840b662403f">BatchSize</a> = atoi(value.c_str());
+<a name="l00019"></a>00019                 }
+<a name="l00020"></a>00020                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(name == <span class="stringliteral">"Alpha"</span>)
+<a name="l00021"></a>00021                 {
+<a name="l00022"></a>00022                         <a class="code" href="class_backpropagation_config.html#6132295fcf5570fb8b0a944ef322a598">Alpha</a> = atof(value.c_str());
+<a name="l00023"></a>00023                 }
+<a name="l00024"></a>00024                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(name == <span class="stringliteral">"Momentum"</span>)
+<a name="l00025"></a>00025                 {
+<a name="l00026"></a>00026                         <a class="code" href="class_backpropagation_config.html#37323780191d51a33d295ac10fb98f06">Momentum</a> = atof(value.c_str());
+<a name="l00027"></a>00027                 }
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 }
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_backpropagation_config.html#3346bce9e3844a06fbbe60cdaeb21169">00031</a> <span class="keywordtype">void</span> <a class="code" href="class_backpropagation_config.html#3346bce9e3844a06fbbe60cdaeb21169">BackpropagationConfig::PrintData</a>()
+<a name="l00032"></a>00032 {
+<a name="l00033"></a>00033 }
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:27 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

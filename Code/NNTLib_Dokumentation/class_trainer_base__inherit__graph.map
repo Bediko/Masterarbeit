@@ -1,0 +1,4 @@
+<map id="TrainerBase" name="TrainerBase">
+<area shape="rect" id="node2" href="$class_backpropagation.html" title="{Backpropagation\n|+ network\l|+ Backpropagation()\l+ ~Backpropagation()\l+ Train()\l}" alt="" coords="5,189,152,296"/>
+<area shape="rect" id="node3" href="$class_genetic_algorithm.html" title="{GeneticAlgorithm\n|+ currentPopulation\l|+ GeneticAlgorithm()\l+ ~GeneticAlgorithm()\l+ Train()\l}" alt="" coords="177,189,327,296"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="GeneticAlgorithm::Train" name="GeneticAlgorithm::Train">
+<area shape="rect" id="node2" href="$class_neural_network.html#a418eefc10bf4ab21fb84700eea4a8acc" title="Calculates the mse. " alt="" coords="212,5,409,32"/>
+<area shape="rect" id="node4" href="$class_neural_network.html#a34795b095b4b7cbb80fd487019d1dff8" title="Copies the neural network measure. " alt="" coords="220,57,401,98"/>
+<area shape="rect" id="node3" href="$class_neural_network.html#a2def5db9ffeb973795ef1e08a80764a9" title="Propagates the specified input. " alt="" coords="457,5,631,32"/>
+</map>

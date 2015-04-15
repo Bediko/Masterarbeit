@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="NeuralNetworkTrainer" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Lib/;Lib/Headers/;Programm/;Programm/Headers/;Programm/Sources/;Lib/Sources/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/NeuralNetworkTrainer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/NeuralNetworkTrainer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-funroll-all-loops" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Backpropagation.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="Backpropagation.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="BackpropagationConfig.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="BackpropagationConfig.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Unit filename="ConfigBase.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="ConfigBase.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Unit filename="DataContainer.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="DataContainer.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="Enums.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="Enums.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="Function.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="Functions.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="GeneticAlgorithm.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="GeneticAlgorithm.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="GeneticAlgorithmConfig.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="GeneticAlgorithmConfig.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Unit filename="Helper.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="Helper.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Unit filename="Layer.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="Layer.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="NeuralNetwork.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="NeuralNetwork.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="NeuralNetworkConfig.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="NeuralNetworkConfig.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Unit filename="Neuron.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="Neuron.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="TrainerBase.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="TrainerBase.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="TrainingMeasure.cpp">
+			<Option virtualFolder="Lib/Sources/" />
+		</Unit>
+		<Unit filename="TrainingMeasure.h">
+			<Option virtualFolder="Lib/Headers/" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option virtualFolder="Programm/Sources/" />
+		</Unit>
+		<Unit filename="main.h">
+			<Option virtualFolder="Programm/Headers/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

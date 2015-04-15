@@ -1,0 +1,4 @@
+<map id="NNTLib::TrainerBase" name="NNTLib::TrainerBase">
+<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_backpropagation.html" title="{NNTLib::Backpropagation\n|+ network\l|+ Backpropagation()\l+ ~Backpropagation()\l+ Train()\l}" alt="" coords="5,204,175,311"/>
+<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_genetic_algorithm.html" title="{NNTLib::GeneticAlgorithm\n|+ currentPopulation\l|+ GeneticAlgorithm()\l+ ~GeneticAlgorithm()\l+ Train()\l}" alt="" coords="199,204,371,311"/>
+</map>

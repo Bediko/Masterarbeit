@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>main.cpp-Dateireferenz</h1><code>#include &lt;iostream&gt;</code><br>
+<code>#include &lt;sstream&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;fstream&gt;</code><br>
+<code>#include &quot;<a class="el" href="_neural_network_8h-source.html">NeuralNetwork.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_backpropagation_8h-source.html">Backpropagation.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_genetic_algorithm_8h-source.html">GeneticAlgorithm.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_data_container_8h-source.html">DataContainer.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_time_measure_8h-source.html">TimeMeasure.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_neural_network_config_8h-source.html">NeuralNetworkConfig.h</a>&quot;</code><br>
+
+<p>
+Include-Abhängigkeitsdiagramm für main.cpp:<p><center><img src="main_8cpp__incl.png" border="0" usemap="#E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp_map" alt=""></center>
+<map name="E:/Hochschule Niederrhein/Semester6/NN/C_IMP/NeuralNetworkTrainer/NeuralNetworkTrainer/main.cpp_map">
+<area href="_neural_network_8h-source.html" shape="rect" coords="853,138,971,165" alt="">
+<area href="_data_container_8h-source.html" shape="rect" coords="1038,87,1153,114" alt="">
+<area href="_neural_network_config_8h-source.html" shape="rect" coords="1019,138,1172,165" alt="">
+<area href="_backpropagation_8h-source.html" shape="rect" coords="673,87,804,114" alt="">
+<area href="_genetic_algorithm_8h-source.html" shape="rect" coords="672,189,805,215" alt="">
+<area href="_time_measure_8h-source.html" shape="rect" coords="857,239,967,266" alt="">
+</map>
+
+<p>
+<a href="main_8cpp-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a7d4a25e0eabce69d9115ab177be39d2">XORGENETIC</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#27c9b161dd236a5423a1420af8801e6c">XOR</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#fa1762f09df3c8338cd376360d5f6cf1">MNIST</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#966a4db44645785f9b5546c176fc22ea">main</a> (int argc, char *argv[])</td></tr>
+
+<tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#04fdbd7d6b670d9b63453e316ecd50c7">ErrorMsg</a></td></tr>
+
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="966a4db44645785f9b5546c176fc22ea"></a><!-- doxytag: member="main.cpp::main" ref="966a4db44645785f9b5546c176fc22ea" args="(int argc, char *argv[])" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int main           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>argv</em>[]</td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="main_8cpp-source.html#l00220">220</a> der Datei <a class="el" href="main_8cpp-source.html">main.cpp</a>.
+<p>
+Benutzt <a class="el" href="main_8cpp-source.html#l00025">XORGENETIC()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8cpp_966a4db44645785f9b5546c176fc22ea_cgraph.png" border="0" usemap="#main_8cpp_966a4db44645785f9b5546c176fc22ea_cgraph_map" alt=""></center>
+<map name="main_8cpp_966a4db44645785f9b5546c176fc22ea_cgraph_map">
+<area href="main_8cpp.html#a7d4a25e0eabce69d9115ab177be39d2" shape="rect" coords="104,56,208,83" alt="">
+<area href="_time_measure_8cpp.html#0e2ac259ececbeab9d0f8740a0f0ce28" shape="rect" coords="285,5,388,32" alt="">
+<area href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27" shape="rect" coords="271,56,402,83" alt="">
+<area href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872" shape="rect" coords="256,107,417,133" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="fa1762f09df3c8338cd376360d5f6cf1"></a><!-- doxytag: member="main.cpp::MNIST" ref="fa1762f09df3c8338cd376360d5f6cf1" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void MNIST           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="main_8cpp-source.html#l00156">156</a> der Datei <a class="el" href="main_8cpp-source.html">main.cpp</a>.
+<p>
+Benutzt <a class="el" href="_data_container_8h-source.html#l00014">DataContainer::DataCount</a>, <a class="el" href="_time_measure_8cpp-source.html#l00003">GetTimeMs64()</a>, <a class="el" href="_neural_network_8cpp-source.html#l00084">NeuralNetwork::Init()</a>, <a class="el" href="_data_container_8h-source.html#l00015">DataContainer::InputCount</a>, <a class="el" href="_data_container_8cpp-source.html#l00006">DataContainer::LoadFile()</a>, <a class="el" href="_data_container_8h-source.html#l00016">DataContainer::OutputCount</a>, <a class="el" href="_functions_8h-source.html#l00008">SIGMOID</a>, <a class="el" href="_backpropagation_8cpp-source.html#l00020">Backpropagation::Train()</a> und <a class="el" href="_neural_network_config_8h-source.html#l00018">UNIFORM</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8cpp_fa1762f09df3c8338cd376360d5f6cf1_cgraph.png" border="0" usemap="#main_8cpp_fa1762f09df3c8338cd376360d5f6cf1_cgraph_map" alt=""></center>
+<map name="main_8cpp_fa1762f09df3c8338cd376360d5f6cf1_cgraph_map">
+<area href="_time_measure_8cpp.html#0e2ac259ececbeab9d0f8740a0f0ce28" shape="rect" coords="144,5,247,32" alt="">
+<area href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27" shape="rect" coords="130,56,261,83" alt="">
+<area href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872" shape="rect" coords="115,107,276,133" alt="">
+<area href="class_backpropagation.html#cce34b65dfa3dba408c47a7860ccf74a" shape="rect" coords="118,157,273,184" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="27c9b161dd236a5423a1420af8801e6c"></a><!-- doxytag: member="main.cpp::XOR" ref="27c9b161dd236a5423a1420af8801e6c" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void XOR           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="main_8cpp-source.html#l00105">105</a> der Datei <a class="el" href="main_8cpp-source.html">main.cpp</a>.
+<p>
+Benutzt <a class="el" href="_data_container_8h-source.html#l00014">DataContainer::DataCount</a>, <a class="el" href="_data_container_8h-source.html#l00012">DataContainer::DataDesiredOutput</a>, <a class="el" href="_data_container_8h-source.html#l00011">DataContainer::DataInput</a>, <a class="el" href="_time_measure_8cpp-source.html#l00003">GetTimeMs64()</a>, <a class="el" href="_neural_network_8cpp-source.html#l00084">NeuralNetwork::Init()</a>, <a class="el" href="_data_container_8h-source.html#l00015">DataContainer::InputCount</a>, <a class="el" href="_neural_network_8h-source.html#l00022">NeuralNetwork::Layers</a>, <a class="el" href="_neural_network_8h-source.html#l00023">NeuralNetwork::LayersCount</a>, <a class="el" href="_data_container_8cpp-source.html#l00006">DataContainer::LoadFile()</a>, <a class="el" href="_layer_8h-source.html#l00015">Layer::Neurons</a>, <a class="el" href="_neuron_8h-source.html#l00015">Neuron::Output</a>, <a class="el" href="_data_container_8h-source.html#l00016">DataContainer::OutputCount</a>, <a class="el" href="_neural_network_8cpp-source.html#l00251">NeuralNetwork::Propagate()</a>, <a class="el" href="_functions_8h-source.html#l00008">SIGMOID</a>, <a class="el" href="_backpropagation_8cpp-source.html#l00020">Backpropagation::Train()</a> und <a class="el" href="_neural_network_config_8h-source.html#l00018">UNIFORM</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8cpp_27c9b161dd236a5423a1420af8801e6c_cgraph.png" border="0" usemap="#main_8cpp_27c9b161dd236a5423a1420af8801e6c_cgraph_map" alt=""></center>
+<map name="main_8cpp_27c9b161dd236a5423a1420af8801e6c_cgraph_map">
+<area href="_time_measure_8cpp.html#0e2ac259ececbeab9d0f8740a0f0ce28" shape="rect" coords="137,5,239,32" alt="">
+<area href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27" shape="rect" coords="123,56,253,83" alt="">
+<area href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872" shape="rect" coords="107,107,269,133" alt="">
+<area href="class_neural_network.html#25fd0ec0e96825cc905ad2a2dca8318d" shape="rect" coords="101,157,275,184" alt="">
+<area href="class_backpropagation.html#cce34b65dfa3dba408c47a7860ccf74a" shape="rect" coords="111,208,265,235" alt="">
+<area href="_function_8cpp.html#1d4d06325afda3883cbee6db5ce4e290" shape="rect" coords="323,157,451,184" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="a7d4a25e0eabce69d9115ab177be39d2"></a><!-- doxytag: member="main.cpp::XORGENETIC" ref="a7d4a25e0eabce69d9115ab177be39d2" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void XORGENETIC           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="main_8cpp-source.html#l00025">25</a> der Datei <a class="el" href="main_8cpp-source.html">main.cpp</a>.
+<p>
+Benutzt <a class="el" href="_time_measure_8cpp-source.html#l00003">GetTimeMs64()</a>, <a class="el" href="_neural_network_8cpp-source.html#l00084">NeuralNetwork::Init()</a>, <a class="el" href="_data_container_8h-source.html#l00015">DataContainer::InputCount</a>, <a class="el" href="_data_container_8cpp-source.html#l00006">DataContainer::LoadFile()</a>, <a class="el" href="_data_container_8h-source.html#l00016">DataContainer::OutputCount</a>, <a class="el" href="_functions_8h-source.html#l00008">SIGMOID</a> und <a class="el" href="_neural_network_config_8h-source.html#l00018">UNIFORM</a>.
+<p>
+Wird benutzt von <a class="el" href="main_8cpp-source.html#l00220">main()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8cpp_a7d4a25e0eabce69d9115ab177be39d2_cgraph.png" border="0" usemap="#main_8cpp_a7d4a25e0eabce69d9115ab177be39d2_cgraph_map" alt=""></center>
+<map name="main_8cpp_a7d4a25e0eabce69d9115ab177be39d2_cgraph_map">
+<area href="_time_measure_8cpp.html#0e2ac259ececbeab9d0f8740a0f0ce28" shape="rect" coords="187,5,289,32" alt="">
+<area href="class_neural_network.html#b6fdfe1bfa8585619665a27005ef3c27" shape="rect" coords="173,56,303,83" alt="">
+<area href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872" shape="rect" coords="157,107,319,133" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<hr><h2>Variablen-Dokumentation</h2>
+<a class="anchor" name="04fdbd7d6b670d9b63453e316ecd50c7"></a><!-- doxytag: member="main.cpp::ErrorMsg" ref="04fdbd7d6b670d9b63453e316ecd50c7" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">string <a class="el" href="main_8cpp.html#04fdbd7d6b670d9b63453e316ecd50c7">ErrorMsg</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Initialisierung:</b><div class="fragment"><pre class="fragment"> <span class="stringliteral">"Zu wenig Argumente, Mögliche Argumente:\n \</span>
+<span class="stringliteral">                                -NetworkConfig [File] \n \</span>
+<span class="stringliteral">                                -Data [File] \n \</span>
+<span class="stringliteral">                                -BackpropConfig [File] \n \</span>
+<span class="stringliteral">                                -GeneticConfig [File] \n \</span>
+<span class="stringliteral">                                bei Angabe von BackpropConfig und GeneticConfig wird zuerst GeneticConfig angewendet und \n\</span>
+<span class="stringliteral">                                auf dem resultierenden Netzwerk BackpropConfig.\n \</span>
+<span class="stringliteral">                                -S [File] \n\</span>
+<span class="stringliteral">                                Beliebige Taste Drücken..."</span>
+</pre></div>
+<p>
+Definiert in Zeile <a class="el" href="main_8cpp-source.html#l00205">205</a> der Datei <a class="el" href="main_8cpp-source.html">main.cpp</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Aug 10 18:01:19 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

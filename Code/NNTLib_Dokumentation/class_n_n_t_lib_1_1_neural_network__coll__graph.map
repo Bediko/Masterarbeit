@@ -1,0 +1,4 @@
+<map id="NNTLib::NeuralNetwork" name="NNTLib::NeuralNetwork">
+<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_layer.html" title="{NNTLib::Layer\n|+ InputValuesCount\l+ InputValuesCountWithBias\l+ NeuronCount\l+ InputValues\l+ SumDeltaErrWeights\l|+ Init()\l+ Layer()\l+ ~Layer()\l+ Layer()\l+ operator=()\l}" alt="" coords="5,277,195,472"/>
+<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_neuron.html" title="{NNTLib::Neuron\n|+ WeightCount\l+ Output\l+ Weights\l+ LastDeltaWeights\l+ DeltaWeights\l+ Bias\l|+ Neuron()\l+ ~Neuron()\l+ Neuron()\l+ operator=()\l+ Init()\l}" alt="" coords="31,5,169,215"/>
+</map>

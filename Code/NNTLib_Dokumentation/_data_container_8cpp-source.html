@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>NeuralNetworkTrainer: DataContainer.cpp Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Klassen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_E_3A_2F.html">E:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2F.html">Hochschule Niederrhein</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2F.html">Semester6</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2F.html">NN</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2F.html">C_IMP</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_E_3A_2FHochschule_20Niederrhein_2FSemester6_2FNN_2FC_5FIMP_2FNeuralNetworkTrainer_2FNeuralNetworkTrainer_2F.html">NeuralNetworkTrainer</a></div>
+<h1>DataContainer.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "DataContainer.h"</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="struct_data_container.html#9b5cd066cb782c811b61c175225f44f6">00003</a> <a class="code" href="struct_data_container.html#9b5cd066cb782c811b61c175225f44f6">DataContainer::DataContainer</a>():DataCount(0),InputCount(0),OutputCount(0),DataInput(0),DataDesiredOutput(0)
+<a name="l00004"></a>00004 {}
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872">00006</a> <span class="keywordtype">void</span> <a class="code" href="struct_data_container.html#adc30f3eadeb0477179756f3104ce872">DataContainer::LoadFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file)
+<a name="l00007"></a>00007 {
+<a name="l00008"></a>00008         std::ifstream iFile;
+<a name="l00009"></a>00009         <span class="comment">//iFile.exceptions ( ifstream::failbit | ifstream::badbit );</span>
+<a name="l00010"></a>00010         <span class="comment">//TODO: das muss besser gehen, viel zu lahm</span>
+<a name="l00011"></a>00011         iFile.open(file);
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013         <span class="keywordflow">if</span> (!iFile)
+<a name="l00014"></a>00014                 <span class="keywordflow">throw</span> std::exception(<span class="stringliteral">"Could not open file"</span>);
+<a name="l00015"></a>00015         <span class="comment">//ifstream iFile(file);</span>
+<a name="l00016"></a>00016         std::string line;
+<a name="l00017"></a>00017         getline(iFile, line);
+<a name="l00018"></a>00018         std::stringstream stream(line);
+<a name="l00019"></a>00019         std::string dataCount;
+<a name="l00020"></a>00020         getline(stream, dataCount, <span class="charliteral">' '</span>);
+<a name="l00021"></a>00021         std::string inputCount;
+<a name="l00022"></a>00022         getline(stream, inputCount, <span class="charliteral">' '</span>);
+<a name="l00023"></a>00023         std::string outputCount;
+<a name="l00024"></a>00024         getline(stream, outputCount, <span class="charliteral">' '</span>);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>=atoi(dataCount.c_str());
+<a name="l00027"></a>00027         <a class="code" href="struct_data_container.html#a601ddf828157316e1c446aa496e0567">InputCount</a>=atoi(inputCount.c_str());
+<a name="l00028"></a>00028         <a class="code" href="struct_data_container.html#a88cbac64d4618dcd9b653fedc89ab96">OutputCount</a>=atoi(outputCount.c_str());
+<a name="l00029"></a>00029         
+<a name="l00030"></a>00030         <a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>*[<a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>];
+<a name="l00031"></a>00031         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>; ++i)
+<a name="l00032"></a>00032         {
+<a name="l00033"></a>00033                 <a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>[i] = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="struct_data_container.html#a601ddf828157316e1c446aa496e0567">InputCount</a>]();
+<a name="l00034"></a>00034         }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         <a class="code" href="struct_data_container.html#e52a283505cf5b64b4c50c462609fa24">DataDesiredOutput</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>*[<a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>];
+<a name="l00037"></a>00037         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>; ++i)
+<a name="l00038"></a>00038         {
+<a name="l00039"></a>00039                 <a class="code" href="struct_data_container.html#e52a283505cf5b64b4c50c462609fa24">DataDesiredOutput</a>[i] = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="struct_data_container.html#a88cbac64d4618dcd9b653fedc89ab96">OutputCount</a>]();
+<a name="l00040"></a>00040         }
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> l=0;l&lt;<a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>;++l)
+<a name="l00043"></a>00043         {
+<a name="l00044"></a>00044                 getline(iFile, line);
+<a name="l00045"></a>00045                 std::stringstream streamInput(line);
+<a name="l00046"></a>00046                 std::string singleInput;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> m =0;m&lt;<a class="code" href="struct_data_container.html#a601ddf828157316e1c446aa496e0567">InputCount</a>;++m)
+<a name="l00049"></a>00049                 {
+<a name="l00050"></a>00050                         getline(streamInput, singleInput, <span class="charliteral">' '</span>);
+<a name="l00051"></a>00051                         <a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>[l][m]=atof(singleInput.c_str());
+<a name="l00052"></a>00052                 }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054                 getline(iFile, line);
+<a name="l00055"></a>00055                 std::stringstream streamOutput(line);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> n =0;n&lt;<a class="code" href="struct_data_container.html#a88cbac64d4618dcd9b653fedc89ab96">OutputCount</a>;++n)
+<a name="l00058"></a>00058                 {
+<a name="l00059"></a>00059                         getline(streamOutput, singleInput, <span class="charliteral">' '</span>);
+<a name="l00060"></a>00060                         <a class="code" href="struct_data_container.html#e52a283505cf5b64b4c50c462609fa24">DataDesiredOutput</a>[l][n]=atof(singleInput.c_str());
+<a name="l00061"></a>00061                 }
+<a name="l00062"></a>00062         }
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         iFile.close();
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a><a class="code" href="struct_data_container.html#6852a848923a627586b35791771bb1b3">00067</a> <a class="code" href="struct_data_container.html#6852a848923a627586b35791771bb1b3">DataContainer::~DataContainer</a>()
+<a name="l00068"></a>00068 {
+<a name="l00069"></a>00069         <span class="keywordflow">if</span>(<a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>)
+<a name="l00070"></a>00070         {
+<a name="l00071"></a>00071                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="struct_data_container.html#d8e19b2c95728183a73f405df4be2c6a">DataCount</a>;i++)
+<a name="l00072"></a>00072                 {
+<a name="l00073"></a>00073                         <span class="keyword">delete</span> <a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>[i];
+<a name="l00074"></a>00074                 }
+<a name="l00075"></a>00075                 <span class="keyword">delete</span> [] <a class="code" href="struct_data_container.html#81fb025d589a4404e3053c4f0f66a11d">DataInput</a>;
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <span class="keywordflow">if</span>(DataDesiredOutput)
+<a name="l00079"></a>00079         {
+<a name="l00080"></a>00080                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;DataCount;i++)
+<a name="l00081"></a>00081                 {
+<a name="l00082"></a>00082                         <span class="keyword">delete</span> DataDesiredOutput[i];
+<a name="l00083"></a>00083                 }
+<a name="l00084"></a>00084                 <span class="keyword">delete</span> [] DataDesiredOutput;
+<a name="l00085"></a>00085         }
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 }
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="comment">//void DataContainer::Create(double **datainput,double **desiredDataOutput,int datacount,int InputCount,int outputCount)</span>
+<a name="l00091"></a>00091 <span class="comment">//{</span>
+<a name="l00092"></a>00092 <span class="comment">//      this-&gt;DataInput = datainput;</span>
+<a name="l00093"></a>00093 <span class="comment">//      this-&gt;DataDesiredOutput = desiredDataOutput;</span>
+<a name="l00094"></a>00094 <span class="comment">//      this-&gt;DataCount = datacount;</span>
+<a name="l00095"></a>00095 <span class="comment">//      this-&gt;InputCount = InputCount;</span>
+<a name="l00096"></a>00096 <span class="comment">//      this-&gt;OutputCount = outputCount;</span>
+<a name="l00097"></a>00097 <span class="comment">//}</span>
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="comment">//void DataContainer::CreateFromFile(const char* file)</span>
+<a name="l00100"></a>00100 <span class="comment">//{</span>
+<a name="l00101"></a>00101 <span class="comment">//      </span>
+<a name="l00102"></a>00102 <span class="comment">//}</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Aug 12 00:17:27 2014 für NeuralNetworkTrainer von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

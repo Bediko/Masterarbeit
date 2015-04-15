@@ -1,0 +1,7 @@
+ErrorThreshold=0
+MaxLoopCount=100
+BatchSize=-1
+Alpha=0.5
+Momentum=0
+DecayRate=0
+
