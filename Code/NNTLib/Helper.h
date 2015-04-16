@@ -12,6 +12,7 @@
 #include "Backpropagation.h"
 #include "GeneticAlgorithm.h"
 #include "DataContainer.h"
+#include "ContrastiveDivergence.h"
 
 std::string getCmdOptionValue(char ** begin, char ** end, const std::string & option);
 
