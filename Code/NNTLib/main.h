@@ -6,6 +6,7 @@
 #include "NeuralNetworkConfig.h"
 #include "GeneticAlgorithmConfig.h"
 #include "BackpropagationConfig.h"
+#include "ContrastiveDivergenceConfig.h"
 
 void SimpleXORExampleBackpropagation();
 void SimpleXORExampleGenetic();
@@ -22,6 +23,7 @@ const std::string ARGUMENT_MESSAGE ="Argumente:\n"
 	"	-B [File]	Lade Konfigurationsdatei f\x81r Backpropagation. \n "
 	"	-G [File]	Lade Konfigurationsdatei f\x81r genetisches\n"
 	"			Training. \n "
+	"	-CD [File]	Lade Konfigurationsdatei f\x81r Contrastive Divergence. \n"
 	"	-LW [File]	Lade Gewichte, diese werden vor dem Training\n"
 	"			und Test geladen. \n "
 	"	-SW [File]	Speicherung der Gewichte nach dem Training, die\n"
