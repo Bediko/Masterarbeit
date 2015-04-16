@@ -18,7 +18,7 @@ namespace NNTLib
 	enum class MutateEnum {NONE=0,UNBIASED_MUTATA_WEIGHTS=1, BIAS_ED_MUTATE_WEIGHTS=2,MUTATE_NODES=3};
 	enum class CrossoverEnum {NONE=0,CROSSOVER_WEIGHTS=1, CROSSOVER_NODES=2,CROSSOVER_ONEPOINT=3,CROSSOVER_TWOPOINT=4};
 	enum class RouletteEnum {FITTNESSBASED=0,INDEXBASED=1};
-	enum class WeightInitEnum {NONE=0,UNIFORM=1,LECUN=2,UNIFORM5=3,NORMAL5=4,DEBUGONE=5};//One zu test zwecken
+	enum class WeightInitEnum {NONE=0,UNIFORM=1,LECUN=2,UNIFORM5=3,NORMAL5=4,DEBUGONE=5,NORMAL0=6};//One zu test zwecken
 
 	//definiere Funktionen GetStringValue um Enums als strings auszugeben
 	ENUM_MAP_DEFINE(FunctionEnum);
