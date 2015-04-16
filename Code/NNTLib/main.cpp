@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
 		BackpropagationConfig backpropConfig;
 		NeuralNetworkConfig networkConfig;
 		GeneticAlgorithmConfig geneticConfig;
+		ContrastiveDivergenceConfig ContrastiveDivergenceConfig;
 		NNTLib::DataContainer dataContainer;
 		NNTLib::DataContainer additionalTestDataContainer;
 		unsigned long long timeOffsetInMs =0;
@@ -28,6 +29,7 @@ int main(int argc, char* argv[])
 		int partCount =0;
 
 		std::string backPropagationConfigFile= getCmdOptionValue(argv, argv + argc, "-B");
+		std::string ContrastiveDivergenceConfigFile= getCmdOptionValue(argv, argv + argc, "-CD");
 		std::string neuralNetworkConfigFile= getCmdOptionValue(argv, argv + argc, "-N");
 		std::string geneticAlgorithmConfigFile= getCmdOptionValue(argv, argv + argc, "-G");
 		std::string dataContainerFile= getCmdOptionValue(argv, argv + argc, "-D");
@@ -83,6 +85,12 @@ int main(int argc, char* argv[])
 			std::cout << "Loading genetic config: " <<  geneticAlgorithmConfigFile <<std::endl;
 			geneticConfig.LoadFile(geneticAlgorithmConfigFile.c_str());
 			geneticConfig.PrintData();
+		}
+		if(! ContrastiveDivergenceConfigFile.empty())
+		{
+			std::cout << "Loading Contrastive Divergence config: " <<  ContrastiveDivergenceConfigFile <<std::endl;
+			ContrastiveDivergenceConfig.LoadFile(ContrastiveDivergenceConfigFile.c_str());
+			ContrastiveDivergenceConfig.PrintData();
 		}
 
 		if(!additionaltestDataContainerFile.empty())
