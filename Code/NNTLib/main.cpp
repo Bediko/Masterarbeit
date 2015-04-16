@@ -223,6 +223,12 @@ int main(int argc, char* argv[])
 						}
 					}
 
+					if(ContrastiveDivergenceConfig.Epochs > 0){
+						NNTLib::ContrastiveDivergence CD(result);
+						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize);
+					}
+
+
 					if(!saveWeightsFile.empty())
 					{
 						std::string filename(saveWeightsFile);
