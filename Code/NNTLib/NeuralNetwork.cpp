@@ -185,6 +185,11 @@ namespace NNTLib
 				std::normal_distribution<double> dist(0.0,sigma);
 				return dist(generator);
 			}
+		case WeightInitEnum::NORMAL0:
+			{
+				std::normal_distribution<double> dist(0,0.01);
+				return dist(generator);
+			}
 		case WeightInitEnum::NONE:
 			return 0;
 		case  WeightInitEnum::DEBUGONE:
