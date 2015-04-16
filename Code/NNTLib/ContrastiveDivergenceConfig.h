@@ -17,11 +17,11 @@ public:
 	/// <summary>
 	/// The error threshold
 	/// </summary>
-	double ErrorThreshold;
+	//double ErrorThreshold;
 	/// <summary>
 	/// The maximum loop count
 	/// </summary>
-	int MaxLoopCount;
+	int GibbsSteps;
 	/// <summary>
 	/// The batch size
 	/// </summary>
@@ -29,15 +29,17 @@ public:
 	/// <summary>
 	/// The alpha
 	/// </summary>
-	double Alpha;
+	//double Alpha;
 	/// <summary>
 	/// The momentum
 	/// </summary>
-	double Momentum;
+	//double Momentum;
 	/// <summary>
 	/// The decay rate
 	/// </summary>
-	double DecayRate;
+	//double DecayRate;
+	double LearnRate;
+	int Epochs;
 	void PrintData();
 	bool IsConfigValid();
 protected:
