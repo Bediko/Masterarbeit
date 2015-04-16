@@ -7,7 +7,7 @@ namespace NNTLib
 	class ContrastiveDivergence: public TrainerBase
 	{
 	private:
-		void trainIncremental(const DataContainer &container,const double learnRate,const int maxLoopCount,const double momentum,const double errorThreshold,const double decayRate);
+		void trainIncremental(const DataContainer &container,const double learnRate,const int Epochs);
 //		void trainBatch(const DataContainer &container,const double learnRate,const int maxLoopCount,const double momentum,int minibatchSize,const double errorThreshold,const double decayRate);
 	public:
 		/// <summary>
@@ -16,7 +16,7 @@ namespace NNTLib
 		NeuralNetwork *network;
 		ContrastiveDivergence(NeuralNetwork &net);
 		~ContrastiveDivergence();
-		void Train(const DataContainer &container,const double learnRate,const int maxLoopCount,const double momentum=0,int minibatchSize=1,const double errorThreshold=0,const double decayRate=0);
+		void Train(const DataContainer &container,const double learnRate,const int Epochs,int BatchSize=1);
 	};
 }
 #endif
