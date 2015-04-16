@@ -103,7 +103,7 @@ Die Wahrscheinlichkeit, dass sich das Netz einem Trainingsbild anpasst kann erh�
 \frac{\partial \log p(\vec{v})}{\partial w_{ij}} = \langle v_ih_j \rangle_{data} - \langle v_i h_j \rangle_{model}
 \end{equation}
 
-Hierbei stellt $\langle...\rangle$ den Erwartungswert der Verteilung dar. Dies führt zu einer einfachen Lernregel für den stochastisch stärksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
+Hierbei stellt $\langle...\rangle$ den Erwartungswert der realen Verteilung, als $data$ bezeichnet und der vom Netz modellierten Verteilung $model$ dar.  Dies führt zu einer einfachen Lernregel für den stochastisch stärksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
 
 \begin{equation}
 \Delta w_{ij} = \epsilon\left( \langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{model} \right)
@@ -152,7 +152,7 @@ Ein effizienter Weg ein kompliziertes Modell zu lernen, besteht darin, eine Meng
 
 In Abbildung \ref{Netz} ist ein generatives Modell (generative model)  mit mehreren Ebenen abgebildet. Als generatives Modell bezeichnet man Modelle die mit Hilfe von versteckten Parametern zufällig generierte beobachtbare Daten generieren wie zum Beispiel bei einer Markov-Kette. Die oberen beiden Ebenenen kommunizieren über ungerichtete Kanten und simulieren damit unendlich viele weitere Ebenen mit verbundenen Gewichten. Es gibt keine Verbindungen zwischen den Knoten einer Ebene und der Einfachheit halber wird angenommen, dass alle Ebenen gleich viele Knoten haben. Man kann gute Parameter für $W_0$ finden, indem man annimmt, dass die gleichen Gewichte zwischen den höheren Layern verwendet werden und damit eine komplementäre Verteilung (complementary prior) abbilden, um den "'Explained Away"'-Effekt für $W_0$ auszulöschen \cite{learning}.
 
-Der "'Explained Away"'-Effekt beschreibt hierbei dass zwei Knoten stark gegeneinander korrelieren, also je höher die Wahrscheinlichkeit in einem Knoten ist, desto geringer ist sie in einem anderen. Bildhafter beschrieben ist die Ursache für ein wackelndes Haus durch ein hineinrasendes Auto sehr gering wenn bereits ein Erdbeben das Haus wackeln lässt. Hierbei wäre das Wackelnde Haus ein Ausgangsknoten und Erdbeben und das rasende Auto ein Eingangsknoten. Wenn einer der beiden Eingangsknoten also aktiviert ist wird das andere Ereignis sehr unwarscheinlich. Dieses Verhalten macht es schwierig Schlussfolgerungen des Netzes nachzuvollziehen.  
+Der "'Explained Away"'-Effekt beschreibt hierbei dass zwei Knoten stark gegeneinander korrelieren, also je höher die Wahrscheinlichkeit in einem Knoten ist, desto geringer ist sie in einem anderen. Bildhafter beschrieben ist die Ursache für ein wackelndes Haus durch ein hineinrasendes Auto sehr gering wenn bereits ein Erdbeben das Haus wackeln lässt. Hierbei wäre das Wackelnde Haus ein Ausgangsknoten und Erdbeben und das rasende Auto ein Eingangsknoten. Wenn einer der beiden Eingangsknoten also aktiviert ist wird das andere Ereignis sehr unwahrscheinlich. Dieses Verhalten macht es schwierig Schlussfolgerungen des Netzes nachzuvollziehen.  
 
 Die Annahme, dass die höheren Layer eine komplementäre Verteilung bilden ist die Einschränkung, dass alle Gewichtsmatrizzen gleich, d.h. miteinander verbunden sind. Dies führt dazu, dass das Lernen von $W_0$ lediglich das trainieren einer RBM darstellt und mithilfe der Contrastive Divergence eine gute Approximination gefunden wird. Sobald $W_0$ gelernt ist, kann man $W^T_0$ als Eingabe für den ersten versteckten Layer benutzen.
 
