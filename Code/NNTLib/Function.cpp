@@ -22,6 +22,10 @@ namespace NNTLib
 		case FunctionEnum::LINEAR:
 			return x;
 			//break;
+		case FunctionEnum::BINARY:
+			std::default_random_engine generator;
+			std::uniform_real_distribution<double> dist(0.0, 1.0);
+			return x>dist(generator);
 		}
 
 		return x;//linear

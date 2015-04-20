@@ -2,6 +2,7 @@
 #define FUNCTIONS_H
 //#include <math.h>
 #include <cmath>
+#include <random>
 //#define LOGISTIC(x) (1./(1.+exp(-x)))
 //#define LOGISTIC_DERIVATION(y) (y * (1. - y))
 

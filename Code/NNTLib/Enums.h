@@ -14,7 +14,7 @@
 namespace NNTLib
 {
 	//bei hinzufügen eines neuen Enums in Enums.cpp den string anchziehen sonst wird dieses als UNKNOWN ausgegeben
-	enum class FunctionEnum {LINEAR=0,LOGISTIC=1,TANH=2,LECUN_TANH=3};
+	enum class FunctionEnum {LINEAR=0,LOGISTIC=1,TANH=2,LECUN_TANH=3, BINARY=4};
 	enum class MutateEnum {NONE=0,UNBIASED_MUTATA_WEIGHTS=1, BIAS_ED_MUTATE_WEIGHTS=2,MUTATE_NODES=3};
 	enum class CrossoverEnum {NONE=0,CROSSOVER_WEIGHTS=1, CROSSOVER_NODES=2,CROSSOVER_ONEPOINT=3,CROSSOVER_TWOPOINT=4};
 	enum class RouletteEnum {FITTNESSBASED=0,INDEXBASED=1};
