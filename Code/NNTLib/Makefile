@@ -4,6 +4,13 @@ OBJ_FILES = $(notdir $(CPP_FILES:.cpp=.o))
 LD_FLAGS = 
 CC_FLAGS =-Wall -O3 -std=c++11
 
+all: main
+
+
+debug: CC_FLAGS+= -DDEBUG 
+debug: $(OBJ_FILES)
+	$(CC) $(LD_FLAGS) -o $@ $^
+
 main: $(OBJ_FILES)
 	$(CC) $(LD_FLAGS) -o $@ $^
 
