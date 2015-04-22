@@ -103,7 +103,7 @@ Die Wahrscheinlichkeit, dass sich das Netz einem Trainingsbild anpasst kann erh�
 \frac{\partial \log p(\vec{v})}{\partial w_{ij}} = \langle v_ih_j \rangle_{data} - \langle v_i h_j \rangle_{model}
 \end{equation}
 
-Hierbei stellt $\langle...\rangle$ den Erwartungswert der realen Verteilung, als $data$ bezeichnet und der vom Netz modellierten Verteilung $model$ dar.  Dies f체hrt zu einer einfachen Lernregel f체r den stochastisch st채rksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
+Hierbei stellt $\langle...\rangle$ den Erwartungswert der realen Verteilung, als $data$ bezeichnet und der vom Netz modellierten Verteilung $model$ dar. Der Erwartungswert ist das Mittel der Wahrscheinlichkeitsverteilung wenn man aus dieser unbegrenzt viele Knotenverteilungen ziehen w체rde. Dies f체hrt zu einer einfachen Lernregel f체r den stochastisch st채rksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
 
 \begin{equation}
 \Delta w_{ij} = \epsilon\left( \langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{model} \right)
