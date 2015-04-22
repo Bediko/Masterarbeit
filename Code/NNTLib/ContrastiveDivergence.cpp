@@ -3,6 +3,15 @@
 
 namespace NNTLib {
 
+
+
+int ContrastiveDivergence::Binary(double x) {
+	std::uniform_real_distribution<double> dist(0.0,1.0);
+	double y=dist(generator);
+	//std::cout<<x<<" "<<y<<" "<<std::endl;
+	return x > y;
+}
+
 void ContrastiveDivergence::trainIncremental(const DataContainer &container, const double learnRate, const int Epochs) {
 	std::cout << "train CD incremental" << std::endl;
 	int i, j, k, l;
