@@ -127,6 +127,7 @@ int main(int argc, char* argv[])
 			for (int i = 0; i < k; ++i)
 			{
 				std::cout << LINE;
+
 				NNTLib::NeuralNetwork result(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType);
 
 				if(!loadWeightsFile.empty())
@@ -224,7 +225,8 @@ int main(int argc, char* argv[])
 					}
 
 					if(ContrastiveDivergenceConfig.Epochs > 0){
-						NNTLib::ContrastiveDivergence CD(result);
+						NNTLib::NeuralNetwork dbn(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType,1);
+						NNTLib::ContrastiveDivergence CD(dbn);
 						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize);
 					}
 

@@ -102,8 +102,8 @@ namespace NNTLib
 		Neurons=new Neuron[NeuronCount];
 		InputValues=new double[InputValuesCount]();
 		SumDeltaErrWeights = new double[inputsize]();
-
-		InputValuesCountWithBias= InputValuesCount+1;
+		if(inputsize!=0)
+			InputValuesCountWithBias= InputValuesCount+1;
 
 		for(int i=0;i<NeuronCount;++i)
 		{

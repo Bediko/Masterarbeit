@@ -36,6 +36,33 @@ namespace NNTLib
 		InitWeights(initType);
 	}
 
+	NeuralNetwork::NeuralNetwork(int *neuronsCountPerLayer, int layercount,WeightInitEnum initType,FunctionEnum functionType, int dbn)
+	{
+		init();
+
+		if(layercount < 2)
+			throw std::runtime_error("We need at least 2 Layer (input and output)");
+		for(int i=0;i<LayersCount;++i)
+		{
+			if(neuronsCountPerLayer[i] < 1)
+				throw std::runtime_error("Layer need at least 1 neuron");
+		}
+
+		this->FunctionType = functionType;
+
+		LayersCount=layercount;//Input Layer hat nicht wirklich neuronn also den nicht mitzählen
+
+		Layers=new Layer[LayersCount]();
+		Layers[0].Init(0,neuronsCountPerLayer[0]); //Neuronen Inputlayer
+		for(int i=1;i<LayersCount;++i)
+		{
+			Layers[i].Init(neuronsCountPerLayer[i-1],neuronsCountPerLayer[i]);
+			TotalNeuronCount+=neuronsCountPerLayer[i];
+		}
+
+		InitWeights(initType);
+	}
+
 	/// <summary>
 	/// Operators the specified net.
 	/// </summary>

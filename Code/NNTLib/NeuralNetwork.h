@@ -41,6 +41,8 @@ namespace NNTLib
 		Layer *Layers;
 
 		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);
+		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType, int dbn);
+
 
 		//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three
 		~NeuralNetwork();
