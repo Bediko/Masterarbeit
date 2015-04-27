@@ -19,6 +19,7 @@ namespace NNTLib
 	/// </summary>
 	void Layer::freeMem()
 	{
+		
 		delete [] Neurons;
 		delete [] InputValues;
 		delete [] SumDeltaErrWeights;
@@ -109,5 +110,26 @@ namespace NNTLib
 		{
 			Neurons[i].Init(InputValuesCountWithBias);
 		}
+	}
+	void Layer::Init(int inputsize, int neuronCount, int dbn)
+	{
+		NeuronCount=neuronCount;
+		InputValuesCount=inputsize;
+
+		Neurons=new Neuron[NeuronCount];
+		InputValues=new double[InputValuesCount]();
+		SumDeltaErrWeights = new double[inputsize]();
+		if(inputsize!=0)
+			InputValuesCountWithBias= InputValuesCount+1;
+
+		for(int i=0;i<NeuronCount-1;++i)
+		{
+			Neurons[i].Init(InputValuesCountWithBias);
+		}
+		Neurons[NeuronCount-1].Init(0);//bias hat keine Eingabegewichte
+	}
+	void Layer::Forwardweightsinit(int Neuronsdown, int Neuronsup, int dbn)
+	{
+		return;
 	}
 }

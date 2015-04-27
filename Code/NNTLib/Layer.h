@@ -37,6 +37,8 @@ namespace NNTLib
 		double *SumDeltaErrWeights;
 
 		void Init(int inputsize, int neuronCount);
+		void Init(int inputsize, int neuronCount, int dbn);
+		void Forwardweightsinit(int inputsize, int neuronCount, int dbn);
 
 		Layer();
 

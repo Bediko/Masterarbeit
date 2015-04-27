@@ -1,4 +1,5 @@
 #include "Neuron.h"
+#include <iostream>
 
 namespace NNTLib
 {
@@ -20,9 +21,12 @@ namespace NNTLib
 	/// </summary>
 	void Neuron::freeMem()
 	{
-		delete [] Weights;
-		delete [] LastDeltaWeights;
-		delete [] DeltaWeights;
+		if(Weights!=nullptr)
+			delete [] Weights;	
+		if(LastDeltaWeights!=nullptr)
+			delete [] LastDeltaWeights;	
+		if(DeltaWeights!=nullptr)
+			delete [] DeltaWeights;
 	}
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Neuron"/> class.
@@ -94,7 +98,6 @@ namespace NNTLib
 	void Neuron::Init(int weightCount)
 	{
 		WeightCount = weightCount;
-
 		Weights=new double[WeightCount]();
 		DeltaWeights=new double[WeightCount]();
 		LastDeltaWeights=new double[WeightCount]();

@@ -50,17 +50,22 @@ namespace NNTLib
 
 		this->FunctionType = functionType;
 
-		LayersCount=layercount;//Input Layer hat nicht wirklich neuronn also den nicht mitzählen
+		LayersCount=layercount;
 
 		Layers=new Layer[LayersCount]();
-		Layers[0].Init(0,neuronsCountPerLayer[0]); //Neuronen Inputlayer
-		for(int i=1;i<LayersCount;++i)
+		Layers[0].Init(0,neuronsCountPerLayer[0]+1); //Neuronen Inputlayer
+		for(int i=1;i<LayersCount;++i) //Rückwärtsgewichte
 		{
-			Layers[i].Init(neuronsCountPerLayer[i-1],neuronsCountPerLayer[i]);
+			Layers[i].Init(neuronsCountPerLayer[i-1],neuronsCountPerLayer[i]+1,dbn);
 			TotalNeuronCount+=neuronsCountPerLayer[i];
 		}
 
-		InitWeights(initType);
+		for(int i=0;i<LayersCount;++i) {//Vorwärts
+			Layers[i].Forwardweightsinit(neuronsCountPerLayer[i],neuronsCountPerLayer[i+1],dbn);
+		}
+
+
+		InitWeights(initType, dbn);
 	}
 
 	/// <summary>
@@ -245,6 +250,28 @@ namespace NNTLib
 
 				for(int k=0;k<layer->InputValuesCount+1;++k)//+1 for Bias
 				{
+					neuron->Weights[k] = GenerateRandomWeight(layer->InputValuesCountWithBias);
+				}
+			}
+		}
+	}
+	void NeuralNetwork::InitWeights(WeightInitEnum initType, int cd)
+	{
+		this->WeightInitType = initType;
+
+		int i,j;
+		for(i=(LayersCount - 1);i>=0;i--)
+		{
+			Layer* layer = &Layers[i];
+
+			for(j=0;j<layer->NeuronCount;++j)
+			{
+				Neuron* neuron = &layer->Neurons[j];
+
+				for(int k=0;k<layer->InputValuesCount+1;++k)//+1 for Bias
+				{
+					if(neuron->WeightCount==0)
+						continue;
 					neuron->Weights[k] = GenerateRandomWeight(layer->InputValuesCountWithBias);
 				}
 			}

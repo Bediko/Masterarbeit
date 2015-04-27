@@ -51,6 +51,7 @@ namespace NNTLib
 		bool operator < (const NeuralNetwork& net) const;
 
 		void InitWeights(WeightInitEnum initType);
+		void InitWeights(WeightInitEnum initType, int cd);
 		double GenerateRandomWeight(int weightCount);//nicht schön (muss hier weg)
 
 		void SaveWeights(const std::string file);

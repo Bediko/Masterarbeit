@@ -34,6 +34,9 @@ namespace NNTLib
 		//bias einzelnt halten (für evtl. erweiterung von backpropagation mit bias anpassung siehe Lecun Paper)
 		double Bias;
 
+		//Gewichte nach vorne um von allen Layern auf die Gewichte zugreifen zu können
+		double *ForwardWeights;
+
 		Neuron();
 		~Neuron();
 		Neuron(const Neuron &that);
