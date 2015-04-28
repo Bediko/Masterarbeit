@@ -15,6 +15,7 @@ namespace NNTLib
 		/// The weight count (Anzahl eingehende Gewichte (mit Schwellenwert)
 		/// </summary>
 		int WeightCount;
+		int ForwardWeightCount;
 		/// <summary>
 		/// The output (Ausgabe des Neurons)
 		/// </summary>
@@ -35,7 +36,7 @@ namespace NNTLib
 		double Bias;
 
 		//Gewichte nach vorne um von allen Layern auf die Gewichte zugreifen zu können
-		double *ForwardWeights;
+		double **ForwardWeights;
 
 		Neuron();
 		~Neuron();

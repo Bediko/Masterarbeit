@@ -1,4 +1,5 @@
 #include "Layer.h"
+#include <iostream>
 namespace NNTLib
 {
 	/// <summary>
@@ -128,8 +129,15 @@ namespace NNTLib
 		}
 		Neurons[NeuronCount-1].Init(0);//bias hat keine Eingabegewichte
 	}
-	void Layer::Forwardweightsinit(int Neuronsdown, int Neuronsup, int dbn)
+	void Layer::Forwardweightsinit(int Neuronsdown, Layer* Layerup, int dbn)
 	{
-		return;
+		for (int i=0;i<Neuronsdown;i++){
+			Neurons[i].ForwardWeightCount=Layerup->NeuronCount;
+			Neurons[i].ForwardWeights= new double*[Neurons[i].ForwardWeightCount];
+			for (int j=0; j<Layerup->NeuronCount;j++){
+				Neurons[i].ForwardWeights[j]=&Layerup->Neurons[j].Weights[i];
+			}
+		}
+
 	}
 }

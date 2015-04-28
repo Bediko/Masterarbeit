@@ -9,6 +9,8 @@ namespace NNTLib
 	void Neuron::init()
 	{
 		WeightCount=0;
+		ForwardWeightCount=0;
+		ForwardWeights=nullptr;
 		Output=0;
 		Weights=nullptr;
 		LastDeltaWeights= nullptr;
@@ -21,11 +23,8 @@ namespace NNTLib
 	/// </summary>
 	void Neuron::freeMem()
 	{
-		if(Weights!=nullptr)
 			delete [] Weights;	
-		if(LastDeltaWeights!=nullptr)
 			delete [] LastDeltaWeights;	
-		if(DeltaWeights!=nullptr)
 			delete [] DeltaWeights;
 	}
 	/// <summary>
@@ -78,10 +77,12 @@ namespace NNTLib
 		this->Bias = that.Bias;
 		this->WeightCount = that.WeightCount;
 		this->Output = that.Output;
+		this->ForwardWeightCount = that.ForwardWeightCount;
 
 		this->Weights=new double[WeightCount];
 		this->DeltaWeights=new double[WeightCount];
 		this->LastDeltaWeights=new double[WeightCount];
+		this->ForwardWeights = new double*[ForwardWeightCount];
 
 		for(int i=0;i<WeightCount;i++)
 		{
@@ -89,6 +90,8 @@ namespace NNTLib
 			this->DeltaWeights[i]=that.DeltaWeights[i];
 			this->LastDeltaWeights[i]=that.LastDeltaWeights[i];
 		}
+		for(int i=0;i<ForwardWeightCount;i++)
+			this->ForwardWeights[i]=that.ForwardWeights[i];
 	}
 
 	/// <summary>
