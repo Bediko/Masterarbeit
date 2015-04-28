@@ -160,7 +160,7 @@ namespace NNTLib
 	/// <summary>
 	/// Loads the file.
 	/// Datei muss wie folgt ausgebaut sein
-	/// 2 2 1 //[Anzahl Datan] [Anzahl Input] [Anzahl Output]
+	/// 2 2 1 //[Anzahl Daten] [Anzahl Input] [Anzahl Output]
 	/// 0 0   //Input Daten 1 {0,0}
 	/// 0	 //Output Daten 1 {0}
 	/// 0 1	 //Input Daten 2 {0,1}
