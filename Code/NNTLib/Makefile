@@ -21,4 +21,4 @@ $(TARGET): $(OBJ_FILES)
 	$(CC) $(OBJ_FILES) -o $(TARGET) $(LDFLAGS)
 
 clean:
-	rm -f $(OBJ_FILES) $(TARGET) core
+	rm -f $(OBJ_FILES) $(TARGET) core main debug
