@@ -33,7 +33,7 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	std::cout<<"Forwardweights"<<std::endl;
 	std::cout<<*network->Layers[0].Neurons[0].ForwardWeights[0]<<std::endl;
 	for ( int i = 0; i < network->LayersCount-1; i++) {
-		for( int j=0; j<network->Layers[i].NeuronCount-1;j++){
+		for( int j=0; j<network->Layers[i].NeuronCount;j++){
 			Neuron n = network->Layers[i].Neurons[j];
 			std::cout<<"Neuron "<<j<<std::endl;
 			std::cout<<"Anzahl Gewichte"<<n.ForwardWeightCount<<std::endl;

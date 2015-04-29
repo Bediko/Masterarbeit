@@ -131,7 +131,7 @@ namespace NNTLib
 	}
 	void Layer::Forwardweightsinit(int Neuronsdown, Layer* Layerup, int dbn)
 	{
-		for (int i=0;i<Neuronsdown;i++){
+		for (int i=0;i<=Neuronsdown;i++){
 			Neurons[i].ForwardWeightCount=Layerup->NeuronCount-1;
 			Neurons[i].ForwardWeights= new double*[Neurons[i].ForwardWeightCount];
 			for (int j=0; j<Layerup->NeuronCount-1;j++){ //-1 da keine Gewichte zum Bias
