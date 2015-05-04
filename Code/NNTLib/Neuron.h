@@ -2,6 +2,7 @@
 #define Neuron_H
 
 #include "Functions.h"
+#include "DataContainer.h"
 namespace NNTLib
 {
 	class Neuron
@@ -42,6 +43,9 @@ namespace NNTLib
 		~Neuron();
 		Neuron(const Neuron &that);
 		Neuron& operator= (const Neuron &that);
+
+		//Initialisiert Gewichte des Bias für sichtbaren Layer in einer Boltzmann Maschine
+		void InitBias(const DataContainer &container);
 
 		void Init(int weightCount);
 	};
