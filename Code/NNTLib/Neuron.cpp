@@ -105,21 +105,32 @@ namespace NNTLib
 		DeltaWeights=new double[WeightCount]();
 		LastDeltaWeights=new double[WeightCount]();
 	}
-	void Neuron::InitBias(const DataContainer &container){
-		double *pi= new double[container.InputCount];
-		for(int i=0;i<container.InputCount;i++)
+	void Neuron::InitBias(const DataContainer* container){
+		if(container==NULL){
+			for(int i=0;i<ForwardWeightCount;i++)
+				*ForwardWeights[i]=0;
+			return;
+		}
+
+		double *pi= new double[container->InputCount];
+		for(int i=0;i<container->InputCount;i++)
 			pi[i]=0;
-		for (int d_i=0; d_i<container.DataCount;d_i++){
-			for (int i=0;i<container.InputCount;i++){
-				if(container.DataInput[d_i][i]>0){
+		for (int d_i=0; d_i<container->DataCount;d_i++){
+			for (int i=0;i<container->InputCount;i++){
+				if(container->DataInput[d_i][i]>0){
 					pi[i]+=1.0;
 				}
 			}
 		}
-		for(int i=0;i<container.InputCount;i++){
-			pi[i]=pi[i]/(double)container.DataCount;
+
+		for(int i=0;i<container->InputCount;i++){
+			std::cout<<"pokeypoke "<<i<<std::endl;
+			pi[i]=pi[i]/(double)(container->DataCount);
+
 			pi[i]= log(pi[i]/(1-pi[i]));
+
 			Weights[i]=pi[i];
+			std::cout<<"hurrrr"<<std::endl;
 		}
 
 

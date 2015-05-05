@@ -45,7 +45,7 @@ namespace NNTLib
 		Neuron& operator= (const Neuron &that);
 
 		//Initialisiert Gewichte des Bias für sichtbaren Layer in einer Boltzmann Maschine
-		void InitBias(const DataContainer &container);
+		void InitBias(const DataContainer *container);
 
 		void Init(int weightCount);
 	};

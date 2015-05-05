@@ -16,6 +16,8 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	std::cout << "train CD incremental" << std::endl;
 	
 	//double *deltaWeights;
+	network->Layers[0].Neurons[network->Layers[0].NeuronCount].InitBias(NULL);
+	//network->Layers[1].Neurons[network->Layers[1].InputValuesCount].InitBias(&container);
 	
 	for ( int i = 0; i < network->LayersCount; i++) {
 		std::cout << "Layer " << i << ": Neuronen:"<<network->Layers[i].NeuronCount<<std::endl;
@@ -45,6 +47,8 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 			
 		}
 	}
+
+
 // 	for (int e = 0; e < 1; e++) {
 // 		for ( int d = 0; d < container.DataCount; d++) {
 // 			for (int j = 0; j < network->Layers[0].InputValuesCount; ++j) {
