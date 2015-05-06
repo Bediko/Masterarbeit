@@ -1,50 +1,63 @@
 #include "ContrastiveDivergence.h"
 #include <iostream>
+#include "DataContainer.h"
 
-namespace NNTLib {
+namespace NNTLib
+{
 
 
 
-int ContrastiveDivergence::Binary(double x) {
-	std::uniform_real_distribution<double> dist(0.0,1.0);
-	double y=dist(generator);
+int ContrastiveDivergence::Binary(double x)
+{
+	std::uniform_real_distribution<double> dist(0.0, 1.0);
+	double y = dist(generator);
 	//std::cout<<x<<" "<<y<<" "<<std::endl;
 	return x > y;
 }
 
-void ContrastiveDivergence::trainIncremental(const DataContainer &container, const double learnRate, const int Epochs) {
+void ContrastiveDivergence::trainIncremental(const DataContainer &container, const double learnRate, const int Epochs)
+{
 	std::cout << "train CD incremental" << std::endl;
-	
+
 	//double *deltaWeights;
-	network->Layers[0].Neurons[network->Layers[0].NeuronCount].InitBias(NULL);
-	//network->Layers[1].Neurons[network->Layers[1].InputValuesCount].InitBias(&container);
-	
-	for ( int i = 0; i < network->LayersCount; i++) {
-		std::cout << "Layer " << i << ": Neuronen:"<<network->Layers[i].NeuronCount<<std::endl;
-		std::cout << " Inputs: " << network->Layers[i].InputValuesCountWithBias << std::endl;
-		std::cout <<" Gewichte:"<<std::endl;
-		for( int j=0; j<network->Layers[i].NeuronCount;j++){
-			Neuron n = network->Layers[i].Neurons[j];
-			std::cout<<"Neuron "<<j<<std::endl;
-			for(int k=0;k<n.WeightCount;k++){
-				std::cout<<n.Weights[k]<<std::endl;
-			}
-			
+	network->Layers[0].Neurons[network->Layers[0].NeuronCount-1].InitBias(NULL);
+	std::cout << network->Layers[1].Neurons[network->Layers[1].NeuronCount - 1].Weights[0] << std::endl;
+	DataContainer *init = new DataContainer();
+	init->Init(container.DataCount, container.InputCount, container.OutputCount);
+	for (int d_i = 0; d_i < container.DataCount; d_i++) {
+		for (int i = 0; i < container.InputCount; i++) {
+			init->DataInput[d_i][i] = Binary(container.DataInput[d_i][i]);
 		}
 	}
-	std::cout<<"Forwardweights"<<std::endl;
-	
+
+	network->Layers[1].Neurons[network->Layers[1].NeuronCount - 1].InitBias(init);
+
 	for ( int i = 0; i < network->LayersCount; i++) {
-		std::cout << "Layer " << i << ": Neuronen:"<<network->Layers[i].NeuronCount<<std::endl;
+		std::cout << "Layer " << i << ": Neuronen:" << network->Layers[i].NeuronCount << std::endl;
 		std::cout << " Inputs: " << network->Layers[i].InputValuesCountWithBias << std::endl;
-		std::cout <<" Gewichte:"<<std::endl;
-		for( int j=0; j<network->Layers[i].NeuronCount;j++){
+		std::cout << " Gewichte:" << std::endl;
+		for ( int j = 0; j < network->Layers[i].NeuronCount; j++) {
 			Neuron n = network->Layers[i].Neurons[j];
-			std::cout<<"Neuron "<<j<<std::endl;
-			for(int k=0;k<n.ForwardWeightCount;k++){
-				std::cout<<"Gewicht "<< k<< " : "<<*n.ForwardWeights[k]<<std::endl;
+			std::cout << "Neuron " << j << std::endl;
+			for (int k = 0; k < n.WeightCount; k++) {
+				std::cout << n.Weights[k] << std::endl;
 			}
-			
+
+		}
+	}
+	std::cout << "Forwardweights" << std::endl;
+
+	for ( int i = 0; i < network->LayersCount; i++) {
+		std::cout << "Layer " << i << ": Neuronen:" << network->Layers[i].NeuronCount << std::endl;
+		std::cout << " Inputs: " << network->Layers[i].InputValuesCountWithBias << std::endl;
+		std::cout << " Gewichte:" << std::endl;
+		for ( int j = 0; j < network->Layers[i].NeuronCount; j++) {
+			Neuron n = network->Layers[i].Neurons[j];
+			std::cout << "Neuron " << j << std::endl;
+			for (int k = 0; k < n.ForwardWeightCount; k++) {
+				std::cout << "Gewicht " << k << " : " << *n.ForwardWeights[k] << std::endl;
+			}
+
 		}
 	}
 
@@ -85,12 +98,14 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	//double deltaWeight;
 
 }
-ContrastiveDivergence::ContrastiveDivergence(NeuralNetwork &net) {
+ContrastiveDivergence::ContrastiveDivergence(NeuralNetwork &net)
+{
 	this->network = &net;
 
 }
 ContrastiveDivergence::~ContrastiveDivergence() {};
-void ContrastiveDivergence::Train(const DataContainer &container, const double learnRate, const int Epochs, int BatchSize) {
+void ContrastiveDivergence::Train(const DataContainer &container, const double learnRate, const int Epochs, int BatchSize)
+{
 	std::cout << "Train CD" << std::endl;
 	if (BatchSize == 1) {
 		trainIncremental(container, learnRate, Epochs);
