@@ -101,6 +101,7 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 ContrastiveDivergence::ContrastiveDivergence(NeuralNetwork &net)
 {
 	this->network = &net;
+	generator.seed(time(NULL));
 
 }
 ContrastiveDivergence::~ContrastiveDivergence() {};
