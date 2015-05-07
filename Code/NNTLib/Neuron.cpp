@@ -113,24 +113,27 @@ namespace NNTLib
 		}
 
 		double *pi= new double[container->InputCount];
-		for(int i=0;i<container->InputCount;i++)
+		for(int i=0;i<container->InputCount;i++){
 			pi[i]=0;
+		}
 		for (int d_i=0; d_i<container->DataCount;d_i++){
 			for (int i=0;i<container->InputCount;i++){
-				if(container->DataInput[d_i][i]>0){
+				if(container->DataInput[d_i][i]>0.0){
 					pi[i]+=1.0;
 				}
+
 			}
 		}
+		
 
 		for(int i=0;i<container->InputCount;i++){
-			std::cout<<"pokeypoke "<<i<<std::endl;
-			pi[i]=pi[i]/(double)(container->DataCount);
+			double count=(double)container->DataCount;
+			pi[i]=pi[i]/count;
 
 			pi[i]= log(pi[i]/(1-pi[i]));
 
 			Weights[i]=pi[i];
-			std::cout<<"hurrrr"<<std::endl;
+			
 		}
 
 

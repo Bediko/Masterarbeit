@@ -127,7 +127,7 @@ namespace NNTLib
 		{
 			Neurons[i].Init(InputValuesCountWithBias);
 		}
-		Neurons[NeuronCount-1].Init(InputValuesCountWithBias-1);//bias hat keine Eingabegewichte
+		Neurons[NeuronCount-1].Init(InputValuesCount);//bias hat keine Eingabegewichte
 	}
 	void Layer::Forwardweightsinit(int Neuronsdown, Layer* Layerup, int dbn)
 	{
