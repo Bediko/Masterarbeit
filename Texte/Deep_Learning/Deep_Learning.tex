@@ -62,16 +62,18 @@
 	
 	\newpage
 	\section{Eingeschränkte Boltzmann Maschinen}
+	Boltzmann Maschinen sind neuronale Netze die ähnlich zu Hopfield Netzen\cite{Hopfield} aufgebaut sind. In diesen Netzen ist jedes Neuron mit allen anderen Neuronen außer sich selber verbunden. Die Neuronen in einem Hopfield Netz sind binär. Dies gilt auch für eine Boltzmann Maschine, nur das hier die Neuronen stochastisch binär sind, also nur feuern, wenn die Wahrscheinlichkeit ihrer Aktivierung höher ist als ein Zufallswurf zwischen 0 und 1. Da Boltzmann Maschinen schwierig zu trainieren sind, werden in Deep Belief Netzwerken nur eingeschränkte Boltzmann Maschinen verwendet. Bei eingeschränkten Boltzmann Maschinen existieren nur Verbindungen zwischen den Ebenen und die Neuronen auf einer Ebene sind nicht miteinander verbunden.
 	
-	Ein Deep Belief Netzwerk besteht aus mehreren hintereinander geschalteten eingeschränkten Boltzmann Maschinen. Eine eingeschränkte Boltzmann Maschine ist ein Netzwerk mit zwei Ebenen(Layern) in dem stochastische binäre Pixel mit stochastisch binären Eigenschaftsdetektoren (feature detectors) verbunden sind, welche die Eigenschaften(features) der unbekannten Wahrscheinlichkeitsverteilung erkennen sollen. Stochastisch binär bedeutet, dass ein Knoten (Node) den Wert 1 annimmt, wenn ein Zufallswurf zwischen 1 und 100 höher als eine bestimmte Wahrscheinlichkeit ist. Die beiden Layer sind symmetrisch mit Gewichten verbunden.
+	Ein Deep Belief Netzwerk besteht aus mehreren hintereinander geschalteten eingeschränkten Boltzmann Maschinen. Eine eingeschränkte Boltzmann Maschine ist ein Netzwerk mit zwei Ebenen(Layern) in dem stochastische binäre Pixel mit stochastisch binären Eigenschaftsdetektoren (feature detectors) verbunden sind, welche die Eigenschaften(features) des Trainingsdatensatzes erkennen soll. Stochastisch binär bedeutet, dass ein Knoten (Node) den Wert 1 annimmt, wenn ein Zufallswurf zwischen 1 und 100 höher als eine bestimmte Wahrscheinlichkeit ist. Die beiden Layer sind symmetrisch mit Gewichten verbunden.
 	
-	
-	\begin{figure}[H]
+
+Als Eingabewerte in so ein Netzwerk sind reelle Werte möglich, jedoch wird der einfachheit halber angenommen, dass Binärbilder und damit binäre Vektoren als Eingabe verwendet werden. Da die Werte der Eingabeknoten beobachtet werden können, werden diese auch als sichtbar (visible) bezeichnet. Die Werte der Detektorschichte können nicht beobachtet werden, deshalb werden diese Knoten auch versteckt (hidden) genannt (siehe Abbildung \ref{Boltzmann})
+
+\begin{figure}[H]
 	\includesvg[width=\textwidth]{Boltzmann}
 	\caption{Modell einer eingeschränkten Boltzmann Maschine. Oben sind die versteckten Knoten und unten die nach außen sichtbaren Knoten.}
+	\label{Boltzmann}
 	\end{figure}
-
-Als Eingabewerte in so ein Netzwerk sind reelle Werte möglich, jedoch wird der einfachheit halber angenommen, dass Binärbilder und damit binäre Vektoren als Eingabe verwendet werden. Da die Werte der Eingabeknoten beobachtet werden können, werden diese auch als sichtbar (visible) bezeichnet. Die Werte der Detektorschichte können nicht beobachtet werden, deshalb werden diese Knoten auch versteckt (hidden) genannt.
 
 Eine Konfiguration $(\vec{v},\vec{h})$ aus visible und hidden Knoten wird nach Hopfield(1982) eine Energie zugewiesen:
 
@@ -201,6 +203,11 @@ G. E. Hinton, R. R. Salakhutdinov,
 Science Vol. 313. no. 5786n Seite 504 - 507,
 2006
 
+\bibitem{Hopfield}
+J. J. Hopfield,
+ \emph{Neural networks and physical systems with emergent collective computational properties},
+Proceedings of the National Academy of Sciences (USA) 79, Seite 2554-2558,
+1982
 \end{thebibliography}
 
 
