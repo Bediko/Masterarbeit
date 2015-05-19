@@ -9,8 +9,6 @@ namespace NNTLib
 	void Neuron::init()
 	{
 		WeightCount=0;
-		ForwardWeightCount=0;
-		ForwardWeights=nullptr;
 		Output=0;
 		Weights=nullptr;
 		LastDeltaWeights= nullptr;
@@ -77,12 +75,12 @@ namespace NNTLib
 		this->Bias = that.Bias;
 		this->WeightCount = that.WeightCount;
 		this->Output = that.Output;
-		this->ForwardWeightCount = that.ForwardWeightCount;
+		
 
 		this->Weights=new double[WeightCount];
 		this->DeltaWeights=new double[WeightCount];
 		this->LastDeltaWeights=new double[WeightCount];
-		this->ForwardWeights = new double*[ForwardWeightCount];
+		
 
 		for(int i=0;i<WeightCount;i++)
 		{
@@ -90,8 +88,7 @@ namespace NNTLib
 			this->DeltaWeights[i]=that.DeltaWeights[i];
 			this->LastDeltaWeights[i]=that.LastDeltaWeights[i];
 		}
-		for(int i=0;i<ForwardWeightCount;i++)
-			this->ForwardWeights[i]=that.ForwardWeights[i];
+		
 	}
 
 	/// <summary>
@@ -105,37 +102,5 @@ namespace NNTLib
 		DeltaWeights=new double[WeightCount]();
 		LastDeltaWeights=new double[WeightCount]();
 	}
-	void Neuron::InitBias(const DataContainer* container){
-		if(container==NULL){
-			for(int i=0;i<ForwardWeightCount;i++)
-				*ForwardWeights[i]=0;
-			return;
-		}
-
-		double *pi= new double[container->InputCount];
-		for(int i=0;i<container->InputCount;i++){
-			pi[i]=0;
-		}
-		for (int d_i=0; d_i<container->DataCount;d_i++){
-			for (int i=0;i<container->InputCount;i++){
-				if(container->DataInput[d_i][i]>0.0){
-					pi[i]+=1.0;
-				}
-
-			}
-		}
-		
-
-		for(int i=0;i<container->InputCount;i++){
-			double count=(double)container->DataCount;
-			pi[i]=pi[i]/count;
-
-			pi[i]= log(pi[i]/(1-pi[i]));
-
-			Weights[i]=pi[i];
-			
-		}
-
-
-	}
+	
 }

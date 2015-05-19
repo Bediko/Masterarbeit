@@ -7,7 +7,7 @@ namespace NNTLib
 {
 	class Neuron
 	{
-	private:
+	protected:
 		void copy(const Neuron &that);
 		void init();
 		void freeMem();
@@ -16,7 +16,7 @@ namespace NNTLib
 		/// The weight count (Anzahl eingehende Gewichte (mit Schwellenwert)
 		/// </summary>
 		int WeightCount;
-		int ForwardWeightCount;
+
 		/// <summary>
 		/// The output (Ausgabe des Neurons)
 		/// </summary>
@@ -36,16 +36,11 @@ namespace NNTLib
 		//bias einzelnt halten (für evtl. erweiterung von backpropagation mit bias anpassung siehe Lecun Paper)
 		double Bias;
 
-		//Gewichte nach vorne um von allen Layern auf die Gewichte zugreifen zu können
-		double **ForwardWeights;
 
 		Neuron();
 		~Neuron();
 		Neuron(const Neuron &that);
 		Neuron& operator= (const Neuron &that);
-
-		//Initialisiert Gewichte des Bias für sichtbaren Layer in einer Boltzmann Maschine
-		void InitBias(const DataContainer *container);
 
 		void Init(int weightCount);
 	};
