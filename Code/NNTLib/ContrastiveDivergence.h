@@ -15,8 +15,8 @@ namespace NNTLib
 		/// <summary>
 		/// The network
 		/// </summary>
-		NeuralNetwork *network;
-		ContrastiveDivergence(NeuralNetwork &net);
+		DeepBeliefNet *network;
+		ContrastiveDivergence(DeepBeliefNet &net);
 		~ContrastiveDivergence();
 		void Train(const DataContainer &container,const double learnRate,const int Epochs,int BatchSize=1);
 	};

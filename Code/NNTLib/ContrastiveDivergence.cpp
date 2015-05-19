@@ -37,7 +37,7 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		std::cout << " Inputs: " << network->Layers[i].InputValuesCountWithBias << std::endl;
 		std::cout << " Gewichte:" << std::endl;
 		for ( int j = 0; j < network->Layers[i].NeuronCount; j++) {
-			Neuron n = network->Layers[i].Neurons[j];
+			DBNNeuron n = network->Layers[i].Neurons[j];
 			std::cout << "Neuron " << j << std::endl;
 			for (int k = 0; k < n.WeightCount; k++) {
 				std::cout << n.Weights[k] << std::endl;
@@ -52,7 +52,7 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		std::cout << " Inputs: " << network->Layers[i].InputValuesCountWithBias << std::endl;
 		std::cout << " Gewichte:" << std::endl;
 		for ( int j = 0; j < network->Layers[i].NeuronCount; j++) {
-			Neuron n = network->Layers[i].Neurons[j];
+			DBNNeuron n = network->Layers[i].Neurons[j];
 			std::cout << "Neuron " << j << std::endl;
 			for (int k = 0; k < n.ForwardWeightCount; k++) {
 				std::cout << "Gewicht " << k << " : " << *n.ForwardWeights[k] << std::endl;
@@ -62,43 +62,43 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	}
 
 
-// 	for (int e = 0; e < 1; e++) {
-// 		for ( int d = 0; d < container.DataCount; d++) {
-// 			for (int j = 0; j < network->Layers[0].InputValuesCount; ++j) {
-// 				//inputlayer hat keine neuronen daher daten in input vektor des ersten layers mit Neuronen übernehmen
-// 				network->Layers[0].InputValues[j] = container.DataInput[d][j];
-// 			}
-// #if DEBUG
-// 			std::cout << "Inputvector" << std::endl;
-// 			for (int j = 0; j < network->Layers[0].InputValuesCount; ++j) {
-// 				std::cout << network->Layers[0].InputValues[j] << " ";
-// 			}
-// 			std::cout << std::endl;
-// #endif
-// 			//bestimmen ob verstecke neuronen 1 oder 0 sind
+	for (int e = 0; e < 1; e++) {
+		for ( int d = 0; d < container.DataCount; d++) {
+			for (int j = 0; j < network->Layers[0].InputValuesCount; ++j) {
+				network->Layers[0].InputValues[j] = container.DataInput[d][j];
+			}
+#if DEBUG
+			std::cout << "Inputvector" << std::endl;
+			for (int j = 0; j < network->Layers[0].InputValuesCount; ++j) {
+				std::cout << network->Layers[0].InputValues[j] << " ";
+			}
+			std::cout << std::endl;
+#endif
+			//bestimmen ob verstecke neuronen 1 oder 0 sind
 
-// 			for ( int j = 0; j < network->Layers[0].NeuronCount; j++) {
-// 				double sum = 0.0;
-// 				for (int i = 0; i < network->Layers[0].Neurons[j].WeightCount; i++) {
-// 					sum += network->Layers[0].InputValues[i] * network->Layers[0].Neurons[j].Weights[i];
-// 				}
-// 				sum+=network->Layers[0].Neurons[j].Bias; //bias
-// 				sum = 1 / (1 + exp(-sum)); //Wahrscheinlichkeit ausrechnen
-// 				network->Layers[0].Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
-// 				//std::cout << network->Layers[0].Neurons[j].Output << std::endl;
+			for ( int j = 0; j < network->Layers[0].NeuronCount; j++) {
+				double sum = 0.0;
+				for (int i = 0; i < network->Layers[0].Neurons[j].WeightCount; i++) {
+					sum += network->Layers[0].InputValues[i] * network->Layers[0].Neurons[j].Weights[i];
+				}
+				sum+=network->Layers[0].Neurons[j].Bias; //bias
+				sum = 1 / (1 + exp(-sum)); //Wahrscheinlichkeit ausrechnen
+				network->Layers[0].Neurons[j].p=sum;
+				network->Layers[0].Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
+				std::cout << network->Layers[0].Neurons[j].Output << std::endl;
 
-// 			}
+			}
 
-// 			//rekonstruktion
+			//rekonstruktion
 
 
-// 		}
-	//}
+		}
+	}
 
 	//double deltaWeight;
 
 }
-ContrastiveDivergence::ContrastiveDivergence(NeuralNetwork &net)
+ContrastiveDivergence::ContrastiveDivergence(DeepBeliefNet &net)
 {
 	this->network = &net;
 	generator.seed(time(NULL));
