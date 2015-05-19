@@ -6,7 +6,7 @@ namespace NNTLib
 {
 	class Layer
 	{
-	private:
+	protected:
 		void copy(const Layer &that);
 		void init();
 		void freeMem();
@@ -37,11 +37,7 @@ namespace NNTLib
 		double *SumDeltaErrWeights;
 
 		void Init(int inputsize, int neuronCount);
-		void Init(int inputsize, int neuronCount, int dbn);
-		void Forwardweightsinit(int inputsize, Layer* Layerup, int dbn);
-
 		Layer();
-
 		~Layer();
 		Layer(const Layer &that);
 		Layer& operator= (const Layer &that);

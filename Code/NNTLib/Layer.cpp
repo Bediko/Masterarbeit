@@ -1,5 +1,4 @@
 #include "Layer.h"
-#include <iostream>
 namespace NNTLib
 {
 	/// <summary>
@@ -104,40 +103,10 @@ namespace NNTLib
 		Neurons=new Neuron[NeuronCount];
 		InputValues=new double[InputValuesCount]();
 		SumDeltaErrWeights = new double[inputsize]();
-		if(inputsize!=0)
-			InputValuesCountWithBias= InputValuesCount+1;
-
+		InputValuesCountWithBias= InputValuesCount+1;
 		for(int i=0;i<NeuronCount;++i)
 		{
 			Neurons[i].Init(InputValuesCountWithBias);
 		}
-	}
-	void Layer::Init(int inputsize, int neuronCount, int dbn)
-	{
-		NeuronCount=neuronCount;
-		InputValuesCount=inputsize;
-
-		Neurons=new Neuron[NeuronCount];
-		InputValues=new double[InputValuesCount]();
-		SumDeltaErrWeights = new double[inputsize]();
-		if(inputsize!=0)
-			InputValuesCountWithBias= InputValuesCount+1;
-
-		for(int i=0;i<NeuronCount-1;++i)
-		{
-			Neurons[i].Init(InputValuesCountWithBias);
-		}
-		Neurons[NeuronCount-1].Init(InputValuesCount);//bias hat keine Eingabegewichte
-	}
-	void Layer::Forwardweightsinit(int Neuronsdown, Layer* Layerup, int dbn)
-	{
-		for (int i=0;i<=Neuronsdown;i++){
-			Neurons[i].ForwardWeightCount=Layerup->NeuronCount-1;
-			Neurons[i].ForwardWeights= new double*[Neurons[i].ForwardWeightCount];
-			for (int j=0; j<Layerup->NeuronCount-1;j++){ //-1 da keine Gewichte zum Bias
-				Neurons[i].ForwardWeights[j]=&Layerup->Neurons[j].Weights[i];
-			}
-		}
-
 	}
 }
