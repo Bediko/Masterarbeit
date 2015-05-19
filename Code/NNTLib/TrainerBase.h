@@ -4,6 +4,7 @@
 //#include <stdexcept>
 //#include "DataContainer.h"
 #include "NeuralNetwork.h"
+#include "DeepBeliefNet.h"
 //#include "Functions.h"
 #include "TrainingMeasure.h"
 
