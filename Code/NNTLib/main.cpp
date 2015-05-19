@@ -225,7 +225,7 @@ int main(int argc, char* argv[])
 					}
 
 					if(ContrastiveDivergenceConfig.Epochs > 0){
-						NNTLib::NeuralNetwork dbn(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType,1);
+						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType);
 						NNTLib::ContrastiveDivergence CD(dbn);
 						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize);
 					}
