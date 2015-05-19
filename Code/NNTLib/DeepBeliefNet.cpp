@@ -1,4 +1,5 @@
 #include "DeepBeliefNet.h"
+#include "DBNLayer.h"
 #include <iostream>
 
 namespace NNTLib
@@ -18,7 +19,7 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 
 	LayersCount = layercount;
 
-	Layers = new Layer[LayersCount]();
+	Layers = new DBNLayer[LayersCount]();
 	Layers[0].Init(0, neuronsCountPerLayer[0] + 1); //Neuronen Inputlayer
 	for (int i = 1; i < LayersCount; ++i) { //Rückwärtsgewichte
 		Layers[i].Init(neuronsCountPerLayer[i - 1], neuronsCountPerLayer[i] + 1);
@@ -28,17 +29,37 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 		Layers[i].Forwardweightsinit(neuronsCountPerLayer[i], &Layers[i + 1]);
 	}
 	InitWeights(initType);
+}
+
+void DeepBeliefNet::copy(const DeepBeliefNet &that) {
+	this->LayersCount = that.LayersCount;
+	this->MeanSquareError = that.MeanSquareError;
+	this->TotalNeuronCount = that.TotalNeuronCount;
+	this->WeightInitType = that.WeightInitType;
+	this->FunctionType = that.FunctionType;
+
+	this->Layers = new DBNLayer[LayersCount];
+
+	for (int i = 0; i < LayersCount; i++)
+		this->Layers[i] = that.Layers[i];
 }	
 
-void NeuralNetwork::InitWeights(WeightInitEnum initType) {
+DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &that)
+// :NeuralNetwork() funktioniert unter g++ jedoch bekommt der windows compiler das leider nicht hin deshalb workaround mit init()
+{
+	init();
+	copy(that);
+}
+
+void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 	this->WeightInitType = initType;
 
 	int i, j;
 	for (i = (LayersCount - 1); i >= 0; i--) {
-		Layer* layer = &Layers[i];
+		DBNLayer* layer = &Layers[i];
 
 		for (j = 0; j < layer->NeuronCount; ++j) {
-			Neuron* neuron = &layer->Neurons[j];
+			DBNNeuron* neuron = &layer->Neurons[j];
 
 			for (int k = 0; k < layer->InputValuesCount + 1; ++k) { //+1 for Bias
 				if (neuron->WeightCount == 0)
