@@ -13,7 +13,7 @@
    height="271.91373"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="Boltzmann.svg">
   <defs
      id="defs4" />
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="113.3242"
+     inkscape:cx="115.34451"
      inkscape:cy="14.229238"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -60,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -238,6 +238,14 @@
          d="m 667.77344,346.94226 -11.13282,-29.16016 4.1211,0 9.23828,24.55079 9.25781,-24.55079 4.10156,0 -11.11328,29.16016 -4.47265,0"
          id="path3911"
          inkscape:connector-curvature="0" />
+    </g>
+    <g
+       style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text3367">
+      <path
+         d="m 70.913086,192.31453 2.739258,0 4.216308,16.9458 4.202881,-16.9458 3.048096,0 4.216308,16.9458 4.202881,-16.9458 2.752686,0 -5.0354,20.04761 -3.410645,0 -4.229736,-17.40235 -4.27002,17.40235 -3.410644,0 -5.021973,-20.04761 z"
+         style=""
+         id="path3432" />
     </g>
   </g>
 </svg>

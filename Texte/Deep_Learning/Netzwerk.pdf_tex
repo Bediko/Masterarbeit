@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'Netzwerk.pdf' (pdf, eps, ps)
 %%
@@ -49,6 +49,6 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,1.61224128)%
-    \put(0,0){\includegraphics[width=\unitlength]{Netzwerk.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Netzwerk.pdf}}%
   \end{picture}%
 \endgroup%
