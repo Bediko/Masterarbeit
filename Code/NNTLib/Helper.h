@@ -13,6 +13,7 @@
 #include "GeneticAlgorithm.h"
 #include "DataContainer.h"
 #include "ContrastiveDivergence.h"
+#include "DeepBeliefNet.h"
 
 std::string getCmdOptionValue(char ** begin, char ** end, const std::string & option);
 
