@@ -3,12 +3,13 @@
 
 namespace NNTLib
 {
+
 	void DBNLayer::Init(int inputsize, int neuronCount)
 	{
 		NeuronCount=neuronCount;
 		InputValuesCount=inputsize;
 
-		Neurons=new Neuron[NeuronCount];
+		Neurons=new DBNNeuron[NeuronCount];
 		InputValues=new double[InputValuesCount]();
 		SumDeltaErrWeights = new double[inputsize]();
 		if(inputsize!=0)
@@ -20,7 +21,7 @@ namespace NNTLib
 		}
 		Neurons[NeuronCount-1].Init(InputValuesCount);//bias hat keine Eingabegewichte
 	}
-	void DBNLayer::Forwardweightsinit(int Neuronsdown, Layer* Layerup, int dbn)
+	void DBNLayer::Forwardweightsinit(int Neuronsdown, DBNLayer* Layerup)
 	{
 		for (int i=0;i<=Neuronsdown;i++){
 			Neurons[i].ForwardWeightCount=Layerup->NeuronCount-1;
@@ -31,7 +32,7 @@ namespace NNTLib
 		}
 
 	}
-	void DBNLayer::copy(const Layer &that)
+	void DBNLayer::copy(const DBNLayer &that)
 	{
 		this->InputValuesCount = that.InputValuesCount;
 		this->InputValuesCountWithBias = that.InputValuesCountWithBias;
@@ -49,5 +50,36 @@ namespace NNTLib
 			this->InputValues[i]=that.InputValues[i];
 			this->SumDeltaErrWeights[i]=that.SumDeltaErrWeights[i];
 		}
+	}
+
+	DBNLayer::DBNLayer(const DBNLayer &that)
+	{
+		init();
+		copy(that);
+	}
+	DBNLayer& DBNLayer::operator= (const DBNLayer &that)
+	{
+		if (&that != this) {
+			freeMem();
+			init();
+			copy(that);
+		}
+		return *this;
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Layer"/> class.
+	/// </summary>
+	DBNLayer::DBNLayer()
+	{
+		init();
+	}
+
+	/// <summary>
+	/// Finalizes an instance of the <see cref="Layer"/> class.
+	/// </summary>
+	DBNLayer::~DBNLayer()
+	{
+		freeMem();
 	}
 }
