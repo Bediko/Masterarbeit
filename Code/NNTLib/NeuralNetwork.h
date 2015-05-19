@@ -9,7 +9,7 @@ namespace NNTLib
 {
 	class NeuralNetwork
 	{
-	private:
+	protected:
 		void copy(const NeuralNetwork &that);
 		std::mt19937 generator;
 		void init();
@@ -39,9 +39,8 @@ namespace NNTLib
 		/// The layers
 		/// </summary>
 		Layer *Layers;
-
+		NeuralNetwork();
 		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);
-		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType, int dbn);
 
 
 		//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three
@@ -51,7 +50,6 @@ namespace NNTLib
 		bool operator < (const NeuralNetwork& net) const;
 
 		void InitWeights(WeightInitEnum initType);
-		void InitWeights(WeightInitEnum initType, int cd);
 		double GenerateRandomWeight(int weightCount);//nicht schön (muss hier weg)
 
 		void SaveWeights(const std::string file);
