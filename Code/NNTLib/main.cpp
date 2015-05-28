@@ -194,6 +194,16 @@ int main(int argc, char* argv[])
 							geneticAlg.SaveResult(filename.c_str(),timeOffsetInMs);
 						}
 					}
+					if(ContrastiveDivergenceConfig.Epochs > 0){
+						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType);
+						NNTLib::ContrastiveDivergence CD(dbn);
+						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize, ContrastiveDivergenceConfig.GibbsSteps);
+						result.SaveWeights("vorher");
+						dbn.SaveWeightsforNN("test");
+						result.LoadWeights("test");
+						result.SaveWeights("nachher");
+						result.FunctionType=static_cast<NNTLib::FunctionEnum>(4);
+					}
 
 					if(backpropConfig.MaxLoopCount > 0)
 					{
@@ -224,11 +234,7 @@ int main(int argc, char* argv[])
 						}
 					}
 
-					if(ContrastiveDivergenceConfig.Epochs > 0){
-						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount,networkConfig.LayerCount,networkConfig.WeightInitType,networkConfig.FunctionType);
-						NNTLib::ContrastiveDivergence CD(dbn);
-						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize);
-					}
+					
 
 
 					if(!saveWeightsFile.empty())
