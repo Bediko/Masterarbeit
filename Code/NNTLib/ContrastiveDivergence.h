@@ -8,7 +8,7 @@ namespace NNTLib
 	{
 	private:
 		std::default_random_engine generator;
-		void trainIncremental(const DataContainer &container,const double learnRate,const int Epochs);
+		void trainIncremental(const DataContainer &container,const double learnRate,const int Epochs, const int gibbs);
 		int Binary(double x);
 //		void trainBatch(const DataContainer &container,const double learnRate,const int maxLoopCount,const double momentum,int minibatchSize,const double errorThreshold,const double decayRate);
 	public:
@@ -18,7 +18,7 @@ namespace NNTLib
 		DeepBeliefNet *network;
 		ContrastiveDivergence(DeepBeliefNet &net);
 		~ContrastiveDivergence();
-		void Train(const DataContainer &container,const double learnRate,const int Epochs,int BatchSize=1);
+		void Train(const DataContainer &container,const double learnRate,const int Epochs,int BatchSize=1, int gibbs=1);
 	};
 }
 #endif
