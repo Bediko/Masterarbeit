@@ -2,8 +2,7 @@
 #include "DBNLayer.h"
 #include <iostream>
 
-namespace NNTLib
-{
+namespace NNTLib {
 
 DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType) {
 	init();
@@ -42,7 +41,7 @@ void DeepBeliefNet::copy(const DeepBeliefNet &that) {
 
 	for (int i = 0; i < LayersCount; i++)
 		this->Layers[i] = that.Layers[i];
-}	
+}
 
 DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &that)
 // :NeuralNetwork() funktioniert unter g++ jedoch bekommt der windows compiler das leider nicht hin deshalb workaround mit init()
@@ -70,5 +69,49 @@ void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 	}
 }
 
+void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
+	int i, j;
 
+	std::ofstream myfile;
+	myfile.open(file);
+
+	if (!myfile) {
+		std::string buf("Could not open file");
+		buf.append(file);
+		throw std::runtime_error(buf);
+	}
+
+	for (int l = 1; l < LayersCount-1; l++) {
+		DBNLayer* layer = &Layers[l];
+		for (j = 0; j < layer->NeuronCount-1; ++j) {
+			DBNNeuron* neuron = &layer->Neurons[j];
+
+			for (int i = 0; i < Layers[l-1].NeuronCount; i++) {
+				myfile << neuron->Weights[i] << "\n";
+			}
+		}
+		for (int j=0;j<Layers[LayersCount-1].NeuronCount-1;j++){
+			for (int i = 0; i < Layers[LayersCount-2].NeuronCount; i++) {
+				myfile << Layers[LayersCount-1].Neurons[j].Weights[i] << "\n";
+			}
+		}
+
+	}
+
+	myfile.close();
+}
+
+void DeepBeliefNet::Propagate(const double *input) {
+	for (int i = 0; i < Layers[0].InputValuesCount; ++i) {
+		
+		Layers[0].InputValues[i] = input[i];
+	}
+	for (int l=0;l<LayersCount;l++){
+
+	}
+}
+
+NeuralNetwork DeepBeliefNet::toNN(){
+
+}
 }

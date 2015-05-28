@@ -15,7 +15,9 @@ namespace NNTLib
 		DeepBeliefNet(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);
 		DeepBeliefNet(const DeepBeliefNet &that);
 		void InitWeights(WeightInitEnum initType);
-
+		void SaveWeightsforNN(const std::string file);
+		void Propagate(const double *input);
+		NeuralNetwork toNN();
 	};
 }
 
