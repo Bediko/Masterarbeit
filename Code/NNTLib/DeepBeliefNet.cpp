@@ -4,7 +4,32 @@
 
 namespace NNTLib {
 
-DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType) {
+void DeepBeliefNet::freeMem() {
+	delete [] Layers;
+}
+
+/// <summary>
+/// Initializes this instance.
+/// </summary>
+void DeepBeliefNet::init() {
+	//Use random_device to generate a seed for Mersenne twister engine.
+	std::random_device rd;
+	// Use Mersenne twister engine to generate pseudo-random numbers.
+	generator.seed(rd());
+
+	LayersCount = 0;
+	MeanSquareError = 0;
+
+	WeightInitType = WeightInitEnum::NONE;
+	FunctionType = FunctionEnum::LINEAR;
+	TotalNeuronCount = 0;
+	Layers = nullptr;
+}
+DeepBeliefNet::~DeepBeliefNet(){
+	freeMem();
+}
+
+DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType):NNTLib::NeuralNetwork(neuronsCountPerLayer,layercount,initType,functionType) {
 	init();
 
 	if (layercount < 2)
@@ -54,13 +79,13 @@ void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 	this->WeightInitType = initType;
 
 	int i, j;
-	for (i = (LayersCount - 1); i >= 0; i--) {
+	for (int i = 0; i < LayersCount; i++) {
 		DBNLayer* layer = &Layers[i];
 
-		for (j = 0; j < layer->NeuronCount; ++j) {
+		for (j = 0; j < layer->NeuronCount-1; ++j) {
 			DBNNeuron* neuron = &layer->Neurons[j];
 
-			for (int k = 0; k < layer->InputValuesCount + 1; ++k) { //+1 for Bias
+			for (int k = 0; k < neuron->WeightCount; ++k) { //+1 for Bias
 				if (neuron->WeightCount == 0)
 					continue;
 				neuron->Weights[k] = GenerateRandomWeight(layer->InputValuesCountWithBias);
@@ -81,18 +106,18 @@ void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 		throw std::runtime_error(buf);
 	}
 
-	for (int l = 1; l < LayersCount-1; l++) {
+	for (int l = 1; l < LayersCount - 1; l++) {
 		DBNLayer* layer = &Layers[l];
-		for (j = 0; j < layer->NeuronCount-1; ++j) {
+		for (j = 0; j < layer->NeuronCount - 1; ++j) {
 			DBNNeuron* neuron = &layer->Neurons[j];
 
-			for (int i = 0; i < Layers[l-1].NeuronCount; i++) {
+			for (int i = 0; i < Layers[l - 1].NeuronCount; i++) {
 				myfile << neuron->Weights[i] << "\n";
 			}
 		}
-		for (int j=0;j<Layers[LayersCount-1].NeuronCount-1;j++){
-			for (int i = 0; i < Layers[LayersCount-2].NeuronCount; i++) {
-				myfile << Layers[LayersCount-1].Neurons[j].Weights[i] << "\n";
+		for (int j = 0; j < Layers[LayersCount - 1].NeuronCount - 1; j++) {
+			for (int i = 0; i < Layers[LayersCount - 2].NeuronCount; i++) {
+				myfile << Layers[LayersCount - 1].Neurons[j].Weights[i] << "\n";
 			}
 		}
 
@@ -103,15 +128,12 @@ void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 
 void DeepBeliefNet::Propagate(const double *input) {
 	for (int i = 0; i < Layers[0].InputValuesCount; ++i) {
-		
+
 		Layers[0].InputValues[i] = input[i];
 	}
-	for (int l=0;l<LayersCount;l++){
+	for (int l = 0; l < LayersCount; l++) {
 
 	}
 }
 
-NeuralNetwork DeepBeliefNet::toNN(){
-
-}
 }
