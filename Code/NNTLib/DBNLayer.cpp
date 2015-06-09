@@ -4,12 +4,26 @@
 namespace NNTLib
 {
 
+	void DBNLayer::freeMem()
+	{
+		
+		delete [] Neurons;
+	}
+	void DBNLayer::init()
+	{
+		InputValuesCount=0;
+		InputValuesCountWithBias=0;
+		NeuronCount=0;
+		Neurons = nullptr;
+		InputValues= nullptr;
+		SumDeltaErrWeights= nullptr;
+	}
+
 	void DBNLayer::Init(int inputsize, int neuronCount)
 	{
-		NeuronCount=neuronCount;
+		NeuronCount=(unsigned long)neuronCount;
 		InputValuesCount=inputsize;
-
-		Neurons=new DBNNeuron[NeuronCount];
+		Neurons=new DBNNeuron[NeuronCount]();
 		InputValues=new double[InputValuesCount]();
 		SumDeltaErrWeights = new double[inputsize]();
 		if(inputsize!=0)

@@ -9,9 +9,11 @@ namespace NNTLib
 	{
 	private:
 		void copy(const DBNLayer &that);
+		void freeMem();
 	public:
 		
 		DBNNeuron *Neurons;
+		void init();
 		void Init(int inputsize, int neuronCount);
 		void Forwardweightsinit(int inputsize, DBNLayer* Layerup);
 		DBNLayer();
