@@ -1,4 +1,5 @@
 #include "DBNNeuron.h"
+#include <iostream>
 
 namespace NNTLib {
 
@@ -11,6 +12,7 @@ void DBNNeuron::init() {
 	LastDeltaWeights = nullptr;
 	DeltaWeights = nullptr;
 	Bias = 1;
+	p=0;
 }
 DBNNeuron::DBNNeuron() {
 	init();
@@ -80,9 +82,9 @@ void DBNNeuron::InitBias(const DataContainer* container) {
 	}
 	for (int d_i = 0; d_i < container->DataCount; d_i++) {
 		for (int i = 0; i < container->InputCount; i++) {
-			if (container->DataInput[d_i][i] > 0.0) {
-				pi[i] += 1.0;
-			}
+			//if (container->DataInput[d_i][i] > 0.0) {
+				pi[i] += container->DataInput[d_i][i];
+			//}
 
 		}
 	}
@@ -90,6 +92,7 @@ void DBNNeuron::InitBias(const DataContainer* container) {
 
 	for (int i = 0; i < container->InputCount; i++) {
 		double count = (double)container->DataCount;
+
 		pi[i] = pi[i] / count;
 
 		pi[i] = log(pi[i] / (1 - pi[i]));
@@ -97,6 +100,7 @@ void DBNNeuron::InitBias(const DataContainer* container) {
 		Weights[i] = pi[i];
 
 	}
+	delete [] pi;
 
 
 }
