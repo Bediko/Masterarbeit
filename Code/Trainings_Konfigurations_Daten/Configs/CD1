@@ -1,5 +1,5 @@
 ErrorThreshold=0
-Gibbssteps=0
+GibbsSteps=100
 BatchSize=1
 LearnRate=0.1
 Epochs= 100

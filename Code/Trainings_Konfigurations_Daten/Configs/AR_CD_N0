@@ -1,5 +1,5 @@
 #Linear=0,SIGMOID=1,TANH=2,LECUN_TANH=3, BINARY=4
-FunctionType=4
+FunctionType=2
 #NONE=0,UNIFORM=1, LECUN=2, NORMAL0=3
 WeightInitType=6
 #LayerCount muss vor LayerNeuronCount definiert sein
