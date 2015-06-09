@@ -3,11 +3,14 @@
 #include <cmath>
 #include "Helper.h"
 
+
 #include "NeuralNetworkConfig.h"
 #include "GeneticAlgorithmConfig.h"
 #include "BackpropagationConfig.h"
 #include "ContrastiveDivergenceConfig.h"
 
+class Layer;
+class Neuron;
 void SimpleXORExampleBackpropagation();
 void SimpleXORExampleGenetic();
 void SimpleMNISTExampleBackpropagation();
