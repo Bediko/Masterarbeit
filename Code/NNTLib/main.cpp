@@ -188,6 +188,8 @@ int main(int argc, char* argv[]) {
 						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						int error = TestNetwork(maxErrordiff, &trainData, result);
+						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
 						result.LoadWeights("test" + std::to_string(iteration));
 
 
@@ -195,6 +197,8 @@ int main(int argc, char* argv[]) {
 						result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
+						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
 						std::ofstream myfile;
 						myfile.open("diff" + std::to_string(iteration));
 
@@ -219,6 +223,8 @@ int main(int argc, char* argv[]) {
 						result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
+						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
@@ -240,6 +246,8 @@ int main(int argc, char* argv[]) {
 						result.SaveWeights("BPsig" + std::to_string(iteration));
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
+						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
@@ -261,6 +269,8 @@ int main(int argc, char* argv[]) {
 						std::cout << "MIT BACK PROPAGATION BINÄR" << std::endl;
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
+						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
