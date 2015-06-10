@@ -13,18 +13,23 @@ namespace NNTLib
 		void init();
 		void freeMem();
 	public:
+		/**
+		 * @brief Number of Forwardweights
+		 */
 		int ForwardWeightCount;
-		//Aktivierungswahrscheinlichkeit bei stochastisch binären Neuronen
+		/**
+		 * @brief propability to turn on
+		 */
 		double p;
-		//Gewichte nach vorne um von allen Layern auf die Gewichte zugreifen zu können
+		/**
+		 * @brief Pointer to weights in the layer above
+		 */
 		double **ForwardWeights;
 
 		DBNNeuron();
 		~DBNNeuron();
 		DBNNeuron(const DBNNeuron &that);
 		DBNNeuron& operator= (const DBNNeuron &that);
-
-		//Initialisiert Gewichte des Bias für sichtbaren Layer in einer Boltzmann Maschine
 		void InitBias(const DataContainer *container);
 
 		void Init(int weightCount);

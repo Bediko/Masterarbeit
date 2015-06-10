@@ -11,7 +11,9 @@ namespace NNTLib
 		void copy(const DBNLayer &that);
 		void freeMem();
 	public:
-		
+		/**
+		 * Deep Belief Neurons on the Layer
+		 */
 		DBNNeuron *Neurons;
 		void init();
 		void Init(int inputsize, int neuronCount);

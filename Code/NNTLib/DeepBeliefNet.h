@@ -20,7 +20,6 @@ namespace NNTLib
 		DeepBeliefNet(const DeepBeliefNet &that);
 		void InitWeights(WeightInitEnum initType);
 		void SaveWeightsforNN(const std::string file);
-		void Propagate(const double *input);
 	};
 }
 

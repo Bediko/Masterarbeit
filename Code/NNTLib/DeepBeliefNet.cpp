@@ -25,10 +25,22 @@ void DeepBeliefNet::init() {
 	TotalNeuronCount = 0;
 	Layers = nullptr;
 }
+/**
+ * @brief destructor
+ * @details destructor
+ */
 DeepBeliefNet::~DeepBeliefNet(){
 	freeMem();
 }
-
+/**
+ * @brief Constructor
+ * @details Initiliases the Deep Belief Net and builds it
+ * 
+ * @param neuronsCountPerLayer Array with the number of Neurons for every layer
+ * @param layercount Number of Layers
+ * @param initType Which way to initialise Weights should be used
+ * @param functionType Which activation function is used in the neurons
+ */
 DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType):NNTLib::NeuralNetwork(neuronsCountPerLayer,layercount,initType,functionType) {
 	init();
 
@@ -54,7 +66,11 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 	}
 	InitWeights(initType);
 }
-
+/**
+ * @brief copies one Net into another
+ * 
+ * @param that Net to copy
+ */
 void DeepBeliefNet::copy(const DeepBeliefNet &that) {
 	this->LayersCount = that.LayersCount;
 	this->MeanSquareError = that.MeanSquareError;
@@ -67,14 +83,21 @@ void DeepBeliefNet::copy(const DeepBeliefNet &that) {
 	for (int i = 0; i < LayersCount; i++)
 		this->Layers[i] = that.Layers[i];
 }
-
+/**
+ * @brief Copy Constructor
+ * @param that Net to copy
+ */
 DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &that)
-// :NeuralNetwork() funktioniert unter g++ jedoch bekommt der windows compiler das leider nicht hin deshalb workaround mit init()
 {
 	init();
 	copy(that);
 }
-
+/**
+ * @brief Initialises Weights
+ * @details Initialises backward Weights for every Neuron in the net
+ * 
+ * @param initType Which type of intialisation should be used
+ */
 void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 	this->WeightInitType = initType;
 
@@ -93,7 +116,13 @@ void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 		}
 	}
 }
-
+/**
+ * @brief Saves Weights for neural network
+ * @details Save weights in a way that a normal feedforward net can easily read them. The backward
+ * bias weights get lost in the process
+ * 
+ * @param file Path to file that gets the weights
+ */
 void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 	int i, j;
 
@@ -124,16 +153,6 @@ void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 	}
 
 	myfile.close();
-}
-
-void DeepBeliefNet::Propagate(const double *input) {
-	for (int i = 0; i < Layers[0].InputValuesCount; ++i) {
-
-		Layers[0].InputValues[i] = input[i];
-	}
-	for (int l = 0; l < LayersCount; l++) {
-
-	}
 }
 
 }
