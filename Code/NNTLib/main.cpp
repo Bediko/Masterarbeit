@@ -185,11 +185,18 @@ int main(int argc, char* argv[]) {
 
 						dbn.SaveWeightsforNN("test" + std::to_string(iteration));
 						NNTLib::Backpropagation backpropAlg(result);
+						std::cout << "SIGMOID BACKPROPAGATION" << std::endl;
 						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						int error = TestNetwork(maxErrordiff, &trainData, result);
-						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						
+						if (k > 1) {
+							std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+							error = TestNetwork(maxErrordiff, &testData, result);
+						} else {
+							std::cout << "Test additional Testdata " << i + 1 << "/" << k << std::endl;
+							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						}
 						result.LoadWeights("test" + std::to_string(iteration));
 
 
@@ -198,7 +205,11 @@ int main(int argc, char* argv[]) {
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
 						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						if (k > 1) {
+							error = TestNetwork(maxErrordiff, &testData, result);
+						} else {
+							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						}
 						std::ofstream myfile;
 						myfile.open("diff" + std::to_string(iteration));
 
@@ -224,7 +235,11 @@ int main(int argc, char* argv[]) {
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
 						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						if (k > 1) {
+							error = TestNetwork(maxErrordiff, &testData, result);
+						} else {
+							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						}
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
@@ -239,7 +254,7 @@ int main(int argc, char* argv[]) {
 							myfile << "\n";
 						}
 						myfile << error << "\n\n";
-						
+
 						result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
 						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
 						std::cout << "MIT BACK PROPAGATION SIGMOID" << std::endl;
@@ -247,7 +262,11 @@ int main(int argc, char* argv[]) {
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
 						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						if (k > 1) {
+							error = TestNetwork(maxErrordiff, &testData, result);
+						} else {
+							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						}
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
@@ -269,8 +288,11 @@ int main(int argc, char* argv[]) {
 						std::cout << "MIT BACK PROPAGATION BINÄR" << std::endl;
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
 						error = TestNetwork(maxErrordiff, &trainData, result);
-						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						error= TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						if (k > 1) {
+							error = TestNetwork(maxErrordiff, &testData, result);
+						} else {
+							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						}
 						for (int i = 0; i < result.LayersCount; ++i) {
 							NNTLib::Layer* layer = &result.Layers[i];
 
@@ -287,36 +309,34 @@ int main(int argc, char* argv[]) {
 						myfile << error << "\n\n";
 
 						myfile.close();
+						//backpropConfig.MaxLoopCount=0;
 					}
 
-					// if(backpropConfig.MaxLoopCount > 0)
-					// {
-					// 	std::cout << "start backpropagation algorithm: "  <<std::endl;
-					// 	NNTLib::Backpropagation backpropAlg(result);
+					if (backpropConfig.MaxLoopCount > 0) {
+						std::cout << "start backpropagation algorithm: "  << std::endl;
+						NNTLib::Backpropagation backpropAlg(result);
 
-					// 	backpropAlg.Train(trainData,backpropConfig.Alpha,backpropConfig.MaxLoopCount,backpropConfig.Momentum,backpropConfig.BatchSize,backpropConfig.ErrorThreshold,backpropConfig.DecayRate);
+						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
 
-					// 	if(backpropAlg.MeasureFilledResultLenght != 0)
-					// 	{
-					// 		//std::cout <<"c"<<backpropAlg.MeasureFilledResultLenght<<std::endl;
-					// 		sumMSEBackprop[iteration] += backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght-1].MeanSquareError;
-					// 		std::cout << "execute time in ms: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght-1].ExecuteTime << "\n";
-					// 		std::cout << "mse value: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght-1].MeanSquareError << "\n";
-					// 	}
+						if (backpropAlg.MeasureFilledResultLenght != 0) {
+							//std::cout <<"c"<<backpropAlg.MeasureFilledResultLenght<<std::endl;
+							sumMSEBackprop[iteration] += backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].MeanSquareError;
+							std::cout << "execute time in ms: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].ExecuteTime << "\n";
+							std::cout << "mse value: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].MeanSquareError << "\n";
+						}
 
-					// 	if(!saveMSEFile.empty())
-					// 	{
-					// 		std::string filename(saveMSEFile);
+						if (!saveMSEFile.empty()) {
+							std::string filename(saveMSEFile);
 
-					// 		replace(filename,"%K",i);
-					// 		replace(filename,"%N",splitFileName(neuralNetworkConfigFile));
-					// 		replace(filename,"%B",splitFileName(backPropagationConfigFile));
-					// 		replace(filename,"%G","");
-					// 		replace(filename,"%D",splitFileName(dataContainerFile));
+							replace(filename, "%K", i);
+							replace(filename, "%N", splitFileName(neuralNetworkConfigFile));
+							replace(filename, "%B", splitFileName(backPropagationConfigFile));
+							replace(filename, "%G", "");
+							replace(filename, "%D", splitFileName(dataContainerFile));
 
-					// 		backpropAlg.SaveResult(filename.c_str(),timeOffsetInMs);
-					// 	}
-					// }
+							backpropAlg.SaveResult(filename.c_str(), timeOffsetInMs);
+						}
+					}
 
 
 
@@ -332,18 +352,16 @@ int main(int argc, char* argv[]) {
 						result.SaveWeights(filename.c_str());
 					}
 
-					// if(!errorDiffValue.empty())
-					// {
-					// 	double maxErrordiff = atof(errorDiffValue.c_str());
-					// 	std::cout << "Test Traindata " <<i+1 <<"/"<<k <<std::endl;
-					// 	sumErrorTrain[iteration] += TestNetwork(maxErrordiff,&trainData,result);
+					if (!errorDiffValue.empty()) {
+						double maxErrordiff = atof(errorDiffValue.c_str());
+						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						sumErrorTrain[iteration] += TestNetwork(maxErrordiff, &trainData, result);
 
-					// 	if(k > 1)
-					// 	{
-					// 		std::cout << "Test Testdata " <<i+1 <<"/"<<k <<std::endl;
-					// 		sumErrorTest[iteration] += TestNetwork(maxErrordiff,&testData,result);
-					// 	}
-					// }
+						if (k > 1) {
+							std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+							sumErrorTest[iteration] += TestNetwork(maxErrordiff, &testData, result);
+						}
+					}
 
 					if (i == k - 1 && k > 1) {
 						std::cout << LINE << std::endl;
