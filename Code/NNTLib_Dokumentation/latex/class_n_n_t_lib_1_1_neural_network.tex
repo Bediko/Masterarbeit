@@ -1,0 +1,359 @@
+\hypertarget{class_n_n_t_lib_1_1_neural_network}{}\section{N\+N\+T\+Lib\+:\+:Neural\+Network Class Reference}
+\label{class_n_n_t_lib_1_1_neural_network}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+
+
+Inheritance diagram for N\+N\+T\+Lib\+:\+:Neural\+Network\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_n_n_t_lib_1_1_neural_network__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for N\+N\+T\+Lib\+:\+:Neural\+Network\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_n_n_t_lib_1_1_neural_network__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd}{Neural\+Network} (int $\ast$layers, int layercount, Weight\+Init\+Enum init\+Type, Function\+Enum function\+Type)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neural_network_a634613b66f5441f58a2e5d7c7b1c3da9}{$\sim$\+Neural\+Network} ()
+\begin{DoxyCompactList}\small\item\em Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neural_network_a21c3863f38585268af2532b027a42d6b}{Neural\+Network} (const \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \&that)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \& \hyperlink{class_n_n_t_lib_1_1_neural_network_add5684447063d835c50ec511a5f28091}{operator=} (const \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \&that)
+\begin{DoxyCompactList}\small\item\em Operator=s the specified that. \end{DoxyCompactList}\item 
+bool \hyperlink{class_n_n_t_lib_1_1_neural_network_a147a7fe89871c02c6fa8c9d691327e0e}{operator$<$} (const \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \&net) const 
+\begin{DoxyCompactList}\small\item\em Operators the specified net. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a}{Init\+Weights} (Weight\+Init\+Enum init\+Type)
+\begin{DoxyCompactList}\small\item\em Initializes the weights. \end{DoxyCompactList}\item 
+double \hyperlink{class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc}{Generate\+Random\+Weight} (int weight\+Count)
+\begin{DoxyCompactList}\small\item\em Generates the random weight. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a4a85f90af22f14e8cce248d9b6e3516c}{Save\+Weights} (const std\+::string file)
+\begin{DoxyCompactList}\small\item\em Saves the weights. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a9c2f594b5aafa05970a47df983436540}{Load\+Weights} (const std\+::string file)
+\begin{DoxyCompactList}\small\item\em Loads the weights. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a86d77108c0d47b6e6dd33dccfef6521f}{Propagate} (const double $\ast$input)
+\begin{DoxyCompactList}\small\item\em Propagates the specified input. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a43e8b626150530fcb8e17aa957ef1d62}{Calculate\+M\+S\+E} (const \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \&data)
+\begin{DoxyCompactList}\small\item\em Calculates the mse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_n_n_t_lib_1_1_neural_network_a279ecd5cdb00a4fd3485d7c1366d1ada}{Layers\+Count}
+\begin{DoxyCompactList}\small\item\em The layers count \end{DoxyCompactList}\item 
+double \hyperlink{class_n_n_t_lib_1_1_neural_network_aa81b59c0bab012cc65f37cfc8870fb7c}{Mean\+Square\+Error}
+\begin{DoxyCompactList}\small\item\em The mean square error \end{DoxyCompactList}\item 
+Weight\+Init\+Enum \hyperlink{class_n_n_t_lib_1_1_neural_network_aef757cbe4d01525f99125716f217135d}{Weight\+Init\+Type}
+\begin{DoxyCompactList}\small\item\em The weight initialize type \end{DoxyCompactList}\item 
+Function\+Enum \hyperlink{class_n_n_t_lib_1_1_neural_network_afe71db7f776309201ae3a793d1fcadf8}{Function\+Type}
+\begin{DoxyCompactList}\small\item\em The function type \end{DoxyCompactList}\item 
+int \hyperlink{class_n_n_t_lib_1_1_neural_network_aeb06dfbd4762d8ce321f7e21532bdad7}{Total\+Neuron\+Count}
+\begin{DoxyCompactList}\small\item\em The total neuron count \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_layer}{Layer} $\ast$ \hyperlink{class_n_n_t_lib_1_1_neural_network_aa0390db1a1aa19da2b9b205a4572eacd}{Layers}
+\begin{DoxyCompactList}\small\item\em The layers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_af5d47358b8619b32506b77b916bc8d5c}{copy} (const \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \&that)
+\begin{DoxyCompactList}\small\item\em Copies the specified that. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d}{init} ()
+\begin{DoxyCompactList}\small\item\em Initializes this instance. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neural_network_ad9a5359eb94a5358d5813e45e35b7b2d}{free\+Mem} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a12f68bf955726ebafa4020d10b4284b6}{}std\+::mt19937 {\bfseries generator}\label{class_n_n_t_lib_1_1_neural_network_a12f68bf955726ebafa4020d10b4284b6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Neural\+Network@{Neural\+Network}}
+\index{Neural\+Network@{Neural\+Network}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Neural\+Network}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Neural\+Network (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{neurons\+Count\+Per\+Layer, }
+\item[{int}]{layercount, }
+\item[{Weight\+Init\+Enum}]{init\+Type, }
+\item[{Function\+Enum}]{function\+Type}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em neurons\+Count\+Per\+Layer} & The hidden layers.\\
+\hline
+{\em layercount} & The hidden layercount.\\
+\hline
+{\em init\+Type} & Type of the initialize.\\
+\hline
+{\em function\+Type} & Type of the function.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a634613b66f5441f58a2e5d7c7b1c3da9}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!````~Neural\+Network@{$\sim$\+Neural\+Network}}
+\index{````~Neural\+Network@{$\sim$\+Neural\+Network}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{$\sim$\+Neural\+Network}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neural\+Network\+::$\sim$\+Neural\+Network (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a634613b66f5441f58a2e5d7c7b1c3da9}
+
+
+Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a21c3863f38585268af2532b027a42d6b}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Neural\+Network@{Neural\+Network}}
+\index{Neural\+Network@{Neural\+Network}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Neural\+Network}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Neural\+Network (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neural\+Network} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a21c3863f38585268af2532b027a42d6b}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a43e8b626150530fcb8e17aa957ef1d62}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Calculate\+M\+S\+E@{Calculate\+M\+S\+E}}
+\index{Calculate\+M\+S\+E@{Calculate\+M\+S\+E}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Calculate\+M\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Calculate\+M\+S\+E (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\+Container} \&}]{data}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a43e8b626150530fcb8e17aa957ef1d62}
+
+
+Calculates the mse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_af5d47358b8619b32506b77b916bc8d5c}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!copy@{copy}}
+\index{copy@{copy}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::copy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neural\+Network} \&}]{that}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neural_network_af5d47358b8619b32506b77b916bc8d5c}
+
+
+Copies the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_ad9a5359eb94a5358d5813e45e35b7b2d}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!free\+Mem@{free\+Mem}}
+\index{free\+Mem@{free\+Mem}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{free\+Mem}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::free\+Mem (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neural_network_ad9a5359eb94a5358d5813e45e35b7b2d}
+
+
+Frees the memory. 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Generate\+Random\+Weight@{Generate\+Random\+Weight}}
+\index{Generate\+Random\+Weight@{Generate\+Random\+Weight}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Generate\+Random\+Weight}]{\setlength{\rightskip}{0pt plus 5cm}double N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Generate\+Random\+Weight (
+\begin{DoxyParamCaption}
+\item[{int}]{weight\+Count}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc}
+
+
+Generates the random weight. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Vector\+Count\+With\+Bias} & The input vector count with bias.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!init@{init}}
+\index{init@{init}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d}
+
+
+Initializes this instance. 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Init\+Weights@{Init\+Weights}}
+\index{Init\+Weights@{Init\+Weights}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Init\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Init\+Weights (
+\begin{DoxyParamCaption}
+\item[{Weight\+Init\+Enum}]{init\+Type}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a}
+
+
+Initializes the weights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\+Type} & Type of the initialize.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a9c2f594b5aafa05970a47df983436540}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Load\+Weights@{Load\+Weights}}
+\index{Load\+Weights@{Load\+Weights}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Load\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Load\+Weights (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{file}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a9c2f594b5aafa05970a47df983436540}
+
+
+Loads the weights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a147a7fe89871c02c6fa8c9d691327e0e}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool N\+N\+T\+Lib\+::\+Neural\+Network\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neural\+Network} \&}]{net}
+\end{DoxyParamCaption}
+) const}\label{class_n_n_t_lib_1_1_neural_network_a147a7fe89871c02c6fa8c9d691327e0e}
+
+
+Operators the specified net. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & The net.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_add5684447063d835c50ec511a5f28091}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!operator=@{operator=}}
+\index{operator=@{operator=}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neural\+Network} \& N\+N\+T\+Lib\+::\+Neural\+Network\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neural\+Network} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_add5684447063d835c50ec511a5f28091}
+
+
+Operator=s the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a86d77108c0d47b6e6dd33dccfef6521f}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Propagate@{Propagate}}
+\index{Propagate@{Propagate}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Propagate}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Propagate (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{input}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a86d77108c0d47b6e6dd33dccfef6521f}
+
+
+Propagates the specified input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The input.\\
+\hline
+\end{DoxyParams}
+neuron-\/$>$Bias \hypertarget{class_n_n_t_lib_1_1_neural_network_a4a85f90af22f14e8cce248d9b6e3516c}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Save\+Weights@{Save\+Weights}}
+\index{Save\+Weights@{Save\+Weights}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Save\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Save\+Weights (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{file}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neural_network_a4a85f90af22f14e8cce248d9b6e3516c}
+
+
+Saves the weights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neural_network_afe71db7f776309201ae3a793d1fcadf8}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Function\+Type@{Function\+Type}}
+\index{Function\+Type@{Function\+Type}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Function\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Function\+Enum N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Function\+Type}\label{class_n_n_t_lib_1_1_neural_network_afe71db7f776309201ae3a793d1fcadf8}
+
+
+The function type 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_aa0390db1a1aa19da2b9b205a4572eacd}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Layers@{Layers}}
+\index{Layers@{Layers}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Layers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Layer}$\ast$ N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Layers}\label{class_n_n_t_lib_1_1_neural_network_aa0390db1a1aa19da2b9b205a4572eacd}
+
+
+The layers 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_a279ecd5cdb00a4fd3485d7c1366d1ada}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Layers\+Count@{Layers\+Count}}
+\index{Layers\+Count@{Layers\+Count}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Layers\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Layers\+Count}\label{class_n_n_t_lib_1_1_neural_network_a279ecd5cdb00a4fd3485d7c1366d1ada}
+
+
+The layers count 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_aa81b59c0bab012cc65f37cfc8870fb7c}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Mean\+Square\+Error@{Mean\+Square\+Error}}
+\index{Mean\+Square\+Error@{Mean\+Square\+Error}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Mean\+Square\+Error}]{\setlength{\rightskip}{0pt plus 5cm}double N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Mean\+Square\+Error}\label{class_n_n_t_lib_1_1_neural_network_aa81b59c0bab012cc65f37cfc8870fb7c}
+
+
+The mean square error 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_aeb06dfbd4762d8ce321f7e21532bdad7}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Total\+Neuron\+Count@{Total\+Neuron\+Count}}
+\index{Total\+Neuron\+Count@{Total\+Neuron\+Count}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Total\+Neuron\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Total\+Neuron\+Count}\label{class_n_n_t_lib_1_1_neural_network_aeb06dfbd4762d8ce321f7e21532bdad7}
+
+
+The total neuron count 
+
+\hypertarget{class_n_n_t_lib_1_1_neural_network_aef757cbe4d01525f99125716f217135d}{}\index{N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}!Weight\+Init\+Type@{Weight\+Init\+Type}}
+\index{Weight\+Init\+Type@{Weight\+Init\+Type}!N\+N\+T\+Lib\+::\+Neural\+Network@{N\+N\+T\+Lib\+::\+Neural\+Network}}
+\subsubsection[{Weight\+Init\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Weight\+Init\+Enum N\+N\+T\+Lib\+::\+Neural\+Network\+::\+Weight\+Init\+Type}\label{class_n_n_t_lib_1_1_neural_network_aef757cbe4d01525f99125716f217135d}
+
+
+The weight initialize type 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+N\+N\+T\+Lib/Neural\+Network.\+h\item 
+N\+N\+T\+Lib/Neural\+Network.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,228 @@
+\hypertarget{class_n_n_t_lib_1_1_layer}{}\section{N\+N\+T\+Lib\+:\+:Layer Class Reference}
+\label{class_n_n_t_lib_1_1_layer}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+
+
+Inheritance diagram for N\+N\+T\+Lib\+:\+:Layer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_n_n_t_lib_1_1_layer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for N\+N\+T\+Lib\+:\+:Layer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_n_n_t_lib_1_1_layer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_n_n_t_lib_1_1_layer_acb8971ed21ec40118ba384750a0f5af8}{Init} (int inputsize, int neuron\+Count)
+\begin{DoxyCompactList}\small\item\em Initializes the specified inputsize. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_layer_a4e30f7c8ff5426765c7c5b8f12c35c14}{Layer} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_layer_acd060e0c112f0ced1ce1530fa3e7e4bf}{$\sim$\+Layer} ()
+\begin{DoxyCompactList}\small\item\em Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_layer_acba87c68aaa9a258185bfe3a807cb841}{Layer} (const \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} \&that)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_layer}{Layer} \& \hyperlink{class_n_n_t_lib_1_1_layer_aa7d4a78bec6093926dcf48eec2f87aeb}{operator=} (const \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} \&that)
+\begin{DoxyCompactList}\small\item\em Operator=s the specified that. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_n_n_t_lib_1_1_layer_a5c968ed46039cbaa69f217c71fd74855}{Input\+Values\+Count}
+\begin{DoxyCompactList}\small\item\em The input values count \end{DoxyCompactList}\item 
+int \hyperlink{class_n_n_t_lib_1_1_layer_a3537c5d904445f7bebac1136c59e0503}{Input\+Values\+Count\+With\+Bias}
+\begin{DoxyCompactList}\small\item\em The input values count with bias \end{DoxyCompactList}\item 
+int \hyperlink{class_n_n_t_lib_1_1_layer_aba659d85237baa7e0b3ba235d5313da6}{Neuron\+Count}
+\begin{DoxyCompactList}\small\item\em The neuron count \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} $\ast$ \hyperlink{class_n_n_t_lib_1_1_layer_ae10597dc8e12d338fe40d902d6f26ef0}{Neurons}
+\begin{DoxyCompactList}\small\item\em The neurons (Collection aller Neuronen auf dem \hyperlink{class_n_n_t_lib_1_1_layer}{Layer}) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_n_n_t_lib_1_1_layer_ab269c8597fa1768562515f8b68439b73}{Input\+Values}
+\begin{DoxyCompactList}\small\item\em The input values (Collection mit Ausgaben des darunter liegenden Layers Li-\/1) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_n_n_t_lib_1_1_layer_a655484beac27344f2ced3bc77a9f160f}{Sum\+Delta\+Err\+Weights}
+\begin{DoxyCompactList}\small\item\em The sum (delta $\ast$ error $\ast$ weights) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_n_n_t_lib_1_1_layer_a1df43626aced41e9f4939c044acd7fdc}{copy} (const \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} \&that)
+\begin{DoxyCompactList}\small\item\em Copies the specified that. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_layer_a77aaaad4b04400691070dd0172197f90}{init} ()
+\begin{DoxyCompactList}\small\item\em Initializes this instance. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_layer_a72cae10c49660e2c7e0788849fdf94df}{free\+Mem} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_n_n_t_lib_1_1_layer_a4e30f7c8ff5426765c7c5b8f12c35c14}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Layer\+::\+Layer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_layer_a4e30f7c8ff5426765c7c5b8f12c35c14}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_acd060e0c112f0ced1ce1530fa3e7e4bf}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!````~Layer@{$\sim$\+Layer}}
+\index{````~Layer@{$\sim$\+Layer}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{$\sim$\+Layer}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Layer\+::$\sim$\+Layer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_layer_acd060e0c112f0ced1ce1530fa3e7e4bf}
+
+
+Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_acba87c68aaa9a258185bfe3a807cb841}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Layer\+::\+Layer (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_layer_acba87c68aaa9a258185bfe3a807cb841}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_layer}{Layer} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_n_n_t_lib_1_1_layer_a1df43626aced41e9f4939c044acd7fdc}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!copy@{copy}}
+\index{copy@{copy}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Layer\+::copy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer} \&}]{that}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_layer_a1df43626aced41e9f4939c044acd7fdc}
+
+
+Copies the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_layer_a72cae10c49660e2c7e0788849fdf94df}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!free\+Mem@{free\+Mem}}
+\index{free\+Mem@{free\+Mem}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{free\+Mem}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Layer\+::free\+Mem (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_layer_a72cae10c49660e2c7e0788849fdf94df}
+
+
+Frees the memory. 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_a77aaaad4b04400691070dd0172197f90}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!init@{init}}
+\index{init@{init}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Layer\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_layer_a77aaaad4b04400691070dd0172197f90}
+
+
+Initializes this instance. 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_acb8971ed21ec40118ba384750a0f5af8}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Init@{Init}}
+\index{Init@{Init}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Layer\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{int}]{inputsize, }
+\item[{int}]{neuron\+Count}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_layer_acb8971ed21ec40118ba384750a0f5af8}
+
+
+Initializes the specified inputsize. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em inputsize} & The inputsize.\\
+\hline
+{\em neuron\+Count} & The neuron count.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_layer_aa7d4a78bec6093926dcf48eec2f87aeb}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!operator=@{operator=}}
+\index{operator=@{operator=}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Layer} \& N\+N\+T\+Lib\+::\+Layer\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_layer_aa7d4a78bec6093926dcf48eec2f87aeb}
+
+
+Operator=s the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_n_n_t_lib_1_1_layer_ab269c8597fa1768562515f8b68439b73}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Input\+Values@{Input\+Values}}
+\index{Input\+Values@{Input\+Values}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Input\+Values}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ N\+N\+T\+Lib\+::\+Layer\+::\+Input\+Values}\label{class_n_n_t_lib_1_1_layer_ab269c8597fa1768562515f8b68439b73}
+
+
+The input values (Collection mit Ausgaben des darunter liegenden Layers Li-\/1) 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_a5c968ed46039cbaa69f217c71fd74855}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Input\+Values\+Count@{Input\+Values\+Count}}
+\index{Input\+Values\+Count@{Input\+Values\+Count}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Input\+Values\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Layer\+::\+Input\+Values\+Count}\label{class_n_n_t_lib_1_1_layer_a5c968ed46039cbaa69f217c71fd74855}
+
+
+The input values count 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_a3537c5d904445f7bebac1136c59e0503}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Input\+Values\+Count\+With\+Bias@{Input\+Values\+Count\+With\+Bias}}
+\index{Input\+Values\+Count\+With\+Bias@{Input\+Values\+Count\+With\+Bias}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Input\+Values\+Count\+With\+Bias}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Layer\+::\+Input\+Values\+Count\+With\+Bias}\label{class_n_n_t_lib_1_1_layer_a3537c5d904445f7bebac1136c59e0503}
+
+
+The input values count with bias 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_aba659d85237baa7e0b3ba235d5313da6}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Neuron\+Count@{Neuron\+Count}}
+\index{Neuron\+Count@{Neuron\+Count}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Neuron\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Layer\+::\+Neuron\+Count}\label{class_n_n_t_lib_1_1_layer_aba659d85237baa7e0b3ba235d5313da6}
+
+
+The neuron count 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_ae10597dc8e12d338fe40d902d6f26ef0}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Neurons@{Neurons}}
+\index{Neurons@{Neurons}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Neurons}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ N\+N\+T\+Lib\+::\+Layer\+::\+Neurons}\label{class_n_n_t_lib_1_1_layer_ae10597dc8e12d338fe40d902d6f26ef0}
+
+
+The neurons (Collection aller Neuronen auf dem \hyperlink{class_n_n_t_lib_1_1_layer}{Layer}) 
+
+\hypertarget{class_n_n_t_lib_1_1_layer_a655484beac27344f2ced3bc77a9f160f}{}\index{N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}!Sum\+Delta\+Err\+Weights@{Sum\+Delta\+Err\+Weights}}
+\index{Sum\+Delta\+Err\+Weights@{Sum\+Delta\+Err\+Weights}!N\+N\+T\+Lib\+::\+Layer@{N\+N\+T\+Lib\+::\+Layer}}
+\subsubsection[{Sum\+Delta\+Err\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ N\+N\+T\+Lib\+::\+Layer\+::\+Sum\+Delta\+Err\+Weights}\label{class_n_n_t_lib_1_1_layer_a655484beac27344f2ced3bc77a9f160f}
+
+
+The sum (delta $\ast$ error $\ast$ weights) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+N\+N\+T\+Lib/Layer.\+h\item 
+N\+N\+T\+Lib/Layer.\+cpp\end{DoxyCompactItemize}

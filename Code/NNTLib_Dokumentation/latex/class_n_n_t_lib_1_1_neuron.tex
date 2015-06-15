@@ -1,0 +1,210 @@
+\hypertarget{class_n_n_t_lib_1_1_neuron}{}\section{N\+N\+T\+Lib\+:\+:Neuron Class Reference}
+\label{class_n_n_t_lib_1_1_neuron}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+
+
+Inheritance diagram for N\+N\+T\+Lib\+:\+:Neuron\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_n_n_t_lib_1_1_neuron__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_n_t_lib_1_1_neuron_a0f61ffe37543468f1d91d57b2e932cf5}{Neuron} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neuron_abd6b77698a485a3f55eea67a49b03f84}{$\sim$\+Neuron} ()
+\begin{DoxyCompactList}\small\item\em Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neuron_ad99424020cc9a321cd969e0384d2ed59}{Neuron} (const \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} \&that)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} \& \hyperlink{class_n_n_t_lib_1_1_neuron_a5595c9a7708259b10bd9f7dca47fca2f}{operator=} (const \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} \&that)
+\begin{DoxyCompactList}\small\item\em Operator=s the specified that. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neuron_ada7e263030d3d9bb9ebf15a965e3ce8b}{Init} (int weight\+Count)
+\begin{DoxyCompactList}\small\item\em Initializes the specified input vector count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_n_n_t_lib_1_1_neuron_a61419230ea3df4452d18b4651fc70c15}{Weight\+Count}
+\begin{DoxyCompactList}\small\item\em The weight count (Anzahl eingehende Gewichte (mit Schwellenwert) \end{DoxyCompactList}\item 
+double \hyperlink{class_n_n_t_lib_1_1_neuron_acb6a45380511787faa355f5104d61f4b}{Output}
+\begin{DoxyCompactList}\small\item\em The output (Ausgabe des Neurons) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_n_n_t_lib_1_1_neuron_a87a9dfbfcc5d2c8db972fd18f0a2d16c}{Weights}
+\begin{DoxyCompactList}\small\item\em The weights (Collection aller Gewichte inklusive Schwellenwert Gewicht) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_n_n_t_lib_1_1_neuron_a28a41c5f983e881fdad5080c979c928d}{Last\+Delta\+Weights}
+\begin{DoxyCompactList}\small\item\em The last delta weights (letzte Gewichtändeurng wird für Momentum Verfahren benötigt) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_n_n_t_lib_1_1_neuron_a40baa96577b40b6b2e2a9b27310d416b}{Delta\+Weights}
+\begin{DoxyCompactList}\small\item\em The delta weights (Summe aller Gewichtsänderungen innerhalb einer Batchsize, wird bei online training nicht verwendet) \end{DoxyCompactList}\item 
+\hypertarget{class_n_n_t_lib_1_1_neuron_aa8f15289fb2d2bf59642895bab33c958}{}double {\bfseries Bias}\label{class_n_n_t_lib_1_1_neuron_aa8f15289fb2d2bf59642895bab33c958}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_n_n_t_lib_1_1_neuron_a3a6807b3f8092e7a10926d675aeafa0f}{copy} (const \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} \&that)
+\begin{DoxyCompactList}\small\item\em Copies the specified that. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neuron_ad95639bcdea710b84947fd4055f4ba64}{init} ()
+\begin{DoxyCompactList}\small\item\em Initializes this instance. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_neuron_ae4476c918ec1f78ed1880926315c4d24}{free\+Mem} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neuron_a0f61ffe37543468f1d91d57b2e932cf5}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neuron\+::\+Neuron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neuron_a0f61ffe37543468f1d91d57b2e932cf5}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_abd6b77698a485a3f55eea67a49b03f84}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!````~Neuron@{$\sim$\+Neuron}}
+\index{````~Neuron@{$\sim$\+Neuron}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{$\sim$\+Neuron}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neuron\+::$\sim$\+Neuron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neuron_abd6b77698a485a3f55eea67a49b03f84}
+
+
+Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_ad99424020cc9a321cd969e0384d2ed59}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Neuron\+::\+Neuron (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neuron_ad99424020cc9a321cd969e0384d2ed59}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_neuron}{Neuron} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neuron_a3a6807b3f8092e7a10926d675aeafa0f}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!copy@{copy}}
+\index{copy@{copy}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neuron\+::copy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron} \&}]{that}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neuron_a3a6807b3f8092e7a10926d675aeafa0f}
+
+
+Copies the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neuron_ae4476c918ec1f78ed1880926315c4d24}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!free\+Mem@{free\+Mem}}
+\index{free\+Mem@{free\+Mem}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{free\+Mem}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neuron\+::free\+Mem (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neuron_ae4476c918ec1f78ed1880926315c4d24}
+
+
+Frees the memory. 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_ad95639bcdea710b84947fd4055f4ba64}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!init@{init}}
+\index{init@{init}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neuron\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_n_n_t_lib_1_1_neuron_ad95639bcdea710b84947fd4055f4ba64}
+
+
+Initializes this instance. 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_ada7e263030d3d9bb9ebf15a965e3ce8b}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Init@{Init}}
+\index{Init@{Init}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Neuron\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{int}]{weight\+Count}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neuron_ada7e263030d3d9bb9ebf15a965e3ce8b}
+
+
+Initializes the specified input vector count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Vector\+Count} & The input vector count.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_neuron_a5595c9a7708259b10bd9f7dca47fca2f}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!operator=@{operator=}}
+\index{operator=@{operator=}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron} \& N\+N\+T\+Lib\+::\+Neuron\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_neuron_a5595c9a7708259b10bd9f7dca47fca2f}
+
+
+Operator=s the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_n_n_t_lib_1_1_neuron_a40baa96577b40b6b2e2a9b27310d416b}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Delta\+Weights@{Delta\+Weights}}
+\index{Delta\+Weights@{Delta\+Weights}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Delta\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ N\+N\+T\+Lib\+::\+Neuron\+::\+Delta\+Weights}\label{class_n_n_t_lib_1_1_neuron_a40baa96577b40b6b2e2a9b27310d416b}
+
+
+The delta weights (Summe aller Gewichtsänderungen innerhalb einer Batchsize, wird bei online training nicht verwendet) 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_a28a41c5f983e881fdad5080c979c928d}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Last\+Delta\+Weights@{Last\+Delta\+Weights}}
+\index{Last\+Delta\+Weights@{Last\+Delta\+Weights}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Last\+Delta\+Weights}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ N\+N\+T\+Lib\+::\+Neuron\+::\+Last\+Delta\+Weights}\label{class_n_n_t_lib_1_1_neuron_a28a41c5f983e881fdad5080c979c928d}
+
+
+The last delta weights (letzte Gewichtändeurng wird für Momentum Verfahren benötigt) 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_acb6a45380511787faa355f5104d61f4b}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Output@{Output}}
+\index{Output@{Output}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Output}]{\setlength{\rightskip}{0pt plus 5cm}double N\+N\+T\+Lib\+::\+Neuron\+::\+Output}\label{class_n_n_t_lib_1_1_neuron_acb6a45380511787faa355f5104d61f4b}
+
+
+The output (Ausgabe des Neurons) 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_a61419230ea3df4452d18b4651fc70c15}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Weight\+Count@{Weight\+Count}}
+\index{Weight\+Count@{Weight\+Count}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Weight\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Neuron\+::\+Weight\+Count}\label{class_n_n_t_lib_1_1_neuron_a61419230ea3df4452d18b4651fc70c15}
+
+
+The weight count (Anzahl eingehende Gewichte (mit Schwellenwert) 
+
+\hypertarget{class_n_n_t_lib_1_1_neuron_a87a9dfbfcc5d2c8db972fd18f0a2d16c}{}\index{N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}!Weights@{Weights}}
+\index{Weights@{Weights}!N\+N\+T\+Lib\+::\+Neuron@{N\+N\+T\+Lib\+::\+Neuron}}
+\subsubsection[{Weights}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ N\+N\+T\+Lib\+::\+Neuron\+::\+Weights}\label{class_n_n_t_lib_1_1_neuron_a87a9dfbfcc5d2c8db972fd18f0a2d16c}
+
+
+The weights (Collection aller Gewichte inklusive Schwellenwert Gewicht) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+N\+N\+T\+Lib/Neuron.\+h\item 
+N\+N\+T\+Lib/Neuron.\+cpp\end{DoxyCompactItemize}

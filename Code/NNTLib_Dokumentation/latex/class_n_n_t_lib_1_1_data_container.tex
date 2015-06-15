@@ -1,0 +1,202 @@
+\hypertarget{class_n_n_t_lib_1_1_data_container}{}\section{N\+N\+T\+Lib\+:\+:Data\+Container Class Reference}
+\label{class_n_n_t_lib_1_1_data_container}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_n_n_t_lib_1_1_data_container_afad4bfed596006fe669600d6922d21be}{Copy\+Data} (const \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \&src, int startindex\+Dst, int startindex\+Source, int lenght)
+\begin{DoxyCompactList}\small\item\em Copies the data. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_data_container_a3e3a40faa67e7695f3ccc9e564c9ff40}{Data\+Container} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} struct. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_data_container_ae025ff11546a36319b21f700095a1a97}{Load\+File} (const char $\ast$file)
+\begin{DoxyCompactList}\small\item\em Loads the file. Datei muss wie folgt ausgebaut sein 2 2 1 //\mbox{[}Anzahl Daten\mbox{]} \mbox{[}Anzahl Input\mbox{]} \mbox{[}Anzahl Output\mbox{]} 0 0 //\+Input Daten 1 \{0,0\} 0 //\+Output Daten 1 \{0\} 0 1 //\+Input Daten 2 \{0,1\} 1 //\+Output Daten 2 \{1\} \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_data_container_a6f3a9e67619494c00732f6f8a5188246}{Init} (int data\+Count, int input\+Count, int output\+Count)
+\begin{DoxyCompactList}\small\item\em Initializes the specified data count. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_data_container_ace6c0c0f2af211f30214fe2605c72734}{$\sim$\+Data\+Container} ()
+\begin{DoxyCompactList}\small\item\em Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_data_container_a0b15f3375a93edf3c77edf9bb469ae30}{Data\+Container} (const \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \&that)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \& \hyperlink{class_n_n_t_lib_1_1_data_container_ac3be801bc4609c2cf47f2ae57126b42a}{operator=} (const \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \&that)
+\begin{DoxyCompactList}\small\item\em Operator=s the specified that. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_n_n_t_lib_1_1_data_container_aa90b71e48e7eb8ff3fe9f42bd4c57071}{Data\+Count}
+\begin{DoxyCompactList}\small\item\em The data count \end{DoxyCompactList}\item 
+int \hyperlink{class_n_n_t_lib_1_1_data_container_a4929c69fbf3ac00f7bbd277414aac54e}{Input\+Count}
+\begin{DoxyCompactList}\small\item\em The input count \end{DoxyCompactList}\item 
+int \hyperlink{class_n_n_t_lib_1_1_data_container_a821ff2aaddaf2bd392f0741b5f33799c}{Output\+Count}
+\begin{DoxyCompactList}\small\item\em The output count \end{DoxyCompactList}\item 
+double $\ast$$\ast$ \hyperlink{class_n_n_t_lib_1_1_data_container_a15c14ea2246df3d12cfaf5fe822d479a}{Data\+Input}
+\begin{DoxyCompactList}\small\item\em The data input \end{DoxyCompactList}\item 
+double $\ast$$\ast$ \hyperlink{class_n_n_t_lib_1_1_data_container_adcbb3f80557abf9f8fb8f53ea648a3ad}{Data\+Output}
+\begin{DoxyCompactList}\small\item\em The data output \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_n_n_t_lib_1_1_data_container_a3e3a40faa67e7695f3ccc9e564c9ff40}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Data\+Container@{Data\+Container}}
+\index{Data\+Container@{Data\+Container}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Data\+Container}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Data\+Container\+::\+Data\+Container (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_a3e3a40faa67e7695f3ccc9e564c9ff40}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} struct. 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_ace6c0c0f2af211f30214fe2605c72734}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!````~Data\+Container@{$\sim$\+Data\+Container}}
+\index{````~Data\+Container@{$\sim$\+Data\+Container}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{$\sim$\+Data\+Container}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Data\+Container\+::$\sim$\+Data\+Container (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_ace6c0c0f2af211f30214fe2605c72734}
+
+
+Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} class. 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_a0b15f3375a93edf3c77edf9bb469ae30}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Data\+Container@{Data\+Container}}
+\index{Data\+Container@{Data\+Container}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Data\+Container}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Data\+Container\+::\+Data\+Container (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\+Container} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_a0b15f3375a93edf3c77edf9bb469ae30}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_n_n_t_lib_1_1_data_container_afad4bfed596006fe669600d6922d21be}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Copy\+Data@{Copy\+Data}}
+\index{Copy\+Data@{Copy\+Data}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Copy\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Data\+Container\+::\+Copy\+Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\+Container} \&}]{src, }
+\item[{int}]{startindex\+Dst, }
+\item[{int}]{startindex\+Source, }
+\item[{int}]{lenght}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_afad4bfed596006fe669600d6922d21be}
+
+
+Copies the data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & The source.\\
+\hline
+{\em startindex\+Dst} & The startindex D\+S\+T.\\
+\hline
+{\em startindex\+Source} & The startindex source.\\
+\hline
+{\em lenght} & The lenght.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_data_container_a6f3a9e67619494c00732f6f8a5188246}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Init@{Init}}
+\index{Init@{Init}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Data\+Container\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{int}]{data\+Count, }
+\item[{int}]{input\+Count, }
+\item[{int}]{output\+Count}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_a6f3a9e67619494c00732f6f8a5188246}
+
+
+Initializes the specified data count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Count} & The data count.\\
+\hline
+{\em input\+Count} & The input count.\\
+\hline
+{\em output\+Count} & The output count.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_data_container_ae025ff11546a36319b21f700095a1a97}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Load\+File@{Load\+File}}
+\index{Load\+File@{Load\+File}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Load\+File}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Data\+Container\+::\+Load\+File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_ae025ff11546a36319b21f700095a1a97}
+
+
+Loads the file. Datei muss wie folgt ausgebaut sein 2 2 1 //\mbox{[}Anzahl Daten\mbox{]} \mbox{[}Anzahl Input\mbox{]} \mbox{[}Anzahl Output\mbox{]} 0 0 //\+Input Daten 1 \{0,0\} 0 //\+Output Daten 1 \{0\} 0 1 //\+Input Daten 2 \{0,1\} 1 //\+Output Daten 2 \{1\} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_data_container_ac3be801bc4609c2cf47f2ae57126b42a}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!operator=@{operator=}}
+\index{operator=@{operator=}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\+Container} \& N\+N\+T\+Lib\+::\+Data\+Container\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\+Container} \&}]{that}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_data_container_ac3be801bc4609c2cf47f2ae57126b42a}
+
+
+Operator=s the specified that. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em that} & The that.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_n_n_t_lib_1_1_data_container_aa90b71e48e7eb8ff3fe9f42bd4c57071}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Data\+Count@{Data\+Count}}
+\index{Data\+Count@{Data\+Count}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Data\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Data\+Container\+::\+Data\+Count}\label{class_n_n_t_lib_1_1_data_container_aa90b71e48e7eb8ff3fe9f42bd4c57071}
+
+
+The data count 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_a15c14ea2246df3d12cfaf5fe822d479a}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Data\+Input@{Data\+Input}}
+\index{Data\+Input@{Data\+Input}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Data\+Input}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ N\+N\+T\+Lib\+::\+Data\+Container\+::\+Data\+Input}\label{class_n_n_t_lib_1_1_data_container_a15c14ea2246df3d12cfaf5fe822d479a}
+
+
+The data input 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_adcbb3f80557abf9f8fb8f53ea648a3ad}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Data\+Output@{Data\+Output}}
+\index{Data\+Output@{Data\+Output}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Data\+Output}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ N\+N\+T\+Lib\+::\+Data\+Container\+::\+Data\+Output}\label{class_n_n_t_lib_1_1_data_container_adcbb3f80557abf9f8fb8f53ea648a3ad}
+
+
+The data output 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_a4929c69fbf3ac00f7bbd277414aac54e}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Input\+Count@{Input\+Count}}
+\index{Input\+Count@{Input\+Count}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Input\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Data\+Container\+::\+Input\+Count}\label{class_n_n_t_lib_1_1_data_container_a4929c69fbf3ac00f7bbd277414aac54e}
+
+
+The input count 
+
+\hypertarget{class_n_n_t_lib_1_1_data_container_a821ff2aaddaf2bd392f0741b5f33799c}{}\index{N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}!Output\+Count@{Output\+Count}}
+\index{Output\+Count@{Output\+Count}!N\+N\+T\+Lib\+::\+Data\+Container@{N\+N\+T\+Lib\+::\+Data\+Container}}
+\subsubsection[{Output\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int N\+N\+T\+Lib\+::\+Data\+Container\+::\+Output\+Count}\label{class_n_n_t_lib_1_1_data_container_a821ff2aaddaf2bd392f0741b5f33799c}
+
+
+The output count 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+N\+N\+T\+Lib/Data\+Container.\+h\item 
+N\+N\+T\+Lib/Data\+Container.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,118 @@
+\hypertarget{class_n_n_t_lib_1_1_backpropagation}{}\section{N\+N\+T\+Lib\+:\+:Backpropagation Class Reference}
+\label{class_n_n_t_lib_1_1_backpropagation}\index{N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}}
+
+
+Inheritance diagram for N\+N\+T\+Lib\+:\+:Backpropagation\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{class_n_n_t_lib_1_1_backpropagation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for N\+N\+T\+Lib\+:\+:Backpropagation\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_n_n_t_lib_1_1_backpropagation__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_n_t_lib_1_1_backpropagation_afadd50e1e66fb044a6999ec5094ca1af}{Backpropagation} (\hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} \&net)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_backpropagation}{Backpropagation} class. \end{DoxyCompactList}\item 
+\hyperlink{class_n_n_t_lib_1_1_backpropagation_a35dbdb3ee50f6edc952ee23c35d79eee}{$\sim$\+Backpropagation} ()
+\begin{DoxyCompactList}\small\item\em Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_backpropagation}{Backpropagation} class. \end{DoxyCompactList}\item 
+void \hyperlink{class_n_n_t_lib_1_1_backpropagation_a1043af2261f85a391ba3baccc1bc8b4b}{Train} (const \hyperlink{class_n_n_t_lib_1_1_data_container}{Data\+Container} \&container, const double learn\+Rate, const int max\+Loop\+Count, const double momentum=0, int minibatch\+Size=1, const double error\+Threshold=0, const double decay\+Rate=0)
+\begin{DoxyCompactList}\small\item\em Trains the specified container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_n_t_lib_1_1_neural_network}{Neural\+Network} $\ast$ \hyperlink{class_n_n_t_lib_1_1_backpropagation_af439beac84eedecfcdd2eb0c9ff98c5a}{network}
+\begin{DoxyCompactList}\small\item\em The network \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_n_n_t_lib_1_1_backpropagation_afadd50e1e66fb044a6999ec5094ca1af}{}\index{N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}!Backpropagation@{Backpropagation}}
+\index{Backpropagation@{Backpropagation}!N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}}
+\subsubsection[{Backpropagation}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Backpropagation\+::\+Backpropagation (
+\begin{DoxyParamCaption}
+\item[{{\bf Neural\+Network} \&}]{net}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_backpropagation_afadd50e1e66fb044a6999ec5094ca1af}
+
+
+Initializes a new instance of the \hyperlink{class_n_n_t_lib_1_1_backpropagation}{Backpropagation} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & The net.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_n_n_t_lib_1_1_backpropagation_a35dbdb3ee50f6edc952ee23c35d79eee}{}\index{N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}!````~Backpropagation@{$\sim$\+Backpropagation}}
+\index{````~Backpropagation@{$\sim$\+Backpropagation}!N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}}
+\subsubsection[{$\sim$\+Backpropagation}]{\setlength{\rightskip}{0pt plus 5cm}N\+N\+T\+Lib\+::\+Backpropagation\+::$\sim$\+Backpropagation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_backpropagation_a35dbdb3ee50f6edc952ee23c35d79eee}
+
+
+Finalizes an instance of the \hyperlink{class_n_n_t_lib_1_1_backpropagation}{Backpropagation} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_n_n_t_lib_1_1_backpropagation_a1043af2261f85a391ba3baccc1bc8b4b}{}\index{N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}!Train@{Train}}
+\index{Train@{Train}!N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}}
+\subsubsection[{Train}]{\setlength{\rightskip}{0pt plus 5cm}void N\+N\+T\+Lib\+::\+Backpropagation\+::\+Train (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\+Container} \&}]{container, }
+\item[{const double}]{learn\+Rate, }
+\item[{const int}]{max\+Loop\+Count, }
+\item[{const double}]{momentum = {\ttfamily 0}, }
+\item[{int}]{minibatch\+Size = {\ttfamily 1}, }
+\item[{const double}]{error\+Threshold = {\ttfamily 0}, }
+\item[{const double}]{decay\+Rate = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class_n_n_t_lib_1_1_backpropagation_a1043af2261f85a391ba3baccc1bc8b4b}
+
+
+Trains the specified container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container.\\
+\hline
+{\em learn\+Rate} & The learn rate.\\
+\hline
+{\em max\+Loop\+Count} & The maximum loop count.\\
+\hline
+{\em momentum} & The momentum.\\
+\hline
+{\em minibatch\+Size} & Size of the batch.\\
+\hline
+{\em error\+Threshold} & The error threshold.\\
+\hline
+{\em decay\+Rate} & The decay rate.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_n_n_t_lib_1_1_backpropagation_af439beac84eedecfcdd2eb0c9ff98c5a}{}\index{N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}!network@{network}}
+\index{network@{network}!N\+N\+T\+Lib\+::\+Backpropagation@{N\+N\+T\+Lib\+::\+Backpropagation}}
+\subsubsection[{network}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neural\+Network}$\ast$ N\+N\+T\+Lib\+::\+Backpropagation\+::network}\label{class_n_n_t_lib_1_1_backpropagation_af439beac84eedecfcdd2eb0c9ff98c5a}
+
+
+The network 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+N\+N\+T\+Lib/Backpropagation.\+h\item 
+N\+N\+T\+Lib/Backpropagation.\+cpp\end{DoxyCompactItemize}
