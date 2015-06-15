@@ -21,8 +21,8 @@ public:
 	/// </summary>
 	DeepBeliefNet *network;
 	void GibbsSampling(int gibbssteps, int d_i);
-	void UpdateHiddenUnitsWithSampling();
-	void UpdateHiddenUnitsWithoutSampling();
+	void UpdateHiddenUnits();
+	void UpdateVisibleUnits();
 
 	ContrastiveDivergence(DeepBeliefNet &net);
 	~ContrastiveDivergence();
