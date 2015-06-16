@@ -181,6 +181,32 @@ Wenn dieser Algorithmus die Gewichte in den höheren Layern ändert, wird das Mo
 \subsection{Backpropagation}
 Nach dem lernen des Netzes mit dem Greedy Algorithmus sind die Gewichte in den unteren Layern nicht optimal und das ganze Netz wird noch einmal feiner eingestellt mit Hilfe des Backpropagation-Algorithmus. Dieser gehört zu den überwachten Lernverfahren und versucht eine Fehlerfunktion zu minimieren. Dazu werden die einzelnen Grauwerte der Farbpixel auf das Intervall $[0,1]$ abgebildet. Da der verwendete Datensatz hauptsächlich schwarz-weiss Bilder beinhaltet und sich daher zwei Extrema bilden, bietet es sich an die logistische Funktion zur Modellierung zu verwenden. Das Netz wird dazu "'entfaltet"', sodass alle Kanten nur noch in eine Richtung zeigen, sodass das Netz aus einem "'Encoder"' Teil und einem "'Decoder"' Teil besteht\cite{backprop}. 
 
+\subsection{Implementation}
+Als Grundgerüst wurde ein bereits implementiertes Feedforward-Netz, welches bereits Backpropagation kann, genutzt. Abbildung \ref{Aufbau} zeigt die Klassenherarchie des verwendeten Grundgerüsts. In rot sind die für den Aufbau und die Verwendung von Deep-Belief Netzen benötigten Klassen markiert.
+
+Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches. Der letzte Parameter hat jedoch keine Auswirkung, da die Implementation der Kontrastiven Divergenz aktuell nur Batchgrößen von 1 zulässt, also nach jedem Trainingsbild die Gewichte aktualisiert.
+
+DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den normalen Gewichten, die daraus bestehen, dass diese bei zwei Layern nur von dem oberen Layer angesprochen werden können, auch vorwärtsgerichtete Gewichte initialisiert werden. Diese Gewichte stellen jedoch lediglich Zeiger auf die normalen Gewichte dar.
+\begin{figure}[H]
+	\center
+	\includesvg{Aufbau}
+	\caption{Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugefügt.}
+	\label{Aufbau}
+\end{figure}
+DeepBeliefNet stellt die Netzstruktur für Deep-Belief Netze zur Verfügung. Im Gegensatz zu den normalen Netzwerken des Frameworks, besitzen Deep-Belief Netze auch auf der Eingabeebene eigene Neuronen. Dies ist wichtig, da man für die Kontrastive Divergenz die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen speichern muss. Desweiteren besitzt das Netz die Funktion seine Gewichte so abzuspeichern, dass diese von einem normalen neuronalen Netz wieder eingelesen werden können. Dabei gehen die Biasgewichte in Rückwärtsrichtung verloren, da diese von dem normalen neuronalen Netz mit Backpropagation nicht benötigt werden.
+
+DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktivierungswahrscheinlichkeit speichern und besitzen die Möglichkeit auf die Gewichte zum nächsthöheren Layer zuzugreifen. Außerdem kam eine Funktion zum initialisieren von Biasgewichten hinzu. Diese bekommt entweder den Datencontainer für die Eingabedaten des Layers oder NULL übergeben. Wenn kein Container übergeben wird, wird der Bias auf 0 gesetzt. Dies ist der Fall, wenn der Biasknoten für die versteckte Ebene zuständig ist. Wenn ein Container übergeben wird, wird aus den Eingabedaten der Initialwert des Bias für jeden sichtbaren Knoten $i$ berechnet:
+\begin{equation}
+\log [p_i/(1-p_i)]
+\end{equation}
+$p_i$ ist hierbei die Durchschnittliche Aktivierungswahrscheinlichkeit des Knoten $i$ über alle Eingabedaten.
+\begin{figure}[H]
+	\center
+	\includesvg{Aufbau}
+	\caption{Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugefügt.}
+	\label{Aufbau}
+\end{figure}
+
 \begin{thebibliography}{9}
 \bibliographystyle{unsrt}
 \bibitem{guide}
