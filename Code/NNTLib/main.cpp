@@ -184,131 +184,132 @@ int main(int argc, char* argv[]) {
 						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize, ContrastiveDivergenceConfig.GibbsSteps);
 
 						dbn.SaveWeightsforNN("test" + std::to_string(iteration));
-						NNTLib::Backpropagation backpropAlg(result);
-						std::cout << "SIGMOID BACKPROPAGATION" << std::endl;
-						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						int error = TestNetwork(maxErrordiff, &trainData, result);
+						result.LoadWeights("test" + std::to_string(iteration));						
+//NNTLib::Backpropagation backpropAlg(result);
+						  //std::cout << "SIGMOID BACKPROPAGATION" << std::endl;
+						  //backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
+						  //std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						  //int error = TestNetwork(maxErrordiff, &trainData, dbn);
 						
-						if (k > 1) {
-							std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-							error = TestNetwork(maxErrordiff, &testData, result);
-						} else {
-							std::cout << "Test additional Testdata " << i + 1 << "/" << k << std::endl;
-							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						}
-						result.LoadWeights("test" + std::to_string(iteration));
+						 // if (k > 1) {
+						 // 	std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						 // 	error = TestNetwork(maxErrordiff, &testData, dbn);
+						 // } else {
+						 // 	std::cout << "Test additional Testdata " << i + 1 << "/" << k << std::endl;
+						 // 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, dbn);
+						 // }
+						//result.LoadWeights("test" + std::to_string(iteration));
 
 
-						std::cout << "OHNE BACK PROPAGATION SIGMOID" << std::endl;
-						result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
-						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						error = TestNetwork(maxErrordiff, &trainData, result);
-						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						if (k > 1) {
-							error = TestNetwork(maxErrordiff, &testData, result);
-						} else {
-							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						}
-						std::ofstream myfile;
-						myfile.open("diff" + std::to_string(iteration));
+						// std::cout << "OHNE BACK PROPAGATION SIGMOID" << std::endl;
+						// result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
+						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						// error = TestNetwork(maxErrordiff, &trainData, result);
+						// std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						// if (k > 1) {
+						// 	error = TestNetwork(maxErrordiff, &testData, result);
+						// } else {
+						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						// }
+						//  std::ofstream myfile;
+						//  myfile.open("diff" + std::to_string(iteration));
 
 
-						for (int i = 0; i < result.LayersCount; ++i) {
-							NNTLib::Layer* layer = &result.Layers[i];
+						// for (int i = 0; i < result.LayersCount; ++i) {
+						// 	NNTLib::Layer* layer = &result.Layers[i];
 
-							for (int j = 0; j < layer->NeuronCount; ++j) {
-								NNTLib::Neuron* neuron = &layer->Neurons[j];
+						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
+						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
 
-								for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-									myfile << neuron->Weights[k] << " ";
-								}
-								myfile << "\n";
-							}
-							myfile << "\n";
-						}
-						myfile << error << "\n\n";
+						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
+						// 			myfile << neuron->Weights[k] << " ";
+						// 		}
+						// 		myfile << "\n";
+						// 	}
+						// 	myfile << "\n";
+						// }
+						// myfile << error << "\n\n";
 
 
-						std::cout << "OHNE BACK PROPAGATION BINÄR" << std::endl;
-						result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
-						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						error = TestNetwork(maxErrordiff, &trainData, result);
-						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						if (k > 1) {
-							error = TestNetwork(maxErrordiff, &testData, result);
-						} else {
-							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						}
-						for (int i = 0; i < result.LayersCount; ++i) {
-							NNTLib::Layer* layer = &result.Layers[i];
+						// std::cout << "OHNE BACK PROPAGATION BINÄR" << std::endl;
+						// result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
+						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						// error = TestNetwork(maxErrordiff, &trainData, result);
+						// std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						// if (k > 1) {
+						// 	error = TestNetwork(maxErrordiff, &testData, result);
+						// } else {
+						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						// }
+						// for (int i = 0; i < result.LayersCount; ++i) {
+						// 	NNTLib::Layer* layer = &result.Layers[i];
 
-							for (int j = 0; j < layer->NeuronCount; ++j) {
-								NNTLib::Neuron* neuron = &layer->Neurons[j];
+						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
+						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
 
-								for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-									myfile << neuron->Weights[k] << " ";
-								}
-								myfile << "\n";
-							}
-							myfile << "\n";
-						}
-						myfile << error << "\n\n";
+						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
+						// 			myfile << neuron->Weights[k] << " ";
+						// 		}
+						// 		myfile << "\n";
+						// 	}
+						// 	myfile << "\n";
+						// }
+						// myfile << error << "\n\n";
 
-						result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
-						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						std::cout << "MIT BACK PROPAGATION SIGMOID" << std::endl;
-						result.SaveWeights("BPsig" + std::to_string(iteration));
-						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						error = TestNetwork(maxErrordiff, &trainData, result);
-						std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						if (k > 1) {
-							error = TestNetwork(maxErrordiff, &testData, result);
-						} else {
-							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						}
-						for (int i = 0; i < result.LayersCount; ++i) {
-							NNTLib::Layer* layer = &result.Layers[i];
+						//result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
+						//backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
+						//std::cout << "MIT BACK PROPAGATION SIGMOID" << std::endl;
+						//result.SaveWeights("BPsig" + std::to_string(iteration));
+						//std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						//int error = TestNetwork(maxErrordiff, &trainData, result);
+						//std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
+						//if (k > 1) {
+						//	error = TestNetwork(maxErrordiff, &testData,result);
+						//} else {
+						//	error = TestNetwork(maxErrordiff, &additionalTestDataContainer,result);
+						//}
+						//for (int i = 0; i < result.LayersCount; ++i) {
+						//	NNTLib::Layer* layer = &result.Layers[i];
 
-							for (int j = 0; j < layer->NeuronCount; ++j) {
-								NNTLib::Neuron* neuron = &layer->Neurons[j];
+						//	for (int j = 0; j < layer->NeuronCount; ++j) {
+						//		NNTLib::Neuron* neuron = &layer->Neurons[j];
 
-								for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-									myfile << neuron->Weights[k] << " ";
-								}
-								myfile << "\n";
-							}
-							myfile << "\n";
-						}
-						myfile << error << "\n\n";
-						result.LoadWeights("test" + std::to_string(iteration));
-						result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
-						backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						result.SaveWeights("BPbin" + std::to_string(iteration));
-						std::cout << "MIT BACK PROPAGATION BINÄR" << std::endl;
-						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						error = TestNetwork(maxErrordiff, &trainData, result);
-						if (k > 1) {
-							error = TestNetwork(maxErrordiff, &testData, result);
-						} else {
-							error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						}
-						for (int i = 0; i < result.LayersCount; ++i) {
-							NNTLib::Layer* layer = &result.Layers[i];
+						//		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
+						//			myfile << neuron->Weights[k] << " ";
+						//		}
+						//		myfile << "\n";
+						//	}
+						//	myfile << "\n";
+						//}
+						//myfile << error << "\n\n";
+						//result.LoadWeights("test" + std::to_string(iteration));
+						//result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
+						//backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
+						//result.SaveWeights("BPbin" + std::to_string(iteration));
+						// std::cout << "MIT BACK PROPAGATION BINÄR" << std::endl;
+						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
+						// error = TestNetwork(maxErrordiff, &trainData, result);
+						// if (k > 1) {
+						// 	error = TestNetwork(maxErrordiff, &testData, result);
+						// } else {
+						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
+						// }
+						// for (int i = 0; i < result.LayersCount; ++i) {
+						// 	NNTLib::Layer* layer = &result.Layers[i];
 
-							for (int j = 0; j < layer->NeuronCount; ++j) {
-								NNTLib::Neuron* neuron = &layer->Neurons[j];
+						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
+						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
 
-								for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-									myfile << neuron->Weights[k] << " ";
-								}
-								myfile << "\n";
-							}
-							myfile << "\n";
-						}
-						myfile << error << "\n\n";
+						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
+						// 			myfile << neuron->Weights[k] << " ";
+						// 		}
+						// 		myfile << "\n";
+						// 	}
+						// 	myfile << "\n";
+						// }
+						// myfile << error << "\n\n";
 
-						myfile.close();
+						// myfile.close();
 						//backpropConfig.MaxLoopCount=0;
 					}
 
