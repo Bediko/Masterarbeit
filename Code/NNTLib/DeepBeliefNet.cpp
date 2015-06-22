@@ -1,6 +1,9 @@
 #include "DeepBeliefNet.h"
 #include "DBNLayer.h"
 #include <iostream>
+#include <random>
+#include <cmath>
+#include <cstdlib>
 
 namespace NNTLib {
 
@@ -29,19 +32,19 @@ void DeepBeliefNet::init() {
  * @brief destructor
  * @details destructor
  */
-DeepBeliefNet::~DeepBeliefNet(){
+DeepBeliefNet::~DeepBeliefNet() {
 	freeMem();
 }
 /**
  * @brief Constructor
  * @details Initiliases the Deep Belief Net and builds it
- * 
+ *
  * @param neuronsCountPerLayer Array with the number of Neurons for every layer
  * @param layercount Number of Layers
  * @param initType Which way to initialise Weights should be used
  * @param functionType Which activation function is used in the neurons
  */
-DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType):NNTLib::NeuralNetwork(neuronsCountPerLayer,layercount,initType,functionType) {
+DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType): NNTLib::NeuralNetwork(neuronsCountPerLayer, layercount, initType, functionType) {
 	init();
 
 	if (layercount < 2)
@@ -68,7 +71,7 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 }
 /**
  * @brief copies one Net into another
- * 
+ *
  * @param that Net to copy
  */
 void DeepBeliefNet::copy(const DeepBeliefNet &that) {
@@ -87,15 +90,14 @@ void DeepBeliefNet::copy(const DeepBeliefNet &that) {
  * @brief Copy Constructor
  * @param that Net to copy
  */
-DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &that)
-{
+DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &that) {
 	init();
 	copy(that);
 }
 /**
  * @brief Initialises Weights
  * @details Initialises backward Weights for every Neuron in the net
- * 
+ *
  * @param initType Which type of intialisation should be used
  */
 void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
@@ -105,7 +107,7 @@ void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
 	for (int i = 0; i < LayersCount; i++) {
 		DBNLayer* layer = &Layers[i];
 
-		for (j = 0; j < layer->NeuronCount-1; ++j) {
+		for (j = 0; j < layer->NeuronCount - 1; ++j) {
 			DBNNeuron* neuron = &layer->Neurons[j];
 
 			for (int k = 0; k < neuron->WeightCount; ++k) { //+1 for Bias
@@ -120,14 +122,13 @@ void DeepBeliefNet::InitWeights(WeightInitEnum initType) {
  * @brief Saves Weights for neural network
  * @details Save weights in a way that a normal feedforward net can easily read them. The backward
  * bias weights get lost in the process
- * 
+ *
  * @param file Path to file that gets the weights
  */
 void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
-	int i, j;
 
 	std::ofstream myfile;
-	myfile.open(file);
+	myfile.open(file.c_str());
 
 	if (!myfile) {
 		std::string buf("Could not open file");
@@ -137,7 +138,7 @@ void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 
 	for (int l = 1; l < LayersCount - 1; l++) {
 		DBNLayer* layer = &Layers[l];
-		for (j = 0; j < layer->NeuronCount - 1; ++j) {
+		for (int j = 0; j < layer->NeuronCount - 1; ++j) {
 			DBNNeuron* neuron = &layer->Neurons[j];
 
 			for (int i = 0; i < Layers[l - 1].NeuronCount; i++) {
@@ -155,4 +156,49 @@ void DeepBeliefNet::SaveWeightsforNN(const std::string file) {
 	myfile.close();
 }
 
+int DeepBeliefNet::Binary(double x) {
+	srand48(time(NULL));
+	//std::uniform_real_distribution<double> dist(0.0, 1.0);
+	double y = drand48();
+	//std::cout<<x<<" "<<y<<" "<<std::endl;
+	return x >= y && x != 0;
+}
+
+void DeepBeliefNet::Propagate(const double *input) {
+	for (int i = 0; i < Layers[0].InputValuesCount; ++i) {
+		//inputlayer hat keine neuronen daher daten in input vektor des ersten layers mit Neuronen übernehmen
+		Layers[0].InputValues[i] = Binary(input[i]);
+	}
+	DBNLayer *top, *bottom;
+	for (int i = 0; i < LayersCount - 2; ++i) {
+		
+		top = &Layers[i + 1];
+		bottom = &Layers[i];
+		for ( int j = 0; j < top->NeuronCount - 1; j++) {
+			double sum = 0.0;
+			for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+				sum += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
+			}
+
+			sum += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
+			sum = 1 + exp(-sum);
+			sum = 1 / sum; //Wahrscheinlichkeit ausrechnen
+			top->Neurons[j].p = sum;
+			top->Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
+		}
+	}
+	top=&Layers[LayersCount-1];
+	bottom=&Layers[LayersCount-2];
+	for ( int j = 0; j < top->NeuronCount - 1; j++) {
+			double sum = 0.0;
+			for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+				sum += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
+			}
+
+			sum += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
+			sum = 1 + exp(-sum);
+			sum = 1 / sum; //Wahrscheinlichkeit ausrechnen
+			top->Neurons[j].Output = sum; //Binäre Zustände bestimmen
+		}
+}
 }
