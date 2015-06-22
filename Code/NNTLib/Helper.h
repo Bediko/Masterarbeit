@@ -30,5 +30,6 @@ double calculateMean(double * values,int lenght);
 double calculateMeanVariant(double mean, double * values,int lenght);
 
 int TestNetwork(double maxErrordiff,const NNTLib::DataContainer * testDataContainer,NNTLib::NeuralNetwork  net);
+int TestNetwork(double maxErrordiff,const NNTLib::DataContainer * testDataContainer,NNTLib::DeepBeliefNet  net);
 
 #endif
