@@ -39,6 +39,7 @@
 \newcommand{\runtime}[1]{\textcolor{Red}{\textbf{#1}}}
 \newcommand{\headline}[1]{\vspace{15pt}\textbf{#1}\vspace{10pt}}
 \newcommand{\code}[1]{\textcolor{Green}{\texttt{#1}}}
+\usepackage[]{algorithm2e}
 
 
 \setlength{\parindent}{0pt}
@@ -61,28 +62,73 @@
 	\tableofcontents
 	
 	\newpage
-	\section{Eingeschränkte Boltzmann Maschinen}
-	Boltzmann Maschinen sind neuronale Netze die ähnlich zu Hopfield Netzen aufgebaut sind. In diesen Netzen ist jedes Neuron mit allen anderen Neuronen außer sich selber verbunden. Die Neuronen in einem Hopfield Netz sind binär. Dies gilt auch für eine Boltzmann Maschine, nur das hier die Neuronen stochastisch binär sind, also nur feuern, wenn die Wahrscheinlichkeit ihrer Aktivierung höher ist als ein Zufallswurf zwischen 0 und 1. Da Boltzmann Maschinen schwierig zu trainieren sind, werden in Deep Belief Netzwerken nur eingeschränkte Boltzmann Maschinen verwendet. Bei eingeschränkten Boltzmann Maschinen existieren nur Verbindungen zwischen den Ebenen und die Neuronen auf einer Ebene sind nicht miteinander verbunden.
+	\section{Grundlagen}
+	Als Grundlage für Deep-Belief Netze dienen eingeschränkte Boltzmann Maschinen. Diese sind eng mit Hopfield Netzen verwandt und der Weg von Hopfield Netzen zu eingeschränkten Boltzmann Maschinen wird in diesem Kapitel erläutert. Hopfield Netze und allgemeine Boltzmann Maschinen werden hierbei jedoch nur kurz erläutert und am Ende des Kapitels werden eingeschränkte Boltzmann Maschinen ausführlich erklärt.
 	
-	Ein Deep Belief Netzwerk besteht aus mehreren hintereinander geschalteten eingeschränkten Boltzmann Maschinen. Eine eingeschränkte Boltzmann Maschine ist ein Netzwerk mit zwei Ebenen(Layern) in dem stochastische binäre Pixel mit stochastisch binären Eigenschaftsdetektoren (feature detectors) verbunden sind, welche die Eigenschaften(features) des Trainingsdatensatzes erkennen soll. Stochastisch binär bedeutet, dass ein Knoten (Node) den Wert 1 annimmt, wenn ein Zufallswurf zwischen 1 und 100 höher als eine bestimmte Wahrscheinlichkeit ist. Die beiden Layer sind symmetrisch mit Gewichten verbunden.
 	
+	\subsection{Hopfield Netze}	
+	In diesen Netzen ist jedes Neuron mit allen anderen Neuronen außer sich selber verbunden, wie in Abbildung \ref{HopfieldNetz} dargestellt ist.  Die Neuronen in einem Hopfield Netz sind binär, dass bedeutet die Ausgabe 1 ist wenn ein Schwellwert $\theta$ überschritten wird und ansonsten 0.
+	\begin{figure}[H]
+	\center
+	\includesvg[width=5cm]{Hopfield}
+	\caption{Modell eines Hopfield Netzes. Alle Neuronen besitzen eine Ein- und Ausgabe und sind über Gewichte jeweils mit allen anderen Neuronen verbunden}
+	\label{HopfieldNetz}
+	\end{figure}
+Die Gewichte in einem Hopfield Netz sind symmetrisch, also gilt $w_{ij} = w_{ji}$. Hopfield Netzen wird eine Energie zugewiesen, die beim lernen des Netzes minimiert werden soll \cite{Hopfield}:
 
+\begin{equation}
+E = -\frac{1}{2}\sum_{i\neq j}{w_{ij}{s_i}{s_j}}+\sum_i{\theta_i\ s_i}
+\end{equation}
 
-Als Eingabewerte in so ein Netzwerk sind reelle Werte möglich, jedoch wird der Einfachheit halber angenommen, dass Binärbilder und damit binäre Vektoren als Eingabe verwendet werden. Da die Werte der Eingabeknoten beobachtet werden können, werden diese auch als sichtbar (visible) bezeichnet. Die Werte der Detektorschichte können nicht beobachtet werden, deshalb werden diese Knoten auch versteckt (hidden) genannt (siehe Abbildung \ref{Boltzmann})
+$s_i$ bzw. $s_j$ sind hierbei die Zustände der Neuronen. Sobald die Energie unverändert bleibt, wurde ein stabiler Zustand erreicht und man befindet sich in einem lokalen Minimum der Energielandschaft.
+
+\subsection{Boltzmann Maschinen}	
+Boltzmann Maschinen sind ähnlich wie Hopfield Netze. Ein wesentlicher Unterschied besteht darin, dass die Neuronen stochastisch binär sind, also nicht mehr feuern wenn ein Schwellwert überschritten ist, sondern mit einer bestimmten Wahrscheinlichkeit eine 1 als Ausgabe haben. Dies wird in der Praxis so realisiert, dass ein Wurf zwischen 0 und 1 größer als die Wahrscheinlichkeit sein muss um das Neuron zu aktivieren. Boltzmann Maschinen wird auch eine Energie zugewiesen, die ähnlich der von Hopfiel Netzen ist:
+\begin{equation}
+E = -\left(\sum_{i<j} w_{ij} \, s_i \, s_j + \sum_i \theta_i \, s_i \right)
+\end{equation}
+Hierbei ist $\theta_i$ jedoch nicht der Schwellwert, sondern der Bias des Neurons $i$. 
+
+Desweiteren werden bei Boltzmann Maschinen die Neuronen in sichtbare und in versteckte Neuronen unterteilt. Die sichtbaren Neuronen haben die Möglichkeit eine Eingabe von außen zu bekommen, die versteckten Neuronen nicht. Der Aufbau ist in Abb. \ref{Boltzmannmaschine} dargestellt.
 
 \begin{figure}[H]
-	\includesvg[width=\textwidth]{Boltzmann}
-	\caption{Modell einer eingeschränkten Boltzmann Maschine. Oben sind die versteckten Knoten und unten die nach außen sichtbaren Knoten.}
-	\label{Boltzmann}
+	\center
+	\includesvg[width=5cm]{BM}
+	\caption{Modell einer Boltzmann Maschine. Gelbe Kreise stellen verstecke Neuronen dar, weiße Kreise sind sichtbare Neuronen.}
+	\label{Boltzmannmaschine}
 	\end{figure}
+	
+Das Training von Boltzmann Maschinen läuft in zwei Phasen ab: Die erste Phase wird auch als positive Phase bezeichnet und besteht darin, dass man die binären Zustände der sichtbaren Neuronen vorgibt und die Maschine laufen lässt bis sich ein Equilibriumszustand einstellt, sich also die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen nicht mehr ändern. 
 
-Eine Konfiguration $(\vec{v},\vec{h})$ aus visible und hidden Knoten wird nach Hopfield\cite{Hopfield} eine Energie zugewiesen:
+Danach beginnt man mit der Negativen Phase. In dieser Phase lässt man die Maschine ohne eine Eingabe von außen laufen bis diese wieder in einem Equilibriumszustand ist. Daraus ergibt sich eine einfache Lernregel:
+\begin{equation}
+\frac{\partial{G}}{\partial{w_{ij}}} = -\frac{1}{R}[p_{ij}^{+}-p_{ij}^{-}]
+\end{equation}
+
+Hierbei ist $R$ die Lernrate, und $p_{ij}$ die Wahrscheinlichkeit das Neuron $i$ und $j$ in der positiven, bzw. negativen Phase jeweils aktiviert sind.
+Theorethisch wären Boltzmann Maschinen sehr gut in der Lage Modelle von Daten zu trainieren und zu erkennen, allerdings sind diese in der Praxis recht untauglich, da sie bei großen Maschinen zu lange brauchen um trainiert zu werden. Dieses Problem wird mit eingeschränkten Boltzmann Maschinen gelöst.
+
+\subsection{Eingeschränkte Boltzmann Maschinen}	
+Bei eingeschränkten Boltzmann Maschinen werden die sichtbaren und versteckten Neuronen als Ebenen betrachtet. Die Ebenen sind symmetrisch miteinander verbunden, jedoch existieren zwischen den Neuronen auf einer Ebene keine Verbindungen wie in Abbildung \ref{RBM} dargestellt.
+
+\begin{figure}[H]
+	\center
+	\includesvg[width=5cm]{RBM}
+	\caption{Modell einer eingeschränkten Boltzmann Maschine. Oben sind die versteckten Knoten und unten die nach außen sichtbaren Knoten.}
+	\label{RBM}
+	\end{figure}
+	
+Auch eingeschränkte Boltzmann Maschinen benutzen stochastisch binäre Neuronen wie normale Boltzmann Maschinen.
+
+
+Als Eingabewerte in so ein Netzwerk sind reelle Werte möglich. Diese würden dann Aktivierungswahrscheinlichkeiten der sichtbaren Neuronen interpretiert und man müsste dann noch die binären Zustände der sichtbaren Neuronen bestimmen. Im Folgenden wird davon ausgegangen, dass binäre Eingabevektoren vorliegen. 
+Eine Konfiguration $(\vec{v},\vec{h})$ aus sichtbaren und unsichtbaren Neuronen wird auch bei eingeschränkten Boltzmann Maschinen eine Energie zugewiesen:
 
 \begin{equation}
 E(\vec{v},\vec{h})= - \sum_{i \in visible} a_iv_i- \sum_{j \in hidden} b_j h_j - \sum_{i,j} v_i h_j w_{ij}
 \end{equation}
 
-Hierbei sind $v_i$ und $h_j$ die binären Zustände des sichtbaren Knotens $i$ und des versteckten Knotens $j$. $a_i$ und $b_j$ sind die Bias der entsprechenden Layer und $w_{ij}$ ist das Gewicht zwischen den beiden Knoten. Mit Hilfe dieser Energiefunktion weist das Netz jedem möglichen Paar von sichtbaren und versteckten Knoten eine Wahrscheinlichkeit zu:
+Hierbei sind $v_i$ und $h_j$ die binären Zustände des sichtbaren Knotens $i$ und des versteckten Knotens $j$. $a_i$ und $b_j$ sind die Bias der entsprechenden Knoten und $w_{ij}$ ist das Gewicht zwischen den beiden Knoten. Mit Hilfe dieser Energiefunktion weist das Netz jedem möglichen Paar von sichtbaren und versteckten Knoten eine Wahrscheinlichkeit zu:
 
 \begin{equation}
 p(\vec{v},\vec{h})= \frac{1}{Z} e^{-E(\vec{v},\vec{h})}
@@ -106,20 +152,20 @@ Die Wahrscheinlichkeit, dass sich das Netz einem Trainingsbild anpasst, kann erh
 \frac{\partial \log p(\vec{v})}{\partial w_{ij}} = \langle v_ih_j \rangle_{data} - \langle v_i h_j \rangle_{model}
 \end{equation}
 
-Hierbei ist $\langle...\rangle$ der Erwartungswert der realen Verteilung, als $data$ bezeichnet, und der vom Netz modellierten Verteilung $model$ dar. Der Erwartungswert ist das Mittel der Wahrscheinlichkeitsverteilung wenn man aus dieser unbegrenzt viele Knotenverteilungen ziehen würde. Dies führt zu einer einfachen Lernregel für den stochastisch stärksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
+Hierbei ist $\langle...\rangle$ der Erwartungswert der realen Verteilung, als $data$ bezeichnet, und der vom Netz modellierten Verteilung $model$. Dies entspricht der positiven und der negativen Phase von normalen Boltzmann Maschinen. Der Erwartungswert ist das Mittel der Wahrscheinlichkeitsverteilung wenn und kann durch das ziehen von ausreichend vielen Knotenpaaren approximiert werden. Dies führt zu einer einfachen Lernregel für den stochastisch stärksten Aufstieg in der logarithmischen Wahrscheinlichkeit der Trainingsdaten:
 
 \begin{equation}
 \Delta w_{ij} = \epsilon\left( \langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{model} \right)
 \end{equation}
 
-$\epsilon$ ist die Lernrate und kann frei gewählt werden zur Steuerung wie stark die Gewichte verändert werden. In der Praxis hat eine zu hohe Lernrate zur Folge, dass die Gewichte zu groß werden und nichts gelernt wird. Eine zu kleine Lernrate führt dazu dass das Training sehr langsam ist, jedoch empfiehlt es sich für ein besseres Ergebnis gegen Ende des Trainings die Lernrate zu verkleinern \cite{Guide}. Da die versteckten Knoten innerhalb einer RBM nicht miteinander verbunden sind, sind diese statistisch voneinander unabhängig. Dies führt dazu, dass man sehr einfach eine Stichprobe ohne Bias für $\langle v_i h_j \rangle_{data}$ erhalten kann. Wenn ein zufällig ausgewähltes Trainingsbild $\vec{v}$ gegeben ist, wird der binäre zustand $h_j$ jedes versteckten Knotens $j$ mit folgender Wahrscheinlichkeit auf 1 gesetzt:
+$\epsilon$ ist die Lernrate und kann zur Steuerung wie stark die Gewichte verändert werden frei gewählt werden. In der Praxis hat eine zu hohe Lernrate zur Folge, dass die Gewichte zu groß werden und nichts gelernt wird. Eine zu kleine Lernrate führt dazu dass das Training sehr langsam ist, jedoch empfiehlt es sich für ein besseres Ergebnis gegen Ende des Trainings die Lernrate zu verkleinern \cite{Guide}. Da die versteckten Knoten innerhalb einer RBM nicht miteinander verbunden sind, sind diese statistisch voneinander unabhängig. Dies führt dazu, dass man sehr einfach eine Stichprobe ohne Bias für $\langle v_i h_j \rangle_{data}$ erhalten kann. Wenn ein zufällig ausgewähltes Trainingsbild $\vec{v}$ gegeben ist, wird der binäre zustand $h_j$ jedes versteckten Knotens $j$ mit folgender Wahrscheinlichkeit auf 1 gesetzt:
 
 \begin{equation}
 p(h_j = 1 | \vec{v}) = \sigma (b_j + \sum_{i} v_i w_{ij})
 \label{ph}
 \end{equation}
 
-$\sigma(x)$ ist die logistische sigmoide Funktion $1/(1+e^{-x})$. $v_ih_j$ ist dann eine Stichprobe der Verteilung ohne Bias, da die einzelnen versteckten Knoten nicht miteinander verbunden und nur abhängig von den Eingabedaten sind.
+$\sigma(x)$ ist die logistische sigmoide Funktion $1/(1+e^{-x})$. $v_ih_j$ ist dann eine Stichprobe der Verteilung ohne Bias $a_i$, da die einzelnen versteckten Knoten nicht miteinander verbunden und nur abhängig von den Eingabedaten sind.
 
 Da auch die sichtbaren Knoten keine Verbindungen untereinander haben und damit voneinander unabhängig sind, ist es genau so einfach eine Stichprobe für den Zustand eines sichtbaren Knotens zu erhalten, wenn ein versteckter Vektor $\vec{h}$ gegeben ist:
 
@@ -128,7 +174,7 @@ p(v_i =1 | \vec{h}) = \sigma (a_i + \sum_{j} h_j w_{ij})
 \label{pv}
 \end{equation}
 
-Eine Stichprobe ohne Bias für $<v_i h_j>_{model}$ zu erhalten, ist aufwändiger und kann über abwechselndes "' Gibbs Sampling"' über einen langen Zeitraum berechnet werden. Beim Gibbs sampling beginnt man mit einem zufälligen Zustand der sichtbaren Knoten und hört auf, wenn ein Gleichgewichtszustand erreicht wird. Eine Iteration des Gibbs sampling besteht daraus, dass man zuerst parallel die Zustände aller versteckten Knoten mit Gleichung \ref{ph} berechnet und im Anschluss mit Gleichung \ref{pv} die sichtbaren Knoten neu berechnet.
+Eine Stichprobe ohne Bias $b_j$ für $<v_i h_j>_{model}$ zu erhalten, ist aufwändiger und kann über abwechselndes "' Gibbs Sampling"' über einen langen Zeitraum berechnet werden. Beim Gibbs sampling beginnt man mit einem zufälligen Trainingsvektor und hört auf, wenn ein Equilibriumszustand erreicht wird. Eine Iteration des Gibbs sampling besteht daraus, dass man zuerst parallel die Zustände aller versteckten Knoten mit Gleichung \ref{ph} berechnet und im Anschluss mit Gleichung \ref{pv} die sichtbaren Knoten neu berechnet.
 
 \subsection{Kontrastive Divergenz}
 
@@ -138,13 +184,18 @@ Ein schnelleres Verfahren als das Gibbs sampling besteht daraus, die Zustände d
 \Delta w_{ij} = \epsilon \left( \langle v_i h_j\rangle_{data} - \langle v_i h_j \rangle_{recon}\right)
 \end{equation}
 
-Diese Lernregel wird Kontrastive Divergenz (Contrastive Divergence(CD)) genannt und liefert bessere Ergebnisse als die vorherige Regel. Diese Lernregel folgt nicht dem Gradienten der logarithmsichen Wahrscheinlichkeit, sondern der Differnz zweier Kullback-Liebler Divergenzen. Was so eine Divergenz ist, wird in \cite{KLD} erklärt und würde hier zu weit führen. Da hierbei ein wichtiger Term jedoch vernachlässigt wird, folgt es auch diesem Gradienten nicht genau und Untersuchungen ergaben, dass der Gradient gar keiner Funktion folgt und trotzdem gut funktioniert \cite{noconv}. 
+Diese Lernregel wird Kontrastive Divergenz (Contrastive Divergence(CD)) genannt und liefert bessere Ergebnisse als die vorherige Regel. Diese Lernregel approximiert grop den  Gradienten der logarithmischen Wahrscheinlichkeit, sondern approximiert eher die Differnz zweier Kullback-Liebler Divergenzen. Was so eine Divergenz ist, wird in \cite{KLD} erklärt und würde hier zu weit führen. Da hierbei ein wichtiger Term jedoch vernachlässigt wird, folgt es auch diesem Gradienten nicht genau und Untersuchungen ergaben, dass die Lernregel gar keinem Gradienten einer Funktion folgt und trotzdem gut funktioniert \cite{noconv}. 
 
 Die Idee hinter Kontrastiven Divergenz besteht darin, dass beim normalen Gibbs Sampling die Varianz innerhalb der entstehenden Markov-Kette immer weiter zunimmt und letztendlich den Schätzer der Ableitung verfälscht. Gleichzeitig wird die Varianz in den Proben immer abhängiger von den Parametern. Um dem entgegen zu wirken, wird für die Lernregel nicht eine Probe aus dem Gleichgewichtszustand der Boltzmann Maschine verwendet, der entsteht wenn man das Gibbs Sampling lange genug betreibt, sondern eine Probe aus der rekonstruierten Wahrscheinlichkeitsverteilung nach einem Schritt des Gibbs Sampling. Dies sorgt dafür dass die Markov-Kette näher an der tatsächlichen Wahrscheinlichkeitsverteilung der Eingabe bleibt und die Varianz geringer wird. Da die rekonstruierte Eingabe näher am Gleichgewichtzustand der Boltzmann Maschine ist als die Eingabe im Gibss Schritt davor, ist garantiert, dass die kontrastive Divergenz niemals negativ wird und nur Null erreicht, wenn das Modell perfekt ist. \cite{digits}
 
 Ein weiterer Schritt, um das Lernen eines Modells auf RBMs zu verbessern, besteht darin, $n$ Schritte des Gibbs samplings zu machen, bevor man die Statistik für $\langle v_i h_j \rangle_{recon}$ ermittelt. Dies wird mit $CD_n$ notiert, wobei $n$ die Anzahl der Schritte des Gibbs samplings angibt.
 
-\section{Algorithmus zum Lernen von Deep Belief Netzen}
+\section{Deep-Belief Netze}
+Deep-Belief Netze sind eine Form von künstlichen neuronalen Netzen. Diese werden meist unüberwacht trainiert, da angenommen wird, dass Labels zu wenig Informationen enthalten über die vorhandenen Daten oder bei großen Datenmengen sehr oft keine Labels für alle Daten vorhanden sind. Zum einen ermöglichen Deep-Beielf Netze das rekonstruieren von einmal trainierten Modellen, z.B. kann ein Deep-Belief Netz wenn es das Modell von Bildern lernt teile von Bildern oder auch ganze Bilder rekonstruieren. Desweiteren können Deep-Belief Netze zur Klassifikation benutzt werden oder zum vortrainieren von Feedforward Netzen, da diese nicht so leicht in lokalen Minima stecken bleiben und somit das Netz näher am globalen Minimum konvergiert. Zum trainieren von Deep-Belief Netzen hat sich ein einfacher Algorithmus basierend auf eingeschränkten Boltzmann Maschinen etabliert.
+
+\subsection{Greedy Algorithmus zum trainieren von Deep-Belief Netzen}
+
+
 Ein effizienter Weg ein kompliziertes Modell zu lernen, besteht darin, eine Menge von einfacheren Modellen nacheinander zu lernen. Die Idee des hier vorgestellten greedy Algorithmus besteht darin, dass jedes Modell eine andere Repräsentation der Daten darstellt. Dazu berechnet jedes Modell eine nichtlineare Transformation auf seine Eingabe und die Ausgabe eines Modells wird als Eingabe des nächsten Modells verwendet. 
 
 \begin{figure}[H]
@@ -154,39 +205,52 @@ Ein effizienter Weg ein kompliziertes Modell zu lernen, besteht darin, eine Meng
 	\label{Netz}
 \end{figure}
 
-In Abbildung \ref{Netz} ist ein generatives Modell (generative model)  mit mehreren Ebenen abgebildet. Als generatives Modell bezeichnet man Modelle, die mit Hilfe von versteckten Parametern zufällige und  beobachtbare Daten generieren, wie zum Beispiel bei einer Markov-Kette. Die oberen beiden Ebenenen kommunizieren über ungerichtete Kanten und simulieren damit unendlich viele weitere Ebenen mit verbundenen Gewichten. Es gibt keine Verbindungen zwischen den Knoten einer Ebene, sodass diese unabhängig voneinander sind.  Man kann gute Parameter für $W_0$ finden, indem man annimmt, dass die gleichen Gewichte zwischen den höheren Layern verwendet werden und damit eine komplementäre Verteilung (complementary prior) abbilden, um den "'Explained Away"'-Effekt für $W_0$ auszulöschen \cite{learning}.
+In Abbildung \ref{Netz} ist ein generatives Modell mit mehreren Ebenen abgebildet. Als generatives Modell bezeichnet man Modelle, die mit Hilfe von versteckten Parametern zufällige und  beobachtbare Daten generieren, wie zum Beispiel bei einer Markov-Kette. Die oberen beiden Ebenenen kommunizieren über ungerichtete Kanten und simulieren damit unendlich viele weitere Ebenen mit verbundenen Gewichten. Es gibt keine Verbindungen zwischen den Knoten einer Ebene, sodass diese unabhängig voneinander sind.  Man kann gute Parameter für $W_0$ finden, indem man annimmt, dass die  Gewichte zwischen den höheren Ebenen eine komplementäre Verteilung (complementary prior) abbilden, um den "'Explained Away"'-Effekt für $W_0$ auszulöschen \cite{learning}.
 
 Der "'Explained Away"'-Effekt beschreibt hierbei dass zwei Knoten stark antikorrelieren, also je höher die Wahrscheinlichkeit in einem Knoten ist, desto geringer ist sie in einem anderen. 
-Bildhafter in Abbildung \ref{ExplainedAway} beschrieben ist die Ursache für ein wackelndes Haus durch einen hineinrasenden LKW sehr gering wenn bereits ein Erdbeben das Haus wackeln lässt. Hierbei wäre das Wackelnde Haus ein Ausgangsknoten und Erdbeben und der LKW jeweils ein Eingangsknoten. Wenn einer der beiden Eingangsknoten also aktiviert ist, reicht ein Ereignis aus zur Erklärung, da das eintreten beider Ereignisse sehr unwahrscheinlich ist. Dieses Verhalten macht es schwierig Schlussfolgerungen des Netzes nachzuvollziehen. 
+Bildhafter in Abbildung \ref{ExplainedAway} beschrieben ist die Ursache für ein wackelndes Haus durch einen hineinrasenden LKW sehr gering wenn bereits ein Erdbeben das Haus wackeln lässt. Hierbei wäre das wackelnde Haus ein Ausgangsknoten und Erdbeben und der LKW jeweils ein Eingangsknoten. Wenn einer der beiden Eingangsknoten also aktiviert ist, reicht ein Ereignis aus zur Erklärung, da das Eintreten beider Ereignisse sehr unwahrscheinlich ist. Dieses Verhalten macht es schwierig Schlussfolgerungen des Netzes nachzuvollziehen. 
 
 \begin{figure}[H]
 	\center
 	\includesvg[width=150pt]{ExplainedAway}
-	\caption{Beispiel für den Explained Away Effekt. Der Bias von $-10$ am Erdbebenknoten bedeutet dass dieser ohne beobachtet zu werden $e^10$ mal wahrscheinlicher aus als aktiviert ist. Wenn dieser nun an ist und der LKW-Knoten aus, hat das wackelnde Haus eine Gesamteingabe von 0 und damit ist es gleich wahrscheinlich an oder aus zu sein. Dies ist besser als die $e^{-20}$ wenn keiner der Knoten an ist, jedoch ist es sinnlos, dass beide Knoten an sind, da dieses Ereignis eine Wahrscheinlichkeit von $e^{-20}$ hat. Entsprechend erklärt die Aktivierung eines Knotens den anderen Knoten weg.}
+	\caption{Beispiel für den Explained Away Effekt. Der Bias von $-10$ am Erdbebenknoten bedeutet dass dieser ohne beobachtet zu werden $e^10$ mal wahrscheinlicher aus als aktiviert ist. Beide Ereignisse zusammen haben eine Wahrscheinlichkeit von $e^{-20}$. Dies ist also sehr unwahrscheinlich. Deshalb erklärt die Aktivierung eines Knotens den anderen weg.}
 	\label{ExplainedAway}
 \end{figure}
 
-Die Annahme, dass die höheren Layer eine komplementäre Verteilung bilden, ist die Einschränkung, dass alle Gewichtsmatrizzen gleich, d.h. miteinander verbunden sind. Dies führt dazu, dass das Lernen von $W_0$ lediglich das Trainieren einer RBM darstellt und mithilfe der Contrastive Divergence eine gute Approximination gefunden wird. Sobald $W_0$ gelernt ist, kann man $W^T_0$, also die transponierte Gewichtsmatrix, als Eingabe für den ersten versteckten Layer benutzen, indem man die Eingabedaten mit dieser multipliziert.
+Die Annahme, dass die höheren Ebenen eine komplementäre Verteilung bilden, führt dazu, dass das Lernen von $W_0$ lediglich das Trainieren einer RBM darstellt und mithilfe der Contrastive Divergence eine gute Approximination gefunden wird. Sobald $W_0$ gelernt ist, kann man $W^T_0$, also die transponierte Gewichtsmatrix, als Eingabe für die erste versteckte Ebene benutzen, indem man die Eingabedaten mit dieser multipliziert.
 
-Falls die RBM ein perfektes Modell für die Eingabedaten gefunden hat, sind die Gewichte der höheren Ebenen für die generierten Daten bereits perfekt. Generell ist dies jedoch nicht der Fall und das Modell kann durch einen einfachen greedy Algorithmus verbessert werden:
+Im allgemeinen findet die eingeschränkte Boltzmann Maschine kein perfektes Modell für die Eingabedaten. Das Modell kann durch einen einfachen greedy Algorithmus verbessert werden:
  
 \begin{enumerate}
-\item Lerne $W_0$ unter der Annahme, dass alle Gewichtsmatrizen verbunden sind.
-\item Entbinde $W_0$ und friere diese ein. Benutze $W_0^T$ um die Verteilung der einzelnen Variablen im ersten versteckten Layer zu approximieren.
-\item Lerne eine weitere Restricted Boltzmann Maschine  mithilfe der "'Daten"', die durch $W_0^T$ generiert wurden, für den nächsten Layer.
+\item Lerne $W_0$.
+\item Benutze $W_0^T$ um die Verteilung der einzelnen Variablen in der ersten versteckten Ebene zu approximieren.
+\item Lerne eine weitere Restricted Boltzmann Maschine  mithilfe der "'Daten"', die durch $W_0^T$ generiert wurden, für die nächste Ebene.
 \end{enumerate}
 
-Wenn dieser Algorithmus die Gewichte in den höheren Layern ändert, wird das Modell immer verbessert. Gleichzeitig bedeutet dies auch, dass jedes Modell durch hinzufügen von neuen Layern verbessert werden kann, wenn man jeden Layer sorgfältig genug trainiert. Wenn alle Layer die gleiche Anzahl von Knoten haben, bietet dies den Vorteil, dass die höheren Ebenen bereits mit den gelernten Gewichten initialisiert werden können bevor diese entbunden werden, der Algorithmus funktioniert aber auch mit unterschiedlich großen Layern \cite{learning}.
 
-\subsection{Backpropagation}
-Nach dem lernen des Netzes mit dem Greedy Algorithmus sind die Gewichte in den unteren Layern nicht optimal und das ganze Netz wird noch einmal feiner eingestellt mit Hilfe des Backpropagation-Algorithmus. Dieser gehört zu den überwachten Lernverfahren und versucht eine Fehlerfunktion zu minimieren. Dazu werden die einzelnen Grauwerte der Farbpixel auf das Intervall $[0,1]$ abgebildet. Da der verwendete Datensatz hauptsächlich schwarz-weiss Bilder beinhaltet und sich daher zwei Extrema bilden, bietet es sich an die logistische Funktion zur Modellierung zu verwenden. Das Netz wird dazu "'entfaltet"', sodass alle Kanten nur noch in eine Richtung zeigen, sodass das Netz aus einem "'Encoder"' Teil und einem "'Decoder"' Teil besteht\cite{backprop}. 
+
+Jede durch den Algorithmus trainierte Ebene verbessert das Modell. Gleichzeitig bedeutet dies auch, dass jedes Modell durch hinzufügen von neuen Ebenen verbessert werden kann, wenn man jede Ebene sorgfältig genug trainiert. Wenn alle Ebenen die gleiche Anzahl von Knoten haben, besteht eine Verbesserung darin, dass jede neue Ebene mit den bereits gelernten Gewichten initialisiert wird. \cite{learning}.
+
+\subsection{Deep-Belief Netze zur Klassifikation}
+Nachdem man das Netz mit dem im vorigen Kapitel beschriebenen Algorithmus trainiert hat, muss man immer noch die Labeldaten ins Netz speisen wenn man dieses für eine Klassifikation nutzen möchte. Dazu gibt es im wesentlichen zwei verschiedene Methoden:
+
+Die erste Methode besteht darin, beim Training auf der vorletzten Ebene eine Gruppe von Softmax-Neuronen hinzuzufügen. Diese haben eine andere Aktivierungsfunktion als die normalen Neuronen: 
+\begin{equation}
+p_j = \frac{e^{x_j}}{\sum_{i=1}^K e^{x_i}}
+\end{equation}
+
+Diese Aktivierungsfunktion sorgt dafür, dass die Aktivierung eines Neurons von der Aktivierung der anderen Neuronen abhängig ist und somit immer nur ein Neuron in der Gruppe aktiviert ist. Indem man abhängig vom Label ein Neuron fest auf 1 setzt beim trainieren, lernt das Netz welche Aktivierungszustände zu einer Klasse gehören. Wenn man nach dem Training einen Datensatz durchs Netz propagiert und anschließend ein paar Gibbs Samplings zwischen den letzten beiden Ebenen macht, kann man in der Softmax Gruppe das erkannte Label ablesen.
+
+Die zweite Methode besteht darin, dass Deep-Belief Netz normal zu trainieren und nach dem Training eine Ebene mit Ausgabenneuronen an die letzte Ebene hinzuzufügen. Diese Neuronen können entweder die sigmoide Funktion als Aktivierung nutzen oder auch eine Softmax Gruppe bilden. Nun trainiert man die Gewichte zwischen der neuen Ebene und der letzten Ebene mit Backpropagation um die Labelinformationen ins Netz zu speisen. Um das Ergebnis im anschluß noch weiter zu verbessern, kann man die Gewichte des ganzen Netzes nochmals mit Backpropagation feiner einstellen, allerdings sollte das Netz auch ohne diesen Schritt bereits positive Ergebnisse liefern.
+
+\cite{backprop}. 
 
 \subsection{Implementation}
 Als Grundgerüst wurde ein bereits implementiertes Feedforward-Netz, welches bereits Backpropagation kann, genutzt. Abbildung \ref{Aufbau} zeigt die Klassenherarchie des verwendeten Grundgerüsts. In rot sind die für den Aufbau und die Verwendung von Deep-Belief Netzen benötigten Klassen markiert.
 
 Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches. Der letzte Parameter hat jedoch keine Auswirkung, da die Implementation der Kontrastiven Divergenz aktuell nur Batchgrößen von 1 zulässt, also nach jedem Trainingsbild die Gewichte aktualisiert.
 
-DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den normalen Gewichten, die daraus bestehen, dass diese bei zwei Layern nur von dem oberen Layer angesprochen werden können, auch vorwärtsgerichtete Gewichte initialisiert werden. Diese Gewichte stellen jedoch lediglich Zeiger auf die normalen Gewichte dar.
+DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den normalen Gewichten, die daraus bestehen, dass diese bei zwei Layern nur von dem oberen Layer angesprochen werden können, auch vorwärtsgerichtete Gewichte initialisiert werden. Diese Gewichte stellen jedoch lediglich Zeiger auf die normalen Gewichte dar. Desweiteren wurde eine Möglichkeit geschaffen die Gewichte für das Deep-Belief Netz zu initialiseren. Dazu wird für Jedes Gewicht eine zufällige Zahl einer gausschen Normalverteilung mit einem Erwartungswert von 0 und einer Standardabweichung von $0,1$ gezogen.
 \begin{figure}[H]
 	\center
 	\includesvg{Aufbau}
@@ -200,12 +264,39 @@ DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktiv
 \log [p_i/(1-p_i)]
 \end{equation}
 $p_i$ ist hierbei die Durchschnittliche Aktivierungswahrscheinlichkeit des Knoten $i$ über alle Eingabedaten.
-\begin{figure}[H]
-	\center
-	\includesvg{Aufbau}
-	\caption{Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugefügt.}
-	\label{Aufbau}
-\end{figure}
+
+Als letzte wichtige Erweiterung wurde die Klasse ContrastiveDivergence implementiert, diese enthält den Lernalgorithmus für das Deep-Belief Netz.
+
+\begin{algorithm}[H]
+ \KwData{Eingabedaten, Epochenanzahl, Anzahl der Gibsschritte, Lernrate}
+ \KwResult{Traniertes Deep Belief Netz}
+ Initialisiere leere Datencontainer für Eingabedaten für jede Ebene\\
+ \For{jede Ebene}{
+ 	Initialisiere Bias für versteckte Ebene mit 0\\
+ 	Initialisiere Bias für sichtbare Ebene mit $\log [p_i/(1-p_i)]$\\
+ 	\For{Jeden Datensatz}{
+	Setze Eingabedaten als Aktivierungswahrscheinlichkeit für sichtbare Ebene\\
+	Bestimme Aktivierungen der sichtbaren Knoten\\
+	Berechne Wahrscheinlichkeiten für versteckte Knoten: $ p(h_j = 1 | \vec{v}) = \sigma (b_j + \sum_{i} v_i w_{ij})$\\
+	Sammle Statistik für $\langle v_i h_j\rangle_{data}$
+	
+	\For {Anzahl Gibbsschritte}{
+	Berechne Wahrscheinlichkeiten für sichtbare Knoten: $	p(v_i =1 | \vec{h}) = \sigma (a_i + \sum_{j} h_j w_{ij})$\\
+	Berechne Wahrscheinlichkeiten für versteckte Knoten
+	}
+	Sammle Statistik für $\langle v_i h_j\rangle_{model}$\\
+	Passe Gewichte an: $w_{ij}=w_{ij} +\epsilon \left( \langle v_i h_j\rangle_{data} - \langle v_i h_j \rangle_{recon}\right)$\\
+	Passe Bias für sichtbare Knoten an: $a_i = a_i +\epsilon \left( \langle v_i\rangle_{data} - \langle v_i\rangle_{recon}\right)$\\
+	Passe Bias für versteckte Knoten an: $b_i = b_i +\epsilon \left( \langle h_i\rangle_{data} - \langle h_i\rangle_{recon}\right)$\\
+ 	}
+ 	\For{Jeden Datensatz}{
+ 	Propagiere Eingabedaten durch trainierte Ebene und speichere Ergebnis in Datencontainer für die nächste Ebene\\
+ 	}
+ }
+ \caption{Implementation der Kontrastiven Divergenz}
+\end{algorithm}
+
+
 
 \begin{thebibliography}{9}
 \bibliographystyle{unsrt}
