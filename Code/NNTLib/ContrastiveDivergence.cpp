@@ -1,7 +1,9 @@
 #include "ContrastiveDivergence.h"
+#include "Backpropagation.h"
 #include <iostream>
 #include "DataContainer.h"
 #include <omp.h>
+#include <random>
 
 namespace NNTLib {
 
@@ -22,46 +24,64 @@ void ContrastiveDivergence::GibbsSampling(int gibbssteps, int d_i) {
 
 void ContrastiveDivergence::UpdateHiddenUnits() {
 
-#pragma omp parallel for
-	for ( int j = 0; j < top->NeuronCount - 1; j++) {
-		double sum = 0.0;
-		for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-			sum += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
-		}
+	double sums[top->NeuronCount];
+	#pragma omp parallel
+	{
+		#pragma omp for
+		for ( int j = 0; j < top->NeuronCount - 1; j++) {
+			sums[j] = 0.0;
+			for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+				sums[j] += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
+			}
 
-		sum += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
-		sum = 1 + exp(-sum);
-		sum = 1 / sum; //Wahrscheinlichkeit ausrechnen
-		top->Neurons[j].p = sum;
-		top->Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
+			sums[j] += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
+			
+		}
+		#pragma omp barrier
+	}
+
+	for ( int j = 0; j < top->NeuronCount - 1; j++) {
+		sums[j] = 1 + exp(-sums[j]);
+			sums[j] = 1 / sums[j]; //Wahrscheinlichkeit ausrechnen
+			top->Neurons[j].p = sums[j];
+		top->Neurons[j].Output = Binary(sums[j]); //Binäre Zustände bestimmen
 	}
 
 }
 
 void ContrastiveDivergence::UpdateVisibleUnits() {
 
-#pragma omp parallel for
-	for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
-		double sum = 0.0;
-		for (int j = 0; j < top->NeuronCount - 1; j++) {
-			sum += top->Neurons[j].Output * *bottom->Neurons[i].ForwardWeights[j]; //use p for less sampling
+	double sums[bottom->NeuronCount];
+	#pragma omp parallel
+	{
+		#pragma omp for
+		for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
+			sums[i] = 0.0;
+			for (int j = 0; j < top->NeuronCount - 1; j++) {
+				sums[i] += top->Neurons[j].Output * *bottom->Neurons[i].ForwardWeights[j]; //use p for less sampling
+			}
+
+			
+			//Binäre Zustände bestimmen
 		}
-
-		sum += top->Neurons[top->NeuronCount - 1].Weights[i]; //bias
-		sum = 1 / (1 + exp(-sum)); //Wahrscheinlichkeit ausrechnen
-		bottom->Neurons[i].p = sum;
-		bottom->Neurons[i].Output = Binary(sum); //Binäre Zustände bestimmen
-
+		#pragma omp barrier
 	}
-
+	for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
+		sums[i] += top->Neurons[top->NeuronCount - 1].Weights[i]; //bias
+			sums[i] = 1 / (1 + exp(-sums[i])); //Wahrscheinlichkeit ausrechnen
+			bottom->Neurons[i].p = sums[i];
+		bottom->Neurons[i].Output = Binary(sums[i]);
+	}
 }
 
 
 int ContrastiveDivergence::Binary(double x) {
+	//srand48(time(NULL));
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	double y = dist(generator);
+	//double y = drand48();
 	//std::cout<<x<<" "<<y<<" "<<std::endl;
-	return x >= y;
+	return x >= y && x != 0;
 }
 
 void ContrastiveDivergence::trainIncremental(const DataContainer &container, const double learnRate, int Epochs, int gibbssteps) {
@@ -83,11 +103,11 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	//create datacontainers for every layer
 
 	for ( int l = 1; l < network->LayersCount - 1; l++) {
-		input[l].Init(input[l - 1].DataCount, network->Layers[l].NeuronCount - 1, network->Layers[l + 1].NeuronCount - 1);
+		input[l].Init(input[l - 1].DataCount, network->Layers[l].NeuronCount - 1, container.OutputCount);
 	}
 	input[network->LayersCount - 1].Init(input[network->LayersCount - 2].DataCount, network->Layers[network->LayersCount - 1].NeuronCount, 0);
 	//RBM für jedes Layerpaar von unten nach oben
-	for ( int l = 0; l < network->LayersCount - 1; l++) {
+	for ( int l = 0; l < network->LayersCount - 2; l++) {
 		std::cout << "Layer:" << l << " Epoche:" << 0 << " Datensatz: " << 0 << "\r" << std::flush;
 		biasdata = new DataContainer();
 
@@ -107,9 +127,9 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		//	}
 		// }
 		top->Neurons[top->NeuronCount - 1].InitBias(&input[l]); //initialise bias for visible units
-		for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-			//std::cout<<top->Neurons[top->NeuronCount - 1].Weights[i]<<std::endl;
-		}
+		//for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+		//std::cout<<top->Neurons[top->NeuronCount - 1].Weights[i]<<std::endl;
+		//}
 
 		//Initialisieren des Netztes mit Eingabedaten vor dem Gibbs Sampling
 		for (int e = 0; e < Epochs; e++) { //jede Maschine über Epochenazahl tranieren
@@ -225,11 +245,17 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		for ( int d_i = 0; d_i < input[l].DataCount; d_i++) {
 			for (int j = 0; j < bottom->NeuronCount - 1; ++j) { //Eingabedaten setzen
 				bottom->Neurons[j].p = input[l].DataInput[d_i][j]; //Interpret data as probability to turn on
+				bottom->Neurons[j].Output = Binary(input[l].DataInput[d_i][j]);
 			}
 			//Versteckte Neuronen berechnen
 			UpdateHiddenUnits();
 			for ( int j = 0; j < top->NeuronCount - 1; j++) {
 				input[l + 1].DataInput[d_i][j] = top->Neurons[j].p;
+			}
+			if (l + 1 == network->LayersCount - 2) {
+				for ( int j = 0; j < top->NeuronCount - 1; j++) {
+					input[l + 1].DataInput[d_i][j] = input[l + 1].DataInput[d_i][j];
+				}
 			}
 
 
@@ -240,6 +266,22 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		delete [] statisticsdatah;
 		delete [] statisticsmodelh;
 	}
+	int layers[2] = {network->Layers[network -> LayersCount - 2].NeuronCount - 1, network->Layers[network -> LayersCount - 1].NeuronCount - 1};
+	NeuralNetwork lastlayer(layers, 2, static_cast<NNTLib::WeightInitEnum>(1), static_cast<NNTLib::FunctionEnum>(1));
+	Backpropagation backprop(lastlayer);
+	for ( int d_i = 0; d_i < container.DataCount; d_i++)
+		for (int i = 0; i < container.OutputCount; i++) {
+			input[network->LayersCount - 2].DataOutput[d_i][i] = container.DataOutput[d_i][i];
+		}
+	backprop.Train(input[network->LayersCount - 2], learnRate, 100);
+	for (int i = 0; i < network->Layers[network->LayersCount - 2].NeuronCount; i++) {
+		for (int j = 0; j < network->Layers[network->LayersCount - 1].NeuronCount - 1; j++) {
+			//std::cout << lastlayer.Layers[0].Neurons[j].Weights[i] << std::endl;
+			*network->Layers[network->LayersCount - 2].Neurons[i].ForwardWeights[j] = lastlayer.Layers[0].Neurons[j].Weights[i];
+		}
+	}
+
+
 	delete [] input;
 
 
