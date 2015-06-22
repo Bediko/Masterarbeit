@@ -1,4 +1,5 @@
 #include "Functions.h"
+#include <iostream>
 namespace NNTLib
 {
 	/// <summary>
@@ -23,10 +24,12 @@ namespace NNTLib
 			return x;
 			//break;
 		case FunctionEnum::BINARY:
+			srand48(time(NULL));
 			std::default_random_engine generator;
 			generator.seed(time(NULL));
+			x=(1.0/(1.0 + std::exp(-x)));
 			std::uniform_real_distribution<double> dist(0.0, 1.0);
-			return x>dist(generator);
+			return x>=drand48() && x!=0.0;
 			break;
 		}
 
