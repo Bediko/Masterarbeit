@@ -39,7 +39,7 @@
 \newcommand{\runtime}[1]{\textcolor{Red}{\textbf{#1}}}
 \newcommand{\headline}[1]{\vspace{15pt}\textbf{#1}\vspace{10pt}}
 \newcommand{\code}[1]{\textcolor{Green}{\texttt{#1}}}
-\usepackage[]{algorithm2e}
+\usepackage[boxed]{algorithm2e}
 
 
 \setlength{\parindent}{0pt}
@@ -87,7 +87,7 @@ Boltzmann Maschinen sind ähnlich wie Hopfield Netze. Ein wesentlicher Unterschi
 \begin{equation}
 E = -\left(\sum_{i<j} w_{ij} \, s_i \, s_j + \sum_i \theta_i \, s_i \right)
 \end{equation}
-Hierbei ist $\theta_i$ jedoch nicht der Schwellwert, sondern der Bias des Neurons $i$. 
+Hierbei ist $\theta_i$ jedoch nicht der Schwellwert, sondern der Bias des Neurons $i$ \cite{BM}.
 
 Desweiteren werden bei Boltzmann Maschinen die Neuronen in sichtbare und in versteckte Neuronen unterteilt. Die sichtbaren Neuronen haben die Möglichkeit eine Eingabe von außen zu bekommen, die versteckten Neuronen nicht. Der Aufbau ist in Abb. \ref{Boltzmannmaschine} dargestellt.
 
@@ -266,7 +266,7 @@ DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktiv
 $p_i$ ist hierbei die Durchschnittliche Aktivierungswahrscheinlichkeit des Knoten $i$ über alle Eingabedaten.
 
 Als letzte wichtige Erweiterung wurde die Klasse ContrastiveDivergence implementiert, diese enthält den Lernalgorithmus für das Deep-Belief Netz.
-
+\begin{figure}[H]
 \begin{algorithm}[H]
  \KwData{Eingabedaten, Epochenanzahl, Anzahl der Gibsschritte, Lernrate}
  \KwResult{Traniertes Deep Belief Netz}
@@ -295,11 +295,26 @@ Als letzte wichtige Erweiterung wurde die Klasse ContrastiveDivergence implement
  }
  \caption{Implementation der Kontrastiven Divergenz}
 \end{algorithm}
+\end{figure}
 
 
+Im Anschluss an die Kontrastive Divergenz werden die Gewichte zwischen der Ausgabeebene und der vorletzten Ebene mit Hilfe von Backpropagation traniert.
 
+Das Framework reagiert auf verschiedene Eingabeparameter zum setzen von Konfigurationsdaten für den Aufbau des Netzes und welcher Lernalgorithmus verwendet werden soll. Wenn neben einer Konfiguration für die Kontrastive Divergenz auch eine Konfiguration für die Backpropagation angegeben ist, wird das Netz im Anschluss nochmal feiner trainiert.
+
+\section{Versuchsaufbau}
+Es sollen die verschiedenen Methoden zum klassifizieren von Dateneingaben mit Deep-Belief Netzen untersucht werden. Dazu werden verschiedene Netzgrößen mit ansonsten den gleichen Parametern getestet. Zur Verfügung stehen zwei verschiedene Datensätze.
+\subsection{Achsensymetrie und Rotationssymetrie}
+Die erste Datenbank besteht aus 1346 Datensätzen und beinhaltet Merkmale zu einzelnen Punkten. Der Datensatz wurde von  Prof. Dr. Christoph Dalitz zur Verfügung gestellt. Jeder Datensatz enthält vier Merkmale zu einem einzelnen Punkt. Dieser Punkt ist entweder der Kategorie Achsensymmetrisch oder Rotationssymetrisch zugeordnet. Die einzelnen Klassen wurden mit 1 und 0 kodiert. Die vier Merkmale sind auf das Intervall $[0,1]$ skaliert. Für jedes Merkmal gibt es ein Eingabeneuron und jede Klasse hat ein Ausgabeneuron. Aufgrund fehlender Testdaten wird eine einfache Kreuzvalidierung mit $K=5$ gewählt.  Daraus ergibt sich für jeden Trainingsdatensatz eine größe von 1076 und jeder Testdatensatz besteht aus 270 Datensätzen.
+
+\newpage
 \begin{thebibliography}{9}
 \bibliographystyle{unsrt}
+\bibitem{BM}
+G. E. Hinton, T. J. Sejnowski,
+\emph{Learning and relearning in Boltzmann machines}, 
+Parallel Distributed Processing: Explorations in the Microstructure of Cognition. Volume 1: Foundations, MIT Press, Seite 282-317, 1986
+
 \bibitem{guide}
 Geoffrey Hinton,
 \emph{A Practical Guide to Training Restricted Boltzmann Machines},
@@ -343,7 +358,8 @@ Annals of Mathematical Statistics 22 No. 1,
 Seite  79–86,
  1951
 \end{thebibliography}
-
+\newpage
+\listoffigures
 
 
 \end{document}

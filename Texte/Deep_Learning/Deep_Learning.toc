@@ -7,3 +7,5 @@
 \contentsline {subsection}{\numberline {2.1}Greedy Algorithmus zum trainieren von Deep-Belief Netzen}{8}
 \contentsline {subsection}{\numberline {2.2}Deep-Belief Netze zur Klassifikation}{10}
 \contentsline {subsection}{\numberline {2.3}Implementation}{10}
+\contentsline {section}{\numberline {3}Versuchsaufbau}{14}
+\contentsline {subsection}{\numberline {3.1}Achsensymetrie und Rotationssymetrie}{14}
