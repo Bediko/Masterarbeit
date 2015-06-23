@@ -121,16 +121,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a147a7fe89871c02c6fa8c9d691327e0e">operator &lt; </a>(<span class="keyword">const</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html">NeuralNetwork</a>&amp; net) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a">InitWeights</a>(WeightInitEnum initType);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#aee9c78b90d25b0ebb1b3cb3cf732e4fc">GenerateRandomWeight</a>(<span class="keywordtype">int</span> weightCount);<span class="comment">//nicht schön (muss hier weg)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#aee9c78b90d25b0ebb1b3cb3cf732e4fc">GenerateRandomWeight</a>(<span class="keywordtype">int</span> weightCount);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a4a85f90af22f14e8cce248d9b6e3516c">SaveWeights</a>(<span class="keyword">const</span> std::string file);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a9c2f594b5aafa05970a47df983436540">LoadWeights</a>(<span class="keyword">const</span> std::string file);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a86d77108c0d47b6e6dd33dccfef6521f">Propagate</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> *input);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a43e8b626150530fcb8e17aa957ef1d62">CalculateMSE</a>(<span class="keyword">const</span> <a class="code" href="class_n_n_t_lib_1_1_data_container.html">DataContainer</a>&amp; data);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_n_n_t_lib_1_1_neural_network.html#a43e8b626150530fcb8e17aa957ef1d62">CalculateMSE</a>(<span class="keyword">const</span> <a class="code" href="class_n_n_t_lib_1_1_data_container.html">DataContainer</a>&amp; data);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    };</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_n_n_t_lib_1_1_neural_network_html_aee9c78b90d25b0ebb1b3cb3cf732e4fc"><div class="ttname"><a href="class_n_n_t_lib_1_1_neural_network.html#aee9c78b90d25b0ebb1b3cb3cf732e4fc">NNTLib::NeuralNetwork::GenerateRandomWeight</a></div><div class="ttdeci">double GenerateRandomWeight(int weightCount)</div><div class="ttdoc">Generates the random weight. </div><div class="ttdef"><b>Definition:</b> NeuralNetwork.cpp:157</div></div>
 <div class="ttc" id="class_n_n_t_lib_1_1_neural_network_html_a4a85f90af22f14e8cce248d9b6e3516c"><div class="ttname"><a href="class_n_n_t_lib_1_1_neural_network.html#a4a85f90af22f14e8cce248d9b6e3516c">NNTLib::NeuralNetwork::SaveWeights</a></div><div class="ttdeci">void SaveWeights(const std::string file)</div><div class="ttdoc">Saves the weights. </div><div class="ttdef"><b>Definition:</b> NeuralNetwork.cpp:216</div></div>
 <div class="ttc" id="class_n_n_t_lib_1_1_neural_network_html_af5d47358b8619b32506b77b916bc8d5c"><div class="ttname"><a href="class_n_n_t_lib_1_1_neural_network.html#af5d47358b8619b32506b77b916bc8d5c">NNTLib::NeuralNetwork::copy</a></div><div class="ttdeci">void copy(const NeuralNetwork &amp;that)</div><div class="ttdoc">Copies the specified that. </div><div class="ttdef"><b>Definition:</b> NeuralNetwork.cpp:95</div></div>
@@ -156,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 15 2015 11:10:05 for NNTLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 23 2015 11:44:00 for NNTLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
