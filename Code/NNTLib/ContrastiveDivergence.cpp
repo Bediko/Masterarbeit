@@ -35,15 +35,15 @@ void ContrastiveDivergence::UpdateHiddenUnits() {
 			}
 
 			sums[j] += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
-			
+
 		}
 		#pragma omp barrier
 	}
 
 	for ( int j = 0; j < top->NeuronCount - 1; j++) {
 		sums[j] = 1 + exp(-sums[j]);
-			sums[j] = 1 / sums[j]; //Wahrscheinlichkeit ausrechnen
-			top->Neurons[j].p = sums[j];
+		sums[j] = 1 / sums[j]; //Wahrscheinlichkeit ausrechnen
+		top->Neurons[j].p = sums[j];
 		top->Neurons[j].Output = Binary(sums[j]); //Binäre Zustände bestimmen
 	}
 
@@ -61,15 +61,15 @@ void ContrastiveDivergence::UpdateVisibleUnits() {
 				sums[i] += top->Neurons[j].Output * *bottom->Neurons[i].ForwardWeights[j]; //use p for less sampling
 			}
 
-			
+
 			//Binäre Zustände bestimmen
 		}
 		#pragma omp barrier
 	}
 	for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
 		sums[i] += top->Neurons[top->NeuronCount - 1].Weights[i]; //bias
-			sums[i] = 1 / (1 + exp(-sums[i])); //Wahrscheinlichkeit ausrechnen
-			bottom->Neurons[i].p = sums[i];
+		sums[i] = 1 / (1 + exp(-sums[i])); //Wahrscheinlichkeit ausrechnen
+		bottom->Neurons[i].p = sums[i];
 		bottom->Neurons[i].Output = Binary(sums[i]);
 	}
 }
@@ -84,7 +84,7 @@ int ContrastiveDivergence::Binary(double x) {
 	return x >= y && x != 0;
 }
 
-void ContrastiveDivergence::trainIncremental(const DataContainer &container, const double learnRate, int Epochs, int gibbssteps) {
+void ContrastiveDivergence::Train(const DataContainer & container, const double learnRate, const int Epochs, int BatchSize, int gibbssteps) {
 	std::cout << "train CD incremental" << std::endl;
 	//int gibbssteps = 20;
 	//Epochs = 10;
@@ -92,7 +92,13 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 	std::cout << "EPOCHEN: " << Epochs << std::endl;
 	std::cout << "GIBBS: " << gibbssteps << std::endl;
 
+	int rest = container.DataCount % BatchSize;
+	int batches = ((container.DataCount - rest) / BatchSize);
 
+	if (rest != 0) {
+		batches++;
+	}
+	std::cout << "Batches: " << batches << std::endl;
 
 
 
@@ -140,6 +146,12 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 				statisticsdatah[d_i] = new double[top->NeuronCount];
 				statisticsmodelv[d_i] = new double[bottom->NeuronCount];
 				statisticsmodelh[d_i] = new double[top->NeuronCount];
+			}
+			int d_i = 0;
+			int d_end = 0;
+			for (int b = 0; b < batches; b++) {
+				d_i = b * BatchSize;
+				d_end = d_i + BatchSize;
 				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
 					statisticsdatav[d_i][i] = 0;
 					statisticsmodelv[d_i][i] = 0;
@@ -148,39 +160,40 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 					statisticsdatah[d_i][j] = 0;
 					statisticsmodelh[d_i][j] = 0;
 				}
-			}
 
-			for ( int d_i = 0; d_i < input[l].DataCount; d_i++) { //Alle Trainingsdaten für jede Maschine
-				for (int j = 0; j < bottom->NeuronCount - 1; ++j) { //Eingabedaten setzen
-					bottom->Neurons[j].p = input[l].DataInput[d_i][j]; //Interpret data as probability to turn on
-					bottom->Neurons[j].Output = Binary(bottom->Neurons[j].p);
-				}
-				std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << d_i << "\r" << std::flush;
-				//Versteckte Neuronen berechnen
-				UpdateHiddenUnits();
-				//sammle Statistikdaten von Eingabedaten v*h
-				//sammle Statistik für v_data
-				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-					statisticsdatav[d_i][i] = bottom->Neurons[i].p;
-				}
 
-				for (int j = 0; j < top->NeuronCount - 1; j++) {
-					statisticsdatah[d_i][j] = top->Neurons[j].p;
-				}
+				for (; d_i < d_end; d_i++) { //Alle Trainingsdaten für jede Maschine
+					for (int j = 0; j < bottom->NeuronCount - 1; ++j) { //Eingabedaten setzen
+						bottom->Neurons[j].p = input[l].DataInput[d_i][j]; //Interpret data as probability to turn on
+						bottom->Neurons[j].Output = Binary(bottom->Neurons[j].p);
+					}
+					std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << d_i << "\r" << std::flush;
+					//Versteckte Neuronen berechnen
+					UpdateHiddenUnits();
+					//sammle Statistikdaten von Eingabedaten v*h
+					//sammle Statistik für v_data
+					for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+						statisticsdatav[d_i][i] += bottom->Neurons[i].p;
+					}
 
-				//Gibbs Sampling
-				GibbsSampling(gibbssteps, d_i);
-				//sammle Statistikdaten von Modell v*h
+					for (int j = 0; j < top->NeuronCount - 1; j++) {
+						statisticsdatah[d_i][j] += top->Neurons[j].p;
+					}
 
-				//sammle Statistik für visible modell
-				//UpdateHiddenUnitsWithSampling();
-				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-					statisticsmodelv[d_i][i] = bottom->Neurons[i].p;
-				}
-				//hidden
-				for (int j = 0; j < top->NeuronCount - 1; j++) {
-					statisticsmodelh[d_i][j] = top->Neurons[j].p;
-				}
+					//Gibbs Sampling
+					GibbsSampling(gibbssteps, d_i);
+					//sammle Statistikdaten von Modell v*h
+
+					//sammle Statistik für visible modell
+					//UpdateHiddenUnitsWithSampling();
+					for (int i = 0; i < bottom->NeuronCount - 1; i++) {
+						statisticsmodelv[d_i][i] += bottom->Neurons[i].p;
+					}
+					//hidden
+					for (int j = 0; j < top->NeuronCount - 1; j++) {
+						statisticsmodelh[d_i][j] += top->Neurons[j].p;
+					}
+				} //Ende Batch
 				double edata = 0.0, emodel = 0.0;
 
 				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
@@ -188,13 +201,13 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 					emodel = 0.0;
 					for ( int j = 0; j < top->NeuronCount - 1; j++) {
 
-						//for ( int d_i = 0; d_i < input[l].DataCount; d_i++) {
+						for ( ; d_i < d_end; d_i++) {
 
-						emodel = statisticsmodelv[d_i][i] * statisticsmodelh[d_i][j];
-						edata = statisticsdatav[d_i][i] * statisticsdatah[d_i][j];
-						//}
-						//emodel /= (double)input[l].DataCount;
-						//edata /= (double)input[l].DataCount;
+							emodel = statisticsmodelv[d_i][i] * statisticsmodelh[d_i][j];
+							edata = statisticsdatav[d_i][i] * statisticsdatah[d_i][j];
+						}
+						emodel /= BatchSize;
+						edata /= BatchSize;
 						//Gewichte anpassen
 
 						//std::cout << edata << " " << emodel << std::endl;
@@ -208,8 +221,12 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 				for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
 					emodel = 0.0;
 					edata = 0.0;
-					emodel = statisticsmodelv[d_i][i];
-					edata = statisticsdatav[d_i][i];
+					for ( ; d_i < d_end; d_i++) {
+						emodel += statisticsmodelv[d_i][i];
+						edata += statisticsdatav[d_i][i];
+					}
+					emodel /= BatchSize;
+					edata /= BatchSize;
 
 					top->Neurons[top->NeuronCount - 1].Weights[i] += learnRate * (edata - emodel);
 				}
@@ -217,15 +234,17 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 				for ( int j = 0; j < top->NeuronCount - 1; j++) {
 					emodel = 0.0;
 					edata = 0.0;
-					//for ( int d_i = 0; d_i < input[l].DataCount; d_i++) {
-					emodel = statisticsmodelh[d_i][j];
-					edata = statisticsdatah[d_i][j];
-					//}
+					for (; d_i < d_end; d_i++) {
+					emodel += statisticsmodelh[d_i][j];
+					edata += statisticsdatah[d_i][j];
+					}
+					emodel /= BatchSize;
+					edata /= BatchSize;
 					*bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j] += learnRate * (edata - emodel);
 				}
-
-
-			} // Ende Trainingssatz
+				if(b==batches-2 && rest!=0)
+					BatchSize=rest;
+			} // Ende Batches
 
 
 
@@ -267,7 +286,7 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 		delete [] statisticsmodelh;
 	}
 	int layers[2] = {network->Layers[network -> LayersCount - 2].NeuronCount - 1, network->Layers[network -> LayersCount - 1].NeuronCount - 1};
-	NeuralNetwork lastlayer(layers, 2, static_cast<NNTLib::WeightInitEnum>(1), static_cast<NNTLib::FunctionEnum>(1));
+	NeuralNetwork lastlayer(layers, 2, static_cast<NNTLib::WeightInitEnum>(1), static_cast<NNTLib::FunctionEnum>(1), network->LastLayerFunction);
 	Backpropagation backprop(lastlayer);
 	for ( int d_i = 0; d_i < container.DataCount; d_i++)
 		for (int i = 0; i < container.OutputCount; i++) {
@@ -284,8 +303,8 @@ void ContrastiveDivergence::trainIncremental(const DataContainer &container, con
 
 	delete [] input;
 
-
 }
+
 
 ContrastiveDivergence::ContrastiveDivergence(DeepBeliefNet & net) {
 	this->network = &net;
@@ -297,11 +316,4 @@ ContrastiveDivergence::ContrastiveDivergence(DeepBeliefNet & net) {
 ContrastiveDivergence::~ContrastiveDivergence() {};
 
 
-void ContrastiveDivergence::Train(const DataContainer & container, const double learnRate, const int Epochs, int BatchSize, int gibbs) {
-	std::cout << "Train CD" << std::endl;
-	if (BatchSize == 1) {
-		trainIncremental(container, learnRate, Epochs, gibbs);
-		return;
-	}
-}
 }
