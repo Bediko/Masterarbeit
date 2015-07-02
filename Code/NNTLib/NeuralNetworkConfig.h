@@ -23,6 +23,7 @@ public:
 	/// The function type
 	/// </summary>
 	NNTLib::FunctionEnum FunctionType;
+	NNTLib::FunctionEnum LastLayerFunction;
 	/// <summary>
 	/// The weight initialize type
 	/// </summary>

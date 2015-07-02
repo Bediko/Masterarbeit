@@ -102,6 +102,8 @@ void NeuralNetworkConfig::HandleNameValue(std::string name,std::string value)
 			LayerNeuronCount[i]=atoi(segment.c_str());
 		}
 	}
+	else if(name =="LastLayerFunction")
+		LastLayerFunction = static_cast<NNTLib::FunctionEnum>(atoi(value.c_str()));
 }
 
 /// <summary>
@@ -111,6 +113,7 @@ void NeuralNetworkConfig::PrintData()
 {
 	std::cout <<"NeuralNetworkConfig:"<<std::endl;
 	std::cout <<"FunctionType = "<<GetStringValue(FunctionType)<<std::endl;
+	std::cout <<"LastLayerFunction = "<<GetStringValue(LastLayerFunction)<<std::endl;
 	std::cout <<"WeightInitType = "<< GetStringValue(WeightInitType)<<std::endl;
 	std::cout <<"LayerCount = "<<LayerCount<<std::endl;
 	std::cout <<"LayerNeuronCount = ";

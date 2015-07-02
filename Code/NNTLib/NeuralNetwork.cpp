@@ -7,7 +7,7 @@ namespace NNTLib {
 //<summary>
 //Empty Constructor for child class, should not be used to initialise Neural Network
 //</summary>
-NeuralNetwork::NeuralNetwork(){};
+NeuralNetwork::NeuralNetwork() {};
 /// <summary>
 /// Initializes a new instance of the <see cref="NeuralNetwork" /> class.
 /// </summary>
@@ -15,7 +15,7 @@ NeuralNetwork::NeuralNetwork(){};
 /// <param name="layercount">The hidden layercount.</param>
 /// <param name="initType">Type of the initialize.</param>
 /// <param name="functionType">Type of the function.</param>
-NeuralNetwork::NeuralNetwork(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType) {
+NeuralNetwork::NeuralNetwork(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType, FunctionEnum LastLayerFunction) {
 	init();
 
 	if (layercount < 2)
@@ -26,6 +26,7 @@ NeuralNetwork::NeuralNetwork(int *neuronsCountPerLayer, int layercount, WeightIn
 	}
 
 	this->FunctionType = functionType;
+	this->LastLayerFunction = LastLayerFunction;
 
 	LayersCount = layercount - 1; //Input Layer hat nicht wirklich neuronn also den nicht mitzählen
 
@@ -70,6 +71,7 @@ void NeuralNetwork::init() {
 
 	WeightInitType = WeightInitEnum::NONE;
 	FunctionType = FunctionEnum::LINEAR;
+	LastLayerFunction = FunctionEnum::LINEAR;
 	TotalNeuronCount = 0;
 	Layers = nullptr;
 }
@@ -98,6 +100,7 @@ void NeuralNetwork::copy(const NeuralNetwork &that) {
 	this->TotalNeuronCount = that.TotalNeuronCount;
 	this->WeightInitType = that.WeightInitType;
 	this->FunctionType = that.FunctionType;
+	this->LastLayerFunction = that.LastLayerFunction;
 
 	this->Layers = new Layer[LayersCount];
 
@@ -286,51 +289,68 @@ void NeuralNetwork::Propagate(const double *input) {
 	Neuron *neuron;
 
 	for (int i = 0; i < LayersCount; ++i) {
-		for (k = 0; k < Layers[i].NeuronCount; ++k) {
-			neuron = &Layers[i].Neurons[k];
-			net = 0;
-
-			//summiere gewichte * output des vorherigen layer auf => net
-			//unrolling des loops beschleunigte das propagieren um Faktor ~2 zumindestens beim windows compiler
-			/*for(j=0;j<Layers[i].InputValuesCount;++j)
-			{
-			net+=neuron->Weights[j] * Layers[i].InputValues[j];
-			}*/
-
-			//unrolling
-			j = Layers[i].InputValuesCount & 3; //das gleiche wie module 4
-
-			//behandle Neuronen die nicht in der nachfolgenden 4er Schritt loop behandelt werden können
-			switch (j) {
-			case 3:
-				net += neuron->Weights[2] * Layers[i].InputValues[2];
-
-			case 2:
-				net += neuron->Weights[1] * Layers[i].InputValues[1];
-
-			case 1:
-				net += neuron->Weights[0] * Layers[i].InputValues[0];
-			case 0:
-				break;
+		if (i == LayersCount - 1 && LastLayerFunction == FunctionEnum::SOFTMAX) {
+			double nets[Layers[i].NeuronCount];
+			for (k = 0; k < Layers[i].NeuronCount; ++k) {
+				nets[k] = 0.0;
+				for (j = 0; j < Layers[i].InputValuesCount; ++j) {
+					nets[k] += Layers[i].Neurons[k].Weights[j] * Layers[i].InputValues[j];
+				}
 			}
-
-			for (; j != Layers[i].InputValuesCount; j += 4) {
-				net +=
-				    neuron->Weights[j] * Layers[i].InputValues[j] +
-				    neuron->Weights[j + 1] * Layers[i].InputValues[j + 1] +
-				    neuron->Weights[j + 2] * Layers[i].InputValues[j + 2] +
-				    neuron->Weights[j + 3] * Layers[i].InputValues[j + 3];
+			for (k = 0; k < Layers[i].NeuronCount; ++k) {
+				Layers[i].Neurons[k].Output = ActivationFunction(LastLayerFunction, nets[k], nets, Layers[i].NeuronCount);
+				//std::cout<<k<<" "<<nets[k]<<std::endl;
+				//std::cout<<Layers[i].Neurons[k].Output<<std::endl;
 			}
+			//std::cout<<std::endl;
+		} 
+		else {
+			for (k = 0; k < Layers[i].NeuronCount; ++k) {
+				neuron = &Layers[i].Neurons[k];
+				net = 0;
 
-			net += neuron->Weights[Layers[i].InputValuesCount] /** neuron->Bias*/;
-			//unrolling ende
+				//summiere gewichte * output des vorherigen layer auf => net
+				//unrolling des loops beschleunigte das propagieren um Faktor ~2 zumindestens beim windows compiler
+				/*for(j=0;j<Layers[i].InputValuesCount;++j)
+				{
+				net+=neuron->Weights[j] * Layers[i].InputValues[j];
+				}*/
 
-			//aktivierungsfunktion f_net(net) auf net anwenden und in ausgabe des neurons speichern
-			neuron->Output = ActivationFunction(FunctionType, net);
+				//unrolling
+				j = Layers[i].InputValuesCount & 3; //das gleiche wie module 4
 
-			//ausgaben des layers als input des nächsten layers verwenden
-			if (i < LayersCount - 1) //letzter layer nicht weiter nach vorne kopieren
-				Layers[i + 1].InputValues[k] = neuron->Output;
+				//behandle Neuronen die nicht in der nachfolgenden 4er Schritt loop behandelt werden können
+				switch (j) {
+				case 3:
+					net += neuron->Weights[2] * Layers[i].InputValues[2];
+
+				case 2:
+					net += neuron->Weights[1] * Layers[i].InputValues[1];
+
+				case 1:
+					net += neuron->Weights[0] * Layers[i].InputValues[0];
+				case 0:
+					break;
+				}
+
+				for (; j != Layers[i].InputValuesCount; j += 4) {
+					net +=
+					    neuron->Weights[j] * Layers[i].InputValues[j] +
+					    neuron->Weights[j + 1] * Layers[i].InputValues[j + 1] +
+					    neuron->Weights[j + 2] * Layers[i].InputValues[j + 2] +
+					    neuron->Weights[j + 3] * Layers[i].InputValues[j + 3];
+				}
+
+				net += neuron->Weights[Layers[i].InputValuesCount] /** neuron->Bias*/;
+				//unrolling ende
+
+				//aktivierungsfunktion f_net(net) auf net anwenden und in ausgabe des neurons speichern
+				neuron->Output = ActivationFunction(FunctionType, net, NULL, 0);
+
+				//ausgaben des layers als input des nächsten layers verwenden
+				if (i < LayersCount - 1) //letzter layer nicht weiter nach vorne kopieren
+					Layers[i + 1].InputValues[k] = neuron->Output;
+			}
 		}
 	}
 }

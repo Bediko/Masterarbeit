@@ -31,6 +31,7 @@ namespace NNTLib
 		/// The function type
 		/// </summary>
 		FunctionEnum FunctionType;
+		FunctionEnum LastLayerFunction;
 		/// <summary>
 		/// The total neuron count
 		/// </summary>
@@ -40,7 +41,7 @@ namespace NNTLib
 		/// </summary>
 		Layer *Layers;
 		NeuralNetwork();
-		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);
+		NeuralNetwork(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType, FunctionEnum LastLayerFunction);
 
 
 		//Rule of Three http://stackoverflow.com/questions/4172722/what-is-the-rule-of-three

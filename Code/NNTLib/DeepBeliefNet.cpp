@@ -44,7 +44,7 @@ DeepBeliefNet::~DeepBeliefNet() {
  * @param initType Which way to initialise Weights should be used
  * @param functionType Which activation function is used in the neurons
  */
-DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType): NNTLib::NeuralNetwork(neuronsCountPerLayer, layercount, initType, functionType) {
+DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType): NNTLib::NeuralNetwork(neuronsCountPerLayer, layercount, initType, functionType, LastLayerFunction) {
 	init();
 
 	if (layercount < 2)

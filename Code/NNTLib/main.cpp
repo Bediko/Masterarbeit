@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
 			for (int i = 0; i < k; ++i) {
 				std::cout << LINE;
 
-				NNTLib::NeuralNetwork result(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType);
+				NNTLib::NeuralNetwork result(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.LastLayerFunction);
 
 				if (!loadWeightsFile.empty()) {
 					result.LoadWeights(loadWeightsFile.c_str());
@@ -145,7 +145,7 @@ int main(int argc, char* argv[]) {
 						NNTLib::NeuralNetwork** population = new NNTLib::NeuralNetwork*[geneticConfig.PopulationSize];
 
 						for (int p = 0; p < geneticConfig.PopulationSize; ++p) {
-							population[p] = new NNTLib::NeuralNetwork(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType);
+							population[p] = new NNTLib::NeuralNetwork(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.LastLayerFunction);
 						}
 
 						*population[0] = result;
@@ -185,132 +185,7 @@ int main(int argc, char* argv[]) {
 
 						dbn.SaveWeightsforNN("test" + std::to_string(iteration));
 						result.LoadWeights("test" + std::to_string(iteration));						
-//NNTLib::Backpropagation backpropAlg(result);
-						  //std::cout << "SIGMOID BACKPROPAGATION" << std::endl;
-						  //backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						  //std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						  //int error = TestNetwork(maxErrordiff, &trainData, dbn);
-						
-						 // if (k > 1) {
-						 // 	std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						 // 	error = TestNetwork(maxErrordiff, &testData, dbn);
-						 // } else {
-						 // 	std::cout << "Test additional Testdata " << i + 1 << "/" << k << std::endl;
-						 // 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, dbn);
-						 // }
-						//result.LoadWeights("test" + std::to_string(iteration));
 
-
-						// std::cout << "OHNE BACK PROPAGATION SIGMOID" << std::endl;
-						// result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
-						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						// error = TestNetwork(maxErrordiff, &trainData, result);
-						// std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						// if (k > 1) {
-						// 	error = TestNetwork(maxErrordiff, &testData, result);
-						// } else {
-						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						// }
-						//  std::ofstream myfile;
-						//  myfile.open("diff" + std::to_string(iteration));
-
-
-						// for (int i = 0; i < result.LayersCount; ++i) {
-						// 	NNTLib::Layer* layer = &result.Layers[i];
-
-						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
-						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
-
-						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-						// 			myfile << neuron->Weights[k] << " ";
-						// 		}
-						// 		myfile << "\n";
-						// 	}
-						// 	myfile << "\n";
-						// }
-						// myfile << error << "\n\n";
-
-
-						// std::cout << "OHNE BACK PROPAGATION BINÄR" << std::endl;
-						// result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
-						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						// error = TestNetwork(maxErrordiff, &trainData, result);
-						// std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						// if (k > 1) {
-						// 	error = TestNetwork(maxErrordiff, &testData, result);
-						// } else {
-						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						// }
-						// for (int i = 0; i < result.LayersCount; ++i) {
-						// 	NNTLib::Layer* layer = &result.Layers[i];
-
-						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
-						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
-
-						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-						// 			myfile << neuron->Weights[k] << " ";
-						// 		}
-						// 		myfile << "\n";
-						// 	}
-						// 	myfile << "\n";
-						// }
-						// myfile << error << "\n\n";
-
-						//result.FunctionType = static_cast<NNTLib::FunctionEnum>(1);
-						//backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						//std::cout << "MIT BACK PROPAGATION SIGMOID" << std::endl;
-						//result.SaveWeights("BPsig" + std::to_string(iteration));
-						//std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						//int error = TestNetwork(maxErrordiff, &trainData, result);
-						//std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-						//if (k > 1) {
-						//	error = TestNetwork(maxErrordiff, &testData,result);
-						//} else {
-						//	error = TestNetwork(maxErrordiff, &additionalTestDataContainer,result);
-						//}
-						//for (int i = 0; i < result.LayersCount; ++i) {
-						//	NNTLib::Layer* layer = &result.Layers[i];
-
-						//	for (int j = 0; j < layer->NeuronCount; ++j) {
-						//		NNTLib::Neuron* neuron = &layer->Neurons[j];
-
-						//		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-						//			myfile << neuron->Weights[k] << " ";
-						//		}
-						//		myfile << "\n";
-						//	}
-						//	myfile << "\n";
-						//}
-						//myfile << error << "\n\n";
-						//result.LoadWeights("test" + std::to_string(iteration));
-						//result.FunctionType = static_cast<NNTLib::FunctionEnum>(4);
-						//backpropAlg.Train(trainData, backpropConfig.Alpha, backpropConfig.MaxLoopCount, backpropConfig.Momentum, backpropConfig.BatchSize, backpropConfig.ErrorThreshold, backpropConfig.DecayRate);
-						//result.SaveWeights("BPbin" + std::to_string(iteration));
-						// std::cout << "MIT BACK PROPAGATION BINÄR" << std::endl;
-						// std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						// error = TestNetwork(maxErrordiff, &trainData, result);
-						// if (k > 1) {
-						// 	error = TestNetwork(maxErrordiff, &testData, result);
-						// } else {
-						// 	error = TestNetwork(maxErrordiff, &additionalTestDataContainer, result);
-						// }
-						// for (int i = 0; i < result.LayersCount; ++i) {
-						// 	NNTLib::Layer* layer = &result.Layers[i];
-
-						// 	for (int j = 0; j < layer->NeuronCount; ++j) {
-						// 		NNTLib::Neuron* neuron = &layer->Neurons[j];
-
-						// 		for (int k = 0; k < layer->InputValuesCountWithBias; ++k) {
-						// 			myfile << neuron->Weights[k] << " ";
-						// 		}
-						// 		myfile << "\n";
-						// 	}
-						// 	myfile << "\n";
-						// }
-						// myfile << error << "\n\n";
-
-						// myfile.close();
-						//backpropConfig.MaxLoopCount=0;
 					}
 
 					if (backpropConfig.MaxLoopCount > 0) {
@@ -513,7 +388,7 @@ void SimpleXORExampleBackpropagation() {
 	layerNeuronCount[2] = dataContainer.OutputCount; //1
 
 	//netzwerk erstellen
-	NNTLib::NeuralNetwork net(layerNeuronCount, layercount, NNTLib::WeightInitEnum::LECUN, NNTLib::FunctionEnum::LOGISTIC);
+	NNTLib::NeuralNetwork net(layerNeuronCount, layercount, NNTLib::WeightInitEnum::LECUN, NNTLib::FunctionEnum::LOGISTIC, NNTLib::FunctionEnum::LOGISTIC);
 
 	std::cout << "start train" << std::endl;
 	NNTLib::Backpropagation prop(net);
@@ -576,7 +451,7 @@ void SimpleXORExampleGenetic() {
 	NNTLib::NeuralNetwork** population = new NNTLib::NeuralNetwork*[POPULATIONSIZE];
 
 	for (int p = 0; p < POPULATIONSIZE; ++p) {
-		population[p] = new NNTLib::NeuralNetwork(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC);
+		population[p] = new NNTLib::NeuralNetwork(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC, NNTLib::FunctionEnum::LOGISTIC);
 	}
 
 	std::cout << "start train" << std::endl;
@@ -621,7 +496,7 @@ void  SimpleMNISTExampleBackpropagation() {
 	layerNeuronCount[2] = container.OutputCount;
 	//int lastError =testcontainer.DataCount;
 
-	NNTLib::NeuralNetwork net(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC);
+	NNTLib::NeuralNetwork net(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC, NNTLib::FunctionEnum::LOGISTIC);
 
 	//net.LoadWeights("Result/W_L");
 
@@ -665,7 +540,7 @@ void  SimpleMNISTExampleGenetic() {
 	NNTLib::NeuralNetwork** population = new NNTLib::NeuralNetwork*[POPULATIONSIZE];
 
 	for (int p = 0; p < POPULATIONSIZE; ++p) {
-		population[p] = new NNTLib::NeuralNetwork(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC);
+		population[p] = new NNTLib::NeuralNetwork(layerNeuronCount, layercount, NNTLib::WeightInitEnum::UNIFORM, NNTLib::FunctionEnum::LOGISTIC, NNTLib::FunctionEnum::LOGISTIC);
 	}
 
 	NNTLib::GeneticAlgorithm genetic(population, POPULATIONSIZE);
