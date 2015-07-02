@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  23 JUN 2015 14:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  2 JUL 2015 16:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1133,33 +1133,33 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 )
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 51.
+less on input line 52.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 52.
+less on input line 53.
 
 (./Deep_Learning.aux)
 \openout1 = `Deep_Learning.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 57.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1224,12 +1224,12 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
+LaTeX Font Info:    Try loading font information for U+msa on input line 59.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 59.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1250,111 +1250,155 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2] <./Hopfield.pdf, id=16, 155.73611pt x 159.75114pt>
+[2] [3] <./Hopfield.pdf, id=19, 155.73611pt x 159.75114pt>
 File: ./Hopfield.pdf Graphic file (type pdf)
- <use ./Hopfield.pdf>
-Package pdftex.def Info: ./Hopfield.pdf used on input line 73.
-(pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
 
-(./Hopfield.pdf_tex <Hopfield.pdf, id=17, page=1, 155.73611pt x 159.75114pt>
+<use ./Hopfield.pdf>
+Package pdftex.def Info: ./Hopfield.pdf used on input line 77.
+(pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
+ (./Hopfield.pdf_tex
+<Hopfield.pdf, id=20, page=1, 155.73611pt x 159.75114pt>
 File: Hopfield.pdf Graphic file (type pdf)
 
 <use Hopfield.pdf, page 1>
 Package pdftex.def Info: Hopfield.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
-) [3 <./Hopfield.pdf>]
-<./BM.pdf, id=29, 155.73611pt x 159.75114pt>
+) [4 <./Hopfield.pdf>]
+<./BM.pdf, id=32, 155.73611pt x 159.75114pt>
 File: ./BM.pdf Graphic file (type pdf)
  <use ./BM.pdf>
-Package pdftex.def Info: ./BM.pdf used on input line 96.
+Package pdftex.def Info: ./BM.pdf used on input line 99.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
  (./BM.pdf_tex
-<BM.pdf, id=30, page=1, 155.73611pt x 159.75114pt>
+<BM.pdf, id=33, page=1, 155.73611pt x 159.75114pt>
 File: BM.pdf Graphic file (type pdf)
  <use BM.pdf, page 1>
 Package pdftex.def Info: BM.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
 )
-[4 <./BM.pdf>] <./RBM.pdf, id=36, 155.73611pt x 159.75114pt>
+[5 <./BM.pdf>] [6] <./RBM.pdf, id=45, 155.73611pt x 159.75114pt>
 File: ./RBM.pdf Graphic file (type pdf)
- <use ./RBM.pdf>
-Package pdftex.def Info: ./RBM.pdf used on input line 116.
+
+<use ./RBM.pdf>
+Package pdftex.def Info: ./RBM.pdf used on input line 155.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
-
-(./RBM.pdf_tex <RBM.pdf, id=37, page=1, 155.73611pt x 159.75114pt>
+ (./RBM.pdf_tex
+<RBM.pdf, id=46, page=1, 155.73611pt x 159.75114pt>
 File: RBM.pdf Graphic file (type pdf)
-
-<use RBM.pdf, page 1>
+ <use RBM.pdf, page 1>
 Package pdftex.def Info: RBM.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
-) [5 <./RBM.pdf>]
+)
+[7 <./RBM.pdf>]
 
-LaTeX Warning: Citation `Guide' on page 6 undefined on input line 161.
+LaTeX Warning: Citation `Guide' on page 8 undefined on input line 200.
 
-[6] [7] <./Netzwerk.pdf, id=50, 132.88982pt x 214.25043pt>
+[8] <./Markov.pdf, id=56, 419.13338pt x 123.8847pt>
+File: ./Markov.pdf Graphic file (type pdf)
+ <use ./Markov.pdf>
+Package pdftex.def Info: ./Markov.pdf used on input line 220.
+(pdftex.def)             Requested size: 419.13235pt x 123.8844pt.
+File: ./Markov.pdf Graphic file (type pdf)
+
+<use ./Markov.pdf>
+Package pdftex.def Info: ./Markov.pdf used on input line 220.
+(pdftex.def)             Requested size: 419.13235pt x 123.8844pt.
+ (./Markov.pdf_tex
+<Markov.pdf, id=57, page=1, 419.13338pt x 123.8847pt>
+File: Markov.pdf Graphic file (type pdf)
+ <use Markov.pdf, page 1>
+Package pdftex.def Info: Markov.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 419.13235pt x 123.88628pt.
+) [9 <./Markov.pdf>] [10] <./Netzwerk.pdf, id=66, 132.88982pt x 214.25043pt>
 File: ./Netzwerk.pdf Graphic file (type pdf)
 
 <use ./Netzwerk.pdf>
-Package pdftex.def Info: ./Netzwerk.pdf used on input line 203.
+Package pdftex.def Info: ./Netzwerk.pdf used on input line 250.
 (pdftex.def)             Requested size: 150.0pt x 241.8615pt.
  (./Netzwerk.pdf_tex
-<Netzwerk.pdf, id=51, 132.88982pt x 214.25043pt>
+<Netzwerk.pdf, id=67, 132.88982pt x 214.25043pt>
 File: Netzwerk.pdf Graphic file (type pdf)
  <use Netzwerk.pdf>
 Package pdftex.def Info: Netzwerk.pdf used on input line 52.
 (pdftex.def)             Requested size: 132.88947pt x 214.2499pt.
-) [8 <./Netzwerk.pdf>] <./ExplainedAway.pdf, id=57, 496.67433pt x 391.64862pt>
+) [11 <./Netzwerk.pdf>] <./ExplainedAway.pdf, id=73, 496.67433pt x 391.64862pt>
 File: ./ExplainedAway.pdf Graphic file (type pdf)
 
 <use ./ExplainedAway.pdf>
-Package pdftex.def Info: ./ExplainedAway.pdf used on input line 215.
+Package pdftex.def Info: ./ExplainedAway.pdf used on input line 262.
 (pdftex.def)             Requested size: 150.0pt x 118.27835pt.
  (./ExplainedAway.pdf_tex
-<ExplainedAway.pdf, id=58, page=1, 496.67433pt x 391.64862pt>
+<ExplainedAway.pdf, id=74, page=1, 496.67433pt x 391.64862pt>
 File: ExplainedAway.pdf Graphic file (type pdf)
 
 <use ExplainedAway.pdf, page 1>
 Package pdftex.def Info: ExplainedAway.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 150.0pt x 118.27835pt.
-) [9 <./ExplainedAway.pdf>]
-Overfull \hbox (1.57399pt too wide) in paragraph at lines 249--250
+) [12 <./ExplainedAway.pdf>]
+<./SMTrain.pdf, id=80, 217.83699pt x 214.23279pt>
+File: ./SMTrain.pdf Graphic file (type pdf)
+ <use ./SMTrain.pdf>
+Package pdftex.def Info: ./SMTrain.pdf used on input line 292.
+(pdftex.def)             Requested size: 200.0pt x 196.69774pt.
+
+(./SMTrain.pdf_tex <SMTrain.pdf, id=81, page=1, 217.83699pt x 214.23279pt>
+File: SMTrain.pdf Graphic file (type pdf)
+
+<use SMTrain.pdf, page 1>
+Package pdftex.def Info: SMTrain.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 200.0pt x 196.69774pt.
+) [13 <./SMTrain.pdf>]
+<./BPTrain.pdf, id=88, 132.8678pt x 260.08789pt>
+File: ./BPTrain.pdf Graphic file (type pdf)
+ <use ./BPTrain.pdf>
+Package pdftex.def Info: ./BPTrain.pdf used on input line 301.
+(pdftex.def)             Requested size: 113.81102pt x 222.78224pt.
+
+(./BPTrain.pdf_tex <BPTrain.pdf, id=89, page=1, 132.8678pt x 260.08789pt>
+File: BPTrain.pdf Graphic file (type pdf)
+
+<use BPTrain.pdf, page 1>
+Package pdftex.def Info: BPTrain.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 113.81102pt x 222.78224pt.
+)
+Overfull \hbox (1.57399pt too wide) in paragraph at lines 308--309
 \OT1/cmr/m/n/12 Als Grund-ger[]ust wur-de ein be-reits im-ple-men-tier-tes Feed
 forward-Netz, wel-ches be-reits Back-
  []
 
-[10] <./Aufbau.pdf, id=68, 330.836pt x 411.939pt>
+<./Aufbau.pdf, id=90, 330.836pt x 411.939pt>
 File: ./Aufbau.pdf Graphic file (type pdf)
  <use ./Aufbau.pdf>
-Package pdftex.def Info: ./Aufbau.pdf used on input line 256.
+Package pdftex.def Info: ./Aufbau.pdf used on input line 315.
 (pdftex.def)             Requested size: 330.83519pt x 411.93797pt.
 File: ./Aufbau.pdf Graphic file (type pdf)
 
 <use ./Aufbau.pdf>
-Package pdftex.def Info: ./Aufbau.pdf used on input line 256.
+Package pdftex.def Info: ./Aufbau.pdf used on input line 315.
 (pdftex.def)             Requested size: 330.83519pt x 411.93797pt.
  (./Aufbau.pdf_tex
-<Aufbau.pdf, id=69, page=1, 330.836pt x 411.939pt>
+<Aufbau.pdf, id=91, page=1, 330.836pt x 411.939pt>
 File: Aufbau.pdf Graphic file (type pdf)
  <use Aufbau.pdf, page 1>
 Package pdftex.def Info: Aufbau.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 330.83519pt x 411.9631pt.
 )
-[11] [12 <./Aufbau.pdf>] [13] [14] [15] (./Deep_Learning.lof)
+[14 <./BPTrain.pdf>] [15 <./Aufbau.pdf>] [16] [17] [18] [19] [20]
+(./Deep_Learning.lof)
 \tf@lof=\write5
 \openout5 = `Deep_Learning.lof'.
 
- [16]
-(./Deep_Learning.aux)
+ [21] (./Deep_Learning.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 22927 strings out of 493105
- 440493 string characters out of 6137072
- 483390 words of memory out of 5000000
- 25982 multiletter control sequences out of 15000+600000
- 13102 words of font info for 50 fonts, out of 8000000 for 9000
+ 22973 strings out of 493105
+ 441183 string characters out of 6137072
+ 497427 words of memory out of 5000000
+ 26017 multiletter control sequences out of 15000+600000
+ 13747 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,21n,75p,10424b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -1362,17 +1406,18 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
-b>
-Output written on Deep_Learning.pdf (16 pages, 228636 bytes).
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Deep_Learning.pdf (21 pages, 315742 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 188 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

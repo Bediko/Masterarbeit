@@ -1,42 +1,60 @@
 \relax 
 \providecommand{\transparent@use}[1]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Einleitung}{3}}
 \citation{Hopfield}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Grundlagen}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Hopfield Netze}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Modell eines Hopfield Netzes. Alle Neuronen besitzen eine Ein- und Ausgabe und sind \IeC {\"u}ber Gewichte jeweils mit allen anderen Neuronen verbunden\relax }}{3}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{HopfieldNetz}{{1}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Boltzmann Maschinen}{3}}
 \citation{BM}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Modell einer Boltzmann Maschine. Gelbe Kreise stellen verstecke Neuronen dar, wei\IeC {\ss }e Kreise sind sichtbare Neuronen.\relax }}{4}}
-\newlabel{Boltzmannmaschine}{{2}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Modell einer eingeschr\IeC {\"a}nkten Boltzmann Maschine. Oben sind die versteckten Knoten und unten die nach au\IeC {\ss }en sichtbaren Knoten.\relax }}{5}}
-\newlabel{RBM}{{3}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Grundlagen}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Hopfield Netze}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Modell eines Hopfield Netzes. Alle Neuronen besitzen eine Ein- und Ausgabe und sind \IeC {\"u}ber Gewichte jeweils mit allen anderen Neuronen verbunden\relax }}{4}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{HopfieldNetz}{{1}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Boltzmann Maschinen}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Modell einer Boltzmann Maschine. Gelbe Kreise stellen verstecke Neuronen dar, wei\IeC {\ss }e Kreise sind sichtbare Neuronen.\relax }}{5}}
+\newlabel{Boltzmannmaschine}{{2}{5}}
+\citation{KLD}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Modell einer eingeschr\IeC {\"a}nkten Boltzmann Maschine. Oben sind die versteckten Knoten und unten die nach au\IeC {\ss }en sichtbaren Knoten.\relax }}{7}}
+\newlabel{RBM}{{3}{7}}
 \citation{guide}
 \citation{Guide}
-\newlabel{ph}{{10}{6}}
+\newlabel{ph}{{16}{9}}
+\newlabel{pv}{{17}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Markov-Kette mit Gibbs Sampling. Diese wird mit einem Trainingsvektor initialisiert. Die sichtbaren und unsichtbaren Neuronen werden abwechselnd neu berechnet bis ein Equilibriumszustand erreicht wird.\relax }}{9}}
+\newlabel{Markov}{{4}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Kontrastive Divergenz}{9}}
 \citation{KLD}
 \citation{noconv}
 \citation{digits}
-\newlabel{pv}{{11}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Kontrastive Divergenz}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Deep-Belief Netze}{10}}
 \citation{learning}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Deep-Belief Netze}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Greedy Algorithmus zum trainieren von Deep-Belief Netzen}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hyprid Netzwerk. Die Ebenen $H_3$ und $H_2$ sind mit ungerichteten Kanten verbunden und bilden einen Assoziativspeicher. Die anderen Ebenen sind mit gerichteten Kanten verbunden.\relax }}{8}}
-\newlabel{Netz}{{4}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Beispiel f\IeC {\"u}r den Explained Away Effekt. Der Bias von $-10$ am Erdbebenknoten bedeutet dass dieser ohne beobachtet zu werden $e^10$ mal wahrscheinlicher aus als aktiviert ist. Beide Ereignisse zusammen haben eine Wahrscheinlichkeit von $e^{-20}$. Dies ist also sehr unwahrscheinlich. Deshalb erkl\IeC {\"a}rt die Aktivierung eines Knotens den anderen weg.\relax }}{9}}
-\newlabel{ExplainedAway}{{5}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Hyprid Netzwerk. Die Ebenen $H_3$ und $H_2$ sind mit ungerichteten Kanten verbunden und bilden einen Assoziativspeicher. Die anderen Ebenen sind mit gerichteten Kanten verbunden.\relax }}{11}}
+\newlabel{Netz}{{5}{11}}
 \citation{learning}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Beispiel f\IeC {\"u}r den Explained Away Effekt. Der Bias von $-10$ am Erdbeben-knoten bedeutet dass dieser ohne beobachtet zu werden $e^{10}$ mal wahrscheinlicher aus als aktiviert ist. Beide Ereignisse zusammen haben eine Wahrscheinlichkeit von $e^{-20}$, da diese unabh\IeC {\"a}ngig voneinander sind. Dies ist also sehr unwahrscheinlich. Deshalb erkl\IeC {\"a}rt die Aktivierung eines Knotens den anderen weg.\relax }}{12}}
+\newlabel{ExplainedAway}{{6}{12}}
 \citation{backprop}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Deep-Belief Netze zur Klassifikation}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Implementation}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugef\IeC {\"u}gt.\relax }}{12}}
-\newlabel{Aufbau}{{6}{12}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Implementation der Kontrastiven Divergenz\relax }}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Versuchsaufbau}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Achsensymetrie und Rotationssymetrie}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Deep-Belief Netze zur Klassifikation}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Netzwerk mit Softmax-Gruppe zum Klassifizieren. Aus Sicht von $H_3$ werden die Softmax-Neuronen als normale Eingabe betrachtet. An der Softmax-Gruppe kann sp\IeC {\"a}ter die gefundene Klasse abgelesen werden.\relax }}{13}}
+\newlabel{SMTrain}{{7}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Netzwerk mit Softmax-Gruppe zum Klassifizieren. Aus Sicht von $H_3$ werden die Softmax-Neuronen als normale Eingabe betrachtet. An der Softmax-Gruppe kann sp\IeC {\"a}ter die gefundene Klasse abgelesen werden.\relax }}{14}}
+\newlabel{BPTrain}{{8}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Implementation}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugef\IeC {\"u}gt.\relax }}{15}}
+\newlabel{Aufbau}{{9}{15}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Implementation der Kontrastiven Divergenz\relax }}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Versuchsaufbau}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Achsensymetrie und Rotationssymetrie}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}MNIST Datenbank}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Versuchsdurchf\IeC {\"u}hrung}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Achsensymetrie und Rotationssymetrie}{18}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Vergleich verschiedener Netztopologien mit einem Ausgabeneuron\relax }}{18}}
+\newlabel{sigmoid}{{1}{18}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Vergleich verschiedener Netztopologien mit Softmax-Neuronen als Ausgabe\relax }}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}MNIST Datenbank}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}M\IeC {\"o}gliche Verbesserung von Deep-Belief Netzen}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Probleme}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Einfache Verbesserung}{19}}
 \bibstyle{unsrt}
 \bibcite{BM}{1}
 \bibcite{guide}{2}
