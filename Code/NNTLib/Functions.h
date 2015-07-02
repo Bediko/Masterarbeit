@@ -15,7 +15,7 @@
 #include "Enums.h"
 namespace NNTLib
 {
-	double ActivationFunction(FunctionEnum funcEnum, double y);
+	double ActivationFunction(FunctionEnum funcEnum, double x, double* y, int size);
 
 	double ActivationFunctionDerivate(FunctionEnum funcEnum, double y);
 }
