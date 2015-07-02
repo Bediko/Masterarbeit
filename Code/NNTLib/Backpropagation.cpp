@@ -77,7 +77,9 @@ namespace NNTLib
 						if(i==network->LayersCount - 1)//Letzter Layer
 						{
 							//Fehler berechnen , error = f_act'(net) * (t_i - o_j)
-							error=  ActivationFunctionDerivate(network->FunctionType,neuron->Output) * (container.DataOutput[d_i][j] - neuron->Output);
+							error=  ActivationFunctionDerivate(network->LastLayerFunction,neuron->Output) * (container.DataOutput[d_i][j] - neuron->Output);
+							//std::cout<<ActivationFunctionDerivate(network->LastLayerFunction,neuron->Output)<<std::endl;
+							//std::cout<<neuron->Output<<std::endl;
 							//Quadratischen Fehler berechnen und aufsummineren
 							squareErrorSum+=(container.DataOutput[d_i][j] - neuron->Output) * (container.DataOutput[d_i][j] - neuron->Output) ;
 						}
