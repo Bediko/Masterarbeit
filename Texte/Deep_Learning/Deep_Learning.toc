@@ -8,12 +8,13 @@
 \contentsline {subsection}{\numberline {3.1}Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}{11}
 \contentsline {subsection}{\numberline {3.2}Deep-Belief Netze zur Klassifikation}{13}
 \contentsline {subsection}{\numberline {3.3}Implementation}{14}
-\contentsline {section}{\numberline {4}Versuchsaufbau}{17}
-\contentsline {subsection}{\numberline {4.1}Achsensymetrie und Rotationssymetrie}{17}
+\contentsline {section}{\numberline {4}Versuch}{17}
+\contentsline {subsection}{\numberline {4.1}Achsensymmetrie und Rotationssymmetrie}{17}
 \contentsline {subsection}{\numberline {4.2}MNIST Datenbank}{17}
-\contentsline {section}{\numberline {5}Versuchsdurchf\IeC {\"u}hrung}{18}
-\contentsline {subsection}{\numberline {5.1}Achsensymetrie und Rotationssymetrie}{18}
-\contentsline {subsection}{\numberline {5.2}MNIST Datenbank}{19}
-\contentsline {section}{\numberline {6}M\IeC {\"o}gliche Verbesserung von Deep-Belief Netzen}{19}
-\contentsline {subsection}{\numberline {6.1}Probleme}{19}
-\contentsline {subsection}{\numberline {6.2}Einfache Verbesserung}{19}
+\contentsline {subsection}{\numberline {4.3}Versuchsdurchf\IeC {\"u}hrung}{17}
+\contentsline {subsubsection}{\numberline {4.3.1}Achsensymetrie und Rotationssymetrie}{18}
+\contentsline {subsubsection}{\numberline {4.3.2}MNIST Datenbank}{19}
+\contentsline {subsubsection}{\numberline {4.3.3}MNIST Datenbank}{19}
+\contentsline {section}{\numberline {5}M\IeC {\"o}gliche Verbesserung von Deep-Belief Netzen}{19}
+\contentsline {subsection}{\numberline {5.1}Probleme}{19}
+\contentsline {subsection}{\numberline {5.2}Einfache Verbesserung}{19}

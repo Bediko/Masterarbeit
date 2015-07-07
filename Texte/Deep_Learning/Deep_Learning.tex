@@ -238,7 +238,7 @@ Die Idee hinter Kontrastiven Divergenz besteht darin, dass beim normalen Gibbs S
 Ein weiterer Schritt, um das Lernen eines Modells auf RBMs zu verbessern, besteht darin, $n$ Schritte des Gibbs samplings zu machen, bevor man die Statistik für $\langle v_i h_j \rangle_{recon}$ ermittelt. Dies wird mit $CD_n$ notiert, wobei $n$ die Anzahl der Schritte des Gibbs samplings angibt.
 
 \section{Deep-Belief Netze}
-Deep-Belief Netze sind eine Form von künstlichen neuronalen Netzen. Diese werden meist unüberwacht trainiert, da angenommen wird, dass Labels zu wenig Informationen enthalten über die vorhandenen Daten oder bei großen Datenmengen sehr oft keine Labels für alle Daten vorhanden sind. Zum einen ermöglichen Deep-Beielf Netze das Rekonstruieren von einmal trainierten Modellen, z.B. kann ein Deep-Belief Netz, wenn es das Modell von Bildern lernt teile von Bildern oder auch ganze Bilder rekonstruieren. Desweiteren können Deep-Belief Netze zur Klassifikation benutzt werden oder zum Vortrainieren von Feedforward Netzen, da diese nicht so leicht in lokalen Minima stecken bleiben und somit das Netz näher am globalen Minimum konvergiert. Zum Trainieren von Deep-Belief Netzen hat sich ein einfacher Algorithmus basierend auf eingeschränkten Boltzmann Maschinen etabliert.
+Deep-Belief Netze sind eine Form von künstlichen neuronalen Netzen. Diese werden meist unüberwacht trainiert, da angenommen wird, dass Labels zu wenig Informationen enthalten über die vorhandenen Daten oder bei großen Datenmengen sehr oft keine Labels für alle Daten vorhanden sind. Zum einen ermöglichen Deep-Beielf Netze das Rekonstruieren von einmal trainierten Modellen, z.B. kann ein Deep-Belief Netz, wenn es das Modell von Bildern lernt teile von Bildern oder auch ganze Bilder rekonstruieren. Desweiteren können Deep-Belief Netze zur Klassifikation benutzt werden oder zum Vortrainieren von Feedforward Netzen, da diese nicht so leicht in lokalen Minima stecken bleiben und somit das Netz näher am globalen Minimum konvergiert. Feedforward Netze sind neuronale Netze die ihre Daten nur in eine Richtung propagieren. Zum Trainieren von Deep-Belief Netzen hat sich ein einfacher Algorithmus basierend auf eingeschränkten Boltzmann Maschinen etabliert.
 
 \subsection{Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}
 
@@ -276,7 +276,7 @@ Im allgemeinen findet die eingeschränkte Boltzmann Maschine kein perfektes Mode
 
 
 
-Jede durch den Algorithmus trainierte Ebene verbessert das Modell. Gleichzeitig bedeutet dies auch, dass jedes Modell durch Hinzufügen von neuen Ebenen bis zu einem bestimmten Punkt verbessert werden kann, wenn man jede Ebene sorgfältig genug trainiert. Wenn alle Ebenen die gleiche Anzahl von Knoten haben, besteht eine Verbesserung darin, dass jede neue Ebene mit den bereits gelernten Gewichten initialisiert wird. \cite{learning}.
+Jede durch den Algorithmus trainierte Ebene verbessert das Modell. Gleichzeitig bedeutet dies auch, dass jedes Modell durch Hinzufügen von neuen Ebenen bis zu einem bestimmten Punkt verbessert werden kann, wenn man jede Ebene sorgfältig genug trainiert. Wenn alle Ebenen die gleiche Anzahl von Knoten haben, besteht eine Verbesserung darin, dass jede neue Ebene mit den bereits gelernten Gewichten initialisiert wird \cite{learning}. Bei unterschiedlicher Knotenzahl werden die Gewichte mit Zufallszahlen initialisiert.
 
 \subsection{Deep-Belief Netze zur Klassifikation}
 Nachdem man das Netz mit dem im vorigen Kapitel beschriebenen Algorithmus trainiert hat, muss man immer noch die Labeldaten ins Netz speisen wenn man dieses für eine Klassifikation nutzen möchte. Dazu gibt es im wesentlichen zwei verschiedene Methoden:
@@ -299,7 +299,7 @@ Die zweite Methode besteht darin, dass Deep-Belief Netz normal zu trainieren und
 \begin{figure}[H]
 	\center
 	\includesvg[width=4cm]{BPTrain}
-	\caption{Netzwerk mit Softmax-Gruppe zum Klassifizieren. Aus Sicht von $H_3$ werden die Softmax-Neuronen als normale Eingabe betrachtet. An der Softmax-Gruppe kann später die gefundene Klasse abgelesen werden.}
+	\caption{Netzwerk mit Ausgabeschicht zur Klassifizierung. Die Gewichte zwischen $H_3$ und der Ausgabe werden mit Backpropagation initialisiert.}
 	\label{BPTrain}
 \end{figure}
 
@@ -307,9 +307,9 @@ Die zweite Methode besteht darin, dass Deep-Belief Netz normal zu trainieren und
 \subsection{Implementation}
 Als Grundgerüst wurde ein bereits implementiertes Feedforward-Netz, welches bereits Backpropagation kann, genutzt. Abbildung \ref{Aufbau} zeigt die Klassenherarchie des verwendeten Grundgerüsts. In rot sind die für den Aufbau und die Verwendung von Deep-Belief Netzen benötigten Klassen markiert.
 
-Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches. Der letzte Parameter hat jedoch keine Auswirkung, da die Implementation der Kontrastiven Divergenz aktuell nur Batchgrößen von 1 zulässt, also nach jedem Trainingsbild die Gewichte aktualisiert.
+Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches.
 
-DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den normalen Gewichten, die daraus bestehen, dass diese bei zwei Layern nur von dem oberen Layer angesprochen werden können, auch vorwärtsgerichtete Gewichte initialisiert werden. Diese Gewichte stellen jedoch lediglich Zeiger auf die normalen Gewichte dar. Desweiteren wurde eine Möglichkeit geschaffen die Gewichte für das Deep-Belief Netz zu initialiseren. Dazu wird für Jedes Gewicht eine zufällige Zahl einer gausschen Normalverteilung mit einem Erwartungswert von 0 und einer Standardabweichung von $0,1$ gezogen.
+DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den rückwärtsgerichteten Gewichten der normalen Neuronen auch vorwärtsgerichtete Gewichte besitzt. Diese Gewichte stellen jedoch lediglich Zeiger auf die rückwärtsgerichteten Gewichte dar. Desweiteren wurde eine Möglichkeit geschaffen die Gewichte für das Deep-Belief Netz zu initialiseren. Dazu wird für jedes Gewicht eine zufällige Zahl einer gausschen Normalverteilung mit einem Erwartungswert von 0 und einer Standardabweichung von $0,1$ gezogen.
 \begin{figure}[H]
 	\center
 	\includesvg{Aufbau}
@@ -318,11 +318,11 @@ DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen
 \end{figure}
 DeepBeliefNet stellt die Netzstruktur für Deep-Belief Netze zur Verfügung. Im Gegensatz zu den normalen Netzwerken des Frameworks, besitzen Deep-Belief Netze auch auf der Eingabeebene eigene Neuronen. Dies ist wichtig, da man für die Kontrastive Divergenz die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen speichern muss. Desweiteren besitzt das Netz die Funktion seine Gewichte so abzuspeichern, dass diese von einem normalen neuronalen Netz wieder eingelesen werden können. Dabei gehen die Biasgewichte in Rückwärtsrichtung verloren, da diese von dem normalen neuronalen Netz mit Backpropagation nicht benötigt werden.
 
-DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktivierungswahrscheinlichkeit speichern und besitzen die Möglichkeit auf die Gewichte zum nächsthöheren Layer zuzugreifen. Außerdem kam eine Funktion zum initialisieren von Biasgewichten hinzu. Diese bekommt entweder den Datencontainer für die Eingabedaten des Layers oder NULL übergeben. Wenn kein Container übergeben wird, wird der Bias auf 0 gesetzt. Dies ist der Fall, wenn der Biasknoten für die versteckte Ebene zuständig ist. Wenn ein Container übergeben wird, wird aus den Eingabedaten der Initialwert des Bias für jeden sichtbaren Knoten $i$ berechnet:
+DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktivierungswahrscheinlichkeit speichern und besitzen die Möglichkeit auf die Gewichte zum nächsthöheren Layer zuzugreifen. Außerdem kam eine Funktion zum Initialisieren von Biasgewichten hinzu. Diese bekommt entweder den Datencontainer für die Eingabedaten des Layers oder NULL übergeben. Wenn kein Container übergeben wird, wird der Bias auf 0 gesetzt. Dies ist der Fall, wenn der Biasknoten für die versteckte Ebene zuständig ist. Wenn ein Container übergeben wird, wird aus den Eingabedaten der Initialwert des Bias für jeden sichtbaren Knoten $i$ berechnet:
 \begin{equation}
 \log [p_i/(1-p_i)]
 \end{equation}
-$p_i$ ist hierbei die Durchschnittliche Aktivierungswahrscheinlichkeit des Knoten $i$ über alle Eingabedaten.
+$p_i$ ist hierbei die durchschnittliche Aktivierungswahrscheinlichkeit des Knoten $i$ über alle Eingabedaten.
 
 Als letzte wichtige Erweiterung wurde die Klasse ContrastiveDivergence implementiert, diese enthält den Lernalgorithmus für das Deep-Belief Netz.
 \begin{figure}[H]
@@ -357,39 +357,39 @@ Als letzte wichtige Erweiterung wurde die Klasse ContrastiveDivergence implement
 \end{figure}
 
 
-Im Anschluss an die Kontrastive Divergenz werden die Gewichte zwischen der Ausgabeebene und der vorletzten Ebene mit Hilfe von Backpropagation traniert.
+Im Anschluss an die Kontrastive Divergenz werden die Gewichte zwischen der Ausgabe- und der vorletzten Ebene mit Hilfe von Backpropagation traniert.
 
-Das Framework reagiert auf verschiedene Eingabeparameter zum setzen von Konfigurationsdaten für den Aufbau des Netzes und welcher Lernalgorithmus verwendet werden soll. Wenn neben einer Konfiguration für die Kontrastive Divergenz auch eine Konfiguration für die Backpropagation angegeben ist, wird das Netz im Anschluss nochmal feiner trainiert.
+Das Framework reagiert auf verschiedene Eingabeparameter zum Setzen von Konfigurationsdaten für den Aufbau des Netzes und welcher Lernalgorithmus verwendet werden soll. Wenn neben einer Konfiguration für die Kontrastive Divergenz auch eine Konfiguration für die Backpropagation angegeben ist, wird das Netz im Anschluss nochmal feiner trainiert.
 
-\section{Versuchsaufbau}
-Es sollen die verschiedenen Methoden zum klassifizieren von Dateneingaben mit Deep-Belief Netzen untersucht werden. Dazu werden verschiedene Netzgrößen mit ansonsten den gleichen Parametern getestet. Zur Verfügung stehen zwei verschiedene Datensätze.
-\subsection{Achsensymetrie und Rotationssymetrie}
-Die erste Datenbank besteht aus 1346 Datensätzen und beinhaltet Merkmale zu einzelnen Punkten. Der Datensatz wurde von  Prof. Dr. Christoph Dalitz zur Verfügung gestellt. Jeder Datensatz enthält vier Merkmale zu einem einzelnen Punkt. Dieser Punkt ist entweder der Kategorie Achsensymmetrisch oder Rotationssymetrisch zugeordnet. Die einzelnen Klassen wurden mit 1 und 0 kodiert. Die vier Merkmale sind auf das Intervall $[0,1]$ skaliert. Für jedes Merkmal gibt es ein Eingabeneuron und jede Klasse hat ein Ausgabeneuron. Aufgrund fehlender Testdaten wird eine einfache Kreuzvalidierung mit $K=5$ gewählt.  Daraus ergibt sich für jeden Trainingsdatensatz eine größe von 1076 und jeder Testdatensatz besteht aus 270 Datensätzen.
+\section{Versuch}
+Es sollen die verschiedenen Methoden zum Klassifizieren von Dateneingaben mit Deep-Belief Netzen untersucht werden. Dazu werden verschiedene Netzgrößen mit ansonsten den gleichen Parametern getestet. Zur Verfügung stehen zwei verschiedene Datensätze.
+\subsection{Achsensymmetrie und Rotationssymmetrie}
+Die erste Datenbank besteht aus 1346 Datensätzen und beinhaltet Merkmale zu einzelnen Punkten. Der Datensatz wurde von  Prof. Dr. Christoph Dalitz zur Verfügung gestellt. Jeder Datensatz enthält vier Merkmale zu einem einzelnen Punkt. Dieser Punkt ist entweder der Kategorie Achsensymmetrisch oder Rotationssymetrisch zugeordnet. Die einzelnen Klassen wurden mit 1 und 0 kodiert. Die vier Merkmale sind auf das Intervall $[0,1]$ skaliert. Für jedes Merkmal gibt es ein Eingabeneuron und jede Klasse hat ein Ausgabeneuron. Aufgrund fehlender Testdaten wird eine einfache Kreuzvalidierung mit $K=5$ gewählt.  Daraus ergibt sich für jeden Trainingsdatensatz eine Größe von 1076 und jeder Testdatensatz besteht aus 270 Datensätzen.
 
 \subsection{MNIST Datenbank}
 Die Mixed National Institute of Standards and Technology\footnote{http://yann.lecun.com/exdb/mnist/} beinhaltet 70000 Datensätze. Diese Datenbank ist ein Standarddatensatz zum Vergleichen von verschiedenen Verfahren der Mustererkennung und bietet daher eine große Vergleichsmöglichkeit. Der Datensatz besteht aus 60000 Trainingsdaten und 10000 Testdaten. Die Daten bestehen aus $28 \cdot 28$ Grauwertpixeln und ergeben damit eine Eingabe von 784 Neuronen. Da die Bilder zur Erkennung von Ziffern sind ergeben sich 10 Ausgabeneuronen, für jede Klasse ein Neuron. Das Ziel ist es, dass das Neuron zu dem die Klasse des Bildes gehört aktiviert wird und die anderen Neuronen nicht. Zur Eingabe ins Netz wurden die Grauwerte auf das Intervall $[0,1]$ skaliert.
 
-\section{Versuchsdurchführung}
+\subsection{Versuchsdurchführung}
 Die beiden Datenbanken werden mit verschiedenen Topologien getestet. Als Grundlage werden die Ergebnisse des Backpropagation Algorithmus verwendet und diese dann mit dem Vortraining durch Kontrastive Divergenz verglichen und mit einem Deep-Belief Netz mit einer Softmax Gruppe. Da es zu Aufwändig ist, alle möglichen Netztopologien zu testen, werden nur ein paar Stichpropen ausprobiert.
 
-\subsection{Achsensymetrie und Rotationssymetrie}
-Bei diesem Datensatz werden Topologien mit 1-2 versteckten Ebenen und verschiedenen Anzahlen von Neuronen auf den versteckten Ebenen. Für die Backpropagation wird eine Epochenanzahl von 1000 gewählt mit einer Lernrate von 0,5. Die Kontrastive Divergenz hat eine Epochenanzahl von 100 und eine Lernrate von 0,1. Es wird ein Gibbs Schritt verwendet. Für das Trainieren der letzten Ebene nach der Kontrastiven Divergenz wird eine Epochenanzahl von 1000 und eine Lernrate von 0,1 verwendet. In Tabelle \ref{sigmoid} sieht man....
+\subsubsection{Achsensymetrie und Rotationssymetrie}
+Bei diesem Datensatz werden Topologien mit 1-2 versteckten Ebenen und verschiedenen Anzahlen von Neuronen auf den versteckten Ebenen untersucht. Für die Backpropagation wird eine Epochenanzahl von 1000 gewählt mit einer Lernrate von 0,5. Die Kontrastive Divergenz hat eine Epochenanzahl von 100 und eine Lernrate von 0,1. Es wird ein Gibbs Schritt verwendet. Für das Trainieren der letzten Ebene nach der Kontrastiven Divergenz wird eine Epochenanzahl von 1000 und eine Lernrate von 0,1 verwendet. In Tabelle \ref{sigmoid} sieht man....
 \begin{table}[H]
 
 
-\begin{tabularx}{\textwidth}{|c|c|X|X|X|X|}
+\begin{tabularx}{\textwidth}{|c|c|X|X|X|X|X|X|}
 	\hline
-	NR & Topologie & \multicolumn{2}{|c|}{Backpropagation} & \multicolumn{2}{|c|}{BP mit Vortraining} \\\hline
-	&&MSE& Fehler&MSE& Fehler
+	NR & Topologie & \multicolumn{3}{|c|}{Backpropagation} & \multicolumn{3}{|c|}{BP mit Vortraining} \\\hline
+	&&MSE& Fehler&Laufzeit&MSE& Fehler&Laufzeit
 	\\\hline
-	1&4-2-1&&&&\\\hline
-	2&4-4-1&&&&\\\hline
-	3&4-6-1&&&&\\\hline
-	4&4-8-1&&&&\\\hline
-	5&4-2-2-1&&&&\\\hline
-	6&4-4-4-1&&&&\\\hline
-	7&4-4-8-1&&&&\\\hline
-	8&4-8-8-1&&&&\\\hline
+	1&4-2-1&&&&&&\\\hline
+	2&4-4-1&&&&&&\\\hline
+	3&4-6-1&&&&&&\\\hline
+	4&4-8-1&&&&&&\\\hline
+	5&4-2-2-1&&&&&&\\\hline
+	6&4-4-4-1&&&&&&\\\hline
+	7&4-4-8-1&&&&&&\\\hline
+	8&4-8-8-1&&&&&&\\\hline
 	\end{tabularx}
 	\caption{Vergleich verschiedener Netztopologien mit einem Ausgabeneuron}
 	\label{sigmoid}
@@ -416,9 +416,21 @@ Bei diesem Datensatz werden Topologien mit 1-2 versteckten Ebenen und verschiede
 	\end{tabularx}
 	\caption{Vergleich verschiedener Netztopologien mit Softmax-Neuronen als Ausgabe}
 	\end{table}
-	\subsection{MNIST Datenbank}
+	\subsubsection{MNIST Datenbank}
 	
-	Auf Ergebnisse wird noch gewartet.
+	Bei der MNIST Datenbank wird zunächst die in \cite{learning} verwendete Toplogie gestestet und mit dem Ergebnis der Arbeit verglichen. Da diese nur den relativen Fehler enthält, wird hier auch nur dieser gemessen. Diese Topologie besteht aus 5 Ebenen. Die erste Ebene hat 784 Eingabeknoten für die Bilddaten. Danach kommen drei versteckte Ebenen mit 500,500 und 2000 Knoten und eine Ausgabeebene mit 10 Knoten zur Klassifizierung. Dabei wurde die Anzahl der Gibbs Schritte variiert und auf 1, 10 und 30 gesetzt. Eine Frage die sich stellt ist, ob die dritte versteckte Ebene mit 2000 Knoten so groß sein muss, oder ob das Netz auch mit weniger Knoten auskommt. Daher wurden noch zwei Topologien mit 1000 bzw. 500 versteckten Knoten getestet.
+	\begin{table}[H]
+\begin{tabularx}{\textwidth}{|c|c|c|c|X|}
+	\hline
+	NR & Topologie &Gibbs Schritte& BP mit Vortraining & DBN mit Softmax Gruppe
+	\\\hline
+	1&784-500-500-2000-10&1&&\\\hline
+	2&784-500-500-2000-10&10&&\\\hline
+	3&784-500-500-2000-10&30&&\\\hline
+	\end{tabularx}
+	\caption{Vergleich verschiedener Netztopologien mit Softmax-Neuronen als Ausgabe}
+	\end{table}
+	\subsubsection{MNIST Datenbank}
 	
 	\section{Mögliche Verbesserung von Deep-Belief Netzen}
 	\subsection{Probleme}
