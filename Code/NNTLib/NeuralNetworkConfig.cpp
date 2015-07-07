@@ -9,6 +9,7 @@ void NeuralNetworkConfig::init()
 	FunctionType=NNTLib::FunctionEnum::LINEAR;
 	WeightInitType=NNTLib::WeightInitEnum::NONE;
 	LayerNeuronCount=nullptr;
+	SoftmaxGroup=0;
 }
 /// <summary>
 /// Frees the memory.
@@ -29,6 +30,7 @@ void NeuralNetworkConfig::copy(const NeuralNetworkConfig &that)
 	LayerCount=that.LayerCount;
 	FunctionType=that.FunctionType;
 	WeightInitType=that.WeightInitType;
+	SoftmaxGroup = that.SoftmaxGroup;
 
 	this->LayerNeuronCount = new int[LayerCount];
 
@@ -104,6 +106,9 @@ void NeuralNetworkConfig::HandleNameValue(std::string name,std::string value)
 	}
 	else if(name =="LastLayerFunction")
 		LastLayerFunction = static_cast<NNTLib::FunctionEnum>(atoi(value.c_str()));
+	else if (name =="SoftmaxGroup")
+		SoftmaxGroup=atoi(value.c_str());
+
 }
 
 /// <summary>
@@ -116,6 +121,7 @@ void NeuralNetworkConfig::PrintData()
 	std::cout <<"LastLayerFunction = "<<GetStringValue(LastLayerFunction)<<std::endl;
 	std::cout <<"WeightInitType = "<< GetStringValue(WeightInitType)<<std::endl;
 	std::cout <<"LayerCount = "<<LayerCount<<std::endl;
+	std::cout << "SoftmaxGroup = "<<SoftmaxGroup<<std::endl;
 	std::cout <<"LayerNeuronCount = ";
 	for(int i=0;i<LayerCount;i++)
 	{

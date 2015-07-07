@@ -15,8 +15,9 @@ namespace NNTLib
 		void freeMem();
 		public:
 	    DBNLayer *Layers;
+	    int SoftmaxGroup;
 	    ~DeepBeliefNet();
-		DeepBeliefNet(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType);
+		DeepBeliefNet(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType, int softmax);
 		DeepBeliefNet(const DeepBeliefNet &that);
 		void InitWeights(WeightInitEnum initType);
 		void SaveWeightsforNN(const std::string file);

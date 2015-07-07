@@ -20,9 +20,9 @@ public:
 	/// The network
 	/// </summary>
 	DeepBeliefNet *network;
-	void GibbsSampling(int gibbssteps, int d_i);
+	void GibbsSampling(int gibbssteps, int softmax);
 	void UpdateHiddenUnits();
-	void UpdateVisibleUnits();
+	void UpdateVisibleUnits(int softmax);
 
 	ContrastiveDivergence(DeepBeliefNet &net);
 	~ContrastiveDivergence();

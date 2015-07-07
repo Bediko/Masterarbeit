@@ -32,6 +32,7 @@ public:
 	/// The layer neuron count
 	/// </summary>
 	int * LayerNeuronCount;
+	int SoftmaxGroup;
 
 	NeuralNetworkConfig();
 	~ NeuralNetworkConfig();

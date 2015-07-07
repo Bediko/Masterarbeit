@@ -44,7 +44,7 @@ DeepBeliefNet::~DeepBeliefNet() {
  * @param initType Which way to initialise Weights should be used
  * @param functionType Which activation function is used in the neurons
  */
-DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType): NNTLib::NeuralNetwork(neuronsCountPerLayer, layercount, initType, functionType, LastLayerFunction) {
+DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightInitEnum initType, FunctionEnum functionType, int softmax): NNTLib::NeuralNetwork(neuronsCountPerLayer, layercount, initType, functionType, LastLayerFunction) {
 	init();
 
 	if (layercount < 2)
@@ -57,7 +57,11 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 	this->FunctionType = functionType;
 
 	LayersCount = layercount;
-
+	if (softmax) {
+		LayersCount -= 1; //Ausgabelayer kommt auf vorletzten Layer
+		SoftmaxGroup = neuronsCountPerLayer[layercount];
+		neuronsCountPerLayer[layercount - 1] += neuronsCountPerLayer[layercount];
+	}
 	Layers = new DBNLayer[LayersCount]();
 	Layers[0].Init(0, neuronsCountPerLayer[0] + 1); //Neuronen Inputlayer
 	for (int i = 1; i < LayersCount; ++i) { //Rückwärtsgewichte
@@ -171,7 +175,7 @@ void DeepBeliefNet::Propagate(const double *input) {
 	}
 	DBNLayer *top, *bottom;
 	for (int i = 0; i < LayersCount - 2; ++i) {
-		
+
 		top = &Layers[i + 1];
 		bottom = &Layers[i];
 		for ( int j = 0; j < top->NeuronCount - 1; j++) {
@@ -187,9 +191,10 @@ void DeepBeliefNet::Propagate(const double *input) {
 			top->Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
 		}
 	}
-	top=&Layers[LayersCount-1];
-	bottom=&Layers[LayersCount-2];
-	for ( int j = 0; j < top->NeuronCount - 1; j++) {
+	if (SoftmaxGroup == 0) {
+		top = &Layers[LayersCount - 1];
+		bottom = &Layers[LayersCount - 2];
+		for ( int j = 0; j < top->NeuronCount - 1; j++) {
 			double sum = 0.0;
 			for (int i = 0; i < bottom->NeuronCount - 1; i++) {
 				sum += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
@@ -198,7 +203,10 @@ void DeepBeliefNet::Propagate(const double *input) {
 			sum += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
 			sum = 1 + exp(-sum);
 			sum = 1 / sum; //Wahrscheinlichkeit ausrechnen
-			top->Neurons[j].Output = sum; //Binäre Zustände bestimmen
+			top->Neurons[j].Output = Binary(sum); //Binäre Zustände bestimmen
 		}
+	} else {
+		//TODO Softmax
+	}
 }
 }

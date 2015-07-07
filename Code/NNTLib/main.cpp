@@ -179,7 +179,7 @@ int main(int argc, char* argv[]) {
 					}
 					if (ContrastiveDivergenceConfig.Epochs > 0) {
 						double maxErrordiff = atof(errorDiffValue.c_str());
-						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType);
+						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.SoftmaxGroup);
 						NNTLib::ContrastiveDivergence CD(dbn);
 						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize, ContrastiveDivergenceConfig.GibbsSteps);
 
