@@ -1,20 +1,23 @@
-\contentsline {section}{\numberline {1}Einleitung}{3}
-\contentsline {section}{\numberline {2}Grundlagen}{4}
-\contentsline {subsection}{\numberline {2.1}Hopfield Netze}{4}
-\contentsline {subsection}{\numberline {2.2}Boltzmann Maschinen}{4}
-\contentsline {subsection}{\numberline {2.3}Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{7}
-\contentsline {subsection}{\numberline {2.4}Kontrastive Divergenz}{9}
-\contentsline {section}{\numberline {3}Deep-Belief Netze}{10}
-\contentsline {subsection}{\numberline {3.1}Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}{11}
-\contentsline {subsection}{\numberline {3.2}Deep-Belief Netze zur Klassifikation}{13}
-\contentsline {subsection}{\numberline {3.3}Implementation}{14}
-\contentsline {section}{\numberline {4}Versuch}{17}
-\contentsline {subsection}{\numberline {4.1}Achsensymmetrie und Rotationssymmetrie}{17}
-\contentsline {subsection}{\numberline {4.2}MNIST Datenbank}{17}
-\contentsline {subsection}{\numberline {4.3}Versuchsdurchf\IeC {\"u}hrung}{17}
-\contentsline {subsubsection}{\numberline {4.3.1}Achsensymetrie und Rotationssymetrie}{18}
-\contentsline {subsubsection}{\numberline {4.3.2}MNIST Datenbank}{19}
-\contentsline {subsubsection}{\numberline {4.3.3}MNIST Datenbank}{19}
-\contentsline {section}{\numberline {5}M\IeC {\"o}gliche Verbesserung von Deep-Belief Netzen}{19}
-\contentsline {subsection}{\numberline {5.1}Probleme}{19}
-\contentsline {subsection}{\numberline {5.2}Einfache Verbesserung}{19}
+\contentsline {section}{\numberline {1}Einleitung}{2}
+\contentsline {section}{\numberline {2}Grundlagen}{3}
+\contentsline {subsection}{\numberline {2.1}K\IeC {\"u}nstliche neuronale Netze}{3}
+\contentsline {subsection}{\numberline {2.2}Backpropagation-Algorithmus}{5}
+\contentsline {subsection}{\numberline {2.3}Markov-Ketten}{9}
+\contentsline {subsection}{\numberline {2.4}Hopfield Netze}{10}
+\contentsline {subsection}{\numberline {2.5}Boltzmann Maschinen}{11}
+\contentsline {subsection}{\numberline {2.6}Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{13}
+\contentsline {subsection}{\numberline {2.7}Kontrastive Divergenz}{15}
+\contentsline {section}{\numberline {3}Deep-Belief Netze}{16}
+\contentsline {subsection}{\numberline {3.1}Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}{17}
+\contentsline {subsection}{\numberline {3.2}Deep-Belief Netze zur Klassifikation}{19}
+\contentsline {section}{\numberline {4}Implementation}{21}
+\contentsline {subsection}{\numberline {4.1}Allgemeiner Aufbau des Frameworks}{22}
+\contentsline {subsection}{\numberline {4.2}Erweiterungen des Frameworks}{25}
+\contentsline {section}{\numberline {5}Versuch}{27}
+\contentsline {subsection}{\numberline {5.1}Achsensymmetrie und Rotationssymmetrie}{27}
+\contentsline {subsection}{\numberline {5.2}MNIST Datenbank}{27}
+\contentsline {subsection}{\numberline {5.3}Versuchsdurchf\IeC {\"u}hrung}{27}
+\contentsline {subsubsection}{\numberline {5.3.1}Achsensymetrie und Rotationssymetrie}{27}
+\contentsline {subsubsection}{\numberline {5.3.2}MNIST Datenbank}{28}
+\contentsline {section}{\numberline {6}Probleme von Deep-Belief Netzen}{29}
+\contentsline {subsection}{\numberline {6.1}Einfache Verbesserung}{29}

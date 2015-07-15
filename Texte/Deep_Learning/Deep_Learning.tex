@@ -13,6 +13,7 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{subcaption}
 \usepackage{xfrac}
+\usepackage{url}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -24,6 +25,7 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \usepackage{svg}
+\usepackage{listings}
 
 
 
@@ -41,6 +43,10 @@
 \newcommand{\headline}[1]{\vspace{15pt}\textbf{#1}\vspace{10pt}}
 \newcommand{\code}[1]{\textcolor{Green}{\texttt{#1}}}
 \usepackage[boxed]{algorithm2e}
+\lstset{
+basicstyle=\footnotesize,
+frame=single
+}
 
 
 \setlength{\parindent}{0pt}
@@ -55,8 +61,59 @@
 
 \title{Deep Learning}
 \begin{document}
+	\begin{titlepage}
+%-------------------------------------------------------------
+		\begin{center}
+			{\Large\bf Netzoptimierung und Lernalgorithmen für Neuronale Netze}\\[2cm]
 
-	\maketitle
+			{\bf Master}\\
+			zur Erlangung des Grades {\em Master of Science}\\[1.5cm]
+
+			an der\\
+			Hochschule Niederrhein\\
+			Fachbereich Elektrotechnik und Informatik\\
+			Studiengang {\em Informatik}\\[3cm]
+
+			vorgelegt von\\
+			Michael Kämmerer\\
+			805467 \\[3cm]
+			Datum: \today\\[3cm]
+
+			Prüfer: Prof.~Dr.~Peer Ueberholz\\
+			Zweitprüfer: Prof.~Dr.~Christopher Dalitz
+		\end{center}
+	\end{titlepage}
+	
+	\begin{titlepage}
+%-------------------------------------------------------------
+
+\section*{Eidesstattliche Erklärung}
+\subsubsection*{Schriftliche Abschlussarbeit}
+
+des Studenten: Michael Kämmerer\\
+Matrikelnummer: 805467\\
+
+
+
+Thema: {\em Netzoptimierung und Lernalgorithmen für Neuronale Netze} \newline
+
+\textbf{Ich versichere durch meine Unterschrift, dass die vorliegende Abschlussarbeit 
+ ausschließlich von mir verfasst bzw. angefertigt wurde. Es wurden keine anderen als die 
+  angegebenen Quellen und Hilfsmittel benutzt.}
+
+Betreuender Dozent:  Prof. Dr. Peer Ueberholz
+
+Krefeld, den {\em \today}
+
+\begin{tabular}{l}
+\\
+\\
+\hline
+(Michael Kämmerer)\\
+\end{tabular}
+
+\newpage
+\end{titlepage}
 
 	\newpage
 
@@ -64,11 +121,197 @@
 	
 	\newpage
 	\section{Einleitung}
-	Blümchenwiese wie toll und wichtig das alles ist.
-	\newpage
-	\section{Grundlagen}
-	Als Grundlage für Deep-Belief Netze dienen eingeschränkte Boltzmann Maschinen. Diese sind eng mit Hopfield Netzen verwandt und der Weg von Hopfield Netzen zu eingeschränkten Boltzmann Maschinen wird in diesem Kapitel vorgestellt. Hopfield Netze und allgemeine Boltzmann Maschinen werden hierbei jedoch nur kurz erläutert und am Ende des Kapitels werden eingeschränkte Boltzmann Maschinen ausführlich erklärt.
+	Seit jeher wird versprochen, dass der Computer das Leben des Menschen einfacher machen soll und diesem alle Arbeit abnehmen können wird. In vielen Bereichen funktioniert dies schon sehr gut, jedoch scheitern Computer immer noch an sehr einfachen Aufgaben. Menschen können problemlos unterscheiden, ob ein Hund oder eine Katze auf sie zugelaufen kommt oder ein Tier als Katze identifizieren ohne genau die Rasse zu kennen. Menschen können trainierte Fähigkeiten mühelos auf neue Aufgaben übertragen und anwenden.
+	Ein Versuch diese Fähigkeiten nachzubilden stellen künstliche neuronale Netze dar. Diese sind ein Teilgebiet der künstlichen Intelligenz und versuchen die Arbeitsweisen des menschlichen Gehirns nachzubilden. Diese sollen durch Lernen Lösungen zu bestimmten Problemen finden und auf andere Probleme anwenden können. Ein großes Feld für diese Probleme ist die Mustererkennung und Einordnung von Bildern, um die es auch in dieser Arbeit geht. 
 	
+	Die Forschungen zu neuronalen Netze wurden 1969 durch eine Veröffentlichung von Marvin Minsky und Seymour Papert fast völlig eingestellt, da diese gezeigt haben, dass diese Netze nicht einmal einfache Aufgaben lösen können. Wie man später herausfand, lag diese Fehlaussage darin begründet, dass die beiden nur ein einlagiges Netz untersuchten. Ein erster großer Durchbruch bei neuronalen Netzwerken stellt die Entwicklung des Backpropagation-Algorithmus durch Paul Werbos im Jahre 1974 dar. Dieser ermöglicht das einfache Trainieren von mehrlagigen neuronalen Netzen. Dieser Algorithmus liefert gute Ergebnisse wenn die neuronalen Netze wenige Schichten haben, allerdings nimmt die Laufzeit für jede neue Schicht sehr stark zu. Da die Anzahl der Neuronen auf jeder Ebene bestimmt, wie viele Parameter erkannt werden können, führte dies zu sehr breiten und Flachen neuronalen Netzen die erforscht wurden.
+	
+	Ein weitere Durchbruch gelang Geoffrey Hinton und Yee-Whye Teh im Jahre 2006, als diesen die kontrastive Divergenz zum Trainieren von neuronalen Netzen  vorstellten. Dieser Algorithmus erlaubte es sehr effizient neuronale Netze mit vielen Schichten zu trainieren, die sogenannten Deep-Belief Netze. Nun war es einfach möglich, mit jeder neuen Schicht in einem neuronalen Netzwerk weitere Eigenschaften des zu erlernenden Problems zu erkennen und die Lösung zu verbessern. 
+	
+	Diese Arbeit beschäftigt sich mit Deep-Belief Netzen und verschiedenen Möglichkeiten mit ihnen Bilder zu klassifizieren. Kapitel \ref{Grundlagen} erläutert dem Leser die benötigten Grundlagen für die Arbeit. Dazu gehören die Funktionsweise von neuronalen Netzen, der Backpropagation-Algorithmus, Markov-Ketten, Hopfield Netze, Boltzmann Maschinen, eingeschränkte Boltzmann Maschinen und die kontrastive Divergenz. Im Anschluss daran werden in Kapitel 3 Deep-Belief Netze vorgestellt und wie diese trainiert werden mit einer anschließenden Erläuterung wie man mit ihnen Bilder klassifiziert. In Kapitel 4 wird das benutzte Framework vorgestellt und welche Erweiterungen an diesem vorgenommen wurden. Kapitel 5 stellt die durchgeführten Versuche und die Ergebnisse vor. In Kapitel 6 wird darauf eingegangen, welche Probleme es bei Deep-Belief Netzen noch gibt und überlegt wie man diese in Zukunft noch verbessern könnte. 
+
+	\section{Grundlagen}
+	\label{Grundlagen}
+	Als Grundlage für Deep-Belief Netze dienen eingeschränkte Boltzmann Maschinen. Diese sind eng mit Hopfield Netzen verwandt und der Weg von Hopfield Netzen zu eingeschränkten Boltzmann Maschinen wird in diesem Kapitel vorgestellt. Hopfield Netze und allgemeine Boltzmann Maschinen werden hierbei jedoch nur kurz erläutert und am Ende des Kapitels werden eingeschränkte Boltzmann Maschinen ausführlich erklärt. Die Kapitel \ref{NN} und \ref{BP} wurden aus meiner Bachelorarbeit \cite{bachelor} übernommen.
+	\subsection{Künstliche neuronale Netze}
+	\label{NN}
+		Als Grundlage für künstliche neuronale Netze wird das Modell von Nervenzellen verwendet. Ein Neuron besteht aus einem Zellkörper, welcher mit Dendriten und einem Axon verbunden ist (siehe Abbildung \ref{Neuron}). Dendriten haben die Aufgabe, die Signale anderer Nervenzellen zu empfangen und zusammenzuführen, um diese als Eingabe in die Nervenzelle weiter zu geben. Der Zellkörper interpretiert die Eingabe und schickt die daraus resultierende Ausgabe über sein Axon. Das Axon ist mit Synapsen an die Dendriten anderer Nervenzellen gekoppelt (Nicht abgebildet)\footnote{http://de.wikipedia.org/w/index.php?title=Nervenzelle\&stableid=119646035}.
+\begin{figure}[H]
+	\includegraphics[scale=0.8]{Neuron_-_annotated.png}
+	\caption{Neuron (Quelle: http://commons.wikimedia.org/wiki/File:Neuron\_-\_annotated.svg) }
+	\label{Neuron}
+\end{figure}		
+		
+	Naturwissenschaftlich werden Modelle entwickelt um Lernvorgänge im Gehirn zu beschreiben. Diese Modelle sind auch in der Informatik interessant. Alle Modelle haben dabei gemeinsam, dass sich über die Zeit hinweg eine hohe Fehlertoleranz und Robustheit gegen Störungen einstellt. Aus diesen Gründen werden künstliche neuronale Netze in der Informatik eingesetzt.
+	 Desweiteren ermöglichen künstliche neuronale Netze Dinge assoziativ zu speichern. Dies ist natürlich mit Nachteilen verbunden, so braucht das neuronale Netz einen hohen Zeitaufwand um etwas zu lernen. Zusätzlich gibt es keine Garantie dafür, dass überhaupt richtig gelernt wurde. Als Einsatzgebiet für neuronale Netze eignen sich Entscheidungsprobleme, Roboter, Mustererkennung, Spracherkennung und überall, wo man sich eine künstliche Intelligenz vorstellen kann \cite{PDP}.
+	
+	Künstliche neuronale Netze bestehen aus Neuronen, die über Synapsen miteinander verbunden sind. Ein Neuron kann einen oder mehr Eingänge besitzen. Die Signale auf den Eingängen werden in der Regel aufsummiert und ergeben einen Gesamtinput $net_i$. Dadurch erhält das Neuron einen Aktivitätswert $a_i$ aus dem ein Ausgangswert $o_i$ folgt. Dieser Ausgangswert kann nun entweder gemessen werden oder das Neuron ist über eine oder mehrere Synapsen, die eine gewichtete Verbindung $w_{i,j}$ darstellt, an ein weiteres Neuron gekoppelt (Abbildung \ref{2n}) \cite{PDP}.
+	
+\begin{figure}[H]
+	\begin{tikzpicture}	
+	\draw[->,thick](0,0)--(2.5,0);
+	\draw[->,thick](0,2)--(2.5,0.25)node[above right, midway]{$net_i$};
+	\draw[->, thick](0,-2)--(2.5,-0.25);
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	\draw[thick](4.5,0)--(5.5,0)node[above right]{$o_i$};
+	\draw[->,thick](4.5,0)--(6,1);
+	\draw[->,thick](4.5,0)--(6,-1);
+	\draw[->,thick](5.5,0)--(10,0)node[midway, above]{$w_{i,j}$};
+	\draw[->,thick](8.5,1)--(10,0.25)node[above right, midway]{$net_j$};
+	\draw[->,thick](8.5,-1)--(10,-0.25);
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	\draw[thick,->](12,0)--(14,0) node[above,midway]{$o_j$};
+	\end{tikzpicture}
+	\caption{Zwei miteinander verbundene Neuronen in einem Neuronalen Netz}
+	\label{2n}
+\end{figure}
+
+	Zu diesem einfachen Modell des Aufbaus gibt es ein mathematisches Modell für die Funktionsweise von neuronalen Netzen. Dieses Modell kennzeichnet sich durch folgende Eigenschaften:
+	
+	\begin{enumerate}
+		\item Jedes Neuron hat einen Aktivierungszustand $a_i(t)$ zum Zeitpunkt $t$.
+		\item Jedes Neuron hat eine Aktivierungsfunktion $f_{act}$. Diese gibt an, wie sich die Aktivierung in Abhängigkeit der alten Aktivierung $a_i(t)$, des Inputs $net_i$ und eines Schwellwerts $\theta$ mit der Zeit ändert.
+\begin{equation}a_i(t+1)=f_{act}(a_i(t),net_i(t),\theta)\end{equation}
+		\item Jedes Neuron hat eine Ausgabefunktion $f_{out}$, die aus der Aktivierung den Output $o$ berechnet.
+\begin{equation}o_i=f_{out}(a_i)\end{equation}
+		\item Es existiert ein Verbindungsnetzwerk, dass aus den Synapsen $w_{i,j}$ besteht.
+		\item Jedes Neuron hat eine Propagierungsfunktion, die aus den Ausgaben der anderen Neuronen die Netzeingabe berechnet. Diese lautet zumeist
+\begin{equation}net_j(t)=\sum o_i(t)w_{i,j}.\end{equation}
+		\item Eine Lernregel. Diese kann zum Beispiel daraus bestehen, die Ausgabe des Netzes mit einer gewünschten Ausgabe zu vergleichen um dann die Gewichte des Netzes anzupassen.
+	\end{enumerate}
+Die Zustände des neuronalen Netzes werden solange geändert, bis ein stabiler Endzustand eintritt. Dieser muss jedoch nicht das gewünschte Ergebnis liefern, in diesem Fall hätte das neuronale Netz falsch gelernt.\cite{PDP}
+Im Folgenden wird nur der Fall $a_i=f_{act}(net_i)$ und $o_i=a_i$ betrachtet. Zusammengefasst erhält man so:
+	\begin{equation}
+	o_i=f_{act}(net_i)	
+	\end{equation}
+
+\subsection{Backpropagation-Algorithmus}
+\label{BP}
+	
+	Damit das neuronale Netz seine Aufgabe erfüllen kann, muss es zunächst lernen. Dabei gibt es keine Einschränkung, wie gelernt werden kann. Es können neue Verbindungen oder Neuronen erstellt oder gelöscht werden, die Parameter der Neuronen angepasst werden oder die Stärke der Verbindungen geändert werden. Meistens wird die Modifikation der Verbindungsstärke gewählt, da dieses Lernverfahren am einfachsten ist. Alle in dieser Arbeit vorgestellten neuronalen Netze verwenden die Modifikation der Gewichtsstärken zum Lernen. Desweiteren wird zwischen drei Lernverfahren unterschieden:
+	\begin{enumerate}
+		\item {\bf Überwachtes Lernen:} Es existiert zu jedem Input ein gewünschter Output. Dieser wird mit dem tatsächlichen Output verglichen und das Netz angepasst.
+		\item {\bf Bestärkendes Lernen:} Bei einem Input wird der Output auf richtig oder falsch überprüft. Mithilfe dieser Information wird das Netz angepasst.
+		\item {\bf Unüberwachtes Lernen:} Das Netz organisiert sich selbstständig.
+	\end{enumerate}
+	
+	Am häufigsten wird das überwachte Lernen verwendet. Es existieren verschiedene Methoden um dieses zu realisieren. Da für diese Arbeit jedoch nur das Back-Propagation-Verfahren eine Rolle spielt, wird nur dieses Verfahren genauer erläutert \cite{PDP}.
+	
+	Das Back-Propagation-Verfahren (BP) minimiert mithilfe eines Gradienten eine Fehlerfunktion. Diese wird meistens als Summe über die quadratische Abweichung des Outputs $o_{p,j}$ und des gewünschten Outputs $\hat{o}_{p,j}$ für ein Pattern(Event) $p$ definiert.
+\begin{equation} 
+	E=\sum_p^n E_p 
+\end{equation}
+\begin{equation}
+	\label{fehler}
+	E_p=\frac{1}{2}\sum_j^m(o_{p,j}-\hat{o}_{p,j})^2
+\end{equation}
+	
+Hierbei ist $n$ die Anzahl der Pattern und $m$ die Anzahl der Outputs.
+Mit Gleichung \ref{anpassung} versucht man die Gewichte entlang des Gradienten der Fehlerfunktion zu ändern, bis diese minimiert ist. Im optimalen Fall findet man damit das globale Minimum der Fehlerfunktion, meistens findet man jedoch nur ein lokales Minimum. 
+\begin{equation}
+\label{anpassung}
+\Delta w_{ij}=-\eta\sum_p^m \frac{\partial E_p}{\partial w_{ij}}
+\end{equation}
+$\eta$ ist die Lernrate. Diese ist wichtig, um steuern zu können wie stark die Gewichte angepasst werden. Mit Hilfe der Kettenregel kann man die Formel umschreiben und auf zwei Faktoren reduzieren:
+\begin{equation}
+\Delta w_{ij}=\eta\sum_p^m -\frac{\partial E_p}{\partial net_{pj}}\frac{\partial net_{pj}}{\partial w_{i_j}}
+\end{equation}
+
+Der erste Faktor wird als Fehlersignal $\delta_{pj}$ bezeichnet.
+\begin{equation}
+\delta_{pj}=-\frac{\partial E_p}{\partial net_{pj}}
+\end{equation}
+Bei der Berechnung von $\delta_{pj}$ muss die konkrete Aktivierungsfunktion des Knotens $j$ beachtet werden.
+\begin{equation}
+\delta_{pj}=-\frac{\partial E_p}{\partial net_{pj}}=-\frac{\partial E_p}{\partial o_{pj}}\frac{\partial o_{pj}}{\partial net_{pj}}=-\frac{\partial E_p}{\partial o_{pj}}\frac{\partial f_{act}(net_{pj})}{\partial net_{pj}}
+\end{equation}
+Jetzt unterscheidet man in welcher Ebene sich der Knoten $j$ befindet:
+\begin{enumerate}
+	\item $j$ ist ein Ausgabeknoten, dann gilt
+\begin{equation}-\frac{\partial E_p}{\partial o_{pj}}=(t_{pj}-o_{pj}).\end{equation}
+	Für den Gesamtfehler gilt in diesem Fall
+\begin{equation}\delta_{pj}=f'_{act}(net_{pj})(t_{pj}-o_{pj}).\end{equation}
+	\item $j$ ist ein versteckter Knoten und damit weder auf der Ein- noch Ausgabeebene. Daraus ergibt sich, dass die Änderung der Fehlerfunktion von den Zwischenknoten $k$ der darüber liegendenden Ebene abhängt \cite{PDP}.
+\begin{equation}-\frac{\partial E_p}{\partial o_{pj}}=-\sum_k^m\frac{\partial E_p}{\partial net_{pk}}\frac{\partial net_{pk}}{\partial o_{pj}}=\sum_k^m\left(\delta_{pk}\frac{\partial}{\partial o_{pj}}\sum_i^n o_{pi}w_{ik}\right)=\sum_k^m \delta_{pk}w_{jk}\end{equation}
+\end{enumerate}
+Der zweite Faktor ist $o_{pi}$.
+\begin{equation}\frac{\partial net_{pj}}{\partial w_{ij}}=\frac{\partial}{\partial w_{ij}}\sum_i^m o_{pi}w_{ij}=o_{pi}\end{equation}
+Nun kann man mithilfe der beiden Faktoren die Änderung der Gewichte berechnen.
+\begin{equation}\Delta w_{ij}=\eta\sum_p^mo_{pi}\delta_{pj}\end{equation}
+
+
+Um den Algorithmus besser zu verstehen schaue man sich das folgende Beispiel an.
+
+
+
+\begin{figure}[H]
+	\resizebox{!}{9cm}{\input{MLP.pdf_t}} 			
+	\caption{Neuronales Netz. Die Ein- und Ausgabeebene verwendet eine lineare Aktivierungsfunktion, die versteckte Ebene den Tangens Hyperbolicus.}
+	\label{MLPBeispiel}
+\end{figure}
+Das in Abbildung \ref{MLPBeispiel} gegebene Netz ist ein sogenanntes Multilayer Perceptron. Dies bedeutet, dass die Neuronen in mehreren Ebenen angeordnet sind und die Verbindungen zwischen den Neuronen jeweils an die nächsthöhere Ebene gekoppelt sind. Dabei werden die Ebenen in drei Ebenen unterteilt. Die erste Ebene ist hierbei die Eingabeebene und erhält die Eingabedaten. Die letzte Ebene ist die Ausgabeebene und gibt das Ergebnis aus. Die übrigen Ebenen dazwischen nennt man {\em versteckt}, da diese nicht direkt an Ein- und Ausgabe geknüpft sind.
+
+Das Netz besteht aus einer Eingabeebene mit fünf Neuronen,wovon vier eine linearen Aktivierungsfunktion besitzen und ein Knoten als Bias dient. Hinzu kommt eine versteckte Ebene, welche als Aktivierungsfunktion den $\tanh$ benutzt und aus 5 Neuronen besteht mit einem sechsten Neuron als Bias.  Dies ist ein Neuron, bei dem der Output immer 1 ist und keinen Input bekommt. Zur Vereinfachung werden die Bias-Knoten im Rest des Beispiels nicht weiter beachtet. Die Ausgabeebene besteht aus einem einzelnen Neuron, welches wieder eine lineare Aktivierungsfunktion besitzt. Daraus ergibt sich folgende Formel zum Berechnen des Ausgabeknotens:
+
+\begin{equation}o_{ANN}=\sum_{j=1}^{n_h}o_j^{(2)}w_{j1}^{(2)}=\sum^{n_h}_{j=1}\tanh\left(\sum^{n_{var}}_{i=1}x_iw_{ij}^{(1)}\right)\cdot w_{j1}^{(2)}
+\label{OANN}
+\end{equation}
+$n_h$ ist die Anzahl der Knoten auf der versteckten Ebene und $n_{var}$ ist die Anzahl der Knoten auf der Eingabeebene. $w_{ij}^{(1)}$ steht für die Gewichte zwischen den Neuronen $i$ der Eingabeebene und den Neuronen $j$ auf der versteckten Ebene. $w_{j1}^{(2)}$ ist das Gewicht zwischen den Neuronen $j$ der versteckten Ebene und dem Ausgabeknoten. Als Propagiergierungsfunktion wurde das Produkt aus Output und Gewicht aufsummiert.
+
+Während des Lernprozesses werden dem Netz $N$ Trainingevents $$x_p=(x_1,...,x_{n_{var}})_p$$ $$p=1,...,N$$ gezeigt. Für jedes Trainingsevent $p$ wird der Output $o_{ANN}$ berechnet und mit dem gewünschen Output $\hat{o}_p=\{0,1\}$ verglichen. Da in diesem Beispiel das Netz für eine Klassifikation mit zwei Klassen benutzt wird, beträgt der gewünschte Output 1 für Signal und 0 für kein Signal. 
+
+Die Fehlerfunktion E, die angibt, wie stark der Output mit dem gewünschen Output übereinstimmt ist definiert als (vgl. Gleichung \ref{fehler})
+\begin{equation}E(x_1,...,x_N|w)=\sum_{p=1}^N E_p(x_p|w)=\sum^N_{p=1}\frac{1}{2}(o_{ANN,p}-\hat{o}_p)^2\end{equation}
+Die Werte der Gewichte $w$, die die Fehlerfunktion minimieren wird mithilfe eines BP-Verfahrens berechnet. Man fängt mit einer zufälligen Gewichtsmenge $w^{(\rho)}$ an und berechnet diese neu, indem man sich eine kurze Distanz im $w$-Raum in Richtung $-\nabla_wE$ bewegt. Wenn man nun noch die Lernrate $\eta$ hinzunimmt erhält man folgende Gleichung (siehe auch Gleichung \ref{anpassung}):
+\begin{equation}w^{(\rho+1)}=w^{(\rho)}-\eta\nabla_wE\end{equation}
+Die Gewichte, die mit der Ausgabeebene verbunden sind, werden neu berechnet mit 
+\begin{equation}\Delta w_{j1}^{(2)}=-\eta\frac{\partial E_p}{\partial w_{j1}^{(2)}}\end{equation}
+Mit Gleichung \ref{OANN} eingesetzt ergibt sich daraus:
+\begin{equation}=-\eta(o_{ANN,p}-\hat{o}_p)\tanh\left(\sum^{n_{var}}_{j=1}x_iw_{j1}^{(1)}\right)\end{equation}
+\begin{equation}=-\eta(o_{ANN,p}-\hat{o}_p)o^{(2)}_{j,p}\end{equation}
+und die Gewichte für die versteckte Ebene mit
+\begin{equation}\Delta w_{ji}^{(1)}=-\eta\frac{\partial E_p}{\partial w_{ji}^{(1)}}\end{equation}
+\begin{equation}=-\eta(o_{ANN,p}-\hat{o}_p)\left(1-\tanh\left(\sum^{n_{var}}_{j=1}x_iw_{j1}^{(1)}\right)^2\right)w_{j1}^{(2)}x_{i,p}\end{equation}
+\begin{equation}=-\eta(o_{ANN,p}-\hat{o}_p)(1-o^{(2)^2}_{j,p})w_{j1}^{(2)}x_{i,p}.\end{equation}
+Werden die Gewichte bei jedem Event neu berechnet, spricht man von Online-Learning. Im Gegensatz dazu gibt es das Batch-Learning bei dem man den Fehler einer Menge von Events aufsummiert, bevor man die Gewichte neu berechnet.
+	\subsection{Markov-Ketten}
+	Eine Markov-Kette ist ein stochastischer Prozess. Ein stochastischer Prozess beschreibt die zeitlich geordnete Abfolge von zufälligen Vorgängen. Ein einfaches Beispiel hierfür ist das Wetter. Das Wetter für den nächsten Tag hängt sehr vereinfacht dargestellt vom Wetter des Vortages ab. Diesen Vorgang kann man mit einfachen Markov-Ketten beschreiben.
+
+In einer Markov-Kette hat eine Folge von Zufallsvariablen $X=(X_1,X_2,...)$ eine gemeinsame Verteilung die über die bedingte Wahrscheinlichkeit $P(X_{t+1}=s_{j_{t+1}}\mid X_t=s_{j_t}, X_{t-1}=s_{j_{t-1}},\dots,X_0=s_{j_0})$ definiert ist. Als einfaches Beispiel dient wieder das Wetter, sodass $X_i \in \mathcal{L} = \{Sonne, Regen\}$ gilt. Theorethisch hängt das Wetter an Tag $t$ vom Wetter mehrere Tage davor ab. Für Markov-Ketten gilt allerdings die Markoveigenschaft, diese besagt, dass ein Zustand nur vom vorherigen Zustand abhängt:
+\begin{equation}
+P(X_{t+1}=s_{j_t}|X_{t-1}=s_{j_{t-1}},X_{t-2}=P(X_{t+1}=s_{j_{t+1}} | X_t=s_{j_{t}})
+\end{equation}
+
+Die Menge der Bedingten Wahrscheinlichkeiten $P(X_i|X_{i-1})$ werden auch Übergangswahrscheinlichkeiten $\alpha$ genannt und können in einer Matrix dargestellt werden wobei die Werte für das Beispiel frei erfunden sind:
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|c|c|c}
+	&&\multicolumn{2}{c}{Morgen}\\\hline
+	&&Regen&Sonne\\\cline{2-4}
+	Heute&Regen& 0,4 & 0,8\\\cline{2-4}
+	&Sonne&0,6&0,2\\
+\end{tabular}
+\end{center}
+\end{table}
+
+Dies wird in Abbildung \ref{Markovc} als Übergangsgraph grafisch dargestellt. Die Knoten sind die möglichen Zustände und die Kanten stellen die Übergangswahrscheinlichkeiten dar.
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}	
+	\draw[ultra thick] (0,0) circle (0.7cm) node{Sonne};
+	\draw[ultra thick] (5,0) circle (0.7cm) node{Regen};
+	\draw[->, ultra thick] (0.7,0)..controls(2.5,0.6)..(4.3,0.1) node[midway,above]{0,6};
+	\draw[->,ultra thick ](4.3,0)..controls(2.5,-0.6)..(0.7,-0.1)node[midway,below]{0,8};
+	\draw[->, ultra thick] (-0.3,0.65)..controls(-1,2) and (1,2)..(0.3,0.7) node[midway,above]{0,2};
+	\draw[->, ultra thick] (4.7,0.65)..controls(4,2) and (6,2)..(5.3,0.7) node[midway,above]{0,4};
+	\end{tikzpicture}
+	\end{center}
+	\caption{Übergangsgraph. Knoten geben mögliche Zustände an, Kanten sind Wahrscheinlichkeiten in einen Zustand zu wechseln}
+	\label{Markovc}
+\end{figure}
+
+
 	
 	\subsection{Hopfield Netze}	
 	In diesen Netzen ist jedes Neuron mit allen anderen Neuronen außer sich selber verbunden, wie in Abbildung \ref{HopfieldNetz} dargestellt ist.  Die Neuronen in einem Hopfield Netz sind binär, dass bedeutet, die Ausgabe ist 1, wenn ein Schwellwert $\theta$ überschritten wird, und ansonsten 0.
@@ -133,7 +376,7 @@ p_\text{i=on} = \frac{1}{1+\exp(-\frac{\Delta E_i}{T})}
 
 Hierbei ist $T$ die Temperatur des Systems. Diese herleitung bietet die Grundlage für die Verwendung der logistischen Funktion, die zum Beispiel bei eingeschränkten Boltzmann Maschinen verwendet wird \footnote{https://en.wikipedia.org/w/index.php?title=Boltzmann\_ machine\&oldid=665335516}. 
 
-Das Training von Boltzmann Maschinen läuft in zwei Phasen ab: Die erste Phase wird auch als positive Phase bezeichnet und besteht darin, dass man die binären Zustände der sichtbaren Neuronen vorgibt und die Maschine laufen lässt bis sich ein Equilibriumszustand einstellt, sich also die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen nicht mehr ändern. 
+Das Training von Boltzmann Maschinen läuft in zwei Phasen ab: Die erste Phase wird auch als positive Phase bezeichnet und besteht darin, dass man die binären Zustände der sichtbaren Neuronen vorgibt und die Maschine laufen lässt bis sich ein Gleichgewichtszustand (Equilibriumszustand) einstellt, sich also die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen nicht mehr ändern. 
 
 Danach beginnt man mit der negativen Phase. In dieser Phase lässt man die Maschine ohne eine Eingabe von außen laufen bis diese wieder in einem Equilibriumszustand ist. In den Phasen ergeben sich die Verteilungen $P^+(V)$ und $P^-(V)$ über die sichtbaren Neuronen. Das Ziel ist es, die Differenz zwischen beiden Verteilungen zu minimieren. Um die Differenz der beiden Verteilungen zu berechnen, verwendet man die Kullback-Leibler Divergenz \cite{KLD}:
 \begin{equation}
@@ -197,7 +440,7 @@ Hierbei ist $\langle...\rangle$ der Erwartungswert der Verteilung über die Eing
 \Delta w_{ij} = \epsilon\left( \langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{model} \right)
 \end{equation}
 
-$\epsilon$ ist die Lernrate und kann zur Steuerung, wie stark die Gewichte verändert werden, frei gewählt werden. In der Praxis hat eine zu hohe Lernrate zur Folge, dass die Gewichte zu groß werden und nichts gelernt wird. Eine zu kleine Lernrate führt dazu, dass das Training sehr langsam ist, jedoch empfiehlt es sich für ein besseres Ergebnis gegen Ende des Trainings die Lernrate zu verkleinern \cite{Guide}. Da die versteckten Knoten innerhalb einer RBM nicht miteinander verbunden sind, sind diese statistisch voneinander unabhängig. Dies führt dazu, dass man sehr einfach eine Stichprobe ohne Bias für $\langle v_i h_j \rangle_{data}$ erhalten kann. Wenn ein zufällig ausgewähltes Trainingsbild $\vec{v}$ gegeben ist, wird der binäre Zustand $h_j$ jedes versteckten Knotens $j$ mit folgender Wahrscheinlichkeit auf 1 gesetzt:
+$\epsilon$ ist die Lernrate und kann zur Steuerung, wie stark die Gewichte verändert werden, frei gewählt werden. In der Praxis hat eine zu hohe Lernrate zur Folge, dass die Gewichte zu groß werden und nichts gelernt wird. Eine zu kleine Lernrate führt dazu, dass das Training sehr langsam ist, jedoch empfiehlt es sich für ein besseres Ergebnis gegen Ende des Trainings die Lernrate zu verkleinern \cite{guide}. Da die versteckten Knoten innerhalb einer RBM nicht miteinander verbunden sind, sind diese statistisch voneinander unabhängig. Dies führt dazu, dass man sehr einfach eine Stichprobe ohne Bias für $\langle v_i h_j \rangle_{data}$ erhalten kann. Wenn ein zufällig ausgewähltes Trainingsbild $\vec{v}$ gegeben ist, wird der binäre Zustand $h_j$ jedes versteckten Knotens $j$ mit folgender Wahrscheinlichkeit auf 1 gesetzt:
 
 \begin{equation}
 p(h_j = 1 | \vec{v}) = \sigma (b_j + \sum_{i} v_i w_{ij})
@@ -238,7 +481,9 @@ Die Idee hinter Kontrastiven Divergenz besteht darin, dass beim normalen Gibbs S
 Ein weiterer Schritt, um das Lernen eines Modells auf RBMs zu verbessern, besteht darin, $n$ Schritte des Gibbs samplings zu machen, bevor man die Statistik für $\langle v_i h_j \rangle_{recon}$ ermittelt. Dies wird mit $CD_n$ notiert, wobei $n$ die Anzahl der Schritte des Gibbs samplings angibt.
 
 \section{Deep-Belief Netze}
-Deep-Belief Netze sind eine Form von künstlichen neuronalen Netzen. Diese werden meist unüberwacht trainiert, da angenommen wird, dass Labels zu wenig Informationen enthalten über die vorhandenen Daten oder bei großen Datenmengen sehr oft keine Labels für alle Daten vorhanden sind. Zum einen ermöglichen Deep-Beielf Netze das Rekonstruieren von einmal trainierten Modellen, z.B. kann ein Deep-Belief Netz, wenn es das Modell von Bildern lernt teile von Bildern oder auch ganze Bilder rekonstruieren. Desweiteren können Deep-Belief Netze zur Klassifikation benutzt werden oder zum Vortrainieren von Feedforward Netzen, da diese nicht so leicht in lokalen Minima stecken bleiben und somit das Netz näher am globalen Minimum konvergiert. Feedforward Netze sind neuronale Netze die ihre Daten nur in eine Richtung propagieren. Zum Trainieren von Deep-Belief Netzen hat sich ein einfacher Algorithmus basierend auf eingeschränkten Boltzmann Maschinen etabliert.
+Deep-Belief Netze sind eine Form von künstlichen neuronalen Netzen. Im Gegensatz zu klassischen Feedforward-Netzen, haben Deep-Belief Netze keine Flache und breite Struktur, sondern, wie der Name schon vermuten lässt, eine tiefe Struktur mit vielen Ebenen.   Diese werden meist unüberwacht trainiert, da angenommen wird, dass Labels zu wenig Informationen enthalten über die vorhandenen Daten oder bei großen Datenmengen sehr oft keine Labels für alle Daten vorhanden sind.  Zum einen ermöglichen Deep-Beielf Netze das Rekonstruieren von einmal trainierten Modellen, z.B. kann ein Deep-Belief Netz, wenn es das Modell von Bildern lernt teile von Bildern oder auch ganze Bilder rekonstruieren. Desweiteren können Deep-Belief Netze zur Klassifikation benutzt werden oder zum Vortrainieren von Feedforward Netzen, da diese nicht so leicht in lokalen Minima stecken bleiben und somit das Netz näher am globalen Minimum konvergiert. Desweiteren macht man sich beim Vortraining zu Nutze, dass man nur wenige Epochen mit Backpropagation lernen muss, da dieser Algorithmus bei tiefen Netzen sehr langsam ist. Zum Trainieren von Deep-Belief Netzen hat sich ein einfacher Algorithmus basierend auf eingeschränkten Boltzmann Maschinen etabliert, der ein effizientes Trainieren der einzelnen Ebenen ermöglicht. 
+
+
 
 \subsection{Greedy Algorithmus zum Trainieren von Deep-Belief Netzen}
 
@@ -271,7 +516,7 @@ Im allgemeinen findet die eingeschränkte Boltzmann Maschine kein perfektes Mode
 \begin{enumerate}
 \item Lerne $W_0$.
 \item Benutze $W_0^T$ um die Verteilung der einzelnen Variablen in der ersten versteckten Ebene zu approximieren.
-\item Lerne eine weitere Restricted Boltzmann Maschine  mithilfe der "'Daten"', die durch $W_0^T$ generiert wurden, für die nächste Ebene.
+\item Lerne eine weitere eingeschränkte Boltzmann Maschine  mithilfe der "'Daten"', die durch $W_0^T$ generiert wurden, für die nächste Ebene.
 \end{enumerate}
 
 
@@ -299,23 +544,94 @@ Die zweite Methode besteht darin, dass Deep-Belief Netz normal zu trainieren und
 \begin{figure}[H]
 	\center
 	\includesvg[width=4cm]{BPTrain}
-	\caption{Netzwerk mit Ausgabeschicht zur Klassifizierung. Die Gewichte zwischen $H_3$ und der Ausgabe werden mit Backpropagation initialisiert.}
+	\caption{Netzwerk mit Ausgabeschicht zur Klassifizierung. Die Gewichte zwischen $H_3$ und der Ausgabe werden mit Backpropagation trainiert.}
 	\label{BPTrain}
 \end{figure}
 
 
-\subsection{Implementation}
-Als Grundgerüst wurde ein bereits implementiertes Feedforward-Netz, welches bereits Backpropagation kann, genutzt. Abbildung \ref{Aufbau} zeigt die Klassenherarchie des verwendeten Grundgerüsts. In rot sind die für den Aufbau und die Verwendung von Deep-Belief Netzen benötigten Klassen markiert.
-
-Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches.
-
-DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den rückwärtsgerichteten Gewichten der normalen Neuronen auch vorwärtsgerichtete Gewichte besitzt. Diese Gewichte stellen jedoch lediglich Zeiger auf die rückwärtsgerichteten Gewichte dar. Desweiteren wurde eine Möglichkeit geschaffen die Gewichte für das Deep-Belief Netz zu initialiseren. Dazu wird für jedes Gewicht eine zufällige Zahl einer gausschen Normalverteilung mit einem Erwartungswert von 0 und einer Standardabweichung von $0,1$ gezogen.
+\section{Implementation}
+Dieses Kapitel behandelt das verwendete Framework, welches in der Bachelorabeit von Evgenij Helm entstanden ist \cite{Helm}. Zunächst wird der allgeime Aufbau und die Verwendung beschrieben und später welche Erweiterungen für diese Arbeit hinzugefügt wurden.
+\subsection{Allgemeiner Aufbau des Frameworks}
 \begin{figure}[H]
 	\center
 	\includesvg{Aufbau}
 	\caption{Klassenherarchie des verwendeten Frameworks, rot umrandete Klassen wurden in dieser Arbeit hinzugefügt.}
 	\label{Aufbau}
 \end{figure}
+
+Die verschiedenen Klassen des Frameworks sind in Abbildung \ref{Aufbau} dargestellt. In der Grundversion kann das Framework Feedworward-Netze einmal mit der Backpropagation trainieren und mit einem genetischen Algorithmus welcher in \cite{Helm} erklärt wird. Beim aufrufen des Programms stehen verschiedene Parameter zur Steuerung des Verhaltens zur Verfügung:
+\begin{itemize}
+\renewcommand\labelitemi{--}
+\item N [Pfad]: Liest die Konfiguration für das zu Verwendende neuronale Netz ein. Eine mögliche Konfiguration kann so aussehen:
+\begin{lstlisting}[caption={Beispielkonfigurationsdatei für ein neuronales Netz},captionpos=b, label=NNKonf]
+#Linear=0,SIGMOID=1,TANH=2,LECUN_TANH=3, BINARY=4, SOFTMAX=5
+FunctionType=1
+LastLayerFunction=5
+#NONE=0, UNIFORM=1, LECUN=2, NORMAL0=3
+WeightInitType=1
+LayerCount=3
+SoftmaxGroup=1
+#Anzahl der Neuronen pro Layer : {Input},{Hidden_0},...,{Output}
+LayerNeuronCount=4,4,2
+
+\end{lstlisting} 
+Zeilen die mit einem \# beginnen werden nicht ausgelesen und gelten als Kommentar. FunctionType gibt an, welche Aktivierungsfunktion für die einzelnen Neuronen verwendet werden sollen. Dieser Parameter wird bei Deep-Belief Netzen ignoriert, da diese grundsätzlich stochastisch binär aktiviert werden. In der Beispieldatei in Listing \ref{NNKonf} wäre dies die logistische Funktion. LastLayerFunction gibt an welche Aktivierungsfunktion auf der Ausgabeebene verwendet werden soll. Im Beispiel würde hier die Softmaxfunktion verwendet werden. WeightInitType spezifiziert mit welcher Verteilung die Gewichte des neuronalen Netzes initialisiert werden und wäre hier eine Gleichverteilung zwischen $-1$ und $1$. LayerCount gibt die Anzahl der Ebenen des Netzes an, inklusive Eingabe- und Ausgabeebene. SoftmaxGroup ist nur für Deep-Belief Netze relevant und gibt die größe der Softmaxgruppe an, wenn diese auf die vorletzte Ebene gesetzt wird. LayerNeuronCount gibt die Anzahl der Neuronen pro Ebene an. Im Beispiel hätte das Netz vier Eingabeneuronen, vier versteckte Neuronen und zwei Ausgabeneuronen.
+\item D [Pfad]: Gibt den Pfad zu den Trainingsdaten an. Wenn es keine zusätzlichen Testdaten gibt, muss mit -K angegeben werden, in wieviele Teile der Datensatz aufgeteilt werden soll. Listing \ref{DatenConf} zeigt Auszüge aus einem Datensatz
+\begin{lstlisting}[caption= {Auszug aus einem der verwendeten Datensätze}, captionpos=b, label={DatenConf}]
+1346 4 1
+0.1395 0.1008 0.2407 0.9230
+0
+0.5489 1.0000 0.4926 0.4605
+1
+0.1892 0.0184 0.3687 0.8308
+1
+...
+...
+\end{lstlisting}
+Ein Datensatz enthält in der ersten Zeile die Anzahl der Daten, wie viele Eingabewerte es gibt und wie viele Ausgabewerte es gibt. Dies wäre in Listing \ref{DatenConf} 1346 einzelne Datensätze mit 4 Parametern als Eingabe und einem Wert als Ausgabe. 
+\item TD [Pfad]: Gibt den Pfad zu zusätzlichen Testdaten an. Das Format für Testdaten entspricht dem Format für Trainingsdaten. Hierbei ist vom Benutzer darauf zu achten, dass die angegebenen Testdaten zu den Trainingsdaten gehören, da dies nicht vom Programm überprüft wird.
+\item B [Pfad]: Gibt den Pfad zur Konfigurationsdatei für die Backpropagation an. 
+\begin{lstlisting}[captionpos=b,caption={Beispielkonfiguration für den Backpropagation-Algorithmus},label={BPConf}]
+ErrorThreshold=0
+MaxLoopCount=1000
+BatchSize=1
+Alpha=0.5
+Momentum=0.0
+DecayRate=0
+\end{lstlisting}
+Die Konfigurationsdatei enthält verschiedene Parameter für die Backpropagation und wird in Listing \ref{BPConf} gezeigt. ErrorThreshold gibt an, ab welchem MSE der Algorithmus aufhört falls noch nicht alle Epochen trainiert wurden. MaxLoopCount gibt an, wieviele Epochen trainiert werden sollen. Batchsize definiert die Anzahl von Trainingssätzen pro Batch. Alpha bestimmt die Lernrate und Momentum das Momentum. Das Lernen mit Momentum wird in \cite{Helm} erklärt. DecayRate gibt an, wie die Lernrate während des Trainings angepasst wird. Bei 0 bleibt die Lernrate unverändert.
+
+\item CD[Pfad]: Gibt Pfad zur Konfigurationsdatei der Kontrastiven Divergenz an. 
+\begin{lstlisting}[captionpos=b,caption={Beispielkonfiguration der Kontrastiven Divergenz},label={CDConf}]
+GibbsSteps=1
+BatchSize=50
+LearnRate=0.5
+Epochs= 100
+\end{lstlisting}
+In Listing \ref{CDConf} wird eine mögliche Konfiguration der Kontrastiven Divergenz gezeigt. GibssSteps gibt an, wie viele Schritte des Gibbs Samplings verwendet werden sollen. BatchSize gibt die Anzahl der Daten pro Batch an. LearnRate steuert die Lernrate des Algorithmus und Epochs gibt die Anzahl der Epochen an.
+
+\item G [Pfad]: Gibt den Pfad zur Konfigurationsdatei für den genetischen Algorithmus an. Dieser wird in \cite{Helm} erklärt und ist nur für die Vollständigkeit hier aufgeführt.
+\item SW [Pfad]:	Speicherung der Gewichte nach dem Training. Die
+			Variablen \%N, \%B, \%G,  \%D in [Pfad] werden mit dem 
+ 			jeweiligen Dateinamen des Parameters ersetzt.
+			\%K wird mit dem Iterationsschritt 0...K-1 ersetzt.
+\item SR [File]:	Speichern der Ergebnisse für MSE und die Dauer des jeweiligen Trainings mit Angabe des Iterationsschrittes. Varibalen werden wie bei -SW ersetzt. 
+
+\item C [Wert]: Gibt einen Wert an, um den bei den Testdaten vom gewünschten Ergebnis abgewichen werden darf. Größere Abweichungen werden als falsch bewertet. Muss immer mit angegeben werden, wird jedoch bei mehr als einem Ausgabeneuron beim Testen ignoriert.
+
+\item K [Wert]: Aktiviert die Kreuzvalidierung. Der Wert gibt an, in wieviele Teile der Datensatz aufgeteilt werden soll. Das Netzwerk wird mit Wert-1 teilen trainiert und dem übrig gebliebenen Teil getestet. Falls die Daten nicht glatt durch den Wert teilbar sind, werden die restlichen Daten zum Testen verwendet. 
+
+\item O [Wert]:	Offset der beim Speichern auf die Zeit addiert wird.
+\item I [Wert]: Anzahl der Wiederholungen des Trainings. Anschließend werden Mittelwert und Streuung über alle Testergebnisse berechnet.
+\end{itemize}
+
+\subsection{Erweiterungen des Frameworks}
+Das Framework wurde erweitert, sodass dieses nun auch Deep-Belief Netze trainieren kann. Die dafür hinzugefügten Klassen sind in Abbildung \ref{Aufbau} rot markiert.
+
+Die Klasse ContrastiveDivergenceConfig liest die Parameter für die Kontrastive Divergenz aus einer Datei ein. Die Klasse kann einfach erweitert werden und setzt momentan die Anzahl der Gibbsschritte, die Anzahl der Epochen, die Lernrate und die Größe der zu trainierenden Batches.
+
+DBNLayer erweitert die Layerklasse soweit, dass statt normalen Neuronen Neuronen für das Deep-Belief-Netz benutzt werden und neben den rückwärtsgerichteten Gewichten der normalen Neuronen auch vorwärtsgerichtete Gewichte besitzt. Diese Gewichte stellen jedoch lediglich Zeiger auf die rückwärtsgerichteten Gewichte dar. Desweiteren wurde eine Möglichkeit geschaffen die Gewichte für das Deep-Belief Netz zu initialiseren. Dazu wird für jedes Gewicht eine zufällige Zahl einer gausschen Normalverteilung mit einem Erwartungswert von 0 und einer Standardabweichung von $0,1$ gezogen.
+
 DeepBeliefNet stellt die Netzstruktur für Deep-Belief Netze zur Verfügung. Im Gegensatz zu den normalen Netzwerken des Frameworks, besitzen Deep-Belief Netze auch auf der Eingabeebene eigene Neuronen. Dies ist wichtig, da man für die Kontrastive Divergenz die Aktivierungswahrscheinlichkeiten der einzelnen Neuronen speichern muss. Desweiteren besitzt das Netz die Funktion seine Gewichte so abzuspeichern, dass diese von einem normalen neuronalen Netz wieder eingelesen werden können. Dabei gehen die Biasgewichte in Rückwärtsrichtung verloren, da diese von dem normalen neuronalen Netz mit Backpropagation nicht benötigt werden.
 
 DBNNeuron ist eine Erweiterung der Neuron Klasse. DBNNeuronen können ihre Aktivierungswahrscheinlichkeit speichern und besitzen die Möglichkeit auf die Gewichte zum nächsthöheren Layer zuzugreifen. Außerdem kam eine Funktion zum Initialisieren von Biasgewichten hinzu. Diese bekommt entweder den Datencontainer für die Eingabedaten des Layers oder NULL übergeben. Wenn kein Container übergeben wird, wird der Bias auf 0 gesetzt. Dies ist der Fall, wenn der Biasknoten für die versteckte Ebene zuständig ist. Wenn ein Container übergeben wird, wird aus den Eingabedaten der Initialwert des Bias für jeden sichtbaren Knoten $i$ berechnet:
@@ -427,15 +743,18 @@ Bei diesem Datensatz werden Topologien mit 1-2 versteckten Ebenen und verschiede
 	1&784-500-500-2000-10&1&&\\\hline
 	2&784-500-500-2000-10&10&&\\\hline
 	3&784-500-500-2000-10&30&&\\\hline
+	4&784-500-500-1000-10&1&&\\\hline
+	5&784-500-500-500-10&1&&\\\hline
 	\end{tabularx}
 	\caption{Vergleich verschiedener Netztopologien mit Softmax-Neuronen als Ausgabe}
 	\end{table}
-	\subsubsection{MNIST Datenbank}
 	
-	\section{Mögliche Verbesserung von Deep-Belief Netzen}
-	\subsection{Probleme}
+	\section{Probleme von Deep-Belief Netzen}
+	Deep-Belief Netze trainieren tiefe Netze zwar schneller als die Backpropagation, allerdings dauert das Training bei großen Ebenen immer noch sehr lange. Eine wichtige Frage ist hierbei, ob die einzelnen Ebenen so groß sein müssen oder ob kleinere Ebenen zu einem gleichen oder sogar besseren Ergebnis führen können. Eine weiteres Problem ist durch den Explained-away Effekt, dass man von außen sehr schlecht nachvollziehen kann, wie das Netz zu einer bestimmten Entscheidung kommt. Generell scheint es durch die Menge der einstellbaren und möglichen Parameter für ein solches Netz unmöglich zu sein eine optimale Einstellung der einzelnen Parameter zu finden ohne diese langwierig einzelnd ausprobieren zu müssen. 
 
 \subsection{Einfache Verbesserung}
+Eine einfache Verbesserung um die Anzahl der Neuronen auf den einzelnen Ebenen zu reduzieren, besteht darin, Neuronen die bei jedem Trainingsmuster immer aktiviert bzw. nicht aktiviert sind aus dem Netz zu entfernen. Dies sollte theorethisch kein Problem darstellen, da der Bias dieser Knoten diese ohnehin schon für die weiteren Berechnungen unwichtig macht. Diesen Schritt könnte man nach dem Training einer Ebene ausführen und so die Neuronenzahl etwas reduzieren.
+
 
 \newpage
 \begin{thebibliography}{9}
@@ -487,6 +806,22 @@ Proceedings of the National Academy of Sciences (USA) 79, Seite 2554-2558,
 Annals of Mathematical Statistics 22 No. 1,
 Seite  79–86,
  1951
+ 
+\bibitem{PDP} David E. Rumelhart, James L. McClelland: {\em Parallel Distributed Processing Explorations in the microstrucutre of Cognition Volume 1: Foundations}, A Bradford Book, 1987
+
+\bibitem{bachelor} 
+M. Kämmerer, \emph{Implementation eines Neuronalen Netzes auf Graphikkarten für Anwendungen in der Hochenergiephysik}, Hochschule Niederrhein, 2013
+
+\bibitem{Helm} 
+E. Helm, \emph{Back-Propagation Algorithmus und genetische
+Algorithmen zum Training neuronaler Netze
+}, Hochschule Niederrhein, 2014
+
+\bibitem{Markovchains}
+A. Blake, P. Kohli, C. Rother,
+\emph{Markov Random Fields for Vision and Image Processing}
+, MIT Press, 2011
+
 \end{thebibliography}
 \newpage
 \listoffigures

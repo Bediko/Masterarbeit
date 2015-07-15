@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  6 JUL 2015 13:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  15 JUL 2015 16:46
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -654,6 +654,10 @@ Package: xfrac 2014/05/04 v4728 L3 Experimental split-level fractions
 . Defining command \sfrac with sig. 'omom' on line 436.
 .................................................
 )
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip19
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip59
@@ -683,7 +687,7 @@ LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count126
 \c@MaxMatrixCols=\count127
-\dotsspace@=\muskip19
+\dotsspace@=\muskip20
 \c@parentequation=\count128
 \dspbrk@lvl=\count129
 \tag@help=\toks18
@@ -1077,9 +1081,34 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 \SVG@out@height=\skip71
 \c@svgfigure=\count157
 )
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count158
+\lst@gtempboxa=\box59
+\lst@token=\toks42
+\lst@length=\count159
+\lst@currlwidth=\dimen268
+\lst@column=\count160
+\lst@pos=\count161
+\lst@lostspace=\dimen269
+\lst@width=\dimen270
+\lst@newlines=\count162
+\lst@lineno=\count163
+\lst@maxwidth=\dimen271
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count164
+\lst@skipnumbers=\count165
+\lst@framebox=\box60
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+
 (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count158
+\c@AlgoLine=\count166
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -1105,79 +1134,80 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \skiplength=\skip77
 \algomargin=\skip78
 \skipalgocfslide=\skip79
-\algowidth=\dimen268
-\inoutsize=\dimen269
-\inoutindent=\dimen270
-\interspacetitleruled=\dimen271
-\interspacealgoruled=\dimen272
-\interspacetitleboxruled=\dimen273
-\algocf@inoutbox=\box59
-\algocf@inputbox=\box60
+\algowidth=\dimen272
+\inoutsize=\dimen273
+\inoutindent=\dimen274
+\interspacetitleruled=\dimen275
+\interspacealgoruled=\dimen276
+\interspacetitleboxruled=\dimen277
+\algocf@inoutbox=\box61
+\algocf@inputbox=\box62
 \AlCapSkip=\skip80
 \AlCapHSkip=\skip81
 \algoskipindent=\skip82
-\algocf@nlbox=\box61
-\algocf@hangingbox=\box62
-\algocf@untilbox=\box63
+\algocf@nlbox=\box63
+\algocf@hangingbox=\box64
+\algocf@untilbox=\box65
 \algocf@skipuntil=\skip83
-\algocf@capbox=\box64
+\algocf@capbox=\box66
 \algoheightruledefault=\skip84
 \algoheightrule=\skip85
 \algotitleheightruledefault=\skip86
 \algotitleheightrule=\skip87
-\c@algocfline=\count159
-\c@algocfproc=\count160
-\c@algocf=\count161
-\algocf@algoframe=\box65
-\algocf@algobox=\box66
+\c@algocfline=\count167
+\c@algocfproc=\count168
+\c@algocf=\count169
+\algocf@algoframe=\box67
+\algocf@algobox=\box68
 )
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 52.
+less on input line 58.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 53.
+less on input line 59.
 
 (./Deep_Learning.aux)
 \openout1 = `Deep_Learning.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 63.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    ... okay on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count162
-\scratchdimen=\dimen274
-\scratchbox=\box67
-\nofMPsegments=\count163
-\nofMParguments=\count164
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count165
-\MPscratchDim=\dimen275
-\MPnumerator=\count166
-\makeMPintoPDFobject=\count167
-\everyMPtoPDFconversion=\toks43
+\scratchcounter=\count170
+\scratchdimen=\dimen278
+\scratchbox=\box69
+\nofMPsegments=\count171
+\nofMParguments=\count172
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count173
+\MPscratchDim=\dimen279
+\MPnumerator=\count174
+\makeMPintoPDFobject=\count175
+\everyMPtoPDFconversion=\toks44
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -1224,22 +1254,29 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+\c@lstlisting=\count176
+ [1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 93--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 108.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 108.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: No \author given.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Deep_Learning.toc)
+) [1]
+(./Deep_Learning.toc)
 \tf@toc=\write4
 \openout4 = `Deep_Learning.toc'.
 
@@ -1250,174 +1287,215 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2] [3] <./Hopfield.pdf, id=19, 155.73611pt x 159.75114pt>
+[1]
+Overfull \hbox (0.30177pt too wide) in paragraph at lines 131--132
+\OT1/cmr/m/n/12 Algorithmus, Markov-Ketten, Hop-field Net-ze, Boltz-mann Ma-sch
+i-nen, ein-ge-schr[]ank-te Boltz-
+ []
+
+[2] <Neuron_-_annotated.png, id=22, 423.181pt x 239.294pt>
+File: Neuron_-_annotated.png Graphic file (type png)
+
+<use Neuron_-_annotated.png>
+Package pdftex.def Info: Neuron_-_annotated.png used on input line 140.
+(pdftex.def)             Requested size: 338.54526pt x 191.43546pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--141
+[]\OT1/cmr/m/n/12 Abbildung 1: |Neu-ron (Quel-le: http://commons.wikimedia.org/
+wiki/File:Neuron[]-
+ []
+
+[3 <./Neuron_-_annotated.png>] [4] [5] (./MLP.pdf_t
+<MLP.pdf, id=42, 524.96124pt x 324.21124pt>
+File: MLP.pdf Graphic file (type pdf)
+ <use MLP.pdf>
+Package pdftex.def Info: MLP.pdf used on input line 2.
+(pdftex.def)             Requested size: 524.95996pt x 324.21045pt.
+) [6] [7 <./MLP.pdf>]
+Overfull \hbox (10.27574pt too wide) in paragraph at lines 261--262
+\OT1/cmr/m/n/12 gezeigt. F[]ur je-des Trai-ningsevent $\OML/cmm/m/it/12 p$ \OT1
+/cmr/m/n/12 wird der Out-put $\OML/cmm/m/it/12 o[]$ \OT1/cmr/m/n/12 be-rech-net
+ und mit dem gew[]unschen
+ []
+
+[8] [9] <./Hopfield.pdf, id=61, 155.73611pt x 159.75114pt>
 File: ./Hopfield.pdf Graphic file (type pdf)
 
 <use ./Hopfield.pdf>
-Package pdftex.def Info: ./Hopfield.pdf used on input line 77.
+Package pdftex.def Info: ./Hopfield.pdf used on input line 320.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
  (./Hopfield.pdf_tex
-<Hopfield.pdf, id=20, page=1, 155.73611pt x 159.75114pt>
+<Hopfield.pdf, id=62, page=1, 155.73611pt x 159.75114pt>
 File: Hopfield.pdf Graphic file (type pdf)
 
 <use Hopfield.pdf, page 1>
 Package pdftex.def Info: Hopfield.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
-) [4 <./Hopfield.pdf>]
-<./BM.pdf, id=32, 155.73611pt x 159.75114pt>
+) [10 <./Hopfield.pdf>]
+<./BM.pdf, id=68, 155.73611pt x 159.75114pt>
 File: ./BM.pdf Graphic file (type pdf)
  <use ./BM.pdf>
-Package pdftex.def Info: ./BM.pdf used on input line 99.
+Package pdftex.def Info: ./BM.pdf used on input line 342.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
  (./BM.pdf_tex
-<BM.pdf, id=33, page=1, 155.73611pt x 159.75114pt>
+<BM.pdf, id=69, page=1, 155.73611pt x 159.75114pt>
 File: BM.pdf Graphic file (type pdf)
  <use BM.pdf, page 1>
 Package pdftex.def Info: BM.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
 )
-[5 <./BM.pdf>] [6] <./RBM.pdf, id=45, 155.73611pt x 159.75114pt>
+[11 <./BM.pdf>] [12] <./RBM.pdf, id=79, 155.73611pt x 159.75114pt>
 File: ./RBM.pdf Graphic file (type pdf)
 
 <use ./RBM.pdf>
-Package pdftex.def Info: ./RBM.pdf used on input line 155.
+Package pdftex.def Info: ./RBM.pdf used on input line 398.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
  (./RBM.pdf_tex
-<RBM.pdf, id=46, page=1, 155.73611pt x 159.75114pt>
+<RBM.pdf, id=80, page=1, 155.73611pt x 159.75114pt>
 File: RBM.pdf Graphic file (type pdf)
  <use RBM.pdf, page 1>
 Package pdftex.def Info: RBM.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 142.26378pt x 145.93196pt.
 )
-[7 <./RBM.pdf>]
-
-LaTeX Warning: Citation `Guide' on page 8 undefined on input line 200.
-
-[8] <./Markov.pdf, id=56, 419.13338pt x 123.8847pt>
-File: ./Markov.pdf Graphic file (type pdf)
- <use ./Markov.pdf>
-Package pdftex.def Info: ./Markov.pdf used on input line 220.
-(pdftex.def)             Requested size: 419.13235pt x 123.8844pt.
+[13 <./RBM.pdf>] [14] <./Markov.pdf, id=89, 419.13338pt x 123.8847pt>
 File: ./Markov.pdf Graphic file (type pdf)
 
 <use ./Markov.pdf>
-Package pdftex.def Info: ./Markov.pdf used on input line 220.
+Package pdftex.def Info: ./Markov.pdf used on input line 463.
+(pdftex.def)             Requested size: 419.13235pt x 123.8844pt.
+File: ./Markov.pdf Graphic file (type pdf)
+ <use ./Markov.pdf>
+Package pdftex.def Info: ./Markov.pdf used on input line 463.
 (pdftex.def)             Requested size: 419.13235pt x 123.8844pt.
  (./Markov.pdf_tex
-<Markov.pdf, id=57, page=1, 419.13338pt x 123.8847pt>
+<Markov.pdf, id=90, page=1, 419.13338pt x 123.8847pt>
 File: Markov.pdf Graphic file (type pdf)
  <use Markov.pdf, page 1>
 Package pdftex.def Info: Markov.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 419.13235pt x 123.88628pt.
-) [9 <./Markov.pdf>] [10] <./Netzwerk.pdf, id=66, 132.88982pt x 214.25043pt>
+) [15 <./Markov.pdf>] [16] <./Netzwerk.pdf, id=99, 132.88982pt x 214.25043pt>
 File: ./Netzwerk.pdf Graphic file (type pdf)
 
 <use ./Netzwerk.pdf>
-Package pdftex.def Info: ./Netzwerk.pdf used on input line 250.
+Package pdftex.def Info: ./Netzwerk.pdf used on input line 495.
 (pdftex.def)             Requested size: 150.0pt x 241.8615pt.
  (./Netzwerk.pdf_tex
-<Netzwerk.pdf, id=67, 132.88982pt x 214.25043pt>
+<Netzwerk.pdf, id=100, 132.88982pt x 214.25043pt>
 File: Netzwerk.pdf Graphic file (type pdf)
  <use Netzwerk.pdf>
 Package pdftex.def Info: Netzwerk.pdf used on input line 52.
 (pdftex.def)             Requested size: 132.88947pt x 214.2499pt.
-) [11 <./Netzwerk.pdf>] <./ExplainedAway.pdf, id=73, 496.67433pt x 391.64862pt>
+) [17 <./Netzwerk.pdf>] <./ExplainedAway.pdf, id=107, 496.67433pt x 391.64862pt
+>
 File: ./ExplainedAway.pdf Graphic file (type pdf)
 
 <use ./ExplainedAway.pdf>
-Package pdftex.def Info: ./ExplainedAway.pdf used on input line 262.
+Package pdftex.def Info: ./ExplainedAway.pdf used on input line 507.
 (pdftex.def)             Requested size: 150.0pt x 118.27835pt.
  (./ExplainedAway.pdf_tex
-<ExplainedAway.pdf, id=74, page=1, 496.67433pt x 391.64862pt>
+<ExplainedAway.pdf, id=108, page=1, 496.67433pt x 391.64862pt>
 File: ExplainedAway.pdf Graphic file (type pdf)
 
 <use ExplainedAway.pdf, page 1>
 Package pdftex.def Info: ExplainedAway.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 150.0pt x 118.27835pt.
-) [12 <./ExplainedAway.pdf>]
-<./SMTrain.pdf, id=80, 217.83699pt x 214.23279pt>
+) [18 <./ExplainedAway.pdf>]
+<./SMTrain.pdf, id=114, 217.83699pt x 214.23279pt>
 File: ./SMTrain.pdf Graphic file (type pdf)
  <use ./SMTrain.pdf>
-Package pdftex.def Info: ./SMTrain.pdf used on input line 292.
+Package pdftex.def Info: ./SMTrain.pdf used on input line 537.
 (pdftex.def)             Requested size: 200.0pt x 196.69774pt.
 
-(./SMTrain.pdf_tex <SMTrain.pdf, id=81, page=1, 217.83699pt x 214.23279pt>
+(./SMTrain.pdf_tex <SMTrain.pdf, id=115, page=1, 217.83699pt x 214.23279pt>
 File: SMTrain.pdf Graphic file (type pdf)
 
 <use SMTrain.pdf, page 1>
 Package pdftex.def Info: SMTrain.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 200.0pt x 196.69774pt.
-) [13 <./SMTrain.pdf>]
-<./BPTrain.pdf, id=88, 132.8678pt x 260.08789pt>
+) [19]
+<./BPTrain.pdf, id=119, 132.8678pt x 260.08789pt>
 File: ./BPTrain.pdf Graphic file (type pdf)
  <use ./BPTrain.pdf>
-Package pdftex.def Info: ./BPTrain.pdf used on input line 301.
+Package pdftex.def Info: ./BPTrain.pdf used on input line 546.
 (pdftex.def)             Requested size: 113.81102pt x 222.78224pt.
 
-(./BPTrain.pdf_tex <BPTrain.pdf, id=89, page=1, 132.8678pt x 260.08789pt>
+(./BPTrain.pdf_tex <BPTrain.pdf, id=120, page=1, 132.8678pt x 260.08789pt>
 File: BPTrain.pdf Graphic file (type pdf)
 
 <use BPTrain.pdf, page 1>
 Package pdftex.def Info: BPTrain.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 113.81102pt x 222.78224pt.
-)
-Overfull \hbox (1.57399pt too wide) in paragraph at lines 308--309
-\OT1/cmr/m/n/12 Als Grund-ger[]ust wur-de ein be-reits im-ple-men-tier-tes Feed
-forward-Netz, wel-ches be-reits Back-
- []
-
-<./Aufbau.pdf, id=90, 330.836pt x 411.939pt>
+) [20 <./SMTrain.pdf>]
+<./Aufbau.pdf, id=126, 330.836pt x 411.939pt>
 File: ./Aufbau.pdf Graphic file (type pdf)
  <use ./Aufbau.pdf>
-Package pdftex.def Info: ./Aufbau.pdf used on input line 315.
+Package pdftex.def Info: ./Aufbau.pdf used on input line 557.
 (pdftex.def)             Requested size: 330.83519pt x 411.93797pt.
 File: ./Aufbau.pdf Graphic file (type pdf)
 
 <use ./Aufbau.pdf>
-Package pdftex.def Info: ./Aufbau.pdf used on input line 315.
+Package pdftex.def Info: ./Aufbau.pdf used on input line 557.
 (pdftex.def)             Requested size: 330.83519pt x 411.93797pt.
  (./Aufbau.pdf_tex
-<Aufbau.pdf, id=91, page=1, 330.836pt x 411.939pt>
+<Aufbau.pdf, id=127, page=1, 330.836pt x 411.939pt>
 File: Aufbau.pdf Graphic file (type pdf)
  <use Aufbau.pdf, page 1>
 Package pdftex.def Info: Aufbau.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 330.83519pt x 411.9631pt.
 )
-[14 <./BPTrain.pdf>] [15 <./Aufbau.pdf>] [16] [17] [18] [19] [20]
-(./Deep_Learning.lof)
+[21 <./BPTrain.pdf>] [22 <./Aufbau.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 574.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 574.
+ [23] [24] [25]
+[26] [27] [28] [29] [30] (./Deep_Learning.lof
+Overfull \hbox (38.12253pt too wide) in paragraph at lines 1--1
+ [][] []\OT1/cmr/m/n/12 Neuron (Quel-le: http://commons.wikimedia.org/wiki/File
+:Neuron[]-[]annotated.svg) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--1
+ [][]  
+ []
+
+)
 \tf@lof=\write5
 \openout5 = `Deep_Learning.lof'.
 
- [21] (./Deep_Learning.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ [31] (./Deep_Learning.aux) ) 
 Here is how much of TeX's memory you used:
- 22973 strings out of 493105
- 441183 string characters out of 6137072
- 498427 words of memory out of 5000000
- 26017 multiletter control sequences out of 15000+600000
- 13747 words of font info for 53 fonts, out of 8000000 for 9000
+ 24767 strings out of 493105
+ 465399 string characters out of 6137072
+ 520900 words of memory out of 5000000
+ 27787 multiletter control sequences out of 15000+600000
+ 12201 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,21n,75p,10424b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Deep_Learning.pdf (21 pages, 316418 bytes).
+ 55i,21n,76p,10440b,1841s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
+2.pfb>
+Output written on Deep_Learning.pdf (33 pages, 395628 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
+ 236 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
