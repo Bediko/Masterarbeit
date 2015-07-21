@@ -223,6 +223,7 @@ int main(int argc, char* argv[]) {
 						replace(filename, "%N", splitFileName(neuralNetworkConfigFile));
 						replace(filename, "%B", splitFileName(backPropagationConfigFile));
 						replace(filename, "%G", splitFileName(geneticAlgorithmConfigFile));
+						replace(filename, "%C", splitFileName(ContrastiveDivergenceConfigFile));
 						replace(filename, "%D", splitFileName(dataContainerFile));
 
 						result.SaveWeights(filename.c_str());
