@@ -181,8 +181,8 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 						bottom->Neurons[j].p = input[l].DataInput[d_i][j]; //Interpret data as probability to turn on
 						bottom->Neurons[j].Output = Binary(bottom->Neurons[j].p);
 					}
-					if (network->SoftmaxGroup && l == layersend - 1) {
-						int k=0;
+					if (network->SoftmaxGroup!=0 && l == layersend - 1) {
+						int k;
 						for (int j = bottom->NeuronCount- network->SoftmaxGroup,k=0; j < bottom->NeuronCount; ++j,k++) {
 							bottom->Neurons[j].Output=container.DataOutput[d_i][k];
 						}

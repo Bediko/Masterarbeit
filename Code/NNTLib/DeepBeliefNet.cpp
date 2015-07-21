@@ -27,6 +27,7 @@ void DeepBeliefNet::init() {
 	FunctionType = FunctionEnum::LINEAR;
 	TotalNeuronCount = 0;
 	Layers = nullptr;
+	SoftmaxGroup=0;
 }
 /**
  * @brief destructor
@@ -57,7 +58,7 @@ DeepBeliefNet::DeepBeliefNet(int *neuronsCountPerLayer, int layercount, WeightIn
 	this->FunctionType = functionType;
 
 	LayersCount = layercount;
-	if (softmax) {
+	if (softmax!=0) {
 		LayersCount -= 1; //Ausgabelayer kommt auf vorletzten Layer
 		SoftmaxGroup = neuronsCountPerLayer[layercount];
 		neuronsCountPerLayer[layercount - 1] += neuronsCountPerLayer[layercount];
