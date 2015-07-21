@@ -2,7 +2,7 @@ CC = g++
 CPP_FILES = $(wildcard *.cpp)
 OBJ_FILES = $(notdir $(CPP_FILES:.cpp=.o))
 LD_FLAGS =  -fopenmp
-CC_FLAGS =-Wall -O3 -std=c++11 -fopenmp
+CC_FLAGS =-Wall -g -O3 -std=c++11 -fopenmp
 
 all: main
 

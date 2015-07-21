@@ -1,5 +1,4 @@
-ErrorThreshold=0
 GibbsSteps=1
-BatchSize=1
-LearnRate=0.1
+BatchSize=50
+LearnRate=0.5
 Epochs= 100
