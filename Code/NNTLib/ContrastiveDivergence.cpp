@@ -7,7 +7,13 @@
 
 namespace NNTLib {
 
-
+/**
+ * @brief Gibbs sampling
+ * @details Makes gibssampling for specified number of steps
+ * 
+ * @param gibbssteps Number of Gibbs Samplings
+ * @param softmax Number of softmax units
+ */
 void ContrastiveDivergence::GibbsSampling(int gibbssteps, int softmax) {
 
 	for (int g = 0; g < gibbssteps; g++) {
@@ -16,13 +22,18 @@ void ContrastiveDivergence::GibbsSampling(int gibbssteps, int softmax) {
 
 		//use probabilities in last update to reduce sampling noise
 		UpdateVisibleUnits(softmax);
-		UpdateHiddenUnits();
+		UpdateHiddenUnits(softmax);
 	}
 }
 
 
-
-void ContrastiveDivergence::UpdateHiddenUnits() {
+/**
+ * @brief Updates Hidden Units Output and propability
+ * @details Updates Hidden Units Output and propability
+ * 
+ * @param softmaxcount size of softmax group
+ */
+void ContrastiveDivergence::UpdateHiddenUnits(int softmaxcount) {
 
 	double sums[top->NeuronCount];
 	#pragma omp parallel
@@ -32,6 +43,12 @@ void ContrastiveDivergence::UpdateHiddenUnits() {
 			sums[j] = 0.0;
 			for (int i = 0; i < bottom->NeuronCount - 1; i++) {
 				sums[j] += bottom->Neurons[i].Output * top->Neurons[j].Weights[i];
+			}
+			if (softmaxcount != 0) {
+				for (int i = 0; i < softmaxcount; i++) {
+					//std::cout<<*network->Softmax.Neurons[i].ForwardWeights[j]<<" "<<j<<std::endl;
+					sums[j] += *network->Softmax.Neurons[i].ForwardWeights[j] * network->Softmax.Neurons[i].Output;
+				}
 			}
 
 			sums[j] += *bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j]; //bias
@@ -48,8 +65,13 @@ void ContrastiveDivergence::UpdateHiddenUnits() {
 	}
 
 }
-
-void ContrastiveDivergence::UpdateVisibleUnits(int softmax) {
+/**
+ * @brief Updates visible Units Output and propabilites
+ * @details Updates visible Units Output and propabilites
+ * 
+ * @param softmaxcount Size of Softmax Group
+ */
+void ContrastiveDivergence::UpdateVisibleUnits(int softmaxcount) {
 
 	double sums[bottom->NeuronCount];
 	#pragma omp parallel
@@ -66,24 +88,47 @@ void ContrastiveDivergence::UpdateVisibleUnits(int softmax) {
 		}
 		#pragma omp barrier
 	}
-	for ( int i = 0; i < bottom->NeuronCount - 1 - softmax; i++) {
+	for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
 		sums[i] += top->Neurons[top->NeuronCount - 1].Weights[i]; //bias
 		sums[i] = 1 / (1 + exp(-sums[i])); //Wahrscheinlichkeit ausrechnen
 		bottom->Neurons[i].p = sums[i];
 		bottom->Neurons[i].Output = Binary(sums[i]);
 	}
-	for (int i = bottom->NeuronCount - softmax; i < bottom->NeuronCount; i++) {
-		double y = 0.0;
-		double x = exp(sums[i]);
-		for (int j = bottom->NeuronCount - softmax; i < bottom->NeuronCount; j++) {
-			y += exp(sums[j]);
+	if (softmaxcount != 0) {
+		double sumssoft[softmaxcount];
+		for (int i = 0; i < softmaxcount; i++) {
+			sumssoft[i] = 0;
+			for (int j = 0; j < top->NeuronCount - 1; j++) {
+				sumssoft[i] += top->Neurons[j].Output * *network->Softmax.Neurons[i].ForwardWeights[j];
+			}
 		}
-		bottom->Neurons[i].p = x / y;
-		bottom->Neurons[i].Output = Binary(bottom->Neurons[i].p);
+		for (int i = 0; i < softmaxcount; i++) {
+			double y = 0.0;
+			double x = exp(sumssoft[i]);
+			for (int j = 0; j < softmaxcount; j++) {
+				y += exp(sumssoft[j]);
+			}
+			network->Softmax.Neurons[i].p = x / y;
+			
+			int maxindex = 0;
+			for (int i = 0; i < softmaxcount; i++) {
+				if (network->Softmax.Neurons[maxindex].p < network->Softmax.Neurons[i].p)
+					maxindex = i;
+					network->Softmax.Neurons[i].Output=0;
+			}
+			network->Softmax.Neurons[maxindex].Output=1;
+
+		}
 	}
 }
 
-
+/**
+ * @brief Makes Binary decision
+ * @details Rolls a Dice between 0 and 1 and returns 1 if x is greater than the dice
+ * 
+ * @param x propability to turn on
+ * @return 1 if dice < x, 0 if dice > x
+ */
 int ContrastiveDivergence::Binary(double x) {
 	//srand48(time(NULL));
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
@@ -93,13 +138,25 @@ int ContrastiveDivergence::Binary(double x) {
 	return x >= y && x != 0;
 }
 
+/**
+ * @brief Trains a network with contrastive divergence
+ * @details Trains a network with contrastive divergence
+ * 
+ * @param container Trainingdata
+ * @param learnRate Learnrate
+ * @param Epochs Number of epochs
+ * @param BatchSize Size of batches
+ * @param gibbssteps Number of Steps for Gibbs Sampling
+ */
 void ContrastiveDivergence::Train(const DataContainer & container, const double learnRate, const int Epochs, int BatchSize, int gibbssteps) {
+	unsigned long long time64= GetTimeMs64();
 	std::cout << "train CD incremental" << std::endl;
 	//int gibbssteps = 20;
 	//Epochs = 10;
 	std::cout << "LERNRATE: " << learnRate << std::endl;
 	std::cout << "EPOCHEN: " << Epochs << std::endl;
 	std::cout << "GIBBS: " << gibbssteps << std::endl;
+
 
 	int rest = container.DataCount % BatchSize;
 	int batches = ((container.DataCount - rest) / BatchSize);
@@ -108,6 +165,7 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 		batches++;
 	}
 	std::cout << "Batches: " << batches << std::endl;
+
 
 
 
@@ -127,16 +185,19 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 		layersend += 1;
 
 	for ( int l = 0; l < layersend; l++) {
-		std::cout << "Layer:" << l << " Epoche:" << 0 << " Datensatz: " << 0 << "\r" << std::flush;
+		//std::cout << "Layer:" << l << " Epoche:" << 0 << " Datensatz: " << 0 << "\r" << std::flush;
 		biasdata = new DataContainer();
 
 		bottom = &network->Layers[l]; //bottom RBM Layer
 		top = &network->Layers[l + 1]; //top RBM Layer
 		statisticsdatav = new double*[input[l].DataCount];
 		statisticsdatah = new double *[input[l].DataCount];
+		statisticsdatasm = new double *[input[l].DataCount];
+
 		//Matrix für Statistik
 		statisticsmodelv = new double*[input[l].DataCount];
 		statisticsmodelh = new double *[input[l].DataCount];
+		statisticsmodelsm = new double *[input[l].DataCount];
 
 		biasdata->Init(input[l].DataCount, bottom->NeuronCount - 1, top->NeuronCount - 1);
 		bottom->Neurons[bottom->NeuronCount - 1].InitBias(NULL); //initialise bias for hidden units
@@ -153,18 +214,23 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 
 		//Initialisieren des Netztes mit Eingabedaten vor dem Gibbs Sampling
 		for (int e = 0; e < Epochs; e++) { //jede Maschine über Epochenazahl tranieren
-			std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << 0 << "\r" << std::flush;
+			//std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << 0 << "\r" << std::flush;
 			//speichern für modell statistik allokieren
 			for ( int d_i = 0; d_i < input[l].DataCount; d_i++) {
 				statisticsdatav[d_i] = new double[bottom->NeuronCount];
 				statisticsdatah[d_i] = new double[top->NeuronCount];
+				statisticsdatasm[d_i] = new double[container.OutputCount];
 				statisticsmodelv[d_i] = new double[bottom->NeuronCount];
 				statisticsmodelh[d_i] = new double[top->NeuronCount];
+				statisticsmodelsm[d_i] = new double[container.OutputCount];
 			}
 			int d_i = 0;
 			int d_end = 0;
+			int d_start;
 			for (int b = 0; b < batches; b++) {
-				d_i = b * BatchSize;
+				d_start = b * BatchSize;
+				if (b == batches - 2 && rest != 0)
+					BatchSize = rest;
 				d_end = d_i + BatchSize;
 				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
 					statisticsdatav[d_i][i] = 0;
@@ -174,60 +240,76 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 					statisticsdatah[d_i][j] = 0;
 					statisticsmodelh[d_i][j] = 0;
 				}
+				for (int i = 0; i < network->SoftmaxGroup; i++) {
+					statisticsdatasm[d_i][i] = 0;
+					statisticsmodelsm[d_i][i] = 0;
+				}
 
 
-				for (; d_i < d_end; d_i++) { //Alle Trainingsdaten für jede Maschine
+				for (d_i=d_start; d_i < d_end; d_i++) { //Alle Trainingsdaten für jede Maschine
 					for (int j = 0; j < bottom->NeuronCount - 1; ++j) { //Eingabedaten setzen
 						bottom->Neurons[j].p = input[l].DataInput[d_i][j]; //Interpret data as probability to turn on
 						bottom->Neurons[j].Output = Binary(bottom->Neurons[j].p);
 					}
-					if (network->SoftmaxGroup!=0 && l == layersend - 1) {
-						int k;
-						for (int j = bottom->NeuronCount- network->SoftmaxGroup,k=0; j < bottom->NeuronCount; ++j,k++) {
-							bottom->Neurons[j].Output=container.DataOutput[d_i][k];
+					if (network->SoftmaxGroup != 0 && l == layersend - 1) {
+						for (int j = 0; j < network->SoftmaxGroup; j++) {
+							network->Softmax.Neurons[j].Output = container.DataOutput[d_i][j];
+							statisticsdatasm[d_i][j] = container.DataOutput[d_i][j];
 						}
 					}
-					std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << d_i << "\r" << std::flush;
+
+					//std::cout << "Layer:" << l << " Epoche:" << e << " Datensatz: " << d_i << "\r" << std::flush;
 					//Versteckte Neuronen berechnen
-					UpdateHiddenUnits();
+					if (network->SoftmaxGroup != 0 && l == layersend - 1) {
+						UpdateHiddenUnits(network->SoftmaxGroup);
+					} else
+						UpdateHiddenUnits(0);
 					//sammle Statistikdaten von Eingabedaten v*h
 					//sammle Statistik für v_data
 					for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-						statisticsdatav[d_i][i] += bottom->Neurons[i].p;
+						statisticsdatav[d_i][i] = bottom->Neurons[i].p;
+
 					}
 
+
 					for (int j = 0; j < top->NeuronCount - 1; j++) {
-						statisticsdatah[d_i][j] += top->Neurons[j].p;
+						statisticsdatah[d_i][j] = top->Neurons[j].p;
+
 					}
 
 					//Gibbs Sampling
-					if(network->SoftmaxGroup && l==layersend-1)
+					if (network->SoftmaxGroup != 0 && l == layersend - 1)
 						GibbsSampling(gibbssteps, network->SoftmaxGroup);
 					else
-						GibbsSampling(gibbssteps,0);
+						GibbsSampling(gibbssteps, 0);
 					//sammle Statistikdaten von Modell v*h
 
 					//sammle Statistik für visible modell
 					//UpdateHiddenUnitsWithSampling();
 					for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-						statisticsmodelv[d_i][i] += bottom->Neurons[i].p;
+						statisticsmodelv[d_i][i] = bottom->Neurons[i].p;
 					}
 					//hidden
 					for (int j = 0; j < top->NeuronCount - 1; j++) {
-						statisticsmodelh[d_i][j] += top->Neurons[j].p;
+						statisticsmodelh[d_i][j] = top->Neurons[j].p;
+					}
+					if (network->SoftmaxGroup != 0 && l == layersend - 1) {
+						for (int s = 0; s < network->SoftmaxGroup; s++) {
+							statisticsmodelsm[d_i][s] = network->Softmax.Neurons[s].p;
+						}
 					}
 				} //Ende Batch
 				double edata = 0.0, emodel = 0.0;
 
 				for (int i = 0; i < bottom->NeuronCount - 1; i++) {
-					edata = 0.0;
-					emodel = 0.0;
+
 					for ( int j = 0; j < top->NeuronCount - 1; j++) {
+						edata = 0.0;
+						emodel = 0.0;
+						for ( d_i=d_start; d_i < d_end; d_i++) {
 
-						for ( ; d_i < d_end; d_i++) {
-
-							emodel = statisticsmodelv[d_i][i] * statisticsmodelh[d_i][j];
-							edata = statisticsdatav[d_i][i] * statisticsdatah[d_i][j];
+							emodel += statisticsmodelv[d_i][i] * statisticsmodelh[d_i][j];
+							edata += statisticsdatav[d_i][i] * statisticsdatah[d_i][j];
 						}
 						emodel /= BatchSize;
 						edata /= BatchSize;
@@ -238,13 +320,28 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 					}
 
 				}
+				if (network->SoftmaxGroup != 0 && l == layersend - 1) {
+					for ( int s = 0; s < network->SoftmaxGroup; s++) {
+						for (int j = 0; j < top->NeuronCount - 1; j++) {
+							edata = 0.0;
+							emodel = 0.0;
+							for (d_i=d_start; d_i < d_end; d_i++) {
+								emodel += statisticsmodelsm[d_i][s] * statisticsmodelh[d_i][j];
+								edata += statisticsdatasm[d_i][s] * statisticsdatah[d_i][j];
+							}
+							emodel /= BatchSize;
+							edata /= BatchSize;
+							*network->Softmax.Neurons[s].ForwardWeights[j] += learnRate * (edata - emodel);
+						}
+					}
+				}
 
 
 				//bias anpassen für visible units
 				for ( int i = 0; i < bottom->NeuronCount - 1; i++) {
 					emodel = 0.0;
 					edata = 0.0;
-					for ( ; d_i < d_end; d_i++) {
+					for ( d_i=d_start; d_i < d_end; d_i++) {
 						emodel += statisticsmodelv[d_i][i];
 						edata += statisticsdatav[d_i][i];
 					}
@@ -257,16 +354,17 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 				for ( int j = 0; j < top->NeuronCount - 1; j++) {
 					emodel = 0.0;
 					edata = 0.0;
-					for (; d_i < d_end; d_i++) {
+					for (d_i=d_start; d_i < d_end; d_i++) {
 						emodel += statisticsmodelh[d_i][j];
 						edata += statisticsdatah[d_i][j];
 					}
 					emodel /= BatchSize;
 					edata /= BatchSize;
 					*bottom->Neurons[bottom->NeuronCount - 1].ForwardWeights[j] += learnRate * (edata - emodel);
+
 				}
-				if (b == batches - 2 && rest != 0)
-					BatchSize = rest;
+
+				
 			} // Ende Batches
 
 
@@ -280,6 +378,8 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 				delete [] statisticsmodelv[d_i];
 				delete [] statisticsdatah[d_i];
 				delete [] statisticsmodelh[d_i];
+				delete [] statisticsdatasm[d_i];
+				delete [] statisticsmodelsm[d_i];
 
 			}
 
@@ -290,7 +390,7 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 				bottom->Neurons[j].Output = Binary(input[l].DataInput[d_i][j]);
 			}
 			//Versteckte Neuronen berechnen
-			UpdateHiddenUnits();
+			UpdateHiddenUnits(0);
 			for ( int j = 0; j < top->NeuronCount - 1; j++) {
 				input[l + 1].DataInput[d_i][j] = top->Neurons[j].p;
 			}
@@ -307,6 +407,8 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 		delete [] statisticsmodelv;
 		delete [] statisticsdatah;
 		delete [] statisticsmodelh;
+		delete [] statisticsdatasm;
+		delete [] statisticsmodelsm;
 	}
 	if (network->SoftmaxGroup == 0) {
 		int layers[2] = {network->Layers[network -> LayersCount - 2].NeuronCount - 1, network->Layers[network -> LayersCount - 1].NeuronCount - 1};
@@ -316,7 +418,8 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 			for (int i = 0; i < container.OutputCount; i++) {
 				input[network->LayersCount - 2].DataOutput[d_i][i] = container.DataOutput[d_i][i];
 			}
-		backprop.Train(input[network->LayersCount - 2], learnRate, 100);
+		backprop.Train(input[network->LayersCount - 2], learnRate, 500, 0, BatchSize, 0, 0);
+
 		for (int i = 0; i < network->Layers[network->LayersCount - 2].NeuronCount; i++) {
 			for (int j = 0; j < network->Layers[network->LayersCount - 1].NeuronCount - 1; j++) {
 				//std::cout << lastlayer.Layers[0].Neurons[j].Weights[i] << std::endl;
@@ -327,17 +430,26 @@ void ContrastiveDivergence::Train(const DataContainer & container, const double 
 
 
 	delete [] input;
+	runtime=GetTimeMs64() - time64;
 
 }
 
-
+/**
+ * @brief constructor
+ * @details constructor
+ * 
+ * @param net network to train
+ */
 ContrastiveDivergence::ContrastiveDivergence(DeepBeliefNet & net) {
 	this->network = &net;
 	generator.seed(time(NULL));
 
 }
 
-
+/**
+ * @brief destructor
+ * @details destrucotr
+ */
 ContrastiveDivergence::~ContrastiveDivergence() {};
 
 
