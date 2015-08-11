@@ -136,14 +136,14 @@ int TestNetwork(double maxErrordiff, const NNTLib::DataContainer * testDataConta
 		if (testDataContainer->OutputCount == 1) {
 			if (std::abs(net.Layers[net.LayersCount - 1].Neurons[0].Output -  testDataContainer->DataOutput[i][0]) >= maxErrordiff ) {
 				errorCounter++;
-/*				std::cout << "PATTERN :";
-				for(int j=0;j<testDataContainer->InputCount;j++)
-				{
-				std::cout << testDataContainer->DataInput[i][j]<< " , ";
-				}
+				/*				std::cout << "PATTERN :";
+								for(int j=0;j<testDataContainer->InputCount;j++)
+								{
+								std::cout << testDataContainer->DataInput[i][j]<< " , ";
+								}
 
-				std::cout << " DESIRED OUTPUT: " <<testDataContainer->DataOutput[i][0]  << " NET RESULT: "<< 	net.Layers[net.LayersCount-1].Neurons[0].Output			<<std::endl;
-*/				
+								std::cout << " DESIRED OUTPUT: " <<testDataContainer->DataOutput[i][0]  << " NET RESULT: "<< 	net.Layers[net.LayersCount-1].Neurons[0].Output			<<std::endl;
+				*/
 			}
 		} else {
 			int indexMaxNeuron = 0;
@@ -163,8 +163,23 @@ int TestNetwork(double maxErrordiff, const NNTLib::DataContainer * testDataConta
 				}
 			}
 
-			if (indexMaxNeuron != indexMaxData)
+			if (indexMaxNeuron != indexMaxData) {
 				errorCounter++;
+				// std::cout << "PATTERN :";
+				// for (int j = 0; j < testDataContainer->InputCount; j++) {
+				// 	std::cout << testDataContainer->DataInput[i][j] << " , ";
+				// }
+
+				// std::cout << " DESIRED OUTPUT: ";
+				// for(int j=0;j<testDataContainer->OutputCount;j++)
+				//  std::cout<< testDataContainer->DataOutput[i][j]  <<" , ";
+
+				// std::cout<<" NET RESULT: ";
+				// for(int j=0;j<testDataContainer->OutputCount;j++)
+				// 	std::cout<<net.Layers[net.LayersCount - 1].Neurons[j].Output<<" , ";
+
+				//  std::cout<< std::endl;
+			}
 		}
 	}
 
@@ -176,20 +191,21 @@ int TestNetwork(double maxErrordiff, const NNTLib::DataContainer * testDataConta
 int TestNetwork(double maxErrordiff, const NNTLib::DataContainer * testDataContainer, NNTLib::DeepBeliefNet  net) {
 	int errorCounter = 0;
 
+	//std::cout << "TESTDBN" << std::endl;
 	for (int i = 0; i < testDataContainer->DataCount; ++i) {
 		net.Propagate(testDataContainer->DataInput[i]);
 
 		if (testDataContainer->OutputCount == 1) {
 			if (std::abs(net.Layers[net.LayersCount - 1].Neurons[0].Output -  testDataContainer->DataOutput[i][0]) >= maxErrordiff ) {
 				errorCounter++;
-				std::cout << "PATTERN :";
-				for (int j = 0; j < testDataContainer->InputCount; j++) {
-					std::cout << testDataContainer->DataInput[i][j] << " , ";
-				}
+				// std::cout << "PATTERN :";
+				// for (int j = 0; j < testDataContainer->InputCount; j++) {
+				// 	std::cout << testDataContainer->DataInput[i][j] << " , ";
+				// }
 
-				std::cout << " DESIRED OUTPUT: " << testDataContainer->DataOutput[i][0]  << " NET RESULT: " << 	net.Layers[net.LayersCount - 1].Neurons[0].Output			<< std::endl;
+				// std::cout << " DESIRED OUTPUT: " << testDataContainer->DataOutput[i][0]  << " NET RESULT: " << 	net.Layers[net.LayersCount - 1].Neurons[0].Output << std::endl;
 			}
-		} else {
+		} else if (net.SoftmaxGroup == 0) {
 			int indexMaxNeuron = 0;
 			//finde den höchsten Ausgabe index
 			for (int j = 0; j < testDataContainer->OutputCount; j++) {
@@ -207,10 +223,91 @@ int TestNetwork(double maxErrordiff, const NNTLib::DataContainer * testDataConta
 				}
 			}
 
-			if (indexMaxNeuron != indexMaxData)
+			if (indexMaxNeuron != indexMaxData) {
 				errorCounter++;
+
+			}
+
+
+		} else {
+			int indexMaxNeuron = 0;
+			//finde den höchsten Ausgabe index
+			for (int j = 0; j < testDataContainer->OutputCount; j++) {
+				if (net.Softmax.Neurons[indexMaxNeuron].Output > net.Softmax.Neurons[j].Output) {
+					indexMaxNeuron = j;
+				}
+			}
+			int indexMaxData = 0;
+
+			//finde höchsten daten index (aufgrund der standard enkodierung ist das auch die Lösung)
+			for (int j = 0; j < testDataContainer->OutputCount; j++) {
+				if (testDataContainer->DataOutput[i][indexMaxData] < testDataContainer->DataOutput[i][j]) {
+					indexMaxData = j;
+				}
+			}
+
+			if (indexMaxNeuron != indexMaxData) {
+				errorCounter++;
+				// std::cout << "PATTERN :";
+				// for (int j = 0; j < testDataContainer->InputCount; j++) {
+				// 	std::cout << testDataContainer->DataInput[i][j] << " , ";
+				// }
+
+				// std::cout << " DESIRED OUTPUT: ";
+				// for (int j = 0; j < testDataContainer->OutputCount; j++)
+				// 	std::cout << testDataContainer->DataOutput[i][j]  << " , ";
+
+				// std::cout << " NET RESULT: ";
+				// for (int j = 0; j < testDataContainer->OutputCount; j++)
+				// 	std::cout << net.Softmax.Neurons[j].Output << " , ";
+
+				// std::cout << std::endl;
+			}
+
 		}
 	}
+
+	// for (int l = 0; l < net.LayersCount - 1; l++) {
+	// 	for (int i = 0; i < net.Layers[l].NeuronCount; i++) {
+	// 		if (i == net.Layers[l].NeuronCount - 1)
+	// 			std::cout << "Layer: " << l << " Bias" << std::endl;
+	// 		else
+	// 			std::cout << "Layer: " << l << " Neuron: " << i << std::endl;
+	// 		for (int j = 0; j < net.Layers[l].Neurons[i].ForwardWeightCount; j++) {
+	// 			std::cout << *net.Layers[l].Neurons[i].ForwardWeights[j] << " ";
+	// 		}
+	// 		std::cout << std::endl;
+
+	// 	}
+
+	// }
+	// std::cout << "Softmax" << std::endl;
+	// for (int i = 0; i < net.SoftmaxGroup; i++) {
+	// 	std::cout << "Neuron: " << i << std::endl;
+	// 	for (int j = 0; j < net.Softmax.Neurons[i].ForwardWeightCount; j++) {
+	// 		std::cout << *net.Softmax.Neurons[i].ForwardWeights[j] << " ";
+	// 	}
+	// 	std::cout << std::endl;
+	// }
+	// std::cout<<"RÜCKWÄRTS"<<std::endl;
+	// for (int l = 0; l < net.LayersCount; l++) {
+	// 	for (int i = 0; i < net.Layers[l].NeuronCount; i++) {
+	// 		if (i == net.Layers[l].NeuronCount - 1)
+	// 			std::cout << "Layer: " << l << " Bias" << std::endl;
+	// 		else
+	// 			std::cout << "Layer: " << l << " Neuron: " << i << std::endl;
+	// 		std::cout<< "WEIGHTCOUNT "<< net.Layers[1].Neurons[2].WeightCount<<std::endl;
+	// 		std::cout<<net.Layers[l].Neurons[i].WeightCount<<std::endl;
+	// 		for (int j = 0; j < net.Layers[l].Neurons[i].WeightCount ; j++) {
+	// 			std::cout << net.Layers[l].Neurons[i].Weights[j] << " ";
+	// 		}
+	// 		std::cout << std::endl;
+
+	// 	}
+
+	// }
+
+
 
 	std::cout << "error count absolut: " << errorCounter << std::endl;
 	double errorProzentual = (errorCounter / (double)testDataContainer->DataCount);

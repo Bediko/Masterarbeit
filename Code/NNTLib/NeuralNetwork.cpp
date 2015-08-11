@@ -273,7 +273,12 @@ void NeuralNetwork::LoadWeights(const std::string file) {
 
 	iFile.close();
 }
-
+int Binary(double x) {
+	std::default_random_engine generator;
+	generator.seed(time(NULL));
+	std::uniform_real_distribution<double> dist(0.0, 1.0);
+	return x >= dist(generator) && x != 0.0;
+}
 /// <summary>
 /// Propagates the specified input.
 /// </summary>
@@ -356,12 +361,7 @@ void NeuralNetwork::Propagate(const double *input) {
 }
 
 
-int Binary(double x) {
-	std::default_random_engine generator;
-	generator.seed(time(NULL));
-	std::uniform_real_distribution<double> dist(0.0, 1.0);
-	return x >= dist(generator) && x != 0.0;
-}
+
 
 
 

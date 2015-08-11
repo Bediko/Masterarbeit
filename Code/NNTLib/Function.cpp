@@ -29,20 +29,10 @@ double ActivationFunction(FunctionEnum funcEnum, double x, double* y, int size) 
 		return x >= drand48() && x != 0.0;
 	case FunctionEnum::SOFTMAX:
 			double sum = 0.0;
-			double z;
+			double z=std::exp(x);
 			for(int i=0;i<size;i++){
-				if(y[i]<-700)
-					y[i]=-700;
-				if(y[i]>700)
-					y[i]=700;
-
 					sum+=std::exp(y[i]);
 			}
-			if(x < -700)
-				x=-700;
-			if(x>700)
-				x=700;
-				z=std::exp(x);
 				//if(isnan(z/sum))
 					//std::cout<<"x "<<x <<" sum "<<sum<<std::endl;
 		return z/sum;
@@ -73,7 +63,7 @@ double ActivationFunctionDerivate(FunctionEnum funcEnum, double y) {
 		return 1;
 	//break;
 	case FunctionEnum::SOFTMAX:
-		return 1;//y * (1.0 - y);
+		return (y * (1.0 - y));
 	}
 
 	return 1;//linear derivation

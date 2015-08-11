@@ -114,12 +114,13 @@ int main(int argc, char* argv[]) {
 
 		for (int iteration = 0; iteration < iterationCount; ++iteration) {
 			std::cout << LINE;
-
+			unsigned long long runtime=0;
 			for (int i = 0; i < k; ++i) {
 				std::cout << LINE;
+				
 
 				NNTLib::NeuralNetwork result(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.LastLayerFunction);
-
+				NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.SoftmaxGroup);
 				if (!loadWeightsFile.empty()) {
 					result.LoadWeights(loadWeightsFile.c_str());
 				}
@@ -179,12 +180,14 @@ int main(int argc, char* argv[]) {
 					}
 					if (ContrastiveDivergenceConfig.Epochs > 0) {
 						double maxErrordiff = atof(errorDiffValue.c_str());
-						NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.SoftmaxGroup);
+						//NNTLib::DeepBeliefNet dbn(networkConfig.LayerNeuronCount, networkConfig.LayerCount, networkConfig.WeightInitType, networkConfig.FunctionType, networkConfig.SoftmaxGroup);
 						NNTLib::ContrastiveDivergence CD(dbn);
 						CD.Train(trainData, ContrastiveDivergenceConfig.LearnRate, ContrastiveDivergenceConfig.Epochs, ContrastiveDivergenceConfig.BatchSize, ContrastiveDivergenceConfig.GibbsSteps);
 
 						dbn.SaveWeightsforNN("test" + std::to_string(iteration));
-						result.LoadWeights("test" + std::to_string(iteration));						
+						result.LoadWeights("test" + std::to_string(iteration));
+						runtime+=CD.runtime;
+						
 
 					}
 
@@ -199,6 +202,7 @@ int main(int argc, char* argv[]) {
 							sumMSEBackprop[iteration] += backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].MeanSquareError;
 							std::cout << "execute time in ms: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].ExecuteTime << "\n";
 							std::cout << "mse value: " << backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].MeanSquareError << "\n";
+							runtime+=backpropAlg.MeasureResult[backpropAlg.MeasureFilledResultLenght - 1].ExecuteTime;
 						}
 
 						if (!saveMSEFile.empty()) {
@@ -232,11 +236,17 @@ int main(int argc, char* argv[]) {
 					if (!errorDiffValue.empty()) {
 						double maxErrordiff = atof(errorDiffValue.c_str());
 						std::cout << "Test Traindata " << i + 1 << "/" << k << std::endl;
-						sumErrorTrain[iteration] += TestNetwork(maxErrordiff, &trainData, result);
+						if ((ContrastiveDivergenceConfig.Epochs > 0 && backpropConfig.MaxLoopCount > 0) || (backpropConfig.MaxLoopCount > 0 || (geneticConfig.MaxLoopCount > 0 && geneticConfig.PopulationSize > 0)))
+							sumErrorTrain[iteration] += TestNetwork(maxErrordiff, &trainData, result);
+						else 
+							sumErrorTrain[iteration] += TestNetwork(maxErrordiff, &trainData, dbn);
 
 						if (k > 1) {
 							std::cout << "Test Testdata " << i + 1 << "/" << k << std::endl;
-							sumErrorTest[iteration] += TestNetwork(maxErrordiff, &testData, result);
+						if ((ContrastiveDivergenceConfig.Epochs > 0 && backpropConfig.MaxLoopCount > 0) || (backpropConfig.MaxLoopCount > 0 || (geneticConfig.MaxLoopCount > 0 && geneticConfig.PopulationSize > 0)))
+								sumErrorTest[iteration] += TestNetwork(maxErrordiff, &testData, result);
+							else
+								sumErrorTest[iteration] += TestNetwork(maxErrordiff, &testData, dbn);
 						}
 					}
 
@@ -257,6 +267,8 @@ int main(int argc, char* argv[]) {
 						std::cout << "(sum error Test)/k :" << sumErrorTest[iteration] << std::endl;
 						double errorProzentualTest = (sumErrorTest[iteration] / (double)testData.DataCount);
 						std::cout << "(sum error relativ Test)k : " << errorProzentualTest << std::endl;
+						unsigned long long meantime = runtime/k;
+						std::cout << "Durchschnittszeit: "<<meantime<<std::endl;
 					}
 				}
 

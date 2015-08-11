@@ -15,6 +15,7 @@ namespace NNTLib
 		void freeMem();
 		public:
 	    DBNLayer *Layers;
+	    DBNLayer Softmax;
 	    int SoftmaxGroup;
 	    ~DeepBeliefNet();
 		DeepBeliefNet(int *layers,int layercount,WeightInitEnum initType,FunctionEnum functionType, int softmax);
