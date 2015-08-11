@@ -4,7 +4,7 @@ LastLayerFunction=1
 #NONE=0,UNIFORM=1, LECUN=2, NORMAL0=3
 WeightInitType=1
 #LayerCount muss vor LayerNeuronCount definiert sein
-LayerCount=3
-SoftmaxGroup=0
+LayerCount=2
+SoftmaxGroup=2
 #Anzahl der Neuronen pro Layer : {Input},{Hidden_0},...,{Hidden_N},{Output}
-LayerNeuronCount=4,2,1
+LayerNeuronCount=4,4
