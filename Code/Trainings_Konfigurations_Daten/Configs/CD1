@@ -1,4 +1,4 @@
 GibbsSteps=1
 BatchSize=50
-LearnRate=0.5
-Epochs= 100
+LearnRate=0.001
+Epochs= 10
