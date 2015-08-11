@@ -1,6 +1,6 @@
 <map id="NNTLib::NeuralNetwork::GenerateRandomWeight" name="NNTLib::NeuralNetwork::GenerateRandomWeight">
 <area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_deep_belief_net.html#ab113a29355cce8baeb02db2f24b82396" title="Initialises Weights. " alt="" coords="228,5,388,47"/>
 <area shape="rect" id="node4" href="$class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a" title="Initializes the weights. " alt="" coords="227,71,389,112"/>
-<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_deep_belief_net.html#a73dd53469742f45e085b2da799931b2c" title="Constructor. " alt="" coords="439,5,599,47"/>
-<area shape="rect" id="node5" href="$class_n_n_t_lib_1_1_neural_network.html#ab49cda4bda3cba756cb206727e429ebd" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="437,71,600,112"/>
+<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_deep_belief_net.html#aae886acc2759712e038fa748f7944c08" title="Constructor. " alt="" coords="439,5,599,47"/>
+<area shape="rect" id="node5" href="$class_n_n_t_lib_1_1_neural_network.html#a266a156a76d81347151c5b9b635cd488" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="437,71,600,112"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="NNTLib::ContrastiveDivergence" name="NNTLib::ContrastiveDivergence">
-<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_trainer_base.html" title="NNTLib::TrainerBase" alt="" coords="25,273,170,300"/>
+<area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_trainer_base.html" title="NNTLib::TrainerBase" alt="" coords="25,288,170,315"/>
 <area shape="rect" id="node3" href="$struct_n_n_t_lib_1_1_training_measure.html" title="NNTLib::TrainingMeasure" alt="" coords="5,184,176,211"/>
-<area shape="rect" id="node4" href="$class_n_n_t_lib_1_1_deep_belief_net.html" title="NNTLib::DeepBeliefNet" alt="" coords="201,273,361,300"/>
+<area shape="rect" id="node4" href="$class_n_n_t_lib_1_1_deep_belief_net.html" title="NNTLib::DeepBeliefNet" alt="" coords="201,288,361,315"/>
 <area shape="rect" id="node5" href="$class_n_n_t_lib_1_1_neural_network.html" title="NNTLib::NeuralNetwork" alt="" coords="200,184,363,211"/>
 <area shape="rect" id="node6" href="$class_n_n_t_lib_1_1_layer.html" title="NNTLib::Layer" alt="" coords="251,95,357,121"/>
 <area shape="rect" id="node8" href="$class_n_n_t_lib_1_1_d_b_n_layer.html" title="NNTLib::DBNLayer" alt="" coords="387,184,523,211"/>

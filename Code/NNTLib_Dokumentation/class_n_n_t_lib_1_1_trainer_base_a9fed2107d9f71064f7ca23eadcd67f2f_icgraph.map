@@ -1,3 +1,4 @@
 <map id="NNTLib::TrainerBase::initMeasureResult" name="NNTLib::TrainerBase::initMeasureResult">
 <area shape="rect" id="node2" href="$class_n_n_t_lib_1_1_backpropagation.html#a1043af2261f85a391ba3baccc1bc8b4b" title="Trains the specified container. " alt="" coords="199,5,371,47"/>
+<area shape="rect" id="node3" href="$class_n_n_t_lib_1_1_contrastive_divergence.html#a479055ffdf7289c4726b73137afc287e" title="Trains a network with contrastive divergence. " alt="" coords="419,5,627,47"/>
 </map>

@@ -11,6 +11,6 @@ var searchData=
   ['dbnneuron',['DBNNeuron',['../class_n_n_t_lib_1_1_d_b_n_neuron.html',1,'NNTLib']]],
   ['decayrate',['DecayRate',['../class_backpropagation_config.html#a28853172211206ad458fbc72cabf252e',1,'BackpropagationConfig']]],
   ['deepbeliefnet',['DeepBeliefNet',['../class_n_n_t_lib_1_1_deep_belief_net.html',1,'NNTLib']]],
-  ['deepbeliefnet',['DeepBeliefNet',['../class_n_n_t_lib_1_1_deep_belief_net.html#a73dd53469742f45e085b2da799931b2c',1,'NNTLib::DeepBeliefNet::DeepBeliefNet(int *layers, int layercount, WeightInitEnum initType, FunctionEnum functionType)'],['../class_n_n_t_lib_1_1_deep_belief_net.html#a4b15eba4fe97f8ef08478e3899fd72e6',1,'NNTLib::DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &amp;that)']]],
+  ['deepbeliefnet',['DeepBeliefNet',['../class_n_n_t_lib_1_1_deep_belief_net.html#aae886acc2759712e038fa748f7944c08',1,'NNTLib::DeepBeliefNet::DeepBeliefNet(int *layers, int layercount, WeightInitEnum initType, FunctionEnum functionType, int softmax)'],['../class_n_n_t_lib_1_1_deep_belief_net.html#a4b15eba4fe97f8ef08478e3899fd72e6',1,'NNTLib::DeepBeliefNet::DeepBeliefNet(const DeepBeliefNet &amp;that)']]],
   ['deltaweights',['DeltaWeights',['../class_n_n_t_lib_1_1_neuron.html#a40baa96577b40b6b2e2a9b27310d416b',1,'NNTLib::Neuron']]]
 ];

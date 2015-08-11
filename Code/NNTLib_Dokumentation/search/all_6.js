@@ -4,5 +4,6 @@ var searchData=
   ['geneticalgorithm',['GeneticAlgorithm',['../class_n_n_t_lib_1_1_genetic_algorithm.html#a19cd4345ff1f8950b830316fbabc95c5',1,'NNTLib::GeneticAlgorithm']]],
   ['geneticalgorithm',['GeneticAlgorithm',['../class_n_n_t_lib_1_1_genetic_algorithm.html',1,'NNTLib']]],
   ['geneticalgorithmconfig',['GeneticAlgorithmConfig',['../class_genetic_algorithm_config.html',1,'GeneticAlgorithmConfig'],['../class_genetic_algorithm_config.html#a1e36a3e666c730ec44dc232dbf3ee913',1,'GeneticAlgorithmConfig::GeneticAlgorithmConfig()']]],
+  ['gibbssampling',['GibbsSampling',['../class_n_n_t_lib_1_1_contrastive_divergence.html#a398acbfc2509584a0c0a05d53bb720ee',1,'NNTLib::ContrastiveDivergence']]],
   ['gibbssteps',['GibbsSteps',['../class_contrastive_divergence_config.html#a9544c35ecb2c5adb8e51d12edc3c0510',1,'ContrastiveDivergenceConfig']]]
 ];

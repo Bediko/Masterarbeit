@@ -113,9 +113,9 @@ Collaboration diagram for NNTLib::NeuralNetwork:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab49cda4bda3cba756cb206727e429ebd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_n_t_lib_1_1_neural_network.html#ab49cda4bda3cba756cb206727e429ebd">NeuralNetwork</a> (int *layers, int layercount, WeightInitEnum initType, FunctionEnum functionType)</td></tr>
-<tr class="memdesc:ab49cda4bda3cba756cb206727e429ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_n_n_t_lib_1_1_neural_network.html">NeuralNetwork</a> class.  <a href="#ab49cda4bda3cba756cb206727e429ebd">More...</a><br /></td></tr>
-<tr class="separator:ab49cda4bda3cba756cb206727e429ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a266a156a76d81347151c5b9b635cd488"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_n_t_lib_1_1_neural_network.html#a266a156a76d81347151c5b9b635cd488">NeuralNetwork</a> (int *layers, int layercount, WeightInitEnum initType, FunctionEnum functionType, FunctionEnum LastLayerFunction)</td></tr>
+<tr class="memdesc:a266a156a76d81347151c5b9b635cd488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_n_n_t_lib_1_1_neural_network.html">NeuralNetwork</a> class.  <a href="#a266a156a76d81347151c5b9b635cd488">More...</a><br /></td></tr>
+<tr class="separator:a266a156a76d81347151c5b9b635cd488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a634613b66f5441f58a2e5d7c7b1c3da9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_n_t_lib_1_1_neural_network.html#a634613b66f5441f58a2e5d7c7b1c3da9">~NeuralNetwork</a> ()</td></tr>
 <tr class="memdesc:a634613b66f5441f58a2e5d7c7b1c3da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes an instance of the <a class="el" href="class_n_n_t_lib_1_1_neural_network.html">NeuralNetwork</a> class.  <a href="#a634613b66f5441f58a2e5d7c7b1c3da9">More...</a><br /></td></tr>
 <tr class="separator:a634613b66f5441f58a2e5d7c7b1c3da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,6 +161,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:afe71db7f776309201ae3a793d1fcadf8"><td class="memItemLeft" align="right" valign="top">FunctionEnum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_n_t_lib_1_1_neural_network.html#afe71db7f776309201ae3a793d1fcadf8">FunctionType</a></td></tr>
 <tr class="memdesc:afe71db7f776309201ae3a793d1fcadf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function type  <a href="#afe71db7f776309201ae3a793d1fcadf8">More...</a><br /></td></tr>
 <tr class="separator:afe71db7f776309201ae3a793d1fcadf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad956f8d731297014df845f38e6c9e322"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad956f8d731297014df845f38e6c9e322"></a>
+FunctionEnum&#160;</td><td class="memItemRight" valign="bottom"><b>LastLayerFunction</b></td></tr>
+<tr class="separator:ad956f8d731297014df845f38e6c9e322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb06dfbd4762d8ce321f7e21532bdad7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_n_t_lib_1_1_neural_network.html#aeb06dfbd4762d8ce321f7e21532bdad7">TotalNeuronCount</a></td></tr>
 <tr class="memdesc:aeb06dfbd4762d8ce321f7e21532bdad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The total neuron count  <a href="#aeb06dfbd4762d8ce321f7e21532bdad7">More...</a><br /></td></tr>
 <tr class="separator:aeb06dfbd4762d8ce321f7e21532bdad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,7 +190,7 @@ std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><b>generator</b>
 <tr class="separator:a12f68bf955726ebafa4020d10b4284b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ab49cda4bda3cba756cb206727e429ebd"></a>
+<a class="anchor" id="a266a156a76d81347151c5b9b635cd488"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -213,7 +216,13 @@ std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><b>generator</b>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">FunctionEnum&#160;</td>
-          <td class="paramname"><em>functionType</em>&#160;</td>
+          <td class="paramname"><em>functionType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FunctionEnum&#160;</td>
+          <td class="paramname"><em>LastLayerFunction</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -237,8 +246,8 @@ std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><b>generator</b>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd_cgraph.png" border="0" usemap="#class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd_cgraph" alt=""/></div>
-<map name="class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd_cgraph" id="class_n_n_t_lib_1_1_neural_network_ab49cda4bda3cba756cb206727e429ebd_cgraph">
+<div class="center"><img src="class_n_n_t_lib_1_1_neural_network_a266a156a76d81347151c5b9b635cd488_cgraph.png" border="0" usemap="#class_n_n_t_lib_1_1_neural_network_a266a156a76d81347151c5b9b635cd488_cgraph" alt=""/></div>
+<map name="class_n_n_t_lib_1_1_neural_network_a266a156a76d81347151c5b9b635cd488_cgraph" id="class_n_n_t_lib_1_1_neural_network_a266a156a76d81347151c5b9b635cd488_cgraph">
 <area shape="rect" id="node2" href="class_n_n_t_lib_1_1_neural_network.html#a84ad44405463ad6f869525b81447e46d" title="Initializes this instance. " alt="" coords="216,5,379,47"/><area shape="rect" id="node3" href="class_n_n_t_lib_1_1_layer.html#acb8971ed21ec40118ba384750a0f5af8" title="Initializes the specified inputsize. " alt="" coords="231,71,364,98"/><area shape="rect" id="node5" href="class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a" title="Initializes the weights. " alt="" coords="216,123,379,164"/><area shape="rect" id="node4" href="class_n_n_t_lib_1_1_neuron.html#ada7e263030d3d9bb9ebf15a965e3ce8b" title="Initializes the specified input vector count. " alt="" coords="442,71,585,98"/><area shape="rect" id="node6" href="class_n_n_t_lib_1_1_neural_network.html#aee9c78b90d25b0ebb1b3cb3cf732e4fc" title="Generates the random weight. " alt="" coords="427,123,600,164"/></map>
 </div>
 </p>
@@ -441,7 +450,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc_icgraph.png" border="0" usemap="#class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc_icgraph" alt=""/></div>
 <map name="class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc_icgraph" id="class_n_n_t_lib_1_1_neural_network_aee9c78b90d25b0ebb1b3cb3cf732e4fc_icgraph">
-<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_deep_belief_net.html#ab113a29355cce8baeb02db2f24b82396" title="Initialises Weights. " alt="" coords="228,5,388,47"/><area shape="rect" id="node4" href="class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a" title="Initializes the weights. " alt="" coords="227,71,389,112"/><area shape="rect" id="node3" href="class_n_n_t_lib_1_1_deep_belief_net.html#a73dd53469742f45e085b2da799931b2c" title="Constructor. " alt="" coords="439,5,599,47"/><area shape="rect" id="node5" href="class_n_n_t_lib_1_1_neural_network.html#ab49cda4bda3cba756cb206727e429ebd" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="437,71,600,112"/></map>
+<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_deep_belief_net.html#ab113a29355cce8baeb02db2f24b82396" title="Initialises Weights. " alt="" coords="228,5,388,47"/><area shape="rect" id="node4" href="class_n_n_t_lib_1_1_neural_network.html#a9c9aa74920e9b369d434256c6706e75a" title="Initializes the weights. " alt="" coords="227,71,389,112"/><area shape="rect" id="node3" href="class_n_n_t_lib_1_1_deep_belief_net.html#aae886acc2759712e038fa748f7944c08" title="Constructor. " alt="" coords="439,5,599,47"/><area shape="rect" id="node5" href="class_n_n_t_lib_1_1_neural_network.html#a266a156a76d81347151c5b9b635cd488" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="437,71,600,112"/></map>
 </div>
 </p>
 
@@ -475,7 +484,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d_icgraph.png" border="0" usemap="#class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d_icgraph" alt=""/></div>
 <map name="class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d_icgraph" id="class_n_n_t_lib_1_1_neural_network_a84ad44405463ad6f869525b81447e46d_icgraph">
-<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_neural_network.html#ab49cda4bda3cba756cb206727e429ebd" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="216,5,379,47"/><area shape="rect" id="node3" href="class_n_n_t_lib_1_1_neural_network.html#add5684447063d835c50ec511a5f28091" title="Operator=s the specified that. " alt="" coords="216,71,379,112"/></map>
+<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_neural_network.html#a266a156a76d81347151c5b9b635cd488" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="216,5,379,47"/><area shape="rect" id="node3" href="class_n_n_t_lib_1_1_neural_network.html#add5684447063d835c50ec511a5f28091" title="Operator=s the specified that. " alt="" coords="216,71,379,112"/></map>
 </div>
 </p>
 
@@ -517,7 +526,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a_icgraph.png" border="0" usemap="#class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a_icgraph" alt=""/></div>
 <map name="class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a_icgraph" id="class_n_n_t_lib_1_1_neural_network_a9c9aa74920e9b369d434256c6706e75a_icgraph">
-<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_neural_network.html#ab49cda4bda3cba756cb206727e429ebd" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="216,5,379,47"/></map>
+<area shape="rect" id="node2" href="class_n_n_t_lib_1_1_neural_network.html#a266a156a76d81347151c5b9b635cd488" title="Initializes a new instance of the NeuralNetwork class. " alt="" coords="216,5,379,47"/></map>
 </div>
 </p>
 
@@ -756,7 +765,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 23 2015 11:44:00 for NNTLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 6 2015 17:03:00 for NNTLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
