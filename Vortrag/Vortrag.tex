@@ -1,0 +1,267 @@
+\documentclass[12pt,titlepage]{beamer}
+\usepackage{pdfpcnotes}
+% language stuff
+\usepackage{german}           % deutsche Überschriften etc.
+\usepackage[utf8]{inputenc} % direkte Einbgabe von Umlauten
+
+% Layout-Einstellungen
+\usepackage{parskip}          % Abstand statt Einrückung
+\frenchspacing                % no extra space after periods
+\usepackage{parskip}          % paragraph gaps instead of indentation
+\usepackage{times}            % default font Times
+\tolerance=9000               % avoid words across right border
+% miscellaneous<
+\usepackage{hhline}           % double lines in tables
+\usepackage{amsfonts}         % real numbers etc.
+\usepackage[rightcaption]{sidecap} % figure captions on the right (optional)
+\usepackage{hyperref}         % for URLs
+\usepackage{listings}         % for code samples
+ \lstset{breaklines=true,tabsize=1}
+\usepackage{etoolbox}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{graphicx}
+\usepackage[vlined]{algorithm2e}
+\usepackage{svg}
+
+\definecolor{HIGHLIGHTCOLOR}{rgb}{0.13333333333333333,0.8156862745098039,0.09019607843137255}
+
+
+
+\defbeamertemplate{section page}{mine}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{section name}\usebeamercolor[fg]{section name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+\AtBeginSection{\setbeamertemplate{section page}[mine]\frame{\sectionpage}}
+
+
+\makeatletter
+\patchcmd{\insertverticalnavigation}%
+{\ifx\beamer@nav@css\beamer@hidetext{\usebeamertemplate{section in sidebar}}\else{\usebeamertemplate{section in sidebar shaded}}\fi}%
+{{\usebeamertemplate{section in sidebar}}}{}{}
+\makeatother
+
+
+
+% Hier bei Bedarf die Seitenränder einstellen
+%\geometry{a4paper}
+\usetheme{Hannover}
+\usecolortheme{rose}
+\begin{document}
+	\title{Link Prediction}
+	\author{Michael Känmmerer}
+	\date{\today}
+	\institute{}
+%------------------------------------------------Folie1----------------------------------------------------------
+	\begin{frame}
+		\maketitle
+	\end{frame}
+	\section{Problemstellung}
+	\begin{frame}
+		\includegraphics[scale=0.4]{img/lpp}
+		\pnote{Soziale Netzwerke kompliziert, Vorhersagen insgesamt eher schwierig, für zwei Knoten einfacher und interessant, Beispiel Recommender für neue Freundschaften auf Facebook}
+		\pnote{Zwei Graphen, Tranings und Testinterval, Versuche vorauszusagen welche Kanten hinzukommen}
+	\end{frame}
+	\section{Prädiktoren}
+	\begin{frame}
+	\frametitle{Prädiktoren}
+	\begin{itemize}
+	 \item Verschiedene Metriken um einen Score zu berechnen
+	 \item Scores werden absteigend sortiert
+	 \item größerer Score bedeutet höhere Wahrscheinlichkeit zur Linkbildung
+	\end{itemize}
+	\end{frame}
+	\subsection{Nächste Nachbarn}
+	\begin{frame}
+	\frametitle{Nächste Nachbarn}
+	$$|\Gamma(x) \cap \Gamma(y)|$$
+	\includegraphics[scale=0.3]{img/nn}
+	\end{frame}
+	\subsection{Jaccard-Koeffizienten}
+	\begin{frame}
+	\frametitle{Jaccard-Koeffizienten}
+	\begin{itemize}
+		\item Nächste Nachbarn sind nicht normalisiert
+		\item Definiere Wahrscheinlichkeit gemeinsamen Nachbarn zu ziehen wenn aus Nachbarn von x und y gezogen wird
+		\item Mehr gemeinsame Nachbarn ergeben bessere Bewertung
+		\item Schlechter als Nächste Nachbarn
+		
+		$$J(x,y)=\frac{|\Gamma(x) \cap \Gamma(y)|}{|\Gamma(x) \cup \Gamma(y)|}$$
+		\pnote{Anzahl der gemeinsamen Nachbarn von zwei Knoten}
+		\pnote{Bild:E und C haben gemeinsame Nachbarn, also verbindung wahrscheinlich}
+		
+	\end{itemize}
+	\end{frame}
+	\subsection{Adamic und Adar}
+	\begin{frame}
+	\frametitle{Adamic und Adar}
+	\begin{itemize}
+	\item Misst gemeinsame Nachbarn von x und y
+	\item Gewichtet kleinere Abweichungen stärker
+	\item Besser als Jaccard und Nächste Nachbarn
+	\end{itemize}
+	
+	$$A/A(x,y) = \sum_{z \in \Gamma(x) \cap \Gamma (y)} \frac{1}{\log | \Gamma(z)|}$$
+	
+	\end{frame}
+	\subsection{Kürzeste Pfade}
+	\begin{frame}
+	\frametitle{Kürzeste Pfade}
+	\includegraphics[scale=0.3]{img/kp}
+	\pnote{Einfachstes Pfadbasierte verfahren}
+	\pnote{Je kürzer der Pfad zwischen zwie Knoten desto höhere wahrscheinlichkeit}
+	\end{frame}
+	\subsection{Katz}
+	\begin{frame}
+	\frametitle{Katz}
+	\begin{itemize}
+	\item Berücksichtigt alle Pfade zwischen x und y
+	\item Gewichtet alle Pfade einer länge l
+	\item Lange Pfade werden schwächer gewichtet
+	\item besser als kürzeste Pfade
+	\end{itemize}
+	$$k(x,y)= \sum_{l=1}^{\infty} \beta^l \cdot |\mbox{paths}_{x,y}^{\langle l \rangle}|$$
+	\pnote{Beta: Steuert Verhalten, kleines Beta macht ähnlicher zu nächste Nachbarn}
+	\pnote{Zweiter Term: Menge der Pfade mit länge l von x nach y}
+	\end{frame}
+	\subsection{Hitting Time}
+	\begin{frame}
+	\frametitle{Hitting Time}
+	\begin{itemize}
+	\item Beschreibt Anzahl Schritte die ein Random Walk von x nach y benötigt
+	\item Kleinere Hitting Time je näher die Knoten beieinander liegen
+	\item Wird symmetrisch wenn Hin- und Rückweg gemessen werden
+	\end{itemize}
+	$$C_{x,y}=H_{x,y} + H_{y,x}$$
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Hitting Time}
+	\begin{itemize}
+	\item hohe stationäre Wahrscheinlichkeiten sind problematisch
+	\item kann durch Resetwahrscheinlichkeit gemindert werden
+	\item bei großen Netzen wird mit stationärer Wahrscheinlichkeit normiert
+	\end{itemize}
+	$$NHH(x,y)= H_{x,y}\cdot \pi_y + H_{y,x} \cdot \pi_x$$
+	\end{frame}
+	\begin{frame}
+	\frametitle{Hitting Time}
+	\includegraphics[scale=0.4]{img/hhp}
+	\pnote{ z hohe stationäre wahrscheinlichkeit da oft anspringbar}
+	\end{frame}
+	\subsection{Rooted Pagerank}
+	\begin{frame}{Rooted Pagerank}
+	\begin{itemize}
+	\item Misst die stationären Wahrscheinlichkeiten von x und y
+	\item Wird symmetrisch durch vertauschen von x und y
+	\item Kann mit Hilfe einer Degree- und einer Adjazenzmatrix für alle paare bestimmt werden 
+	\end{itemize}
+
+	$$RPR = (1-\beta)(I-\beta N)^{-1}$$
+	\pnote{beta: Wahrscheinlicheit von x zu y zu springen}
+	\pnote{1-beta: zu zufälligem knoten springen}
+	\pnote{degree-matrix: Diagonalmatrix wo Anzahl der ausgehenden Kanten eingetreagen sind}	
+	\end{frame}
+	\subsection{Simrank}
+	
+	\begin{frame}{SimRank}
+	\begin{itemize}
+	\item Idee dass ähnliche Knoten über ähnliche Nachbarn definiert sind
+	\item Bei random Walk ist Simrank $\gamma^l$
+	\item l ist Zufallsvariable wann sich zwei Random Walks treffen die von x und y starten
+	\end{itemize}
+	
+	$$similarity(x,y) = \gamma \cdot \frac{\sum_{a\in \Gamma(x)}\sum_{b \in\Gamma(y)} similarity(a,b)}{|\Gamma(x)| \cdot |\Gamma(y)|}
+$$
+	
+	\end{frame}
+	\section{Experimentelle Überprüfung}
+	\subsection{Aufbau}
+	\begin{frame}{Aufbau}
+	\begin{itemize}
+	\item Es wurden Netzwerke aus gemeinsamen Autorenschaften verschiedener Physikfelder von Arxive.com generiert
+	\item Es wurden Zeiträume für eine Trainungs- und eine Testphase bestimmt
+	\item Autoren mit mehr als drei Papern in beiden Phasen werden als Core bezeichnet 
+	\end{itemize}
+	\end{frame}
+	\begin{frame}{Aufbau}
+	\flushleft
+	\includegraphics[scale=0.4]{img/fig1}
+	\end{frame}
+	\subsection{Ergebnisse}
+	\begin{frame}{Ergebnisse}
+	\begin{itemize}
+	\item Baseline ist ein Zufallsprädiktor
+	\item $0,15\%$ bis $0,48\%$ sind zufällig richtig.
+	\item Da alle Prädiktoren besser sind wurden noch Nächste Nachbarn und kürzeste Wege verglichen
+	\end{itemize}
+	\end{frame}
+	\begin{frame}{Ergebnisse}
+	\includegraphics[scale=0.35]{img/fig3}
+	\end{frame}
+	\begin{frame}{Ergebnisse}
+	\includegraphics[scale=0.35]{img/fig4}
+	\end{frame}
+	\begin{frame}{Ergebnisse}
+	\includegraphics[scale=0.35]{img/fig5}
+	\end{frame}
+	\subsection{Small World Problem}
+	\begin{frame}{Small World Problem}
+	\begin{itemize}
+	\item Die kürzesten Pfade sind eigentlich unbrauchbar
+	\item Community stark vernetzt, sodass virtuell jeder über einen kurzen Pfad mit jedem verbunden ist
+	\item Schlecht für die Link prediction, da so jedes Knotenpaar hohe Wahrscheinlichkeit bekommt
+	\end{itemize}
+	
+	\end{frame}
+	\subsection{Reduzierung auf 3er Distanzen}
+	\begin{frame}
+	\begin{itemize}
+	\item Löst das Small World Problem, da kurze Pfade entfernt werden
+	\item Nächste Nachbarn exisiteren nicht mehr
+	\item übrig gebliebene Prädiktoren liefern ähnlich gute Ergebnisse
+	\end{itemize}
+	
+	\end{frame}
+	\section{Fazit}
+	\begin{frame}
+	\begin{itemize}
+	\item Bester Prädiktor liegt nur in $16\%$ richtig
+	\item Viele Informationen nicht im Netz kodiert
+	\item Neue und alte Kollaborationen unterschiedlich gewichten
+	\item Geographische Zusammenhänge Berücksichtigen
+	\end{itemize}
+	
+	\end{frame}
+	
+	
+	
+	
+	
+	
+
+	
+
+
+	
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
