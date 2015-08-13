@@ -26,6 +26,7 @@
 \usepackage{graphicx}
 \usepackage[vlined]{algorithm2e}
 \usepackage{svg}
+\usepackage{tikz}
 
 \definecolor{HIGHLIGHTCOLOR}{rgb}{0.13333333333333333,0.8156862745098039,0.09019607843137255}
 
@@ -57,7 +58,7 @@
 \usetheme{Hannover}
 \usecolortheme{rose}
 \begin{document}
-	\title{Link Prediction}
+	\title{Netzoptimierung und Lernalgorithmen für Neuronale Netze}
 	\author{Michael Känmmerer}
 	\date{\today}
 	\institute{}
@@ -65,183 +66,144 @@
 	\begin{frame}
 		\maketitle
 	\end{frame}
-	\section{Problemstellung}
-	\begin{frame}
-		\includegraphics[scale=0.4]{img/lpp}
-		\pnote{Soziale Netzwerke kompliziert, Vorhersagen insgesamt eher schwierig, für zwei Knoten einfacher und interessant, Beispiel Recommender für neue Freundschaften auf Facebook}
-		\pnote{Zwei Graphen, Tranings und Testinterval, Versuche vorauszusagen welche Kanten hinzukommen}
-	\end{frame}
-	\section{Prädiktoren}
-	\begin{frame}
-	\frametitle{Prädiktoren}
-	\begin{itemize}
-	 \item Verschiedene Metriken um einen Score zu berechnen
-	 \item Scores werden absteigend sortiert
-	 \item größerer Score bedeutet höhere Wahrscheinlichkeit zur Linkbildung
-	\end{itemize}
-	\end{frame}
-	\subsection{Nächste Nachbarn}
-	\begin{frame}
-	\frametitle{Nächste Nachbarn}
-	$$|\Gamma(x) \cap \Gamma(y)|$$
-	\includegraphics[scale=0.3]{img/nn}
-	\end{frame}
-	\subsection{Jaccard-Koeffizienten}
-	\begin{frame}
-	\frametitle{Jaccard-Koeffizienten}
-	\begin{itemize}
-		\item Nächste Nachbarn sind nicht normalisiert
-		\item Definiere Wahrscheinlichkeit gemeinsamen Nachbarn zu ziehen wenn aus Nachbarn von x und y gezogen wird
-		\item Mehr gemeinsame Nachbarn ergeben bessere Bewertung
-		\item Schlechter als Nächste Nachbarn
+	\section{Grundlagen}
+	\subsection{Allgemeiner Aufbau neuronaler Netze}
 		
-		$$J(x,y)=\frac{|\Gamma(x) \cap \Gamma(y)|}{|\Gamma(x) \cup \Gamma(y)|}$$
-		\pnote{Anzahl der gemeinsamen Nachbarn von zwei Knoten}
-		\pnote{Bild:E und C haben gemeinsame Nachbarn, also verbindung wahrscheinlich}
-		
-	\end{itemize}
-	\end{frame}
-	\subsection{Adamic und Adar}
 	\begin{frame}
-	\frametitle{Adamic und Adar}
-	\begin{itemize}
-	\item Misst gemeinsame Nachbarn von x und y
-	\item Gewichtet kleinere Abweichungen stärker
-	\item Besser als Jaccard und Nächste Nachbarn
-	\end{itemize}
+	\frametitle{Allgemeiner Aufbau neuronaler Netze}
+	Künstliche neuronale Netze versuchen Lernmodelle des Gehirns nachzubilden.
 	
-	$$A/A(x,y) = \sum_{z \in \Gamma(x) \cap \Gamma (y)} \frac{1}{\log | \Gamma(z)|}$$
+	Es existieren verschiedenste Lernverfahren zum trainieren von neuronalen Netzen.
+	
+	Neuronale Netze können vielseitig eingesetzt werden, zum Beispiel in der Mustererkennung.
 	
 	\end{frame}
-	\subsection{Kürzeste Pfade}
 	\begin{frame}
-	\frametitle{Kürzeste Pfade}
-	\includegraphics[scale=0.3]{img/kp}
-	\pnote{Einfachstes Pfadbasierte verfahren}
-	\pnote{Je kürzer der Pfad zwischen zwie Knoten desto höhere wahrscheinlichkeit}
-	\end{frame}
-	\subsection{Katz}
-	\begin{frame}
-	\frametitle{Katz}
-	\begin{itemize}
-	\item Berücksichtigt alle Pfade zwischen x und y
-	\item Gewichtet alle Pfade einer länge l
-	\item Lange Pfade werden schwächer gewichtet
-	\item besser als kürzeste Pfade
-	\end{itemize}
-	$$k(x,y)= \sum_{l=1}^{\infty} \beta^l \cdot |\mbox{paths}_{x,y}^{\langle l \rangle}|$$
-	\pnote{Beta: Steuert Verhalten, kleines Beta macht ähnlicher zu nächste Nachbarn}
-	\pnote{Zweiter Term: Menge der Pfade mit länge l von x nach y}
-	\end{frame}
-	\subsection{Hitting Time}
-	\begin{frame}
-	\frametitle{Hitting Time}
-	\begin{itemize}
-	\item Beschreibt Anzahl Schritte die ein Random Walk von x nach y benötigt
-	\item Kleinere Hitting Time je näher die Knoten beieinander liegen
-	\item Wird symmetrisch wenn Hin- und Rückweg gemessen werden
-	\end{itemize}
-	$$C_{x,y}=H_{x,y} + H_{y,x}$$
-	\end{frame}
+	\frametitle{Allgemeiner Aufbau neuronaler Netze}
+Zur Abbildung der funktionsweise existiert ein mathematisches Modell:
+\begin{figure}[H]
+	\begin{tikzpicture}[scale=0.7]
 	
-	\begin{frame}
-	\frametitle{Hitting Time}
-	\begin{itemize}
-	\item hohe stationäre Wahrscheinlichkeiten sind problematisch
-	\item kann durch Resetwahrscheinlichkeit gemindert werden
-	\item bei großen Netzen wird mit stationärer Wahrscheinlichkeit normiert
-	\end{itemize}
-	$$NHH(x,y)= H_{x,y}\cdot \pi_y + H_{y,x} \cdot \pi_x$$
-	\end{frame}
-	\begin{frame}
-	\frametitle{Hitting Time}
-	\includegraphics[scale=0.4]{img/hhp}
-	\pnote{ z hohe stationäre wahrscheinlichkeit da oft anspringbar}
-	\end{frame}
-	\subsection{Rooted Pagerank}
-	\begin{frame}{Rooted Pagerank}
-	\begin{itemize}
-	\item Misst die stationären Wahrscheinlichkeiten von x und y
-	\item Wird symmetrisch durch vertauschen von x und y
-	\item Kann mit Hilfe einer Degree- und einer Adjazenzmatrix für alle paare bestimmt werden 
-	\end{itemize}
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	
+	\end{tikzpicture}
+\end{figure}
+1. Jedes Neuron hat einen Aktivierungszustand $a_i(t)$ zum Zeitpunkt t.
+\end{frame}
+\begin{frame}
+\frametitle{Allgemeiner Aufbau neuronaler Netze}
+\begin{figure}[H]
+	\begin{tikzpicture}[scale=0.7]
+	\draw[->,thick](0,0)--(2.5,0)node[above right, midway]{$net_i$};
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	\draw[->,thick](7.5,0)--(10,0)node[above right, midway]{$net_j$};
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	\end{tikzpicture}
+\end{figure}
+2. Jedes Neuron hat eine Aktivierungsfunktion $f_{act}$ zur Berechnung eines neuen Aktivierungszustandes aus er Eingabe $net_i$ und eines Schwellwerts.
+\end{frame}
+\begin{frame}
+\frametitle{Allgemeiner Aufbau neuronaler Netze}
+\begin{figure}[H]
+	\begin{tikzpicture}	[scale=0.7]
+	\draw[->,thick](0,0)--(2.5,0)node[above right, midway]{$net_i$};
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	\draw[->,thick](4.5,0)--(6,0)node[above left]{$o_i$};
+	\draw[->,thick](7.5,0)--(10,0)node[above right, midway]{$net_j$};
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	\draw[thick,->](12,0)--(14,0) node[above,midway]{$o_j$};
+	\end{tikzpicture}
+\end{figure}
+3. Jedes Neuron hat eine Ausgabefunktion $f_{out}$ die aus dem Aktivierungszustand die Ausgabe $o$ des Neurons berechnet.
+\end{frame}
+\begin{frame}
+\frametitle{Allgemeiner Aufbau neuronaler Netze}
+\begin{figure}[H]
+	\begin{tikzpicture}[scale=0.7]
+	\draw[->,thick](0,0)--(2.5,0)node[above right, midway]{$net_i$};
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	\draw[thick](4.5,0)--(5.5,0)node[above]{$o_i$};
+	\draw[->,thick](5.5,0)--(10,0)node[midway, above]{$w_{i,j}$};
+	\draw[->,thick](7.5,0)--(10,0)node[above right, midway]{$net_j$};
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	\draw[thick,->](12,0)--(14,0) node[above,midway]{$o_j$};
+	\end{tikzpicture}
+\end{figure}
+4. Die Neuronen sind über ein Netzwerk aus Synapsen $w_{ij}$ miteinander verbunden.
+\end{frame}
+\begin{frame}
+\frametitle{Allgemeiner Aufbau neuronaler Netze}
+	\begin{figure}[H]
+	\begin{tikzpicture}	[scale=0.7]
+	\draw[->,thick](0,0)--(2.5,0);
+	\draw[->,thick](0,2)--(2.5,0.25)node[above right, midway]{$net_i$};
+	\draw[->, thick](0,-2)--(2.5,-0.25);
+	\draw[thick](3.5,0)circle(1) node{$a_i$};
+	\draw[thick](4.5,0)--(5.5,0)node[above right]{$o_i$};
+	\draw[->,thick](4.5,0)--(6,1);
+	\draw[->,thick](4.5,0)--(6,-1);
+	\draw[->,thick](5.5,0)--(10,0)node[midway, above]{$w_{i,j}$};
+	\draw[->,thick](8.5,1)--(10,0.25)node[above right, midway]{$net_j$};
+	\draw[->,thick](8.5,-1)--(10,-0.25);
+	\draw[thick](11,0)circle(1) node{$a_j$};
+	\draw[thick,->](12,0)--(14,0) node[above,midway]{$o_j$};
+	\end{tikzpicture}
+\end{figure}
+5. Eine Propagierungsfunktion, die aus den Ausgaben anderer Neuronen die Eingabe eines Neurons berechnet.
 
-	$$RPR = (1-\beta)(I-\beta N)^{-1}$$
-	\pnote{beta: Wahrscheinlicheit von x zu y zu springen}
-	\pnote{1-beta: zu zufälligem knoten springen}
-	\pnote{degree-matrix: Diagonalmatrix wo Anzahl der ausgehenden Kanten eingetreagen sind}	
-	\end{frame}
-	\subsection{Simrank}
-	
-	\begin{frame}{SimRank}
-	\begin{itemize}
-	\item Idee dass ähnliche Knoten über ähnliche Nachbarn definiert sind
-	\item Bei random Walk ist Simrank $\gamma^l$
-	\item l ist Zufallsvariable wann sich zwei Random Walks treffen die von x und y starten
-	\end{itemize}
-	
-	$$similarity(x,y) = \gamma \cdot \frac{\sum_{a\in \Gamma(x)}\sum_{b \in\Gamma(y)} similarity(a,b)}{|\Gamma(x)| \cdot |\Gamma(y)|}
-$$
-	
-	\end{frame}
-	\section{Experimentelle Überprüfung}
-	\subsection{Aufbau}
-	\begin{frame}{Aufbau}
-	\begin{itemize}
-	\item Es wurden Netzwerke aus gemeinsamen Autorenschaften verschiedener Physikfelder von Arxive.com generiert
-	\item Es wurden Zeiträume für eine Trainungs- und eine Testphase bestimmt
-	\item Autoren mit mehr als drei Papern in beiden Phasen werden als Core bezeichnet 
-	\end{itemize}
-	\end{frame}
-	\begin{frame}{Aufbau}
-	\flushleft
-	\includegraphics[scale=0.4]{img/fig1}
-	\end{frame}
-	\subsection{Ergebnisse}
-	\begin{frame}{Ergebnisse}
-	\begin{itemize}
-	\item Baseline ist ein Zufallsprädiktor
-	\item $0,15\%$ bis $0,48\%$ sind zufällig richtig.
-	\item Da alle Prädiktoren besser sind wurden noch Nächste Nachbarn und kürzeste Wege verglichen
-	\end{itemize}
-	\end{frame}
-	\begin{frame}{Ergebnisse}
-	\includegraphics[scale=0.35]{img/fig3}
-	\end{frame}
-	\begin{frame}{Ergebnisse}
-	\includegraphics[scale=0.35]{img/fig4}
-	\end{frame}
-	\begin{frame}{Ergebnisse}
-	\includegraphics[scale=0.35]{img/fig5}
-	\end{frame}
-	\subsection{Small World Problem}
-	\begin{frame}{Small World Problem}
-	\begin{itemize}
-	\item Die kürzesten Pfade sind eigentlich unbrauchbar
-	\item Community stark vernetzt, sodass virtuell jeder über einen kurzen Pfad mit jedem verbunden ist
-	\item Schlecht für die Link prediction, da so jedes Knotenpaar hohe Wahrscheinlichkeit bekommt
-	\end{itemize}
-	
-	\end{frame}
-	\subsection{Reduzierung auf 3er Distanzen}
+6. Eine Lernregel.
+\end{frame}
+	\subsection{Backpropagation}
 	\begin{frame}
-	\begin{itemize}
-	\item Löst das Small World Problem, da kurze Pfade entfernt werden
-	\item Nächste Nachbarn exisiteren nicht mehr
-	\item übrig gebliebene Prädiktoren liefern ähnlich gute Ergebnisse
-	\end{itemize}
+	\frametitle{Backpropagation}
+	Backpropagation ist ein überwachtes Lernverfahren, d.h. eine Ist-Ausgabe wird mit einer Soll-Ausgabe verglichen.
 	
+	Einfaches Prinzip: Propagiere ein Muster durchs Netz, Vergleiche Ausgaben, propagiere den Fehler rückwärts durchs Netz und passe Gewichte an um diesen zu minimieren
 	\end{frame}
-	\section{Fazit}
+	\subsection{Markov-Ketten}
 	\begin{frame}
-	\begin{itemize}
-	\item Bester Prädiktor liegt nur in $16\%$ richtig
-	\item Viele Informationen nicht im Netz kodiert
-	\item Neue und alte Kollaborationen unterschiedlich gewichten
-	\item Geographische Zusammenhänge Berücksichtigen
-	\end{itemize}
-	
+	\frametitle{Markov-Ketten}
 	\end{frame}
+	\subsection{Hopfield Netze}
+	\begin{frame}
+	\end{frame}
+	\subsection{Boltzmann Maschinen}
+	\begin{frame}
+	\end{frame}
+	\subsection{Eingeschränkte Boltzmann Maschinen}
+	\begin{frame}
+	\end{frame}
+	\subsection{Kontrastive Divergenz}
+	\begin{frame}
+	\end{frame}
+	\section{Deep-Belief Netze}
+	\subsection{Greedy Algotihmus zuim trainieren von DBN}
+	\begin{frame}
+	\end{frame}
+	\subsection{DBN zur Klassifikation}
+	\begin{frame}
+	\end{frame}
+	\section{Implementation}
+	\subsection{Aufbau des verwendeten Frameworks}
+	\begin{frame}
+	\end{frame}
+	\subsection{Erweiterung des Frameworks}
+	\begin{frame}
+	\end{frame}
+	\section{Versuch}
+	\subsection{Verwendete Datensätze}
+	\begin{frame}
+	\end{frame}
+	\subsection{Durchführung}
+	\begin{frame}
+	\end{frame}
+	\section{Fazit und Ausblick}
+	\begin{frame}
+	\end{frame}
+	
+	
 	
 	
 	
