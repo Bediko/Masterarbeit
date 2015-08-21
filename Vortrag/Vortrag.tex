@@ -165,12 +165,36 @@ Zur Abbildung der funktionsweise existiert ein mathematisches Modell:
 	\subsection{Markov-Ketten}
 	\begin{frame}
 	\frametitle{Markov-Ketten}
-	\end{frame}
+	Stochastischer Prozess zur Beschreibung der zeitlichen Abfolge von zufälligen Vorgängen Vorgängen. 	
+	
+	Wichtigste Eigenschaft: Der Zustand zu einem Zeitpunkt ist nur vom Zustand davor abhängig
+		\end{frame}
 	\subsection{Hopfield Netze}
 	\begin{frame}
+	\frametitle{Hopfield Netze}
+	\begin{figure}[H]
+	\center
+	\includesvg[width=3cm]{Hopfield}
+	\label{HopfieldNetz}
+	\end{figure}
+	Alle Neuronen sind miteinander verbunden und feuern wenn ein Schwellwert $\theta$ überschritten wird. Ziel ist es eine Energiefunktion zu minimieren:
+	$$
+	E = -\frac{1}{2}\sum_{i\neq j}{w_{ij}{s_i}{s_j}}+\sum_i{\theta_i\ s_i}
+	$$
 	\end{frame}
 	\subsection{Boltzmann Maschinen}
+	
 	\begin{frame}
+	\frametitle{Boltzmann Maschinen}
+	\begin{figure}[H]
+	\center
+	\includesvg[width=3cm]{BM}
+	\label{Boltzmannmaschine}
+	\end{figure}
+	Neuronen Aktivieren sich über Wahrscheinlichkeiten statt Schwellwerten. Es gibt sichtbare und versteckte Neuronen.
+	Auch hier wird eine Energiefunktion minimiert:
+	$$
+	E = -\left(\sum_{i<j} w_{ij} \, s_i \, s_j + \sum_i \theta_i \, s_i \right)$$
 	\end{frame}
 	\subsection{Eingeschränkte Boltzmann Maschinen}
 	\begin{frame}
