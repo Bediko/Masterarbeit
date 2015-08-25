@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  17 AUG 2015 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.24)  25 AUG 2015 17:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1234,20 +1234,20 @@ Package: beamercolorthemerose 2010/06/17  (rcs-revision d02a7cf4d8ae)
 ) (./Vortrag.aux)
 \openout1 = `Vortrag.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1314,7 +1314,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box70
-Package hyperref Info: Link coloring OFF on input line 60.
+Package hyperref Info: Link coloring OFF on input line 66.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1324,56 +1324,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count196
 )
-LaTeX Info: Redefining \ref on input line 60.
-LaTeX Info: Redefining \pageref on input line 60.
-LaTeX Info: Redefining \nameref on input line 60.
+LaTeX Info: Redefining \ref on input line 66.
+LaTeX Info: Redefining \pageref on input line 66.
+LaTeX Info: Redefining \nameref on input line 66.
 
 (./Vortrag.out) (./Vortrag.out)
 \@outlinefile=\write6
 \openout6 = `Vortrag.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 60.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 66.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 60.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 66.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/ptm/m/n on input line 60.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 60.
+(Font)                  OT1/cmss/m/n --> OT1/ptm/m/n on input line 66.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 60.
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 60.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 60.
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 66.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 60.
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 60.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 60.
+(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 66.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/phv/m/it on input line 60.
+(Font)                  OT1/cmr/m/it --> OT1/phv/m/it on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/phv/m/it on input line 60.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 60.
+(Font)                  OT1/cmr/bx/it --> OT1/phv/m/it on input line 66.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 60.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 60.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 66.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 60.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 66.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 60.
+(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/ptm/bx/n on input line 60.
+(Font)                  OT1/cmss/bx/n --> OT1/ptm/bx/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 60.
+(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 60.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 60.
+(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/pcr/m/n --> OT1/pcr/bx/n on input line 60.
+(Font)                  OT1/pcr/m/n --> OT1/pcr/bx/n on input line 66.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -1399,7 +1399,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 orem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 60.
+LaTeX Info: Redefining \includegraphics on input line 66.
 \openout5 = `Vortrag.pdfpc'.
 
 
@@ -1446,7 +1446,7 @@ Package caption Info: End \AtBeginDocument code.
 (./Vortrag.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 62.
+(hyperref)                setting the option has no effect on input line 68.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -1455,22 +1455,22 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 ] [3
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 94.
+LaTeX Font Info:    Try loading font information for U+msa on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 94.
+LaTeX Font Info:    Try loading font information for U+msb on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 100.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 100.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 100.
  [4
 
 ] [5
@@ -1486,14 +1486,14 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
 
 ] [10
 
-] <./Hopfield.pdf, id=551, 155.73611pt x 159.75114pt>
+] <./Hopfield.pdf, id=522, 155.73611pt x 159.75114pt>
 File: ./Hopfield.pdf Graphic file (type pdf)
 
 <use ./Hopfield.pdf>
-Package pdftex.def Info: ./Hopfield.pdf used on input line 184.
+Package pdftex.def Info: ./Hopfield.pdf used on input line 190.
 (pdftex.def)             Requested size: 85.35826pt x 87.55869pt.
  (./Hopfield.pdf_tex
-<Hopfield.pdf, id=552, page=1, 155.73611pt x 159.75114pt>
+<Hopfield.pdf, id=523, page=1, 155.73611pt x 159.75114pt>
 File: Hopfield.pdf Graphic file (type pdf)
 
 <use Hopfield.pdf, page 1>
@@ -1502,13 +1502,13 @@ Package pdftex.def Info: Hopfield.pdf, page1 used on input line 52.
 ) [11
 
  <./Hopfield.pdf>]
-<./BM.pdf, id=605, 155.73611pt x 159.75114pt>
+<./BM.pdf, id=573, 155.73611pt x 159.75114pt>
 File: ./BM.pdf Graphic file (type pdf)
  <use ./BM.pdf>
-Package pdftex.def Info: ./BM.pdf used on input line 198.
+Package pdftex.def Info: ./BM.pdf used on input line 206.
 (pdftex.def)             Requested size: 85.35826pt x 87.55869pt.
  (./BM.pdf_tex
-<BM.pdf, id=606, page=1, 155.73611pt x 159.75114pt>
+<BM.pdf, id=574, page=1, 155.73611pt x 159.75114pt>
 File: BM.pdf Graphic file (type pdf)
  <use BM.pdf, page 1>
 Package pdftex.def Info: BM.pdf, page1 used on input line 52.
@@ -1516,17 +1516,51 @@ Package pdftex.def Info: BM.pdf, page1 used on input line 52.
 )
 [12
 
- <./BM.pdf>] [13
+ <./BM.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 222.
 
-] [14
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 222.
 
-] [15
+[13
+
+] <./RBM.pdf, id=663, 155.73611pt x 159.75114pt>
+File: ./RBM.pdf Graphic file (type pdf)
+ <use ./RBM.pdf>
+Package pdftex.def Info: ./RBM.pdf used on input line 234.
+(pdftex.def)             Requested size: 85.35826pt x 87.55869pt.
+
+(./RBM.pdf_tex <RBM.pdf, id=664, page=1, 155.73611pt x 159.75114pt>
+File: RBM.pdf Graphic file (type pdf)
+
+<use RBM.pdf, page 1>
+Package pdftex.def Info: RBM.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 85.35826pt x 87.55869pt.
+) [14
+
+ <./RBM.pdf>] [15
 
 ] [16
 
-] [17
+]
+<./Markov.pdf, id=795, 419.13338pt x 123.8847pt>
+File: ./Markov.pdf Graphic file (type pdf)
+ <use ./Markov.pdf>
+Package pdftex.def Info: ./Markov.pdf used on input line 267.
+(pdftex.def)             Requested size: 280.74263pt x 82.97963pt.
 
-] [18
+(./Markov.pdf_tex <Markov.pdf, id=796, page=1, 419.13338pt x 123.8847pt>
+File: Markov.pdf Graphic file (type pdf)
+
+<use Markov.pdf, page 1>
+Package pdftex.def Info: Markov.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 280.74263pt x 82.97963pt.
+) [17
+
+ <./Markov.pdf>] [18
 
 ] [19
 
@@ -1538,10 +1572,271 @@ Package pdftex.def Info: BM.pdf, page1 used on input line 52.
 
 ] [23
 
-] [24
+]
+[24
+
+] <./SMTrain.pdf, id=1136, 217.83699pt x 214.23279pt>
+File: ./SMTrain.pdf Graphic file (type pdf)
+ <use ./SMTrain.pdf>
+Package pdftex.def Info: ./SMTrain.pdf used on input line 330.
+(pdftex.def)             Requested size: 113.81102pt x 111.92798pt.
+
+(./SMTrain.pdf_tex <SMTrain.pdf, id=1137, page=1, 217.83699pt x 214.23279pt>
+File: SMTrain.pdf Graphic file (type pdf)
+
+<use SMTrain.pdf, page 1>
+Package pdftex.def Info: SMTrain.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 113.81102pt x 111.92798pt.
+) [25
+
+ <./SMTrain.pdf>]
+<./BPTrain.pdf, id=1182, 132.8678pt x 260.08789pt>
+File: ./BPTrain.pdf Graphic file (type pdf)
+ <use ./BPTrain.pdf>
+Package pdftex.def Info: ./BPTrain.pdf used on input line 338.
+(pdftex.def)             Requested size: 85.35826pt x 167.08669pt.
+
+(./BPTrain.pdf_tex <BPTrain.pdf, id=1183, page=1, 132.8678pt x 260.08789pt>
+File: BPTrain.pdf Graphic file (type pdf)
+
+<use BPTrain.pdf, page 1>
+Package pdftex.def Info: BPTrain.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 85.35826pt x 167.08669pt.
+) [26
+
+ <./BPTrain.pdf>] [27
 
 ]
-[25
+<./Aufbau.pdf, id=1272, 330.836pt x 411.939pt>
+File: ./Aufbau.pdf Graphic file (type pdf)
+ <use ./Aufbau.pdf>
+Package pdftex.def Info: ./Aufbau.pdf used on input line 346.
+(pdftex.def)             Requested size: 170.71652pt x 212.56894pt.
+
+(./Aufbau.pdf_tex <Aufbau.pdf, id=1273, page=1, 330.836pt x 411.939pt>
+File: Aufbau.pdf Graphic file (type pdf)
+
+<use Aufbau.pdf, page 1>
+Package pdftex.def Info: Aufbau.pdf, page1 used on input line 52.
+(pdftex.def)             Requested size: 170.71652pt x 212.56894pt.
+) [28
+
+ <./Aufbau.pdf>]
+\openout4 = `Vortrag.vrb'.
+
+ (./Vortrag.vrb
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
+) [29
+
+] [30
+
+]
+[31
+
+] [32
+
+]
+Overfull \hbox (8.75948pt too wide) in paragraph at lines 396--396
+[]|\OT1/phv/m/n/12 Backpropagation| 
+ []
+
+[33
+
+]
+Overfull \hbox (11.52484pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 Topologie| 
+ []
+
+
+Overfull \hbox (5.25287pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 Laufzeit| 
+ []
+
+
+Overfull \hbox (5.25287pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 Laufzeit| 
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0987| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 219ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10452| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 187ms| 
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0935| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 301ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10355| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 203ms| 
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0920| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 395ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10342| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 222ms| 
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0930| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 489ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10463| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 234ms| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 4-2-2-
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 311ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10586| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 293ms| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 4-4-4-
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0917| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 500ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10471| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 323ms| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 4-4-8-
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 701ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10516| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 352ms| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 4-8-8-
+ []
+
+
+Overfull \hbox (1.82085pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.0869| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 939ms| 
+ []
+
+
+Overfull \hbox (6.2688pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 0.10464| 
+ []
+
+
+Overfull \hbox (1.36499pt too wide) in paragraph at lines 416--416
+[]|\OT1/phv/m/n/8 401ms| 
+ []
+
+[34
+
+] [35
+
+] [36
+
+] [37
+
+] [38
 
 ]
 \tf@nav=\write7
@@ -1553,27 +1848,23 @@ Package pdftex.def Info: BM.pdf, page1 used on input line 52.
 \tf@snm=\write9
 \openout9 = `Vortrag.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 474.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 474.
  (./Vortrag.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 474.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 474.
 Package rerunfilecheck Info: File `Vortrag.out' has not changed.
-(rerunfilecheck)             Checksum: 5C0F9D6D2E6FD6F71D96724619701D64;1213.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 243.
+(rerunfilecheck)             Checksum: 7E19E7E5CF637839F870F91E75CA93EE;1052.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 474.
  ) 
 Here is how much of TeX's memory you used:
- 25070 strings out of 493105
- 468769 string characters out of 6137072
- 569061 words of memory out of 5000000
- 27878 multiletter control sequences out of 15000+600000
- 20985 words of font info for 48 fonts, out of 8000000 for 9000
+ 25525 strings out of 493105
+ 474102 string characters out of 6137072
+ 605074 words of memory out of 5000000
+ 28283 multiletter control sequences out of 15000+600000
+ 28199 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,15n,106p,2346b,687s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,15n,106p,2346b,1138s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
@@ -1583,10 +1874,10 @@ public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Vortrag.pdf (25 pages, 137969 bytes).
+Output written on Vortrag.pdf (38 pages, 262033 bytes).
 PDF statistics:
- 1274 PDF objects out of 1440 (max. 8388607)
- 1215 compressed objects within 13 object streams
- 71 named destinations out of 1000 (max. 500000)
- 207 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1816 PDF objects out of 2073 (max. 8388607)
+ 1719 compressed objects within 18 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -31,54 +31,78 @@
 \headcommand {\beamer@subsectionentry {0}{1}{5}{12}{Boltzmann Maschinen}}\headcommand {\beamer@subsectionpages {11}{11}}
 \headcommand {\slideentry {1}{5}{1}{12/12}{Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@subsectionentry {0}{1}{6}{13}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}}\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\slideentry {1}{6}{1}{13/13}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{0}}
+\headcommand {\slideentry {1}{5}{2}{13/13}{Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{1}{7}{14}{Kontrastive Divergenz}}\headcommand {\beamer@subsectionpages {13}{13}}
-\headcommand {\slideentry {1}{7}{1}{14/14}{Kontrastive Divergenz}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{6}{14}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}}\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\slideentry {1}{6}{1}{14/14}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\sectionentry {2}{Deep-Belief Netze}{15}{Deep-Belief Netze}{0}}
-\headcommand {\beamer@sectionpages {2}{14}}
-\headcommand {\beamer@subsectionpages {14}{14}}
-\headcommand {\slideentry {2}{0}{2}{15/15}{}{0}}
+\headcommand {\slideentry {1}{6}{2}{15/15}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{16}{Greedy Algotihmus zuim trainieren von DBN}}\headcommand {\beamer@subsectionpages {15}{15}}
-\headcommand {\slideentry {2}{1}{1}{16/16}{Greedy Algotihmus zuim trainieren von DBN}{0}}
+\headcommand {\slideentry {1}{6}{3}{16/16}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{17}{DBN zur Klassifikation}}\headcommand {\beamer@subsectionpages {16}{16}}
-\headcommand {\slideentry {2}{2}{1}{17/17}{DBN zur Klassifikation}{0}}
+\headcommand {\slideentry {1}{6}{4}{17/17}{Eingeschr\IeC {\"a}nkte Boltzmann Maschinen}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\sectionentry {3}{Implementation}{18}{Implementation}{0}}
-\headcommand {\beamer@sectionpages {15}{17}}
-\headcommand {\beamer@subsectionpages {17}{17}}
-\headcommand {\slideentry {3}{0}{2}{18/18}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{7}{18}{Kontrastive Divergenz}}\headcommand {\beamer@subsectionpages {14}{17}}
+\headcommand {\slideentry {1}{7}{1}{18/18}{Kontrastive Divergenz}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{19}{Aufbau des verwendeten Frameworks}}\headcommand {\beamer@subsectionpages {18}{18}}
-\headcommand {\slideentry {3}{1}{1}{19/19}{Aufbau des verwendeten Frameworks}{0}}
+\headcommand {\slideentry {1}{7}{2}{19/19}{Kontrastive Divergenz}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{20}{Erweiterung des Frameworks}}\headcommand {\beamer@subsectionpages {19}{19}}
-\headcommand {\slideentry {3}{2}{1}{20/20}{Erweiterung des Frameworks}{0}}
+\headcommand {\sectionentry {2}{Deep-Belief Netze}{20}{Deep-Belief Netze}{0}}
+\headcommand {\beamer@sectionpages {2}{19}}
+\headcommand {\beamer@subsectionpages {18}{19}}
+\headcommand {\slideentry {2}{0}{3}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\sectionentry {4}{Versuch}{21}{Versuch}{0}}
-\headcommand {\beamer@sectionpages {18}{20}}
-\headcommand {\beamer@subsectionpages {20}{20}}
-\headcommand {\slideentry {4}{0}{2}{21/21}{}{0}}
+\headcommand {\slideentry {2}{0}{4}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{22}{Verwendete Datens\IeC {\"a}tze}}\headcommand {\beamer@subsectionpages {21}{21}}
-\headcommand {\slideentry {4}{1}{1}{22/22}{Verwendete Datens\IeC {\"a}tze}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{22}{Greedy Algorithmus zum trainieren von DBN}}\headcommand {\beamer@subsectionpages {20}{21}}
+\headcommand {\slideentry {2}{1}{1}{22/22}{Greedy Algorithmus zum trainieren von DBN}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\beamer@subsectionentry {0}{4}{2}{23}{Durchf\IeC {\"u}hrung}}\headcommand {\beamer@subsectionpages {22}{22}}
-\headcommand {\slideentry {4}{2}{1}{23/23}{Durchf\IeC {\"u}hrung}{0}}
+\headcommand {\slideentry {2}{1}{2}{23/23}{Greedy Algorithmus zum trainieren von DBN}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\sectionentry {5}{Fazit und Ausblick}{24}{Fazit und Ausblick}{0}}
-\headcommand {\beamer@sectionpages {21}{23}}
-\headcommand {\beamer@subsectionpages {23}{23}}
-\headcommand {\slideentry {5}{0}{2}{24/24}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{24}{DBN zur Klassifikation}}\headcommand {\beamer@subsectionpages {22}{23}}
+\headcommand {\slideentry {2}{2}{1}{24/24}{DBN zur Klassifikation}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {5}{0}{3}{25/25}{}{0}}
+\headcommand {\slideentry {2}{2}{2}{25/25}{DBN zur Klassifikation}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@partpages {1}{25}}
-\headcommand {\beamer@subsectionpages {24}{25}}
-\headcommand {\beamer@sectionpages {24}{25}}
-\headcommand {\beamer@documentpages {25}}
-\headcommand {\def \inserttotalframenumber {25}}
+\headcommand {\slideentry {2}{2}{3}{26/26}{DBN zur Klassifikation}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\sectionentry {3}{Implementation}{27}{Implementation}{0}}
+\headcommand {\beamer@sectionpages {20}{26}}
+\headcommand {\beamer@subsectionpages {24}{26}}
+\headcommand {\slideentry {3}{0}{4}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {3}{0}{5}{28/28}{}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {3}{0}{6}{29/29}{}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\sectionentry {4}{Versuch}{30}{Versuch}{0}}
+\headcommand {\beamer@sectionpages {27}{29}}
+\headcommand {\beamer@subsectionpages {27}{29}}
+\headcommand {\slideentry {4}{0}{7}{30/30}{}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{31}{Verwendete Datens\IeC {\"a}tze}}\headcommand {\beamer@subsectionpages {30}{30}}
+\headcommand {\slideentry {4}{1}{1}{31/31}{Verwendete Datens\IeC {\"a}tze}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {4}{1}{2}{32/32}{Verwendete Datens\IeC {\"a}tze}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{33}{Durchf\IeC {\"u}hrung}}\headcommand {\beamer@subsectionpages {31}{32}}
+\headcommand {\slideentry {4}{2}{1}{33/33}{Durchf\IeC {\"u}hrung}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {4}{2}{2}{34/34}{Durchf\IeC {\"u}hrung}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\slideentry {4}{2}{3}{35/35}{Durchf\IeC {\"u}hrung}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {4}{2}{4}{36/36}{Durchf\IeC {\"u}hrung}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\sectionentry {5}{Fazit und Ausblick}{37}{Fazit und Ausblick}{0}}
+\headcommand {\beamer@sectionpages {30}{36}}
+\headcommand {\beamer@subsectionpages {33}{36}}
+\headcommand {\slideentry {5}{0}{5}{37/37}{}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\slideentry {5}{0}{6}{38/38}{}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\beamer@partpages {1}{38}}
+\headcommand {\beamer@subsectionpages {37}{38}}
+\headcommand {\beamer@sectionpages {37}{38}}
+\headcommand {\beamer@documentpages {38}}
+\headcommand {\def \inserttotalframenumber {38}}
